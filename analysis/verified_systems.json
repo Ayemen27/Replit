@@ -1,0 +1,756 @@
+{
+  "summary": {
+    "total_systems_detected": 15,
+    "total_integrations": 3,
+    "analysis_date": "2025-11-16"
+  },
+  "systems": {
+    "Datadog RUM": {
+      "type": "Real User Monitoring",
+      "evidence_count": 32,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "datadoghq\\.com",
+          "context": "window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "datadoghq\\.com",
+          "context": "window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "datadoghq\\.com",
+          "context": "window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "brandkit.html",
+          "pattern": "datadoghq\\.com",
+          "context": "window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "github.html",
+          "pattern": "datadoghq\\.com",
+          "context": "window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "datadoghq\\.com",
+          "match": "datadoghq.com",
+          "context": "00; font-style: italic; } </style><script> window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "datadoghq\\.com",
+          "match": "datadoghq.com",
+          "context": "00; font-style: italic; } </style><script> window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "datadoghq\\.com",
+          "match": "datadoghq.com",
+          "context": "00; font-style: italic; } </style><script> window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "brandkit.html",
+          "pattern": "datadoghq\\.com",
+          "match": "datadoghq.com",
+          "context": "00; font-style: italic; } </style><script> window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        },
+        {
+          "file": "github.html",
+          "pattern": "datadoghq\\.com",
+          "match": "datadoghq.com",
+          "context": "00; font-style: italic; } </style><script> window.preloadErrorHandler = function (event) { var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57', true); xhr.setRequestHeader('Accept', 'application/json'); xhr.setRequestHeader('Content-Type', 'application/json'); x"
+        }
+      ]
+    },
+    "Coframe": {
+      "type": "AI Optimization",
+      "evidence_count": 1090,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "context": "(function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); // For pricing we want to use antiflicker, since we want to apply changes on that page. // If the page is not /p"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "coframe",
+          "context": "(function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); // For pricing we want to use antiflicker, since we want to apply changes on that page. // If the page is not /p"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "coframe",
+          "context": "(function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); // For pricing we want to use antiflicker, since we want to apply changes on that page. // If the page is not /p"
+        },
+        {
+          "file": "about.html",
+          "pattern": "coframe",
+          "context": "(function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); const config = { projectId: '68c9ad4d4cddb58cf3a1f93d', startTime: Date.now(), timeoutMs: 1000, currentUrl: window.location.href,"
+        },
+        {
+          "file": "additional-resources.html",
+          "pattern": "coframe",
+          "context": "(function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); const config = { projectId: '68c9ad4d4cddb58cf3a1f93d', startTime: Date.now(), timeoutMs: 1000, currentUrl: window.location.href,"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "match": "coframe",
+          "context": "integrations: {'Segment.io': { apiHost: 'sp.replit.com/v1' }}}); }}();</script><link data-next-font=\"size-adjust\" rel=\"preconnect\" href=\"index.html\" crossorigin=\"anonymous\"/><script id=\"coframe-setup\" data-nscript=\"beforeInteractive\" crossorigin=\"anonymous\"> (function () { // Early exit for performance testing if (/cf_disable/.test(window"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "match": "Coframe",
+          "context": "ctive\" crossorigin=\"anonymous\"> (function () { // Early exit for performance testing if (/cf_disable/.test(window.location.search)) return console.warn('[Coframe] Disabled via URL parameter'); // For pricing we want to use antiflicker, since we want to apply changes on that page. // If the page is not /p"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "match": "Coframe",
+          "context": "ed via URL parameter'); // For pricing we want to use antiflicker, since we want to apply changes on that page. // If the page is not /pricing, we use Coframe for tracking only. const useFullSetup = /^\\/pricing(?:\\/|$)?/.test(window.location.pathname); var config = { projectId: '68c9"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "match": "Coframe",
+          "context": "}; if (useFullSetup) { config.waitForHydration = true; } else { config.trackingOnly = true; } // Coframe queue setup (window.CFQ = window.CFQ || []).push({ config }); // Prevent duplicate installation const script_id = 'coframe-sdk-js';"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "coframe",
+          "match": "coframe",
+          "context": "} // Coframe queue setup (window.CFQ = window.CFQ || []).push({ config }); // Prevent duplicate installation const script_id = 'coframe-sdk-js'; if (document.getElementById(script_id)) return console.warn('[Coframe] SDK already installed'); // Coframe antiflicker CSS if (useFull"
+        }
+      ]
+    },
+    "Apollo GraphQL": {
+      "type": "GraphQL Client",
+      "evidence_count": 32,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "apolloState",
+          "context": "{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"Prodia\\\"})\":{\"__ref\":\"User:25353096\"}},\"UserSocial:533475\":{\"__typename\":\"UserSocial\",\"id\":533475,\"u"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "apolloState",
+          "context": "{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"TheDrone7\\\"})\":{\"__ref\":\"User:1540925\"}},\"UserSocial:252\":{\"__typename\":\"UserSocial\",\"id\":252,\"url\":"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "apolloState",
+          "context": "{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"deno\\\"})\":{\"__ref\":\"User:15328644\"}},\"Repl:2d23b17c-65ab-4e64-b2e3-4578897e841c\":{\"__typename\":\"Repl"
+        },
+        {
+          "file": "brandkit.html",
+          "pattern": "apolloState",
+          "context": "{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null}},\"apolloClient\":null,\"userAgent\":\"Mozilla/5.0 (X11; Linux x86_64)\",\"flagContext\":null},\"page\":\"/brandkit\",\"query\":{},\"buildId\":\"6NY"
+        },
+        {
+          "file": "github.html",
+          "pattern": "apolloState",
+          "context": "{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"\\\"})\":null}},\"apolloClient\":null,\"userAgent\":null,\"flagContext\":null,\"__N_SSG\":true},\"page\":\"/auth\","
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "apolloState",
+          "match": "apolloState",
+          "context": ">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"Prodia\\\"})\":{\"__ref\":\"User:25353096\"}},\"UserSocial:533475\":{\"__typename\":\"UserSocial\",\"id\":533475,\"u"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "apolloState",
+          "match": "apolloState",
+          "context": ">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"TheDrone7\\\"})\":{\"__ref\":\"User:1540925\"}},\"UserSocial:252\":{\"__typename\":\"UserSocial\",\"id\":252,\"url\":"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "apolloState",
+          "match": "apolloState",
+          "context": ">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"deno\\\"})\":{\"__ref\":\"User:15328644\"}},\"Repl:2d23b17c-65ab-4e64-b2e3-4578897e841c\":{\"__typename\":\"Repl"
+        },
+        {
+          "file": "brandkit.html",
+          "pattern": "apolloState",
+          "match": "apolloState",
+          "context": ">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null}},\"apolloClient\":null,\"userAgent\":\"Mozilla/5.0 (X11; Linux x86_64)\",\"flagContext\":null},\"page\":\"/brandkit\",\"query\":{},\"buildId\":\"6NY"
+        },
+        {
+          "file": "github.html",
+          "pattern": "apolloState",
+          "match": "apolloState",
+          "context": ">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"\\\"})\":null}},\"apolloClient\":null,\"userAgent\":null,\"flagContext\":null,\"__N_SSG\":true},\"page\":\"/auth\","
+        }
+      ]
+    },
+    "Google Analytics 4": {
+      "type": "Analytics",
+      "evidence_count": 13585,
+      "script_tags": [
+        {
+          "file": "agent3.html",
+          "src": "https://www.googletagmanager.com/gtag/js?id=G-MPJY3F1YEL",
+          "type": "external"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "about.html",
+          "pattern": "G-[A-Z0-9]+",
+          "context": "u\",\"linkGroups\":[{\"_key\":\"2390cc78d739\",\"_type\":\"linkList\",\"links\":[{\"_key\":\"898c9943cbd6\",\"_type\":\"annotationLinkWithoutStyle\",\"internalLink\":\"/usecases/design\",\"link\":\"https://docs.replit.com/getting-started/intro-replit\",\"linkType\":\"external\",\"openInNewTab\":false,\"text\":\"Docs\"},{\"_key\":\"0432b700911965c844edd6dab8e56f48\",\"_type\":\"annotationLinkWithoutStyle\",\"internalLink\":\"/\",\"link\":\"https://rep"
+        },
+        {
+          "file": "additional-resources.html",
+          "pattern": "G-[A-Z0-9]+",
+          "context": "u\",\"linkGroups\":[{\"_key\":\"2390cc78d739\",\"_type\":\"linkList\",\"links\":[{\"_key\":\"898c9943cbd6\",\"_type\":\"annotationLinkWithoutStyle\",\"internalLink\":\"/usecases/design\",\"link\":\"https://docs.replit.com/getting-started/intro-replit\",\"linkType\":\"external\",\"openInNewTab\":false,\"text\":\"Docs\"},{\"_key\":\"0432b700911965c844edd6dab8e56f48\",\"_type\":\"annotationLinkWithoutStyle\",\"internalLink\":\"/\",\"link\":\"https://rep"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "gtag\\(",
+          "context": "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MPJY3F1YEL');"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "G-[A-Z0-9]+",
+          "context": "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MPJY3F1YEL');"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "G-[A-Z0-9]+",
+          "context": "}); // Force 100% again after clearing gsap.set(backEl, { width: \"100%\" }); // Get bg stop percentage from data attribute const bgStopAttr = wrap.getAttribute(\"data-bg-stop\") || backEl.getAttribute(\"data-bg-stop\"); const bgStopPercent = bgStopAttr ? parseFloat(bgStopAttr) : 0; if (bgStopPercent > 0 && bgStopPercent <= 100) { // Calcula"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "G-[A-Z0-9]+",
+          "match": "g-function",
+          "context": "n:column;flex-direction:column;}</style><div class=\"css-1r6b6qz\"><style data-emotion=\"css jg8vqm\">.css-jg8vqm{transition-property:background-color,box-shadow;transition-duration:120ms;transition-timing-function:ease-out;border-radius:var(--border-radius-4);background-color:var(--interactive-background);border-width:1px;border-style:solid;border-color:transparent;padding:var(--space-4);border-radiu"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "G-[A-Z0-9]+",
+          "match": "g-function",
+          "context": "section><style data-emotion=\"css col0ur\">.css-col0ur{font-family:var(--font-family-brand);z-index:1002;position:-webkit-sticky;position:sticky;top:0;width:100%;transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:300ms;background-color:var(--background-default);}</style><header role=\"banner\" style=\"background-color:var(--background-root)\" class=\"css-c"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "G-[A-Z0-9]+",
+          "match": "g-left",
+          "context": "ound-color:var(--background-default);}</style><header role=\"banner\" style=\"background-color:var(--background-root)\" class=\"css-col0ur\"><style data-emotion=\"css 1pe07s8\">.css-1pe07s8{height:60px;padding-left:var(--space-24);padding-right:var(--space-24);position:relative;}@media screen and (min-width: 1200px){.css-1pe07s8{max-width:1920px;margin:0 auto;}}@media screen and (min-width: 1000px){.css-1"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "G-[A-Z0-9]+",
+          "match": "g-right",
+          "context": "efault);}</style><header role=\"banner\" style=\"background-color:var(--background-root)\" class=\"css-col0ur\"><style data-emotion=\"css 1pe07s8\">.css-1pe07s8{height:60px;padding-left:var(--space-24);padding-right:var(--space-24);position:relative;}@media screen and (min-width: 1200px){.css-1pe07s8{max-width:1920px;margin:0 auto;}}@media screen and (min-width: 1000px){.css-1pe07s8{height:70px;}}@media s"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "G-[A-Z0-9]+",
+          "match": "g-left",
+          "context": "screen and (min-width: 1200px){.css-1pe07s8{max-width:1920px;margin:0 auto;}}@media screen and (min-width: 1000px){.css-1pe07s8{height:70px;}}@media screen and (min-width: 1200px){.css-1pe07s8{padding-left:var(--space-0);padding-right:var(--space-0);display:grid;grid-template-columns:repeat(14, minmax(0, 1fr));}}</style><nav aria-hidden=\"false\" class=\"css-1pe07s8\"><style data-emotion=\"css a1o503\""
+        }
+      ]
+    },
+    "reCAPTCHA": {
+      "type": "Security & Bot Protection",
+      "evidence_count": 32,
+      "script_tags": [],
+      "evidence": [],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "recaptcha",
+          "match": "recaptcha",
+          "context": "rel=\"canonical\">C++</a></li><li class=\"css-7q4mm0\"><a href=\"https://replit.com/languages/go\" rel=\"canonical\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apo"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "grecaptcha",
+          "match": "grecaptcha",
+          "context": "\" rel=\"canonical\">C++</a></li><li class=\"css-7q4mm0\"><a href=\"https://replit.com/languages/go\" rel=\"canonical\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"ap"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "recaptcha",
+          "match": "recaptcha",
+          "context": "rel=\"canonical\">C++</a></li><li class=\"css-7q4mm0\"><a href=\"https://replit.com/languages/go\" rel=\"canonical\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apo"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "grecaptcha",
+          "match": "grecaptcha",
+          "context": "\" rel=\"canonical\">C++</a></li><li class=\"css-7q4mm0\"><a href=\"https://replit.com/languages/go\" rel=\"canonical\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"ap"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "recaptcha",
+          "match": "recaptcha",
+          "context": "rel=\"canonical\">C++</a></li><li class=\"css-7q4mm0\"><a href=\"https://replit.com/languages/go\" rel=\"canonical\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apo"
+        }
+      ]
+    },
+    "Next.js": {
+      "type": "React Framework",
+      "evidence_count": 113,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "templates.html",
+          "pattern": "nextjs",
+          "context": "static \\u0026 server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.\",\"releasesForkCount\":41070,\"templateLabel\":\"Next.js\",\"likeCount\":79,\"url\":\"/@replit/Nextjs\",\"owner\":{\"__ref\":\"Team:8597373\"},\"deployment\":{\"__ref\":\"ReplDeployment:16378\"},\"publishedAs\":\"Template\",\"templateCategories\":[{\"__ref\":\"TemplateCategory:7\"}],\"nixedLanguage\":null,\"isPrivate\":f"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "__NEXT_DATA__",
+          "match": "__NEXT_DATA__",
+          "context": "\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"Prodia\\\"})\""
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "__NEXT_DATA__",
+          "match": "__NEXT_DATA__",
+          "context": "\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"TheDrone7\\\""
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "__NEXT_DATA__",
+          "match": "__NEXT_DATA__",
+          "context": "\">Golang</a></li></ul></div></div></footer></div><style data-emotion=\"css-global 1q0mepz\">.grecaptcha-badge{visibility:hidden;}</style><div data-testid=\"site-presence-loading\"></div></div><script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"anonymous\">{\"props\":{\"pageProps\":{},\"apolloState\":{\"ROOT_QUERY\":{\"__typename\":\"Query\",\"currentUser\":null,\"userByUsername({\\\"username\\\":\\\"deno\\\"})\":{"
+        },
+        {
+          "file": "about.html",
+          "pattern": "__NEXT_DATA__",
+          "match": "__NEXT_DATA__",
+          "context": "ss=\"block mt-4 800:mt-0 800:ml-8 text-sans-10 tracking-sans-10 uppercase text-footer-gray\">All rights reserved. Copyright © 2025 Replit, Inc.</span></div></div></footer></div></main></div><script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"initial\":{\"data\":{\"_key\":null,\"_type\":\"page\",\"_updatedAt\":\"2025-10-15T00:50:58Z\",\"defaultSeo\":{\"seo\":{\"description\":\"Replit is an AI-driv"
+        },
+        {
+          "file": "additional-resources.html",
+          "pattern": "__NEXT_DATA__",
+          "match": "__NEXT_DATA__",
+          "context": "ss=\"block mt-4 800:mt-0 800:ml-8 text-sans-10 tracking-sans-10 uppercase text-footer-gray\">All rights reserved. Copyright © 2025 Replit, Inc.</span></div></div></footer></div></main></div><script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"initial\":{\"data\":{\"_key\":null,\"_type\":\"page\",\"_updatedAt\":\"2025-10-07T21:57:06Z\",\"defaultSeo\":{\"seo\":{\"description\":\"Replit is an AI-driv"
+        }
+      ]
+    },
+    "Cloudflare": {
+      "type": "CDN & Security",
+      "evidence_count": 282,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "subprocessors.html",
+          "pattern": "cloudflare",
+          "context": "\\u003ctd\\u003eClazar\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eBilling\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCloudflare\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eCloud infrastructure\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCommo"
+        },
+        {
+          "file": "templates.html",
+          "pattern": "cloudflare",
+          "context": "lAuthorization\",\"isAuthorized\":false},\"publish\":{\"__typename\":\"ReplAuthorization\",\"isAuthorized\":false}},\"nextPagePathname\":\"/replView\"},\"User:18837054\":{\"__typename\":\"User\",\"id\":18837054,\"username\":\"Cloudflare\",\"image\":\"/static/images/1670340436699_239e417f3a13eeda9864940210cce5db.png\",\"url\":\"/@Cloudflare\"},\"ReplRelease:d83b6e92-7fba-4b97-8c86-c8afb2c73d7e\":{\"__typename\":\"ReplRelease\",\"id\":\"d83b6"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "@Prodia.html",
+          "pattern": "cdn-cgi",
+          "match": "cdn-cgi",
+          "context": "ght:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover\" srcSet=\"https://replit.com/cdn-cgi/image/width=96,quality=80,format=auto//static/images/1694112351434_f11e88ab02243cc26e1b4feb2d14d32e.webp 1x, https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto//static/images/16"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "cdn-cgi",
+          "match": "cdn-cgi",
+          "context": "0%;max-height:100%;object-fit:cover\" srcSet=\"https://replit.com/cdn-cgi/image/width=96,quality=80,format=auto//static/images/1694112351434_f11e88ab02243cc26e1b4feb2d14d32e.webp 1x, https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto//static/images/1694112351434_f11e88ab02243cc26e1b4feb2d14d32e.webp 2x\" src=\"https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto//static/ima"
+        },
+        {
+          "file": "@Prodia.html",
+          "pattern": "cdn-cgi",
+          "match": "cdn-cgi",
+          "context": "e88ab02243cc26e1b4feb2d14d32e.webp 1x, https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto//static/images/1694112351434_f11e88ab02243cc26e1b4feb2d14d32e.webp 2x\" src=\"https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto//static/images/1694112351434_f11e88ab02243cc26e1b4feb2d14d32e.webp\"/></noscript></span></div></div></div><style data-emotion=\"css 1x4tlpy\">.css-1x4tlpy{d"
+        },
+        {
+          "file": "@TheDrone7.html",
+          "pattern": "cdn-cgi",
+          "match": "cdn-cgi",
+          "context": "ght:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover\" srcSet=\"https://replit.com/cdn-cgi/image/width=96,quality=80,format=auto//static/images/1666959079414_94bd119ee6e0e2f23e582d7840f71122.png 1x, /static/images/1666959079414_94bd119ee6e0e2f23e582d7840f71122.png 2x\" src=\"/static/i"
+        },
+        {
+          "file": "@deno.html",
+          "pattern": "cdn-cgi",
+          "match": "cdn-cgi",
+          "context": ";left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover\" srcSet=\"cdn-cgi/image/width=96,quality=80,format=auto/https:/storage.googleapis.com/replit/images/1657577653726_3cb6b3b7dc232aa5f5e69e33b53a5963.jpeg 1x, /static/images/1657577653726_3cb6b3b7dc232aa5f5e69e33b"
+        }
+      ]
+    },
+    "Sanity CMS": {
+      "type": "Headless CMS",
+      "evidence_count": 3808,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "context": "4pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"da"
+        },
+        {
+          "file": "about.html",
+          "pattern": "sanity\\.io",
+          "context": "p/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"data:i"
+        },
+        {
+          "file": "additional-resources.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "context": "4pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"da"
+        },
+        {
+          "file": "additional-resources.html",
+          "pattern": "sanity\\.io",
+          "context": "p/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"data:i"
+        },
+        {
+          "file": "careers.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "context": "4pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"da"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "match": "cdn.sanity.io",
+          "context": "platform for software development and deployment.\" data-next-head=\"\"/><meta name=\"keywords\" content=\"replit,about,values,leadership,team\" data-next-head=\"\"/><meta property=\"og:image\" content=\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png?auto=format&amp;q=75&amp;w=1200&amp;format=png\" data-next-head=\"\"/><meta name=\"twitter:image:src\" content="
+        },
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "match": "cdn.sanity.io",
+          "context": "y.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png?auto=format&amp;q=75&amp;w=1200&amp;format=png\" data-next-head=\"\"/><meta name=\"twitter:image:src\" content=\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png?auto=format&amp;q=75&amp;w=1200&amp;format=png\" data-next-head=\"\"/><link rel=\"icon\" type=\"image/png\" href="
+        },
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "match": "cdn.sanity.io",
+          "context": "4pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\",\"sha1hash\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"size\":656655,\"uploadId\":\"1fEaDmYLv8e5YJxQQlp9606i2aQDqNAS\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1-1200x650.png\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"2017ad20cbb1770bcb0d23d6d4be8ff9a5105df1\",\"lqip\":\"da"
+        },
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "match": "cdn.sanity.io",
+          "context": "s/bj34pdbp/migration/10cb90d484a9625bcbdd4d897d08d3e787d819b7-24x24.svg\",\"sha1hash\":\"10cb90d484a9625bcbdd4d897d08d3e787d819b7\",\"size\":2790,\"uploadId\":\"hPGe6Jem10GrRuzs40e2vV3Cv8TbQYd3\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/10cb90d484a9625bcbdd4d897d08d3e787d819b7-24x24.svg\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"10cb90d484a9625bcbdd4d897d08d3e787d819b7\",\"lqip\":\"data:"
+        },
+        {
+          "file": "about.html",
+          "pattern": "cdn\\.sanity\\.io",
+          "match": "cdn.sanity.io",
+          "context": "s/bj34pdbp/migration/eee6dee7fcaa345ba296a649c9734f4f5889e02c-24x24.svg\",\"sha1hash\":\"eee6dee7fcaa345ba296a649c9734f4f5889e02c\",\"size\":1461,\"uploadId\":\"FMGnXYlGFuBt1xfPVeV6iFcPl1s9vXT1\",\"url\":\"https://cdn.sanity.io/images/bj34pdbp/migration/eee6dee7fcaa345ba296a649c9734f4f5889e02c-24x24.svg\"},\"crop\":null,\"customRatio\":null,\"hotspot\":null,\"id\":\"eee6dee7fcaa345ba296a649c9734f4f5889e02c\",\"lqip\":\"data:"
+        }
+      ]
+    },
+    "Amplitude": {
+      "type": "Product Analytics",
+      "evidence_count": 2,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "agent3.html",
+          "pattern": "amplitude\\.getInstance",
+          "context": "efault_instance\":e).toLowerCase() ;if(!Object.prototype.hasOwnProperty.call(n._iq,e)){n._iq[e]={_q:[]};v(n._iq[e]) }return n._iq[e]};e.amplitude=n})(window,document); // Initialize with YOUR API KEY amplitude.getInstance().init('cfd7dda2657ebc55e33d5b17ea512193');"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "agent3.html",
+          "pattern": "amplitude\\.getInstance",
+          "match": "amplitude.getInstance",
+          "context": "efault_instance\":e).toLowerCase() ;if(!Object.prototype.hasOwnProperty.call(n._iq,e)){n._iq[e]={_q:[]};v(n._iq[e]) }return n._iq[e]};e.amplitude=n})(window,document); // Initialize with YOUR API KEY amplitude.getInstance().init('cfd7dda2657ebc55e33d5b17ea512193'); </script> <!-- Google tag (gtag.js) --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-MPJY3F1YEL\"></script> <scr"
+        }
+      ]
+    },
+    "Google Tag Manager": {
+      "type": "Analytics & Tag Management",
+      "evidence_count": 24,
+      "script_tags": [
+        {
+          "file": "agent3.html",
+          "src": "https://www.googletagmanager.com/gtag/js?id=G-MPJY3F1YEL",
+          "type": "external"
+        }
+      ],
+      "evidence": [
+        {
+          "file": "agent3.html",
+          "pattern": "dataLayer",
+          "context": "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MPJY3F1YEL');"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "googletagmanager\\.com/gtm\\.js",
+          "context": "l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "GTM-[A-Z0-9]+",
+          "context": ")[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "dataLayer",
+          "context": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');"
+        },
+        {
+          "file": "build.html",
+          "pattern": "googletagmanager\\.com/gtm\\.js",
+          "context": "l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "agent3.html",
+          "pattern": "googletagmanager\\.com/gtm\\.js",
+          "match": "googletagmanager.com/gtm.js",
+          "context": "l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');</script> <!-- End Google Tag Manager --><link rel=\"stylesheet\""
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "GTM-[A-Z0-9]+",
+          "match": "GTM-M3H3PQBG",
+          "context": ")[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');</script> <!-- End Google Tag Manager --><link rel=\"stylesheet\" href=\"/static/css/external/swiper-bundle.min.css\" /> <style> .reviews_list { transition-timing-fu"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "GTM-[A-Z0-9]+",
+          "match": "GTM-M3H3PQBG",
+          "context": "indow.location.pathname + window.location.search); }, 1); }); }); </script> <!-- Google Tag Manager (noscript) --> <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-M3H3PQBG\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript> <!-- End Google Tag Manager (noscript) --><script src=\"/static/js/external/swiper-bundle.min.js\"></script"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "dataLayer",
+          "match": "dataLayer",
+          "context": "nstance().init('cfd7dda2657ebc55e33d5b17ea512193'); </script> <!-- Google tag (gtag.js) --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-MPJY3F1YEL\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MPJY3F1YEL'); </script> <!-- Google Tag Manager --> <script>(function"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "dataLayer",
+          "match": "dataLayer",
+          "context": "7dda2657ebc55e33d5b17ea512193'); </script> <!-- Google tag (gtag.js) --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-MPJY3F1YEL\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MPJY3F1YEL'); </script> <!-- Google Tag Manager --> <script>(function(w,d,s,l,i){w[l]=w["
+        }
+      ]
+    },
+    "Webflow": {
+      "type": "Website Builder",
+      "evidence_count": 450,
+      "script_tags": [],
+      "evidence": [],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "agent3.html",
+          "pattern": "data-wf-",
+          "match": "data-wf-",
+          "context": "<!DOCTYPE html><!-- Last Published: Wed Sep 17 2025 17:16:48 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain=\"agent3.replit.com\" data-wf-page=\"68b46dd842e2b142ba348a2c\" data-wf-site=\"68b46dd742e2b142ba3489bf\" data-wf-intellimize-customer-id=\"117549983\" lang=\"en\"><head><meta charset=\"utf-8\"/><t"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "data-wf-",
+          "match": "data-wf-",
+          "context": "<!DOCTYPE html><!-- Last Published: Wed Sep 17 2025 17:16:48 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain=\"agent3.replit.com\" data-wf-page=\"68b46dd842e2b142ba348a2c\" data-wf-site=\"68b46dd742e2b142ba3489bf\" data-wf-intellimize-customer-id=\"117549983\" lang=\"en\"><head><meta charset=\"utf-8\"/><title>Replit - Agent 3</title><meta"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "data-wf-",
+          "match": "data-wf-",
+          "context": "<!DOCTYPE html><!-- Last Published: Wed Sep 17 2025 17:16:48 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain=\"agent3.replit.com\" data-wf-page=\"68b46dd842e2b142ba348a2c\" data-wf-site=\"68b46dd742e2b142ba3489bf\" data-wf-intellimize-customer-id=\"117549983\" lang=\"en\"><head><meta charset=\"utf-8\"/><title>Replit - Agent 3</title><meta content=\"Replit - Agent 3 - Autonomous A"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "data-wf-",
+          "match": "data-wf-",
+          "context": "t Published: Wed Sep 17 2025 17:16:48 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain=\"agent3.replit.com\" data-wf-page=\"68b46dd842e2b142ba348a2c\" data-wf-site=\"68b46dd742e2b142ba3489bf\" data-wf-intellimize-customer-id=\"117549983\" lang=\"en\"><head><meta charset=\"utf-8\"/><title>Replit - Agent 3</title><meta content=\"Replit - Agent 3 - Autonomous AI Vibe Coding Agent builds, tests &amp;"
+        },
+        {
+          "file": "agent3.html",
+          "pattern": "data-wf-",
+          "match": "data-wf-",
+          "context": "46dd742e2b142ba3489bf/68b4720aec0d2d0e6097d761_replit-webclip.png\" rel=\"apple-touch-icon\"/><style>.anti-flicker, .anti-flicker * {visibility: hidden !important; opacity: 0 !important;}</style><style>[data-wf-hidden-variation], [data-wf-hidden-variation] * { display: none !important; }</style><script type=\"text/javascript\">localStorage.removeItem('intellimize_opt_out_117549983'); if ("
+        }
+      ]
+    },
+    "Hotjar": {
+      "type": "User Behavior Analytics",
+      "evidence_count": 9,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "build.html",
+          "pattern": "hotjar",
+          "context": "ings={hjid:5199682,hjsv:6};d=c.getElementsByTagName(\"head\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://static.hotjar.com/c/hotjar-\",\".js?sv\\x3d\");"
+        },
+        {
+          "file": "build.html",
+          "pattern": "_hjSettings",
+          "context": "(function(a,c,e,f,d,b){a.hj=a.hj||function(){(a.hj.q=a.hj.q||[]).push(arguments)};a._hjSettings={hjid:5199682,hjsv:6};d=c.getElementsByTagName(\"head\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "build.html",
+          "pattern": "hotjar",
+          "match": "Hotjar",
+          "context": "j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-M3H3PQBG');</script> <!-- End Google Tag Manager --> <!-- Start Hotjar Tracking Code --> <script type=\"text/javascript\" id=\"\" charset=\"\"> (function(a,c,e,f,d,b){a.hj=a.hj||function(){(a.hj.q=a.hj.q||[]).push(arguments)};a._hjSettings={hjid:5199682,hjsv:6};d=c.ge"
+        },
+        {
+          "file": "build.html",
+          "pattern": "hotjar",
+          "match": "hotjar",
+          "context": "ings={hjid:5199682,hjsv:6};d=c.getElementsByTagName(\"head\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://static.hotjar.com/c/hotjar-\",\".js?sv\\x3d\"); </script> <!-- End Hotjar Tracking Code --> <meta name=\"twitter:site\" content=\"@replit\"/><script async type=\"module\" src=\"/static/js/external/attributes.js\" fs-li"
+        },
+        {
+          "file": "build.html",
+          "pattern": "hotjar",
+          "match": "hotjar",
+          "context": "99682,hjsv:6};d=c.getElementsByTagName(\"head\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://static.hotjar.com/c/hotjar-\",\".js?sv\\x3d\"); </script> <!-- End Hotjar Tracking Code --> <meta name=\"twitter:site\" content=\"@replit\"/><script async type=\"module\" src=\"/static/js/external/attributes.js\" fs-list ></script>"
+        },
+        {
+          "file": "build.html",
+          "pattern": "hotjar",
+          "match": "Hotjar",
+          "context": "d\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://static.hotjar.com/c/hotjar-\",\".js?sv\\x3d\"); </script> <!-- End Hotjar Tracking Code --> <meta name=\"twitter:site\" content=\"@replit\"/><script async type=\"module\" src=\"/static/js/external/attributes.js\" fs-list ></script> <link rel=\"canonical\" href=\"build.html\" /"
+        },
+        {
+          "file": "build.html",
+          "pattern": "_hjSettings",
+          "match": "_hjSettings",
+          "context": "End Google Tag Manager --> <!-- Start Hotjar Tracking Code --> <script type=\"text/javascript\" id=\"\" charset=\"\"> (function(a,c,e,f,d,b){a.hj=a.hj||function(){(a.hj.q=a.hj.q||[]).push(arguments)};a._hjSettings={hjid:5199682,hjsv:6};d=c.getElementsByTagName(\"head\")[0];b=c.createElement(\"script\");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,\"https://"
+        }
+      ]
+    },
+    "LaunchDarkly": {
+      "type": "Feature Flags",
+      "evidence_count": 3,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "subprocessors.html",
+          "pattern": "launchdarkly",
+          "context": "d\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eMarketing and analytics\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCatamorphic Co. DBA LaunchDarkly\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eEngineering\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCivilized Di"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "subprocessors.html",
+          "pattern": "launchdarkly",
+          "match": "LaunchDarkly",
+          "context": "ustomer interactions</td> </tr> <tr> <td>Attribution Inc.</td> <td>USA</td> <td>Marketing and analytics</td> </tr> <tr> <td>Catamorphic Co. DBA LaunchDarkly</td> <td>USA</td> <td>Engineering</td> </tr> <tr> <td>Civilized Discourse Construction Kit, Inc</td> <td>USA</td> <td>Customer support<"
+        },
+        {
+          "file": "subprocessors.html",
+          "pattern": "launchdarkly",
+          "match": "LaunchDarkly",
+          "context": "d\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eMarketing and analytics\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCatamorphic Co. DBA LaunchDarkly\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eEngineering\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eCivilized Di"
+        }
+      ]
+    },
+    "AppsFlyer": {
+      "type": "Mobile Attribution",
+      "evidence_count": 3,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "subprocessors.html",
+          "pattern": "appsflyer",
+          "context": "\\u003ctd\\u003eAnthropic\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eAI models\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eAppsFlyer INC\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eAnalytics and customer interactions\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "subprocessors.html",
+          "pattern": "appsflyer",
+          "match": "AppsFlyer",
+          "context": ".</td> <td>USA</td> <td>Design system imports</td> </tr> <tr> <td>Anthropic</td> <td>USA</td> <td>AI models</td> </tr> <tr> <td>AppsFlyer INC</td> <td>USA</td> <td>Analytics and customer interactions</td> </tr> <tr> <td>Attribution Inc.</td> <td>USA</td> <td>Marketing and ana"
+        },
+        {
+          "file": "subprocessors.html",
+          "pattern": "appsflyer",
+          "match": "AppsFlyer",
+          "context": "\\u003ctd\\u003eAnthropic\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eAI models\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\u003ctd\\u003eAppsFlyer INC\\u003c/td\\u003e\\n \\u003ctd\\u003eUSA\\u003c/td\\u003e\\n \\u003ctd\\u003eAnalytics and customer interactions\\u003c/td\\u003e\\n \\u003c/tr\\u003e\\n \\u003ctr\\u003e\\n \\"
+        }
+      ]
+    },
+    "Firebase": {
+      "type": "Backend as a Service",
+      "evidence_count": 3,
+      "script_tags": [],
+      "evidence": [
+        {
+          "file": "integrations.html",
+          "pattern": "firebase",
+          "context": "AElFTkSuQmCC\",\"type\":\"image/svg+xml\"},\"text\":\"Provides authentication supporting email/password login, social media authentication, and secure user management with ready-made UI components.\",\"title\":\"Firebase Auth\"},{\"_key\":\"9a0c39f6e64a\",\"_type\":\"iconCardItem\",\"icon\":{\"_key\":null,\"_type\":\"image\",\"aspectRatio\":0.9545454545454546,\"asset\":{\"_createdAt\":\"2025-07-28T17:22:07Z\",\"_id\":\"image-8fcc0ef2732"
+        }
+      ],
+      "api_calls": [],
+      "configurations": [
+        {
+          "file": "integrations.html",
+          "pattern": "firebase",
+          "match": "Firebase",
+          "context": "ad252c7675-19x22.svg);mask-size:100% 100%;-webkit-mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat\"></div></div><h4 class=\"font-sans text-sans-25 tracking-sans-25 text-balance\">Firebase Auth</h4></div><p class=\"text-sans-17 tracking-sans-17 whitespace-pre-wrap\" style=\"color:#666d79\">Provides authentication supporting email/password login, social media authentication, and sec"
+        },
+        {
+          "file": "integrations.html",
+          "pattern": "firebase",
+          "match": "Firebase",
+          "context": "AElFTkSuQmCC\",\"type\":\"image/svg+xml\"},\"text\":\"Provides authentication supporting email/password login, social media authentication, and secure user management with ready-made UI components.\",\"title\":\"Firebase Auth\"},{\"_key\":\"9a0c39f6e64a\",\"_type\":\"iconCardItem\",\"icon\":{\"_key\":null,\"_type\":\"image\",\"aspectRatio\":0.9545454545454546,\"asset\":{\"_createdAt\":\"2025-07-28T17:22:07Z\",\"_id\":\"image-8fcc0ef2732"
+        }
+      ]
+    }
+  },
+  "integrations": [
+    {
+      "from": "Google Tag Manager",
+      "to": "Google Analytics 4",
+      "type": "Tag Management",
+      "description": "GTM يدير tags لـ Google Analytics 4"
+    },
+    {
+      "from": "Next.js",
+      "to": "Apollo GraphQL",
+      "type": "Data Fetching",
+      "description": "Next.js يستخدم Apollo لجلب البيانات"
+    },
+    {
+      "from": "Next.js",
+      "to": "Firebase",
+      "type": "Authentication",
+      "description": "Next.js يستخدم Firebase للمصادقة"
+    }
+  ]
+}

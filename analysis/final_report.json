@@ -1,0 +1,54 @@
+{
+  "analysis_summary": {
+    "total_html_files": 123,
+    "total_js_files": 264,
+    "systems_detected": 15,
+    "integrations_found": 3,
+    "external_scripts": 2814,
+    "inline_scripts": 336,
+    "next_data_instances": 109,
+    "apollo_states": 0,
+    "firebase_configs": 110,
+    "api_endpoints_found": 1186,
+    "environment_vars": 13
+  },
+  "detected_systems": [
+    "Datadog RUM",
+    "Coframe",
+    "Apollo GraphQL",
+    "Google Analytics 4",
+    "reCAPTCHA",
+    "Next.js",
+    "Cloudflare",
+    "Sanity CMS",
+    "Amplitude",
+    "Google Tag Manager",
+    "Webflow",
+    "Hotjar",
+    "LaunchDarkly",
+    "AppsFlyer",
+    "Firebase"
+  ],
+  "key_findings": {
+    "has_nextjs": true,
+    "has_apollo": true,
+    "has_firebase": true,
+    "has_stripe": false,
+    "has_gtm": true,
+    "has_ga4": true
+  },
+  "recommendations": {
+    "primary_boilerplate": "NJS-Firebase-SaaS-Boilerplate",
+    "estimated_rebuild_time": "12-20 يوم عمل",
+    "complexity_level": "متوسط إلى عالي",
+    "team_size_recommended": "2-3 مطورين"
+  },
+  "next_steps": [
+    "1. مراجعة ملف analysis/verified_systems.json للأنظمة المكتشفة",
+    "2. قراءة docs/rebuild_guide.md لخطة إعادة البناء",
+    "3. مراجعة docs/opensource_rebuild_guide.md للمصادر المفتوحة",
+    "4. استنساخ Boilerplate الموصى به من GitHub",
+    "5. البدء بإعداد الخدمات الخارجية (Firebase, Stripe, etc)",
+    "6. تخصيص الواجهات والمكونات بناءً على التصاميم الأصلية"
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "name": "إعداد البنية التحتية الأساسية",
+      "duration": "1-2 أيام",
+      "systems": [
+        "Next.js",
+        "Cloudflare"
+      ],
+      "description": "إنشاء المشروع الأساسي وإعداد CDN"
+    },
+    {
+      "phase": 2,
+      "name": "إعداد طبقة البيانات",
+      "duration": "2-3 أيام",
+      "systems": [
+        "Apollo GraphQL",
+        "Firebase"
+      ],
+      "description": "إعداد GraphQL وقاعدة البيانات والمصادقة"
+    },
+    {
+      "phase": 3,
+      "name": "إدارة المحتوى",
+      "duration": "1-2 أيام",
+      "systems": [
+        "Sanity CMS"
+      ],
+      "description": "إعداد نظام إدارة المحتوى"
+    },
+    {
+      "phase": 4,
+      "name": "Analytics والتتبع",
+      "duration": "2-3 أيام",
+      "systems": [
+        "Google Tag Manager",
+        "Google Analytics 4",
+        "Segment",
+        "Amplitude"
+      ],
+      "description": "إعداد جميع أدوات التحليل والتتبع"
+    },
+    {
+      "phase": 5,
+      "name": "المدفوعات والأمان",
+      "duration": "2-3 أيام",
+      "systems": [
+        "Stripe",
+        "reCAPTCHA"
+      ],
+      "description": "إعداد نظام المدفوعات والحماية"
+    },
+    {
+      "phase": 6,
+      "name": "المراقبة وإدارة الميزات",
+      "duration": "1-2 أيام",
+      "systems": [
+        "Datadog",
+        "LaunchDarkly"
+      ],
+      "description": "إعداد المراقبة وإدارة الميزات"
+    },
+    {
+      "phase": 7,
+      "name": "الاختبار والتحسين",
+      "duration": "3-5 أيام",
+      "systems": "جميع الأنظمة",
+      "description": "اختبار شامل وتحسين الأداء"
+    }
+  ],
+  "dependencies": {
+    "Next.js": [],
+    "Apollo GraphQL": [
+      "Next.js"
+    ],
+    "Firebase": [
+      "Next.js"
+    ],
+    "Google Tag Manager": [
+      "Next.js"
+    ],
+    "Google Analytics 4": [
+      "Google Tag Manager"
+    ],
+    "Segment": [
+      "Next.js"
+    ],
+    "Amplitude": [
+      "Segment"
+    ],
+    "Stripe": [
+      "Next.js",
+      "Firebase"
+    ],
+    "Sanity CMS": [
+      "Next.js"
+    ],
+    "Datadog": [
+      "Next.js"
+    ],
+    "LaunchDarkly": [
+      "Next.js"
+    ],
+    "reCAPTCHA": [
+      "Next.js"
+    ]
+  },
+  "implementation_steps": {
+    "Apollo GraphQL": {
+      "priority": 2,
+      "category": "Data Layer",
+      "install_command": "npm install @apollo/client graphql",
+      "dependencies": [
+        "@apollo/client",
+        "graphql"
+      ],
+      "configuration_files": [
+        "apollo-client.js",
+        "schema.graphql"
+      ],
+      "setup_steps": [
+        "تثبيت Apollo Client",
+        "إنشاء Apollo Client instance",
+        "تكوين cache",
+        "ربط مع Next.js",
+        "إعداد queries و mutations"
+      ],
+      "code_examples": {
+        "client_setup": "\nimport { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';\n\nconst client = new ApolloClient({\n  link: new HttpLink({\n    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,\n  }),\n  cache: new InMemoryCache()\n});\n"
+      }
+    },
+    "Google Analytics 4": {
+      "priority": 5,
+      "category": "Analytics",
+      "install_command": "إعداد عبر GTM أو script مباشر",
+      "dependencies": [],
+      "setup_steps": [
+        "إنشاء خاصية GA4",
+        "الحصول على Measurement ID (G-XXXXXXXXXX)",
+        "إعداد عبر GTM أو script مباشر",
+        "تكوين events",
+        "ربط مع Firebase (اختياري)"
+      ]
+    },
+    "reCAPTCHA": {
+      "priority": 13,
+      "category": "Security",
+      "install_command": "npm install react-google-recaptcha",
+      "dependencies": [
+        "react-google-recaptcha"
+      ],
+      "setup_steps": [
+        "التسجيل في Google reCAPTCHA",
+        "الحصول على Site Key و Secret Key",
+        "إضافة reCAPTCHA component",
+        "التحقق من token في backend"
+      ],
+      "environment_variables": [
+        "NEXT_PUBLIC_RECAPTCHA_SITE_KEY",
+        "RECAPTCHA_SECRET_KEY"
+      ]
+    },
+    "Next.js": {
+      "priority": 1,
+      "category": "Frontend Framework",
+      "install_command": "npx create-next-app@latest",
+      "dependencies": [
+        "react",
+        "react-dom",
+        "next"
+      ],
+      "configuration_files": [
+        "next.config.js",
+        "tsconfig.json",
+        "package.json"
+      ],
+      "setup_steps": [
+        "تثبيت Next.js مع TypeScript",
+        "إعداد routing structure",
+        "إعداد API routes",
+        "تكوين SSR/SSG",
+        "إعداد _app.js و _document.js"
+      ],
+      "code_structure": {
+        "pages/": "صفحات التطبيق",
+        "components/": "مكونات React",
+        "public/": "الملفات الثابتة",
+        "styles/": "ملفات CSS",
+        "lib/": "مكتبات مساعدة"
+      }
+    },
+    "Cloudflare": {
+      "priority": 11,
+      "category": "CDN & Security",
+      "install_command": "إعداد على مستوى DNS/Hosting",
+      "dependencies": [],
+      "setup_steps": [
+        "إنشاء حساب Cloudflare",
+        "إضافة النطاق",
+        "تحديث nameservers",
+        "تفعيل Proxy",
+        "تكوين caching rules",
+        "إعداد SSL/TLS"
+      ]
+    },
+    "Sanity CMS": {
+      "priority": 10,
+      "category": "Content Management",
+      "install_command": "npm install @sanity/client next-sanity",
+      "dependencies": [
+        "@sanity/client",
+        "next-sanity"
+      ],
+      "setup_steps": [
+        "إنشاء مشروع Sanity",
+        "إعداد schemas",
+        "الحصول على Project ID و Dataset",
+        "تكوين Sanity Client",
+        "إعداد GROQ queries"
+      ],
+      "environment_variables": [
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_DATASET",
+        "SANITY_API_TOKEN"
+      ]
+    },
+    "Amplitude": {
+      "priority": 7,
+      "category": "Product Analytics",
+      "install_command": "npm install @amplitude/analytics-browser",
+      "dependencies": [
+        "@amplitude/analytics-browser"
+      ],
+      "setup_steps": [
+        "إنشاء مشروع Amplitude",
+        "الحصول على API Key",
+        "تثبيت SDK",
+        "تكوين user identification",
+        "تتبع events"
+      ],
+      "environment_variables": [
+        "NEXT_PUBLIC_AMPLITUDE_API_KEY"
+      ]
+    },
+    "Google Tag Manager": {
+      "priority": 4,
+      "category": "Analytics & Tracking",
+      "install_command": "تثبيت عبر script tag",
+      "dependencies": [],
+      "configuration_files": [
+        "_app.js",
+        "_document.js"
+      ],
+      "setup_steps": [
+        "إنشاء حساب GTM",
+        "الحصول على GTM ID (GTM-XXXXXX)",
+        "إضافة GTM script في _document.js",
+        "إعداد dataLayer",
+        "تكوين tags و triggers"
+      ],
+      "code_examples": {
+        "gtm_script": "\n<script\n  dangerouslySetInnerHTML={{\n    __html: `\n      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n      })(window,document,'script','dataLayer','GTM-XXXXXX');\n    `,\n  }}\n/>\n"
+      }
+    },
+    "LaunchDarkly": {
+      "priority": 12,
+      "category": "Feature Flags",
+      "install_command": "npm install launchdarkly-react-client-sdk",
+      "dependencies": [
+        "launchdarkly-react-client-sdk"
+      ],
+      "setup_steps": [
+        "إنشاء حساب LaunchDarkly",
+        "إنشاء project و environment",
+        "الحصول على Client-side ID",
+        "تثبيت SDK",
+        "إعداد feature flags"
+      ],
+      "environment_variables": [
+        "NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID"
+      ]
+    },
+    "Firebase": {
+      "priority": 3,
+      "category": "Authentication & Database",
+      "install_command": "npm install firebase",
+      "dependencies": [
+        "firebase"
+      ],
+      "configuration_files": [
+        "firebase.config.js",
+        ".env.local"
+      ],
+      "setup_steps": [
+        "إنشاء مشروع Firebase",
+        "تفعيل Authentication (Email, Google, GitHub)",
+        "إعداد Firestore Database",
+        "تكوين Security Rules",
+        "ربط مع Next.js"
+      ],
+      "environment_variables": [
+        "NEXT_PUBLIC_FIREBASE_API_KEY",
+        "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+        "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+        "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+        "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+        "NEXT_PUBLIC_FIREBASE_APP_ID"
+      ]
+    }
+  },
+  "configuration_requirements": {
+    "Firebase": [
+      "NEXT_PUBLIC_FIREBASE_API_KEY",
+      "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+      "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+      "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+      "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+      "NEXT_PUBLIC_FIREBASE_APP_ID"
+    ],
+    "Segment": [
+      "NEXT_PUBLIC_SEGMENT_WRITE_KEY"
+    ],
+    "Amplitude": [
+      "NEXT_PUBLIC_AMPLITUDE_API_KEY"
+    ],
+    "Stripe": [
+      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+      "STRIPE_SECRET_KEY",
+      "STRIPE_WEBHOOK_SECRET"
+    ],
+    "Datadog": [
+      "NEXT_PUBLIC_DATADOG_CLIENT_TOKEN",
+      "NEXT_PUBLIC_DATADOG_APPLICATION_ID"
+    ],
+    "Sanity CMS": [
+      "NEXT_PUBLIC_SANITY_PROJECT_ID",
+      "NEXT_PUBLIC_SANITY_DATASET",
+      "SANITY_API_TOKEN"
+    ],
+    "LaunchDarkly": [
+      "NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_ID"
+    ],
+    "reCAPTCHA": [
+      "NEXT_PUBLIC_RECAPTCHA_SITE_KEY",
+      "RECAPTCHA_SECRET_KEY"
+    ]
+  },
+  "api_integrations": {
+    "Google Tag Manager → Google Analytics 4": {
+      "type": "Tag Management",
+      "description": "GTM يدير tags لـ Google Analytics 4",
+      "implementation": "إعداد tags في GTM Dashboard وربطها بـ dataLayer events"
+    },
+    "Next.js → Apollo GraphQL": {
+      "type": "Data Fetching",
+      "description": "Next.js يستخدم Apollo لجلب البيانات",
+      "implementation": "استخدام Apollo hooks في Next.js components"
+    },
+    "Next.js → Firebase": {
+      "type": "Authentication",
+      "description": "Next.js يستخدم Firebase للمصادقة",
+      "implementation": "استخدام Firebase Auth مع Next.js API routes"
+    }
+  },
+  "summary": {
+    "total_systems": 15,
+    "total_phases": 7,
+    "estimated_duration": "12-20 يوم عمل",
+    "team_size": "2-3 مطورين",
+    "complexity": "متوسط إلى عالي"
+  }
+}
