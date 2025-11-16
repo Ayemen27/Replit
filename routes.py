@@ -194,112 +194,16 @@ def submit_form():
 
 @main_bp.route('/')
 def home():
-    featured_projects = Project.query.filter_by(is_published=True, is_featured=True).limit(6).all()
-    categories = Category.query.all()
-    return render_template('pages/home/index.html', 
-                          featured_projects=featured_projects,
-                          categories=categories,
-                          current_year=datetime.now().year)
+    return send_from_directory('.', 'index.html')
 
 
-@main_bp.route('/products')
-@main_bp.route('/products/<product>')
-def products(product=None):
-    return render_template('pages/products/index.html', product=product)
-
-
-@main_bp.route('/gallery')
-def gallery():
-    page = request.args.get('page', 1, type=int)
-    per_page = 12
-    
-    projects = Project.query.filter_by(is_published=True).order_by(Project.created_at.desc()).paginate(
-        page=page, per_page=per_page, error_out=False
-    )
-    categories = Category.query.all()
-    
-    return render_template('pages/gallery/index.html', 
-                          projects=projects,
-                          categories=categories)
-
-
-@main_bp.route('/gallery/<slug>')
-def gallery_category(slug):
-    category = Category.query.filter_by(slug=slug).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    per_page = 12
-    
-    projects = Project.query.filter_by(category_id=category.id, is_published=True).order_by(
-        Project.created_at.desc()
-    ).paginate(page=page, per_page=per_page, error_out=False)
-    
-    return render_template('pages/gallery/category.html', 
-                          category=category,
-                          projects=projects)
-
-
-@main_bp.route('/project/<slug>')
-def project_detail(slug):
-    project = Project.query.filter_by(slug=slug, is_published=True).first_or_404()
-    project.views_count += 1
-    db.session.commit()
-    
-    return render_template('pages/gallery/detail.html', project=project)
-
-
-@main_bp.route('/customers')
-def customers():
-    return render_template('pages/customers/index.html')
-
-
-@main_bp.route('/news')
-def news():
-    return render_template('pages/news/index.html')
-
-
-@main_bp.route('/pricing')
-def pricing():
-    return render_template('pages/pricing.html')
-
-
-@main_bp.route('/login')
-def login_page():
-    return render_template('pages/auth/login.html')
-
-
-@main_bp.route('/signup')
-def signup_page():
-    return render_template('pages/auth/signup.html')
-
-
-@main_bp.route('/about')
-def about():
-    return render_template('pages/about.html')
-
-
-@main_bp.route('/careers')
-def careers():
-    return render_template('pages/careers.html')
-
-
-@main_bp.route('/help')
-def help():
-    return render_template('pages/help.html')
-
-
-@main_bp.route('/templates')
-def templates():
-    return render_template('pages/templates.html')
-
-
-@main_bp.route('/privacy')
-def privacy():
-    return render_template('pages/legal/privacy.html')
-
-
-@main_bp.route('/terms')
-def terms():
-    return render_template('pages/legal/terms.html')
+@main_bp.route('/<path:path>')
+def serve_static_pages(path):
+    if os.path.exists(path):
+        return send_from_directory('.', path)
+    if os.path.exists(path + '.html'):
+        return send_from_directory('.', path + '.html')
+    return send_from_directory('.', 'index.html')
 
 
 def register_routes(app):
