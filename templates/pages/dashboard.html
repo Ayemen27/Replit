@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logout-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .logout-btn:hover {
+            background: #764ba2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .welcome h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .welcome p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .project-card p {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>لوحة التحكم</h1>
+        <div class="user-info">
+            <span id="user-name"></span>
+            <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="welcome">
+            <h2>مرحباً بك!</h2>
+            <p>هذه هي لوحة التحكم الخاصة بك</p>
+        </div>
+        
+        <div id="projects-container">
+            <h2 style="margin-bottom: 20px;">مشاريعك</h2>
+            <div class="projects-grid" id="projects-grid">
+                <p>لا توجد مشاريع حالياً</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // التحقق من تسجيل الدخول
+        const token = localStorage.getItem('access_token');
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        
+        if (!token) {
+            window.location.href = '/login';
+        }
+        
+        // عرض اسم المستخدم
+        if (user.username) {
+            document.getElementById('user-name').textContent = user.username;
+        }
+        
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            localStorage.removeItem('user');
+            window.location.href = '/';
+        }
+        
+        // جلب المشاريع
+        async function loadProjects() {
+            try {
+                const response = await fetch('/api/projects', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayProjects(data.projects);
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+        
+        function displayProjects(projects) {
+            const grid = document.getElementById('projects-grid');
+            
+            if (projects && projects.length > 0) {
+                grid.innerHTML = projects.map(project => `
+                    <div class="project-card">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        loadProjects();
+    </script>
+</body>
+</html>

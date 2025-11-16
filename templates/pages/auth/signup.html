@@ -211,9 +211,9 @@
                         localStorage.setItem('user', JSON.stringify(data.user));
                     }
                     
-                    // إعادة التوجيه للصفحة الرئيسية
+                    // إعادة التوجيه للوحة التحكم
                     setTimeout(() => {
-                        window.location.href = '/';
+                        window.location.href = '/dashboard';
                     }, 1500);
                 } else {
                     errorDiv.textContent = data.error || 'حدث خطأ أثناء إنشاء الحساب';

@@ -12,15 +12,8 @@ main_bp = Blueprint('main', __name__)
 # معالج لطلبات Replit التي لا نحتاجها
 @main_bp.route('/graphql', methods=['GET', 'POST'])
 @main_bp.route('/data/user/exists', methods=['GET', 'POST'])
-@main_bp.route('/api/v1/auth/sign-up', methods=['POST'])
-@main_bp.route('/api/v1/auth/login', methods=['POST'])
 def ignore_replit_requests():
-    """تجاهل طلبات Replit الداخلية - توجيه للمسارات الصحيحة"""
-    # إذا كان طلب تسجيل، أعد توجيهه
-    if request.path == '/api/v1/auth/sign-up':
-        return jsonify({'error': 'استخدم /auth/signup بدلاً من ذلك'}), 404
-    if request.path == '/api/v1/auth/login':
-        return jsonify({'error': 'استخدم /auth/login بدلاً من ذلك'}), 404
+    """تجاهل طلبات Replit الداخلية"""
     return jsonify({'message': 'Not implemented'}), 200
 
 @auth_bp.route('/signup', methods=['POST'])
@@ -219,6 +212,16 @@ def login_page():
 @main_bp.route('/signup')
 def signup_page():
     return render_template('pages/auth/signup.html')
+
+
+@main_bp.route('/dashboard')
+def dashboard_page():
+    return render_template('pages/dashboard.html')
+
+
+@main_bp.route('/projects/create')
+def create_project_page():
+    return render_template('pages/projects/create.html')
 
 
 @main_bp.route('/<path:path>')
