@@ -18,6 +18,13 @@ def download_google_fonts():
     
     for font_info in fonts_to_download:
         try:
+            css_path = f'static/fonts/{font_info["name"]}.css'
+            
+            # تخطي إذا كان الملف موجوداً
+            if os.path.exists(css_path):
+                print(f"⊘ تم تخطي {font_info['name']} - موجود مسبقاً")
+                continue
+            
             # تحميل ملف CSS
             response = requests.get(font_info['url'])
             response.raise_for_status()
@@ -28,24 +35,27 @@ def download_google_fonts():
             
             local_css = css_content
             for font_url in font_urls:
-                # تحميل ملف الخط
-                font_response = requests.get(font_url)
-                font_response.raise_for_status()
-                
                 # تحديد اسم الملف
                 font_filename = os.path.basename(font_url.split('?')[0])
                 font_path = f'static/fonts/{font_filename}'
                 
-                with open(font_path, 'wb') as f:
-                    f.write(font_response.content)
-                
-                print(f"✓ تم تحميل الخط: {font_filename}")
+                # تخطي إذا كان ملف الخط موجوداً
+                if os.path.exists(font_path):
+                    print(f"⊘ تم تخطي الخط: {font_filename} - موجود مسبقاً")
+                else:
+                    # تحميل ملف الخط
+                    font_response = requests.get(font_url)
+                    font_response.raise_for_status()
+                    
+                    with open(font_path, 'wb') as f:
+                        f.write(font_response.content)
+                    
+                    print(f"✓ تم تحميل الخط: {font_filename}")
                 
                 # تحديث CSS
                 local_css = local_css.replace(font_url, f'/static/fonts/{font_filename}')
             
             # حفظ ملف CSS المحلي
-            css_path = f'static/fonts/{font_info["name"]}.css'
             with open(css_path, 'w', encoding='utf-8') as f:
                 f.write(local_css)
             

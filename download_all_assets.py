@@ -194,15 +194,19 @@ def main():
     for resource_type, urls in all_resources.items():
         for url in urls:
             local_path = get_local_path(url, resource_type)
-            if local_path and not os.path.exists(local_path):
-                if download_file(url, local_path):
+            if local_path:
+                if os.path.exists(local_path):
+                    # الملف موجود مسبقاً، نضيفه للـ mapping فقط
                     url_mapping[url] = local_path
-                    downloaded += 1
-                    time.sleep(0.2)  # تأخير بسيط لتجنب الحظر
+                    print(f"⊘ تم تخطي: {local_path} - موجود مسبقاً")
                 else:
-                    failed += 1
-            elif local_path:
-                url_mapping[url] = local_path
+                    # تحميل الملف
+                    if download_file(url, local_path):
+                        url_mapping[url] = local_path
+                        downloaded += 1
+                        time.sleep(0.2)  # تأخير بسيط لتجنب الحظر
+                    else:
+                        failed += 1
     
     print(f"\n📥 النتائج:")
     print(f"   - تم التحميل: {downloaded}")
