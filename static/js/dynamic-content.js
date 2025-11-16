@@ -1,3 +1,4 @@
+
 /**
  * Dynamic Content Loader for Replit Website
  * يحمل البيانات من Flask APIs ويعرضها في الصفحات الثابتة
@@ -5,13 +6,20 @@
 
 const ReplitDynamic = {
     
+    baseURL: window.location.origin,
+    
     // تحميل المشاريع المميزة
     async loadFeaturedProjects(containerSelector) {
         try {
-            const response = await fetch('/api/projects?featured=true&per_page=6');
+            const response = await fetch(`${this.baseURL}/api/projects?featured=true&per_page=6`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
             
-            if (data.projects && data.projects.length > 0) {
+            if (data.success && data.projects && data.projects.length > 0) {
                 this.renderProjects(containerSelector, data.projects);
             }
         } catch (error) {
@@ -20,12 +28,22 @@ const ReplitDynamic = {
     },
     
     // تحميل جميع المشاريع
-    async loadAllProjects(containerSelector, page = 1) {
+    async loadAllProjects(containerSelector, page = 1, category = null) {
         try {
-            const response = await fetch(`/api/projects?page=${page}&per_page=12`);
+            let url = `${this.baseURL}/api/projects?page=${page}&per_page=12`;
+            if (category) {
+                url += `&category=${category}`;
+            }
+            
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
             
-            if (data.projects && data.projects.length > 0) {
+            if (data.success && data.projects && data.projects.length > 0) {
                 this.renderProjects(containerSelector, data.projects);
                 this.renderPagination(data);
             }
@@ -37,10 +55,15 @@ const ReplitDynamic = {
     // تحميل الفئات
     async loadCategories(containerSelector) {
         try {
-            const response = await fetch('/api/categories');
+            const response = await fetch(`${this.baseURL}/api/categories`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
             
-            if (data.categories && data.categories.length > 0) {
+            if (data.success && data.categories && data.categories.length > 0) {
                 this.renderCategories(containerSelector, data.categories);
             }
         } catch (error) {
@@ -51,7 +74,12 @@ const ReplitDynamic = {
     // تحميل مشروع معين
     async loadProject(slug) {
         try {
-            const response = await fetch(`/api/projects/${slug}`);
+            const response = await fetch(`${this.baseURL}/api/projects/${slug}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
             
             if (data.project) {
@@ -149,6 +177,19 @@ const ReplitDynamic = {
             const urlParams = new URLSearchParams(window.location.search);
             const page = urlParams.get('page') || 1;
             this.loadAllProjects('[data-all-projects]', page);
+            this.loadCategories('[data-categories]');
+        }
+        
+        // أي صفحة تحتوي على علامات البيانات
+        if (document.querySelector('[data-featured-projects]')) {
+            this.loadFeaturedProjects('[data-featured-projects]');
+        }
+        if (document.querySelector('[data-all-projects]')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const page = urlParams.get('page') || 1;
+            this.loadAllProjects('[data-all-projects]', page);
+        }
+        if (document.querySelector('[data-categories]')) {
             this.loadCategories('[data-categories]');
         }
     }

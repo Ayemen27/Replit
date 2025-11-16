@@ -226,6 +226,10 @@ def create_project_page():
 
 @main_bp.route('/<path:path>')
 def serve_static_pages(path):
+    # تجاهل مسارات الـ API
+    if path.startswith('api/'):
+        abort(404)
+    
     # إذا كان path ملف موجود مباشرة، قدمه
     if os.path.isfile(path):
         return send_from_directory('.', path)
@@ -241,10 +245,8 @@ def serve_static_pages(path):
         if os.path.isfile(index_path):
             return send_from_directory('.', index_path)
 
-    # fallback: أعد index.html الرئيسي
-    # ملاحظة: المجلدات بدون index.html (مثل /products) ستعيد الصفحة الرئيسية
-    # هذا سلوك مؤقت - يمكن تحسينه لاحقاً
-    return send_from_directory('.', 'index.html')
+    # للمسارات غير الموجودة، أرجع 404
+    abort(404)
 
 
 def register_routes(app):
