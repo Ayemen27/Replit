@@ -80,6 +80,11 @@
             transform: translateY(-2px);
         }
         
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
         .error {
             background: #fee;
             color: #c33;
@@ -131,7 +136,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             
-            <button type="submit">تسجيل الدخول</button>
+            <button type="submit" id="submit-btn">تسجيل الدخول</button>
         </form>
         
         <div class="links">
@@ -140,17 +145,21 @@
     </div>
     
     <script>
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
+        const form = document.getElementById('login-form');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const errorDiv = document.getElementById('error-message');
-            const successDiv = document.getElementById('success-message');
             
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري تسجيل الدخول...';
             
             const formData = {
-                email_or_username: document.getElementById('email_or_username').value,
+                email_or_username: document.getElementById('email_or_username').value.trim(),
                 password: document.getElementById('password').value
             };
             
@@ -158,7 +167,7 @@
                 const response = await fetch('/auth/login', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
@@ -166,25 +175,32 @@
                 const data = await response.json();
                 
                 if (response.ok) {
-                    successDiv.textContent = data.message;
+                    successDiv.textContent = data.message || 'تم تسجيل الدخول بنجاح!';
                     successDiv.style.display = 'block';
                     
                     // حفظ التوكن
-                    localStorage.setItem('access_token', data.access_token);
-                    localStorage.setItem('refresh_token', data.refresh_token);
-                    localStorage.setItem('user', JSON.stringify(data.user));
+                    if (data.access_token) {
+                        localStorage.setItem('access_token', data.access_token);
+                        localStorage.setItem('refresh_token', data.refresh_token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                    }
                     
                     // إعادة التوجيه للصفحة الرئيسية
                     setTimeout(() => {
                         window.location.href = '/';
-                    }, 1000);
+                    }, 1500);
                 } else {
                     errorDiv.textContent = data.error || 'حدث خطأ أثناء تسجيل الدخول';
                     errorDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'تسجيل الدخول';
                 }
             } catch (error) {
+                console.error('Error:', error);
                 errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
                 errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'تسجيل الدخول';
             }
         });
     </script>

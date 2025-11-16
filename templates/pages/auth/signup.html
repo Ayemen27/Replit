@@ -86,6 +86,11 @@
             transform: translateY(-2px);
         }
         
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
         .error {
             background: #fee;
             color: #c33;
@@ -154,7 +159,7 @@
                 <input type="password" id="password" name="password" required minlength="6">
             </div>
             
-            <button type="submit">إنشاء حساب</button>
+            <button type="submit" id="submit-btn">إنشاء حساب</button>
         </form>
         
         <div class="links">
@@ -163,20 +168,24 @@
     </div>
     
     <script>
-        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+        const form = document.getElementById('signup-form');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const errorDiv = document.getElementById('error-message');
-            const successDiv = document.getElementById('success-message');
             
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري الإنشاء...';
             
             const formData = {
-                first_name: document.getElementById('first_name').value,
-                last_name: document.getElementById('last_name').value,
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
+                first_name: document.getElementById('first_name').value.trim(),
+                last_name: document.getElementById('last_name').value.trim(),
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
                 password: document.getElementById('password').value
             };
             
@@ -184,7 +193,7 @@
                 const response = await fetch('/auth/signup', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
@@ -192,25 +201,32 @@
                 const data = await response.json();
                 
                 if (response.ok) {
-                    successDiv.textContent = data.message;
+                    successDiv.textContent = data.message || 'تم إنشاء الحساب بنجاح!';
                     successDiv.style.display = 'block';
                     
                     // حفظ التوكن
-                    localStorage.setItem('access_token', data.access_token);
-                    localStorage.setItem('refresh_token', data.refresh_token);
-                    localStorage.setItem('user', JSON.stringify(data.user));
+                    if (data.access_token) {
+                        localStorage.setItem('access_token', data.access_token);
+                        localStorage.setItem('refresh_token', data.refresh_token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                    }
                     
                     // إعادة التوجيه للصفحة الرئيسية
                     setTimeout(() => {
                         window.location.href = '/';
-                    }, 1000);
+                    }, 1500);
                 } else {
                     errorDiv.textContent = data.error || 'حدث خطأ أثناء إنشاء الحساب';
                     errorDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'إنشاء حساب';
                 }
             } catch (error) {
+                console.error('Error:', error);
                 errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
                 errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'إنشاء حساب';
             }
         });
     </script>
