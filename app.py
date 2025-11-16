@@ -20,17 +20,17 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     jwt.init_app(app)
 
-    with app.app_context():
-        db.create_all()
-        from seed_data import seed_database
-        seed_database()
-
     from routes import register_routes
     register_routes(app)
 
     # تهيئة قاعدة البيانات
     with app.app_context():
         db.create_all()
+        print("✓ تم إنشاء جداول قاعدة البيانات")
+        
+        # إضافة البيانات التجريبية
+        from seed_data import seed_database
+        seed_database()
 
     @app.after_request
     def add_cache_headers(response):

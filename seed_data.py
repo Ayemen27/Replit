@@ -1,17 +1,11 @@
-from app import create_app
 from models import db, User, Category, Project
 from auth import hash_password
 import os
 
 def seed_database():
-    app = create_app()
-
-    with app.app_context():
-        # إنشاء جداول قاعدة البيانات
-        db.create_all()
-        print("✓ تم إنشاء جداول قاعدة البيانات")
-
+    # التحقق من وجود بيانات مسبقاً
     if Category.query.count() > 0:
+        print("✓ البيانات موجودة مسبقاً")
         return
 
     categories_data = [

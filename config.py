@@ -16,6 +16,8 @@ class Config:
     SQLALCHEMY_ENGINE_OPTIONS = {
         'pool_pre_ping': True,
         'pool_recycle': 300,
+        'pool_size': 5,
+        'max_overflow': 10,
     }
     
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-CHANGE-ME-IN-PRODUCTION')
