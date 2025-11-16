@@ -1,0 +1,29 @@
+<header role="banner" class="header text-black sticky z-40 w-full top-0 left-0 right-0" style="background-color:#0b1419">
+    <div class="px-6 relative">
+        <div class="w-full items-center p-4 px-0 mx-auto flex justify-between">
+            <div class="flex items-center gap-2 justify-between w-full">
+                <div>
+                    <a aria-label="Go to Replit Homepage" class="relative z-20 block" href="{{ url_for('home') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="112" height="26" viewBox="0 0 112 26" fill="none">
+                            <path d="M10.701 8.40793H1.60592C0.710313 8.40793 0 7.69462 0 6.82955V1.57838C0 0.698131 0.725755 0 1.60592 0H9.09508C9.99069 0 10.701 0.713307 10.701 1.57838V8.40793Z" class="logo-dots" fill="#fd5402"></path>
+                            <path d="M20.4557 17.5668H10.7109V8.39453H20.4557C21.3987 8.39453 22.1763 9.17128 22.1763 10.1133V15.8481C22.1763 16.8066 21.3987 17.5668 20.4557 17.5668Z" class="logo-dots" fill="#fd5402"></path>
+                            <path d="M9.09508 26H1.60592C0.725755 26 0 25.288 0 24.4244V19.1676C0 18.3041 0.725755 17.592 1.60592 17.592H10.701V24.4244C10.701 25.288 9.97525 26 9.09508 26Z" class="logo-dots" fill="#fd5402"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <nav class="flex items-center gap-4">
+                    <a href="{{ url_for('products') }}" class="text-white hover:opacity-80">Products</a>
+                    <a href="{{ url_for('gallery') }}" class="text-white hover:opacity-80">Gallery</a>
+                    <a href="{{ url_for('pricing') }}" class="text-white hover:opacity-80">Pricing</a>
+                    {% if current_user %}
+                        <a href="{{ url_for('auth.get_me') }}" class="text-white hover:opacity-80">Profile</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="text-white hover:opacity-80">Login</a>
+                        <a href="{{ url_for('signup') }}" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Sign Up</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

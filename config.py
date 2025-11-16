@@ -10,7 +10,7 @@ class Config:
             DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
         SQLALCHEMY_DATABASE_URI = DATABASE_URL
     else:
-        SQLALCHEMY_DATABASE_URI = 'sqlite:///replit_website.db'
+        SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/replit_website.db'
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {
@@ -25,3 +25,6 @@ class Config:
     BCRYPT_LOG_ROUNDS = 12
     
     CORS_HEADERS = 'Content-Type'
+    
+    TEMPLATES_AUTO_RELOAD = True
+    SEND_FILE_MAX_AGE_DEFAULT = 31536000

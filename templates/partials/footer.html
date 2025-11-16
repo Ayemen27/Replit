@@ -1,0 +1,43 @@
+<footer style="background-color:#ffffff;color:#1b2333" class="py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-bold mb-4">Products</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('products', product='agent') }}" class="hover:opacity-80">Agent</a></li>
+                    <li><a href="{{ url_for('products', product='deployments') }}" class="hover:opacity-80">Deployments</a></li>
+                    <li><a href="{{ url_for('products', product='database') }}" class="hover:opacity-80">Database</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="font-bold mb-4">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('about') }}" class="hover:opacity-80">About</a></li>
+                    <li><a href="{{ url_for('careers') }}" class="hover:opacity-80">Careers</a></li>
+                    <li><a href="{{ url_for('news') }}" class="hover:opacity-80">News</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="font-bold mb-4">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('help') }}" class="hover:opacity-80">Help</a></li>
+                    <li><a href="{{ url_for('templates') }}" class="hover:opacity-80">Templates</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="font-bold mb-4">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('privacy') }}" class="hover:opacity-80">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('terms') }}" class="hover:opacity-80">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 text-center text-sm opacity-60">
+            <p>&copy; {{ current_year }} Replit. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
