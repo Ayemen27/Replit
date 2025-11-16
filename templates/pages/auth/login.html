@@ -1,72 +1,192 @@
 
-{% extends "base.html" %}
-
-{% block title %}تسجيل الدخول - Replit Clone{% endblock %}
-
-{% block content %}
-<div class="auth-container" style="max-width: 400px; margin: 100px auto; padding: 20px;">
-    <h2 style="text-align: center; margin-bottom: 30px;">تسجيل الدخول</h2>
-    
-    <form id="loginForm" style="display: flex; flex-direction: column; gap: 15px;">
-        <div>
-            <label for="email_or_username">البريد الإلكتروني أو اسم المستخدم</label>
-            <input type="text" id="email_or_username" name="email_or_username" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div id="errorMessage" style="color: red; display: none;"></div>
-        
-        <button type="submit" style="padding: 12px; background-color: #0F87FF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-            تسجيل الدخول
-        </button>
-    </form>
-    
-    <p style="text-align: center; margin-top: 20px;">
-        ليس لديك حساب؟ <a href="/signup">إنشاء حساب جديد</a>
-    </p>
-</div>
-
-<script>
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const email_or_username = document.getElementById('email_or_username').value;
-    const password = document.getElementById('password').value;
-    const errorDiv = document.getElementById('errorMessage');
-    
-    try {
-        const response = await fetch('/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email_or_username, password })
-        });
-        
-        const data = await response.json();
-        
-        if (response.ok) {
-            // حفظ التوكن
-            localStorage.setItem('access_token', data.access_token);
-            localStorage.setItem('refresh_token', data.refresh_token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            
-            // إعادة التوجيه للصفحة الرئيسية
-            window.location.href = '/';
-        } else {
-            errorDiv.textContent = data.error || 'حدث خطأ أثناء تسجيل الدخول';
-            errorDiv.style.display = 'block';
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    } catch (error) {
-        errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
-        errorDiv.style.display = 'block';
-    }
-});
-</script>
-{% endblock %}
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success {
+            background: #efe;
+            color: #3c3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>تسجيل الدخول</h1>
+        
+        <div id="error-message" class="error"></div>
+        <div id="success-message" class="success"></div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email_or_username">البريد الإلكتروني أو اسم المستخدم</label>
+                <input type="text" id="email_or_username" name="email_or_username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        
+        <div class="links">
+            <p>ليس لديك حساب؟ <a href="/signup">إنشاء حساب جديد</a></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const errorDiv = document.getElementById('error-message');
+            const successDiv = document.getElementById('success-message');
+            
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            
+            const formData = {
+                email_or_username: document.getElementById('email_or_username').value,
+                password: document.getElementById('password').value
+            };
+            
+            try {
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    successDiv.textContent = data.message;
+                    successDiv.style.display = 'block';
+                    
+                    // حفظ التوكن
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // إعادة التوجيه للصفحة الرئيسية
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    errorDiv.textContent = data.error || 'حدث خطأ أثناء تسجيل الدخول';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

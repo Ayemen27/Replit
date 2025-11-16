@@ -1,110 +1,218 @@
 
-{% extends "base.html" %}
-
-{% block title %}إنشاء حساب - Replit Clone{% endblock %}
-
-{% block content %}
-<div class="auth-container" style="max-width: 400px; margin: 100px auto; padding: 20px;">
-    <h2 style="text-align: center; margin-bottom: 30px;">إنشاء حساب جديد</h2>
-    
-    <form id="signupForm" style="display: flex; flex-direction: column; gap: 15px;">
-        <div>
-            <label for="email">البريد الإلكتروني</label>
-            <input type="email" id="email" name="email" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="username">اسم المستخدم</label>
-            <input type="text" id="username" name="username" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="first_name">الاسم الأول</label>
-            <input type="text" id="first_name" name="first_name" 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="last_name">الاسم الأخير</label>
-            <input type="text" id="last_name" name="last_name" 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div>
-            <label for="confirm_password">تأكيد كلمة المرور</label>
-            <input type="password" id="confirm_password" name="confirm_password" required 
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        </div>
-        
-        <div id="errorMessage" style="color: red; display: none;"></div>
-        
-        <button type="submit" style="padding: 12px; background-color: #0F87FF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-            إنشاء الحساب
-        </button>
-    </form>
-    
-    <p style="text-align: center; margin-top: 20px;">
-        لديك حساب بالفعل؟ <a href="/login">تسجيل الدخول</a>
-    </p>
-</div>
-
-<script>
-document.getElementById('signupForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const password = document.getElementById('password').value;
-    const confirm_password = document.getElementById('confirm_password').value;
-    const errorDiv = document.getElementById('errorMessage');
-    
-    if (password !== confirm_password) {
-        errorDiv.textContent = 'كلمات المرور غير متطابقة';
-        errorDiv.style.display = 'block';
-        return;
-    }
-    
-    const formData = {
-        email: document.getElementById('email').value,
-        username: document.getElementById('username').value,
-        first_name: document.getElementById('first_name').value,
-        last_name: document.getElementById('last_name').value,
-        password: password
-    };
-    
-    try {
-        const response = await fetch('/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        const data = await response.json();
-        
-        if (response.ok) {
-            // حفظ التوكن
-            localStorage.setItem('access_token', data.access_token);
-            localStorage.setItem('refresh_token', data.refresh_token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            
-            // إعادة التوجيه للصفحة الرئيسية
-            window.location.href = '/';
-        } else {
-            errorDiv.textContent = data.error || 'حدث خطأ أثناء إنشاء الحساب';
-            errorDiv.style.display = 'block';
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    } catch (error) {
-        errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
-        errorDiv.style.display = 'block';
-    }
-});
-</script>
-{% endblock %}
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .name-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success {
+            background: #efe;
+            color: #3c3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>إنشاء حساب جديد</h1>
+        
+        <div id="error-message" class="error"></div>
+        <div id="success-message" class="success"></div>
+        
+        <form id="signup-form">
+            <div class="name-group">
+                <div class="form-group">
+                    <label for="first_name">الاسم الأول</label>
+                    <input type="text" id="first_name" name="first_name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="last_name">الاسم الأخير</label>
+                    <input type="text" id="last_name" name="last_name">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">اسم المستخدم *</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور *</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+            
+            <button type="submit">إنشاء حساب</button>
+        </form>
+        
+        <div class="links">
+            <p>لديك حساب بالفعل؟ <a href="/login">تسجيل الدخول</a></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const errorDiv = document.getElementById('error-message');
+            const successDiv = document.getElementById('success-message');
+            
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            
+            const formData = {
+                first_name: document.getElementById('first_name').value,
+                last_name: document.getElementById('last_name').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            try {
+                const response = await fetch('/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    successDiv.textContent = data.message;
+                    successDiv.style.display = 'block';
+                    
+                    // حفظ التوكن
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // إعادة التوجيه للصفحة الرئيسية
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    errorDiv.textContent = data.error || 'حدث خطأ أثناء إنشاء الحساب';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'حدث خطأ في الاتصال بالخادم';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
