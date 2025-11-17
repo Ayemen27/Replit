@@ -133,7 +133,39 @@ npm install @datadog/browser-rum
 
 ---
 
-## 🚀 7. تطبيق المتغيرات
+## 📝 7. Sanity CMS (Content Management)
+
+### الخطوات:
+1. اذهب إلى: https://www.sanity.io
+2. أنشئ حساب أو سجل دخول
+3. انقر **Create new project**
+4. ادخل اسم المشروع واختر Plan (مجاني متاح)
+5. احصل على:
+   - **Project ID** من Project Settings
+   - **Dataset name** (عادة "production" أو "development")
+6. أنشئ **API Token**:
+   - اذهب إلى: **Settings** > **API** > **Tokens**
+   - انقر **Add API token**
+   - اختر Viewer permissions (للقراءة فقط)
+   - احصل على **Token**
+
+**التثبيت**:
+```bash
+npm install @sanity/client @sanity/image-url
+```
+
+**المتغيرات المطلوبة**:
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_READ_TOKEN=sk_read_token_here
+```
+
+**ملاحظة**: يمكنك استخدام المشروع بدون token للبيانات العامة، لكن Token مطلوب للبيانات المحمية.
+
+---
+
+## 🚀 8. تطبيق المتغيرات
 
 ### الطريقة 1: يدوياً
 افتح `rebuild/source/.env.local` وعبئ القيم:
