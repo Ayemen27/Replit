@@ -32,58 +32,84 @@
 - Lower traffic priority
 - Can delegate to subagent once P0 complete
 
-**P1 - Detailed Parity Tables:**
+**P1 - Detailed Parity Tables (VERIFIED FROM HTML):**
 
-#### Brand Kit (brandkit.html)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|---------|--------|
-| Hero | Brand guidelines intro | `BrandHero` | Logo variations ✅ | ⏳ |
-| Logo Downloads | Download different formats | `DownloadSection` | SVG/PNG logos ✅ | ⏳ |
-| Color Palette | Brand colors + hex codes | `ColorPalette` | N/A | ⏳ |
-| Typography | Font guidelines | `TypographyGuide` | Font files ✅ | ⏳ |
-| Assets Grid | Downloadable assets | `BrandAssetGrid` | Icons ✅ | ⏳ |
+#### Brand Kit (brandkit.html) - ⚠️ Apollo-Dependent
+**HTML Analysis:** Only 2 sections found - page relies on Apollo Client for dynamic content
 
-#### Careers (careers.html)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|--------|--------|
-| Hero | Join us CTA | reuse `AboutHero` | Team photo ⚠️ fallback | ⏳ |
-| Culture | Company values | `CultureSection` | Office photos ✅ | ⏳ |
-| Open Positions | Job listings | `JobList` | N/A | ⏳ |
-| Testimonials | Employee stories | reuse `TestimonialCard` | Employee photos ⚠️ fallback | ⏳ |
-| Apply CTA | Application form link | reuse `CTASection` | N/A | ⏳ |
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| Apollo-driven content | Brand kit data from GraphQL | `BrandKitContainer`, `ApolloProvider` | Logos/fonts (dynamic) ✅ | ❌ TODO - Needs Apollo |
+| Placeholder | Fallback UI while loading | `LoadingState` | N/A | ❌ TODO |
 
-#### Enterprise (enterprise.html)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|--------|--------|
-| Hero | Enterprise pitch | reuse `Hero` | Enterprise graphic ✅ | ⏳ |
-| Features | Enterprise-specific features | `EnterpriseFeatures` | Feature icons ✅ | ⏳ |
-| Pricing | Enterprise pricing info | `PricingComparison` | N/A | ⏳ |
-| Security | Security certifications | `SecuritySection` | Badge icons ✅ | ⏳ |
-| Contact | Sales contact form | `ContactForm` | N/A | ⏳ |
+**Note:** Full implementation requires Apollo Client setup (Task 3). Low priority until backend ready.
 
-#### Templates (templates page)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|--------|--------|
-| Hero | Template library intro | reuse `Hero` | N/A | ⏳ |
-| Categories | Template categories | reuse `CategoryFilter` | Category icons ✅ | ⏳ |
-| Template Grid | Template cards | `TemplateGrid` | Template thumbnails ✅ | ⏳ |
-| Load More | Pagination | reuse `LoadMoreButton` | N/A | ⏳ |
+#### Careers (careers.html) - ✅ Verified (9 meaningful sections)
+**HTML Analysis:** 81 lines, rich content, fully implementable without Apollo
 
-#### Mobile (mobile.html)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|--------|--------|
-| Hero | Mobile app features | reuse `Hero` | App mockup ✅ | ⏳ |
-| Features | App capabilities | `AppFeatures` | Feature screenshots ✅ | ⏳ |
-| Download | App store links | `DownloadButtons` | Store badges ✅ | ⏳ |
-| Screenshots | App gallery | `ScreenshotCarousel` | Screenshots ✅ | ⏳ |
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| **Header** | "Careers at Replit" title + description | `TextSection` | N/A | ❌ TODO |
+| **Hero** | "Empowering next billion creators" | `TextSection` | N/A | ❌ TODO |
+| **Mission** | Company mission statement | `TextSection` | N/A | ❌ TODO |
+| **Values** | Core values (Curiosity, Impact, etc.) | `TextSection` | N/A | ❌ TODO |
+| **Culture** | "We build in public" culture description | `TextSection` | `/static/images/bj34pdbp/migration/...png` ✅ | ❌ TODO |
+| **Open Roles** | Job listings intro | `TextSection` | N/A | ❌ TODO |
+| **Benefits** | Perks and benefits | `TextSection` | N/A | ❌ TODO |
+| **CTA 1** | "See open positions" button | `CTAModule` | N/A | ❌ TODO |
+| **CTA 2** | "Join us" final CTA | `CTAModule` | N/A | ❌ TODO |
 
-#### News (news pages)
-| Section | Content Parity | Components | Assets | Status |
-|---------|---------------|------------|--------|--------|
-| Hero | News/blog header | reuse `Hero` | N/A | ⏳ |
-| Article Grid | Blog posts | `BlogGrid` | Thumbnails ✅ | ⏳ |
-| Filters | Category/tag filters | `TagFilter` | N/A | ⏳ |
-| Pagination | Load more articles | reuse `LoadMoreButton` | N/A | ⏳ |
+**Components Needed:** `TextSection` (reusable), `CTAModule`  
+**Assets:** 1 image from CDN migration ✅
+
+#### Enterprise (enterprise.html) - ✅ Verified (7 meaningful sections)
+**HTML Analysis:** 135 lines, enterprise-focused content
+
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| **Hero** | "Replit for Enterprise" title | `TextSection` | N/A | ❌ TODO |
+| **Pitch** | "Full-stack platform" description | `TextSection` | `/static/images/bj34pdbp/migration/...png` ✅ | ❌ TODO |
+| **Features** | Enterprise features grid | `TextSection` | Multiple images ✅ | ❌ TODO |
+| **Security** | Security & compliance info | `TextSection` | N/A | ❌ TODO |
+| **Testimonials** | Customer quotes carousel | `TestimonialCarousel` | Customer logos ✅ | ❌ TODO |
+| **Logos** | Partner/customer logos | `LogosCarousel` | Logo images ✅ | ❌ TODO |
+| **Contact Form** | "Contact Sales" form | `ContactForm` | N/A | ❌ TODO |
+
+**Components Needed:** `TextSection`, `TestimonialCarousel`, `LogosCarousel`, `ContactForm`  
+**Assets:** 8 images from CDN migration ✅
+
+#### Templates (no HTML source - dynamic page)
+**Note:** No static HTML found - likely Apollo/CMS-driven like Brand Kit.
+
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| Templates Grid | Template library (dynamic) | `TemplatesContainer`, `TemplateCard` | Template screenshots (API) | ❌ TODO - Needs API |
+
+**Note:** Defer until backend/CMS ready.
+
+#### Mobile (mobile.html) - ⚠️ Apollo-Dependent
+**HTML Analysis:** Only 2 sections found - similar to Brand Kit, relies on GraphQL
+
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| Apollo-driven content | Mobile app features from API | `MobileAppContainer`, `ApolloProvider` | App screenshots (dynamic) ✅ | ❌ TODO - Needs Apollo |
+| Placeholder | Loading state | `LoadingState` | N/A | ❌ TODO |
+
+**Note:** Defer until Apollo Client ready (Task 3).
+
+#### News (news/funding-announcement.html) - ✅ Verified (3 meaningful sections)
+**HTML Analysis:** 22 total sections, mostly standard Next.js wrappers
+
+| Section | Content | Components | Assets | Status |
+|---------|---------|------------|--------|--------|
+| **Article Header** | Title + metadata | `ArticleHeader` | N/A | ❌ TODO |
+| **Article Body** | Main content (rich text) | `RichTextRenderer` | Inline images ✅ | ❌ TODO |
+| **Related Articles** | Links to other news | `RelatedArticles` | Thumbnails ✅ | ❌ TODO |
+
+**Components Needed:** `ArticleHeader`, `RichTextRenderer` (supports images/links), `RelatedArticles`  
+**Assets:** 4 images from CDN migration ✅
+
+**Note:** All news pages follow same template - implement once, populate from CMS.
 
 ### P2 - صفحات طويلة الأمد (Long-tail)
 يمكن تأجيلها أو أتمتتها لاحقاً:
