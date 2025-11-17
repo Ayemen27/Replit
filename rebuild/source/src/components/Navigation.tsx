@@ -22,11 +22,15 @@ export default function Navigation({ showBackButton = false, isAuthenticated = f
           </Link>
         ) : (
           <nav className="flex items-center space-x-4">
-            <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
-              <Button variant="outline" className="border-[#FF6F61] text-[#FF6F61] hover:bg-[#FFE5E5] hover:text-[#FF6F61]">
+            <Button 
+              asChild 
+              variant="outline" 
+              className="border-[#FF6F61] text-[#FF6F61] hover:bg-[#FFE5E5] hover:text-[#FF6F61]"
+            >
+              <Link href={isAuthenticated ? "/dashboard" : "/signup"}>
                 {isAuthenticated ? "Dashboard" : "Sign Up"}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </nav>
         )}
       </div>
