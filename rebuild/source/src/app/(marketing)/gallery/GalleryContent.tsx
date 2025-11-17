@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 import {
   GET_PROJECTS,

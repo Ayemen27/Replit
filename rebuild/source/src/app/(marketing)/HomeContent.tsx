@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import {

@@ -9,10 +9,24 @@ export const projectResolvers = {
   Query: {
     projects: async (
       _: any,
-      { featured, category, page, perPage }: { featured?: boolean; category?: string; page?: number; perPage?: number },
+      { featured, category, page = 1, perPage = 12 }: { featured?: boolean; category?: string; page?: number; perPage?: number },
       { dataSources }: Context
     ) => {
-      return dataSources.projects.getProjects(featured, category, page, perPage);
+      const response = await dataSources.projects.getProjects(featured, category, page, perPage);
+      
+      return {
+        projects: response.projects,
+        pageInfo: {
+          hasNextPage: response.page < response.pages,
+          hasPreviousPage: response.page > 1,
+          startCursor: null,
+          endCursor: null,
+          page: response.page,
+          perPage: response.perPage,
+          totalPages: response.pages,
+        },
+        totalCount: response.total,
+      };
     },
 
     project: async (
@@ -25,10 +39,11 @@ export const projectResolvers = {
 
     featuredProjects: async (
       _: any,
-      { page, perPage }: { page?: number; perPage?: number },
+      { perPage = 6 }: { perPage?: number },
       { dataSources }: Context
     ) => {
-      return dataSources.projects.getProjects(true, undefined, page, perPage);
+      const response = await dataSources.projects.getProjects(true, undefined, 1, perPage);
+      return response.projects;
     },
   },
 
