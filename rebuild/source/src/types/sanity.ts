@@ -88,4 +88,73 @@ export interface HeroSection {
   ctaUrl?: string;
   backgroundImage?: SanityImage;
   backgroundVideo?: string;
+  isActive?: boolean;
+}
+
+export interface CustomerStory {
+  _id: string;
+  _type: 'customerStory';
+  companyName: string;
+  slug: {
+    current: string;
+  };
+  logo: SanityImage;
+  description?: string;
+  industry?: 'technology' | 'ecommerce' | 'healthcare' | 'finance' | 'education' | 'media' | 'retail' | 'government' | 'other';
+  testimonial?: string;
+  results?: Array<{
+    metric: string;
+    description?: string;
+  }>;
+  image?: SanityImage;
+  isPublished?: boolean;
+  _createdAt: string;
+  _updatedAt: string;
+}
+
+export interface ProductPage {
+  _id: string;
+  _type: 'productPage';
+  title: string;
+  slug: {
+    current: string;
+  };
+  description?: string;
+  icon?: string;
+  features?: Array<{
+    title: string;
+    description: string;
+    icon?: string;
+  }>;
+  benefits?: Array<{
+    title: string;
+    description?: string;
+  }>;
+  pricing?: {
+    startingPrice?: string;
+    pricingModel?: 'free' | 'freemium' | 'usage' | 'subscription' | 'custom';
+    pricingDescription?: string;
+  };
+  order?: number;
+  isPublished?: boolean;
+  _createdAt: string;
+  _updatedAt: string;
+}
+
+export interface Page {
+  _id: string;
+  _type: 'page';
+  title: string;
+  slug: {
+    current: string;
+  };
+  content?: any;
+  seo?: {
+    title?: string;
+    description?: string;
+    ogImage?: SanityImage;
+  };
+  isPublished?: boolean;
+  _createdAt: string;
+  _updatedAt: string;
 }
