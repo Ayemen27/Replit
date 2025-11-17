@@ -30,6 +30,19 @@ task = "shell.exec"
 args = "python3 main.py"
 waitForPort = 5000
 
+[[workflows.workflow]]
+name = "Next.js Dev"
+author = 44785901
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd rebuild/source && npm run dev"
+
+[[ports]]
+localPort = 3001
+externalPort = 3001
+
 [[ports]]
 localPort = 5000
 externalPort = 80
