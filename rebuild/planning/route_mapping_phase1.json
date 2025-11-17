@@ -1,0 +1,349 @@
+{
+  "phase": 1,
+  "name": "Route Mapping - Next.js App Router Structure",
+  "description": "تحويل pages_structure.json إلى هيكل App Router لـ Next.js 14",
+  "generated_date": "2025-11-17",
+  "source": "rebuild/planning/pages_structure.json",
+  "total_routes": 18,
+  "architecture": "Next.js 14 App Router",
+  
+  "layout_strategy": {
+    "root_layout": "src/app/layout.tsx (Global: Providers, Analytics, Fonts)",
+    "marketing_layout": "src/app/(marketing)/layout.tsx (Marketing pages: Nav, Footer)",
+    "auth_layout": "src/app/(auth)/layout.tsx (Auth pages: Login, Signup)",
+    "app_layout": "src/app/(app)/layout.tsx (App pages: Dashboard, Profile)"
+  },
+
+  "routes_mapping": [
+    {
+      "id": 1,
+      "legacy_route": "/",
+      "app_router_path": "src/app/(marketing)/page.tsx",
+      "type": "static",
+      "priority": "high",
+      "has_apollo": false,
+      "source_file": "index.html",
+      "notes": "الصفحة الرئيسية - أول صفحة للموقع"
+    },
+    {
+      "id": 2,
+      "legacy_route": "/[slug]",
+      "app_router_path": "src/app/(marketing)/[slug]/page.tsx",
+      "type": "dynamic",
+      "priority": "high",
+      "has_apollo": false,
+      "source_files": [
+        "about.html",
+        "additional-resources.html",
+        "careers.html",
+        "commercial-agreement.html",
+        "customers.html",
+        "dpa.html",
+        "enterprise.html",
+        "news.html",
+        "privacy-policy.html",
+        "subprocessors.html",
+        "teams.html",
+        "terms-of-service.html"
+      ],
+      "total_pages": 12,
+      "notes": "صفحات ديناميكية عامة - 12 صفحة مختلفة"
+    },
+    {
+      "id": 3,
+      "legacy_route": "/pricing",
+      "app_router_path": "src/app/(marketing)/pricing/page.tsx",
+      "type": "static",
+      "priority": "high",
+      "has_apollo": true,
+      "source_file": "pricing.html",
+      "notes": "صفحة التسعير - تحتاج Apollo Client"
+    },
+    {
+      "id": 4,
+      "legacy_route": "/gallery",
+      "app_router_path": "src/app/(marketing)/gallery/page.tsx",
+      "type": "static",
+      "priority": "medium",
+      "has_apollo": false,
+      "source_file": "gallery.html",
+      "notes": "صفحة المعرض الرئيسية"
+    },
+    {
+      "id": 5,
+      "legacy_route": "/gallery/[usecasesSlug]",
+      "app_router_path": "src/app/(marketing)/gallery/[usecasesSlug]/page.tsx",
+      "type": "dynamic",
+      "priority": "medium",
+      "has_apollo": false,
+      "source_files": ["life.html", "work.html"],
+      "total_pages": 2,
+      "notes": "معرض use cases - مستوى أول"
+    },
+    {
+      "id": 6,
+      "legacy_route": "/gallery/[usecasesSlug]/[categoriesSlug]",
+      "app_router_path": "src/app/(marketing)/gallery/[usecasesSlug]/[categoriesSlug]/page.tsx",
+      "type": "dynamic",
+      "priority": "medium",
+      "has_apollo": false,
+      "total_pages": 20,
+      "notes": "معرض categories - مستوى ثاني - 20 فئة"
+    },
+    {
+      "id": 7,
+      "legacy_route": "/gallery/[usecasesSlug]/[categoriesSlug]/[detailSlug]",
+      "app_router_path": "src/app/(marketing)/gallery/[usecasesSlug]/[categoriesSlug]/[detailSlug]/page.tsx",
+      "type": "dynamic",
+      "priority": "low",
+      "has_apollo": false,
+      "total_pages": 24,
+      "notes": "معرض تفاصيل المشاريع - مستوى ثالث - 24 مشروع"
+    },
+    {
+      "id": 8,
+      "legacy_route": "/customers/[slug]",
+      "app_router_path": "src/app/(marketing)/customers/[slug]/page.tsx",
+      "type": "dynamic",
+      "priority": "medium",
+      "has_apollo": false,
+      "total_pages": 14,
+      "notes": "صفحات العملاء - 14 عميل"
+    },
+    {
+      "id": 9,
+      "legacy_route": "/news/[slug]",
+      "app_router_path": "src/app/(marketing)/news/[slug]/page.tsx",
+      "type": "dynamic",
+      "priority": "low",
+      "has_apollo": false,
+      "total_pages": 3,
+      "notes": "صفحات الأخبار - 3 أخبار"
+    },
+    {
+      "id": 10,
+      "legacy_route": "/products/[slug]",
+      "app_router_path": "src/app/(marketing)/products/[slug]/page.tsx",
+      "type": "dynamic",
+      "priority": "high",
+      "has_apollo": false,
+      "total_pages": 7,
+      "notes": "صفحات المنتجات - 7 منتجات"
+    },
+    {
+      "id": 11,
+      "legacy_route": "/usecases/[slug]",
+      "app_router_path": "src/app/(marketing)/usecases/[slug]/page.tsx",
+      "type": "dynamic",
+      "priority": "medium",
+      "has_apollo": false,
+      "total_pages": 8,
+      "notes": "صفحات حالات الاستخدام - 8 حالات"
+    },
+    {
+      "id": 12,
+      "legacy_route": "/help",
+      "app_router_path": "src/app/(marketing)/help/page.tsx",
+      "type": "static",
+      "priority": "medium",
+      "has_apollo": true,
+      "source_file": "help.html",
+      "notes": "صفحة المساعدة - تحتاج Apollo"
+    },
+    {
+      "id": 13,
+      "legacy_route": "/mobile",
+      "app_router_path": "src/app/(marketing)/mobile/page.tsx",
+      "type": "static",
+      "priority": "medium",
+      "has_apollo": true,
+      "source_file": "mobile.html",
+      "notes": "صفحة الموبايل - تحتاج Apollo"
+    },
+    {
+      "id": 14,
+      "legacy_route": "/brandkit",
+      "app_router_path": "src/app/(marketing)/brandkit/page.tsx",
+      "type": "static",
+      "priority": "low",
+      "has_apollo": true,
+      "source_file": "brandkit.html",
+      "notes": "صفحة Brand Kit - تحتاج Apollo"
+    },
+    {
+      "id": 15,
+      "legacy_route": "/templates/templates",
+      "app_router_path": "src/app/(marketing)/templates/page.tsx",
+      "type": "static",
+      "priority": "medium",
+      "has_apollo": true,
+      "source_file": "templates.html",
+      "notes": "صفحة القوالب - تحتاج Apollo"
+    },
+    {
+      "id": 16,
+      "legacy_route": "/auth",
+      "app_router_path": "src/app/(auth)/auth/page.tsx",
+      "type": "static",
+      "priority": "high",
+      "has_apollo": true,
+      "source_files": ["github.html", "login.html", "signup.html"],
+      "notes": "صفحات المصادقة - تحتاج Apollo - موجودة بالفعل في Boilerplate (login, signup)"
+    },
+    {
+      "id": 17,
+      "legacy_route": "/profile",
+      "app_router_path": "src/app/(app)/profile/page.tsx",
+      "type": "static",
+      "priority": "high",
+      "has_apollo": true,
+      "source_files": ["@Prodia.html", "@TheDrone7.html", "@deno.html"],
+      "total_pages": 3,
+      "notes": "صفحات الملفات الشخصية - تحتاج Apollo"
+    },
+    {
+      "id": 18,
+      "legacy_route": "/replView",
+      "app_router_path": "src/app/(app)/replView/page.tsx",
+      "type": "static",
+      "priority": "medium",
+      "has_apollo": true,
+      "source_files": ["LunchVote.html"],
+      "notes": "صفحة عرض Repl - تحتاج Apollo"
+    }
+  ],
+
+  "route_groups": {
+    "(marketing)": {
+      "description": "صفحات التسويق والمحتوى العام",
+      "routes": ["/", "/[slug]", "/pricing", "/gallery/*", "/customers/*", "/news/*", "/products/*", "/usecases/*", "/help", "/mobile", "/brandkit", "/templates"],
+      "total": 12,
+      "layout_features": ["Navigation", "Footer", "SEO", "Analytics"]
+    },
+    "(auth)": {
+      "description": "صفحات المصادقة",
+      "routes": ["/auth", "/login", "/signup"],
+      "total": 1,
+      "layout_features": ["Minimal Layout", "Firebase Auth"],
+      "note": "الصفحات موجودة بالفعل في Boilerplate"
+    },
+    "(app)": {
+      "description": "صفحات التطبيق (تحتاج مصادقة)",
+      "routes": ["/profile", "/replView", "/dashboard"],
+      "total": 3,
+      "layout_features": ["App Navigation", "Auth Required", "User Menu"]
+    }
+  },
+
+  "implementation_priority": {
+    "phase_1a": {
+      "name": "الصفحات الأساسية",
+      "priority": "critical",
+      "routes": [
+        "/ (home)",
+        "/pricing",
+        "/[slug] (about, terms, privacy)",
+        "/products/[slug]"
+      ],
+      "estimated_time": "4-6 ساعات"
+    },
+    "phase_1b": {
+      "name": "صفحات المحتوى",
+      "priority": "high",
+      "routes": [
+        "/gallery",
+        "/gallery/[usecasesSlug]",
+        "/customers/[slug]",
+        "/usecases/[slug]",
+        "/help",
+        "/mobile"
+      ],
+      "estimated_time": "4-6 ساعات"
+    },
+    "phase_1c": {
+      "name": "صفحات التطبيق والمعارض المتقدمة",
+      "priority": "medium",
+      "routes": [
+        "/profile",
+        "/replView",
+        "/gallery/[usecasesSlug]/[categoriesSlug]",
+        "/gallery/[usecasesSlug]/[categoriesSlug]/[detailSlug]",
+        "/brandkit",
+        "/templates"
+      ],
+      "estimated_time": "6-8 ساعات"
+    }
+  },
+
+  "provider_requirements": {
+    "apollo_pages": [
+      "/profile",
+      "/pricing",
+      "/brandkit",
+      "/templates",
+      "/replView",
+      "/auth",
+      "/help",
+      "/mobile"
+    ],
+    "analytics_all_pages": true,
+    "firebase_auth_required": [
+      "/profile",
+      "/replView",
+      "/dashboard"
+    ]
+  },
+
+  "file_structure_output": {
+    "description": "الهيكل النهائي المتوقع",
+    "structure": {
+      "src/app/": {
+        "layout.tsx": "Root layout - Providers, Fonts, Analytics",
+        "page.tsx": "Redirect to (marketing)",
+        "(marketing)/": {
+          "layout.tsx": "Marketing layout - Nav, Footer",
+          "page.tsx": "Home page",
+          "[slug]/page.tsx": "Dynamic pages (about, terms, etc)",
+          "pricing/page.tsx": "Pricing page",
+          "gallery/": {
+            "page.tsx": "Gallery home",
+            "[usecasesSlug]/": {
+              "page.tsx": "Use cases",
+              "[categoriesSlug]/": {
+                "page.tsx": "Categories",
+                "[detailSlug]/page.tsx": "Project details"
+              }
+            }
+          },
+          "customers/[slug]/page.tsx": "Customer pages",
+          "news/[slug]/page.tsx": "News pages",
+          "products/[slug]/page.tsx": "Product pages",
+          "usecases/[slug]/page.tsx": "Use case pages",
+          "help/page.tsx": "Help page",
+          "mobile/page.tsx": "Mobile page",
+          "brandkit/page.tsx": "Brand kit",
+          "templates/page.tsx": "Templates"
+        },
+        "(auth)/": {
+          "layout.tsx": "Auth layout",
+          "login/page.tsx": "Login (موجود)",
+          "signup/page.tsx": "Signup (موجود)",
+          "auth/page.tsx": "Auth page"
+        },
+        "(app)/": {
+          "layout.tsx": "App layout - Auth required",
+          "dashboard/page.tsx": "Dashboard (موجود)",
+          "profile/page.tsx": "Profile page",
+          "replView/page.tsx": "Repl viewer"
+        }
+      }
+    }
+  },
+
+  "notes": {
+    "existing_pages": "الصفحات الموجودة من Boilerplate: login, signup, dashboard",
+    "total_new_pages": "15 صفحة جديدة + 3 layouts",
+    "apollo_integration": "8 صفحات تحتاج Apollo Client",
+    "dynamic_routes": "8 dynamic routes مع عشرات الصفحات الفرعية"
+  }
+}

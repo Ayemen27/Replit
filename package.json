@@ -1,0 +1,21 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "## 🌟 نظرة عامة نظام خلفي كامل لموقع Replit مبني باستخدام Flask، يوفر APIs شاملة للمصادقة، المشاريع، والنماذج.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^4.0.9",
+    "@datadog/browser-rum": "^6.24.0",
+    "ftp": "^0.3.10",
+    "graphql": "^16.12.0"
+  }
+}
