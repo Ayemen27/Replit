@@ -18,6 +18,10 @@ author = "agent"
 task = "workflow.run"
 args = "rebuild-dev"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "flask-backend"
+
 [[workflows.workflow]]
 name = "Next.js Dev"
 author = 44785901
@@ -48,6 +52,18 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "flask-backend"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
+waitForPort = 8000
+
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[ports]]
 localPort = 3001
 externalPort = 3001
@@ -71,6 +87,10 @@ externalPort = 3003
 [[ports]]
 localPort = 45237
 externalPort = 3002
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
 
 [deployment]
 deploymentTarget = "autoscale"

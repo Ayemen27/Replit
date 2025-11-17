@@ -4,7 +4,7 @@ export class RestDataSource {
   protected retryDelay: number;
 
   constructor(baseURL?: string) {
-    this.baseURL = baseURL || process.env.FLASK_API_URL || 'http://localhost:5000';
+    this.baseURL = baseURL || process.env.FLASK_API_URL || 'http://localhost:8000';
     this.maxRetries = 3;
     this.retryDelay = 1000;
   }

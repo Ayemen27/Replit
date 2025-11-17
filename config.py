@@ -5,12 +5,14 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-CHANGE-ME-IN-PRODUCTION')
     
     DATABASE_URL = os.environ.get('DATABASE_URL')
-    if DATABASE_URL and not DATABASE_URL.startswith('postgresql://neon.tech'):
+    if DATABASE_URL:
         if DATABASE_URL.startswith('postgres://'):
             DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
         SQLALCHEMY_DATABASE_URI = DATABASE_URL
+        print(f"✅ استخدام PostgreSQL: {DATABASE_URL.split('@')[1] if '@' in DATABASE_URL else 'database'}")
     else:
         SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/replit_website.db'
+        print("⚠️ استخدام SQLite - DATABASE_URL غير موجود")
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {
