@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Replit - Build software faster",
@@ -11,8 +12,12 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="marketing-layout">
-      {children}
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }
