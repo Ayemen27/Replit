@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.30.1",
     "@apollo/client": "^4.0.9",
     "@datadog/browser-rum": "^6.24.0",
+    "@segment/analytics-next": "^1.81.1",
     "ftp": "^0.3.10",
     "graphql": "^16.12.0"
   }

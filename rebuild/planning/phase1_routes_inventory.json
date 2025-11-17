@@ -1,0 +1,59 @@
+{
+  "phase": 1,
+  "task_id": "1.1",
+  "title": "جرد ومطابقة المسارات",
+  "date": "2025-11-17",
+  "comparison": {
+    "required_from_pages_structure": {
+      "static_routes": [
+        "/",
+        "/profile",
+        "/brandkit",
+        "/gallery",
+        "/auth",
+        "/help",
+        "/mobile",
+        "/pricing",
+        "/templates",
+        "/replView"
+      ],
+      "dynamic_routes": [
+        "/[slug]",
+        "/customers/[slug]",
+        "/gallery/[usecasesSlug]",
+        "/gallery/[usecasesSlug]/[categoriesSlug]",
+        "/gallery/[usecasesSlug]/[categoriesSlug]/[detailSlug]",
+        "/news/[slug]",
+        "/products/[slug]",
+        "/usecases/[slug]"
+      ],
+      "total": 18
+    },
+    "existing_in_source": {
+      "routes_found": [
+        "(marketing)/page.tsx -> /",
+        "(marketing)/[slug]/page.tsx -> /[slug]",
+        "(marketing)/brandkit/page.tsx -> /brandkit",
+        "(marketing)/customers/[slug]/page.tsx -> /customers/[slug]",
+        "(marketing)/gallery/page.tsx -> /gallery",
+        "(marketing)/gallery/[usecasesSlug]/page.tsx",
+        "(marketing)/gallery/[usecasesSlug]/[categoriesSlug]/page.tsx",
+        "(marketing)/gallery/[usecasesSlug]/[categoriesSlug]/[detailSlug]/page.tsx",
+        "(marketing)/help/page.tsx -> /help",
+        "(marketing)/mobile/page.tsx -> /mobile",
+        "(marketing)/news/[slug]/page.tsx",
+        "(marketing)/pricing/page.tsx -> /pricing",
+        "(marketing)/products/[slug]/page.tsx",
+        "(marketing)/templates/page.tsx -> /templates",
+        "(marketing)/usecases/[slug]/page.tsx",
+        "(app)/profile/page.tsx -> /profile",
+        "(app)/replView/page.tsx -> /replView",
+        "(auth)/auth/page.tsx -> /auth"
+      ],
+      "total": 18
+    },
+    "status": "all_routes_exist",
+    "missing_routes": [],
+    "next_action": "فحص محتوى الصفحات - معظمها يعرض Boilerplate UI بدلاً من HTML الأصلي"
+  }
+}

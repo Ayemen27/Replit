@@ -7,7 +7,7 @@ channel = "stable-25_05"
 packages = ["cargo", "libiconv", "rustc"]
 
 [workflows]
-runButton = "Run Next.js"
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
@@ -27,7 +27,7 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python3 main.py"
+args = "cd rebuild/source && npm run dev"
 waitForPort = 5000
 
 [[workflows.workflow]]
