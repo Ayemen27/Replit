@@ -22,78 +22,32 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
+      name: 'sections',
+      title: 'Page Sections',
       type: 'array',
+      description: 'Build your page by adding sections',
       of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H1', value: 'h1' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
-            { title: 'Quote', value: 'blockquote' },
-          ],
-          lists: [
-            { title: 'Bullet', value: 'bullet' },
-            { title: 'Numbered', value: 'number' },
-          ],
-          marks: {
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Code', value: 'code' },
-              { title: 'Underline', value: 'underline' },
-              { title: 'Strike', value: 'strike-through' },
-            ],
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'URL',
-                    validation: (Rule) =>
-                      Rule.uri({
-                        scheme: ['http', 'https', 'mailto', 'tel', '/'],
-                        allowRelative: true,
-                      }),
-                  },
-                  {
-                    name: 'openInNewTab',
-                    type: 'boolean',
-                    title: 'Open in new tab',
-                    initialValue: false,
-                  },
-                ],
-              },
-            ],
-          },
-        },
-        {
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative Text',
-              validation: (Rule) => Rule.required(),
-            },
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Caption',
-            },
-          ],
-        },
+        { type: 'heroSection' },
+        { type: 'standardTextSection' },
+        { type: 'valuePropGridSection' },
+        { type: 'cardCarouselSection' },
+        { type: 'alternatingEditorialSection' },
+        { type: 'statsSection' },
+        { type: 'pricingTableSection' },
+        { type: 'faqSection' },
+        { type: 'testimonialSection' },
+        { type: 'ctaBandSection' },
+        { type: 'teamGridSection' },
+        { type: 'logoGridSection' },
+        { type: 'metricsStripSection' },
+        { type: 'formSection' },
+        { type: 'knowledgeBaseSearchSection' },
+        { type: 'galleryFilterGridSection' },
+        { type: 'articleHeaderSection' },
+        { type: 'relatedContentSection' },
+        { type: 'tableOfContentsSection' },
+        { type: 'codeEmbedSection' },
+        { type: 'commentsSection' },
       ],
     }),
     defineField({

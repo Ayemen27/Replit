@@ -7,6 +7,10 @@ import customerStory from './customerStory'
 import productPage from './productPage'
 import heroSection from './heroSection'
 import page from './page'
+import siteSettings from './siteSettings'
+import navigationMenu from './navigationMenu'
+import footer from './footer'
+import objectSchemas from './objects'
 
 const schemas: SchemaTypeDefinition[] = [
   project,
@@ -17,6 +21,10 @@ const schemas: SchemaTypeDefinition[] = [
   productPage,
   heroSection,
   page,
+  siteSettings,
+  navigationMenu,
+  footer,
+  ...objectSchemas,
 ]
 
 export default schemas
