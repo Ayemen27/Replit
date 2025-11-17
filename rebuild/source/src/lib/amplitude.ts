@@ -2,29 +2,46 @@ import * as amplitude from '@amplitude/analytics-browser';
 
 export const AMPLITUDE_API_KEY = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '';
 
-export function initialize(apiKey: string) {
-  if (typeof window === 'undefined') return;
+let amplitudeInitialized = false;
+let amplitudeInitPromise: Promise<void> | null = null;
+
+export async function initialize(apiKey: string): Promise<boolean> {
+  if (typeof window === 'undefined') return false;
   if (!apiKey) {
     console.warn('Amplitude API Key not found');
-    return;
+    return false;
   }
 
-  try {
-    amplitude.init(apiKey, undefined, {
-      defaultTracking: {
-        sessions: true,
-        pageViews: true,
-        formInteractions: true,
-        fileDownloads: true,
-      },
-    });
-  } catch (error) {
-    console.error('Failed to initialize Amplitude:', error);
+  if (amplitudeInitialized) return true;
+  if (amplitudeInitPromise) {
+    await amplitudeInitPromise;
+    return amplitudeInitialized;
   }
+
+  amplitudeInitPromise = (async () => {
+    try {
+      amplitude.init(apiKey, undefined, {
+        defaultTracking: {
+          sessions: true,
+          pageViews: true,
+          formInteractions: true,
+          fileDownloads: true,
+        },
+      });
+      amplitudeInitialized = true;
+    } catch (error) {
+      console.error('Failed to initialize Amplitude:', error);
+      amplitudeInitPromise = null;
+      throw error;
+    }
+  })();
+
+  await amplitudeInitPromise;
+  return amplitudeInitialized;
 }
 
 export function trackEvent(eventName: string, eventProperties?: Record<string, any>) {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || !amplitudeInitialized) return;
 
   try {
     amplitude.track(eventName, eventProperties);

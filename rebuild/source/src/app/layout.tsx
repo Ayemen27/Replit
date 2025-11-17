@@ -17,7 +17,37 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Replit - Build software faster",
-  description: "The collaborative browser-based IDE",
+  description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
+  keywords: ["replit", "IDE", "coding", "programming", "collaborative", "online IDE", "code editor"],
+  authors: [{ name: "Replit" }],
+  creator: "Replit",
+  publisher: "Replit",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://replit.com'),
+  openGraph: {
+    title: "Replit - Build software faster",
+    description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
+    url: '/',
+    siteName: 'Replit',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Replit - Build software faster",
+    description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
+    creator: '@replit',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -30,16 +60,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
         {gtmId && (
           <Script
-            id="gtm-script"
-            strategy="afterInteractive"
+            id="gtm-init"
+            strategy="beforeInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                (function(w,d,s,l,i){
+                  w[l]=w[l]||[];
+                  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+                  var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                  j.async=true;
+                  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                  f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','${gtmId}');
               `,
             }}
