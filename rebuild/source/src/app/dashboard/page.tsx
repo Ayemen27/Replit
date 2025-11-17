@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Flame } from 'lucide-react'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 
@@ -136,7 +135,7 @@ export default function Dashboard() {
       <footer className="border-t border-[#FFE5E5] w-full">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between py-8 space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4">
-            <Flame className="h-6 w-6 text-[#FF6F61]" />
+            <span className="text-2xl">🔥</span>
             <span className="text-sm font-medium">© 2024 SaaSBoiler. All rights reserved.</span>
           </div>
           <nav className="flex items-center space-x-4">
