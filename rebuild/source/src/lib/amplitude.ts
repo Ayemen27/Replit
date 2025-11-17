@@ -8,8 +8,8 @@ let amplitudeInitPromise: Promise<void> | null = null;
 
 export async function initialize(apiKey: string): Promise<boolean> {
   if (typeof window === 'undefined') return false;
-  if (!apiKey) {
-    console.warn('Amplitude API Key not found');
+  if (!apiKey || apiKey.includes('placeholder')) {
+    console.warn('Amplitude API Key not found or is a placeholder - skipping initialization');
     return false;
   }
 
@@ -54,7 +54,7 @@ export async function waitUntilReady(): Promise<void> {
     return Promise.resolve();
   }
 
-  if (!AMPLITUDE_API_KEY) {
+  if (!AMPLITUDE_API_KEY || AMPLITUDE_API_KEY.includes('placeholder')) {
     return Promise.resolve();
   }
 

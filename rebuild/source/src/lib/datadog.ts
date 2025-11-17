@@ -8,8 +8,8 @@ export function initializeDatadog() {
   const clientToken = process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN;
   const applicationId = process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID;
 
-  if (!clientToken || !applicationId) {
-    console.warn('Datadog credentials not found');
+  if (!clientToken || !applicationId || clientToken.includes('placeholder') || applicationId.includes('placeholder')) {
+    console.warn('Datadog credentials not found or are placeholders - skipping initialization');
     return;
   }
 
@@ -56,7 +56,7 @@ export async function waitUntilReady(): Promise<void> {
   const clientToken = process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN;
   const applicationId = process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID;
 
-  if (!clientToken || !applicationId) {
+  if (!clientToken || !applicationId || clientToken.includes('placeholder') || applicationId.includes('placeholder')) {
     return Promise.resolve();
   }
 
