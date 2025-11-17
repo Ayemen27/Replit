@@ -1,22 +1,15 @@
-import { DataSources } from '../datasources';
-
-interface Context {
-  dataSources: DataSources;
-  token?: string;
-}
+import { GraphQLContext, requireAuth } from '../../auth/context';
 
 export const userResolvers = {
   Query: {
     me: async (
       _: any,
       __: any,
-      { dataSources, token }: Context
+      context: GraphQLContext
     ) => {
-      if (!token) {
-        throw new Error('Authentication required');
-      }
+      const currentUser = requireAuth(context);
 
-      return dataSources.users.me(token);
+      return context.dataSources.users.me(currentUser.uid);
     },
   },
 
@@ -24,7 +17,7 @@ export const userResolvers = {
     signup: async (
       _: any,
       { input }: { input: any },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       return dataSources.users.signup(input);
     },
@@ -32,7 +25,7 @@ export const userResolvers = {
     login: async (
       _: any,
       { input }: { input: any },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       return dataSources.users.login(input);
     },

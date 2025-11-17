@@ -153,14 +153,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      await fetch('/api/auth/session', {
+      const response = await fetch('/api/auth/session', {
         method: 'DELETE',
       });
-    } catch (error) {
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Session deletion failed:', errorData.error || 'Unknown error');
+      }
+    } catch (error: any) {
       console.error('Error deleting session:', error);
     }
 
-    return await signOut(auth);
+    await signOut(auth);
   };
 
   /**

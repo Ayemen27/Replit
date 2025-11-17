@@ -1,16 +1,11 @@
-import { DataSources } from '../datasources';
-
-interface Context {
-  dataSources: DataSources;
-  token?: string;
-}
+import { GraphQLContext, requireAuth } from '../../auth/context';
 
 export const projectResolvers = {
   Query: {
     projects: async (
       _: any,
       { featured, category, page = 1, perPage = 12 }: { featured?: boolean; category?: string; page?: number; perPage?: number },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       const response = await dataSources.projects.getProjects(featured, category, page, perPage);
       
@@ -32,7 +27,7 @@ export const projectResolvers = {
     project: async (
       _: any,
       { slug }: { slug: string },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       return dataSources.projects.getProject(slug);
     },
@@ -40,7 +35,7 @@ export const projectResolvers = {
     featuredProjects: async (
       _: any,
       { perPage = 6 }: { perPage?: number },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       const response = await dataSources.projects.getProjects(true, undefined, 1, perPage);
       return response.projects;
@@ -51,13 +46,11 @@ export const projectResolvers = {
     createProject: async (
       _: any,
       { input }: { input: any },
-      { dataSources, token }: Context
+      context: GraphQLContext
     ) => {
-      if (!token) {
-        throw new Error('Authentication required');
-      }
+      const currentUser = requireAuth(context);
 
-      return dataSources.projects.createProject(input, token);
+      return context.dataSources.projects.createProject(input, currentUser.uid);
     },
   },
 };

@@ -1,16 +1,11 @@
-import { DataSources } from '../datasources';
-
-interface Context {
-  dataSources: DataSources;
-  token?: string;
-}
+import { GraphQLContext } from '../../auth/context';
 
 export const formResolvers = {
   Mutation: {
     submitForm: async (
       _: any,
       { input }: { input: any },
-      { dataSources }: Context
+      { dataSources }: GraphQLContext
     ) => {
       return dataSources.forms.submitForm(input);
     },
