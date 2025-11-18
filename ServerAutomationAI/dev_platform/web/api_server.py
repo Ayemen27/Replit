@@ -22,6 +22,8 @@ from dev_platform.core.secrets_manager import get_secrets_manager
 from dev_platform.web.auth import init_auth_manager, get_auth_manager
 from dev_platform.web.middleware import RateLimitMiddleware, CSRFProtectionMiddleware
 from dev_platform.web.database import SessionLocal, init_db
+from dev_platform.services import BridgeGitService
+from dev_platform.services.bridge_deployment_service import BridgeDeploymentService
 # Import Pydantic models for request validation
 from pydantic import BaseModel, Field
 
@@ -145,6 +147,9 @@ def format_relative_time(value):
         return 'غير محدد'
 
 app.mount("/static", StaticFiles(directory="dev_platform/web/static"), name="static")
+
+from dev_platform.web.routes import bridge_router
+app.include_router(bridge_router)
 
 
 # Initialize authentication on startup
@@ -623,6 +628,271 @@ async def start_workflow(
         logger.error(f"Error starting workflow: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# ==================== Bridge Tool API Endpoints ====================
+
+# Global Git service instance
+_git_service = None
+
+def get_git_service():
+    """Get or create Git service instance"""
+    global _git_service
+    if _git_service is None:
+        _git_service = BridgeGitService()
+    return _git_service
+
+
+@app.get("/api/bridge/git/status")
+async def get_git_status(
+    git_service: BridgeGitService = Depends(get_git_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """Get current Git status including staged/unstaged files"""
+    try:
+        status = git_service.get_status()
+        
+        if not status:
+            return {
+                "available": False,
+                "message": "Git repository not initialized or not available"
+            }
+        
+        return {
+            "available": True,
+            "branch": status.branch,
+            "commit": status.commit_short,
+            "commit_full": status.commit,
+            "author": status.author,
+            "message": status.message,
+            "timestamp": status.timestamp.isoformat(),
+            "is_clean": status.is_clean,
+            "ahead": status.ahead,
+            "behind": status.behind,
+            "staged_files": [
+                {
+                    "file_path": f.file_path,
+                    "change_type": f.change_type,
+                    "additions": f.additions,
+                    "deletions": f.deletions
+                }
+                for f in status.staged_files
+            ],
+            "unstaged_files": [
+                {
+                    "file_path": f.file_path,
+                    "change_type": f.change_type,
+                    "additions": f.additions,
+                    "deletions": f.deletions
+                }
+                for f in status.unstaged_files
+            ],
+            "untracked_files": status.untracked_files,
+            "stats": {
+                "staged_count": len(status.staged_files),
+                "unstaged_count": len(status.unstaged_files),
+                "untracked_count": len(status.untracked_files),
+                "total_changes": len(status.staged_files) + len(status.unstaged_files) + len(status.untracked_files)
+            }
+        }
+    except Exception as e:
+        logger.error(f"Error getting Git status: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bridge/git/history")
+async def get_git_history(
+    limit: int = 10,
+    branch: Optional[str] = None,
+    git_service: BridgeGitService = Depends(get_git_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """Get Git commit history"""
+    try:
+        commits = git_service.get_commit_history(limit=limit, branch=branch)
+        
+        return {
+            "commits": commits,
+            "count": len(commits)
+        }
+    except Exception as e:
+        logger.error(f"Error getting Git history: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/bridge/git/partial", response_class=HTMLResponse)
+async def git_status_partial(
+    request: Request,
+    git_service: BridgeGitService = Depends(get_git_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """Git status HTML fragment for HTMX polling"""
+    try:
+        status = git_service.get_status()
+        
+        if not status:
+            return templates.TemplateResponse(
+                "partials/git_status.html",
+                {
+                    "request": request,
+                    "git_available": False
+                }
+            )
+        
+        return templates.TemplateResponse(
+            "partials/git_status.html",
+            {
+                "request": request,
+                "git_available": True,
+                "status": status,
+                "staged_count": len(status.staged_files),
+                "unstaged_count": len(status.unstaged_files),
+                "untracked_count": len(status.untracked_files)
+            }
+        )
+    except Exception as e:
+        logger.error(f"Error rendering Git status partial: {e}", exc_info=True)
+        return HTMLResponse(
+            content=f'<div class="alert alert-danger">خطأ في تحميل حالة Git: {str(e)}</div>',
+            status_code=500
+        )
+
+
+# ---- Deployment API Endpoints ----
+
+_deployment_service = None
+
+def get_deployment_service():
+    """Get or create Deployment service instance"""
+    global _deployment_service
+    if _deployment_service is None:
+        _deployment_service = BridgeDeploymentService()
+    return _deployment_service
+
+
+class DeploymentRequest(BaseModel):
+    tag: str = Field(..., description="Release tag (e.g., v1.0.0)")
+    message: str = Field(..., description="Deployment message")
+
+
+@app.post("/api/bridge/deployment/deploy")
+async def deploy_sse(
+    deployment_request: DeploymentRequest,
+    deployment_service: BridgeDeploymentService = Depends(get_deployment_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """
+    Deploy with Server-Sent Events for real-time progress
+    
+    Returns SSE stream with deployment progress updates
+    """
+    from fastapi.responses import StreamingResponse
+    import json
+    
+    async def event_stream():
+        """Generate SSE events"""
+        try:
+            async for progress in deployment_service.deploy(
+                tag=deployment_request.tag,
+                message=deployment_request.message,
+                deployed_by=current_user.get("email", "unknown")
+            ):
+                # Format as SSE
+                data = {
+                    "step": progress.step,
+                    "progress": progress.progress,
+                    "message": progress.message,
+                    "status": progress.status,
+                    "details": progress.details
+                }
+                yield f"data: {json.dumps(data, ensure_ascii=False)}\n\n"
+                
+                # If deployment completed or failed, close connection
+                if progress.status in ("success", "failed"):
+                    break
+        except Exception as e:
+            # Send error event
+            error_data = {
+                "step": "error",
+                "progress": 0,
+                "message": f"خطأ: {str(e)}",
+                "status": "failed",
+                "details": str(e)
+            }
+            yield f"data: {json.dumps(error_data, ensure_ascii=False)}\n\n"
+    
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"  # Disable nginx buffering
+        }
+    )
+
+
+@app.get("/api/bridge/deployment/releases")
+async def get_releases(
+    limit: int = 20,
+    deployment_service: BridgeDeploymentService = Depends(get_deployment_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """Get list of all releases"""
+    db = SessionLocal()
+    try:
+        releases = deployment_service.get_releases(db, limit=limit)
+        
+        return {
+            "releases": [
+                {
+                    "tag": r.tag,
+                    "commit_hash": r.commit_hash,
+                    "branch": r.branch,
+                    "message": r.message,
+                    "created_by": r.created_by,
+                    "created_at": r.created_at.isoformat() if r.created_at else None,
+                    "is_active": r.is_active
+                }
+                for r in releases
+            ],
+            "count": len(releases)
+        }
+    finally:
+        db.close()
+
+
+@app.get("/api/bridge/deployment/history")
+async def get_deployment_history(
+    limit: int = 50,
+    deployment_service: BridgeDeploymentService = Depends(get_deployment_service),
+    current_user: Dict = Depends(get_current_user)
+):
+    """Get deployment history"""
+    db = SessionLocal()
+    try:
+        deployments = deployment_service.get_deployment_history(db, limit=limit)
+        
+        return {
+            "deployments": [
+                {
+                    "id": d.id,
+                    "tag": d.tag,
+                    "commit_hash": d.commit_hash,
+                    "branch": d.branch,
+                    "deployed_by": d.deployed_by,
+                    "message": d.message,
+                    "status": d.status,
+                    "deployed_at": d.deployed_at.isoformat() if d.deployed_at else None
+                }
+                for d in deployments
+            ],
+            "count": len(deployments)
+        }
+    finally:
+        db.close()
+
+
+# ==================== End Bridge Tool API Endpoints ====================
 
 def start_server(host: str = "0.0.0.0", port: int = 5000):
     """Start the web dashboard server"""

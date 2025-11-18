@@ -1,0 +1,19 @@
+{% if commits and commits|length > 0 %}
+
+{% for commit in commits %}
+<div class="commit-item">
+    <div class="commit-message">• {{ commit.message }}</div>
+    <div class="commit-meta">
+        <i class="bi bi-person-circle"></i>
+        <span>{{ commit.author }}</span>
+        <span>{{ commit.relative_time }}</span>
+    </div>
+</div>
+{% endfor %}
+
+{% else %}
+<div style="text-align: center; padding: 20px; color: #57606a; font-size: 13px;">
+    <i class="bi bi-clock-history"></i>
+    No commit history
+</div>
+{% endif %}

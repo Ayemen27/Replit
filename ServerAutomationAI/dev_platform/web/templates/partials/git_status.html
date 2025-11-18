@@ -1,0 +1,189 @@
+{% if not git_available %}
+<div class="card" style="background: var(--surface-variant); border-radius: var(--radius-lg); padding: var(--space-4);">
+    <div class="text-center text-muted">
+        <i class="bi bi-git" style="font-size: 3rem; opacity: 0.3;"></i>
+        <p class="mt-3 mb-0">مستودع Git غير متوفر</p>
+        <small>قد لا يكون هذا المشروع مرتبطاً بـ Git</small>
+    </div>
+</div>
+{% else %}
+<div class="git-status">
+    <!-- Branch & Commit Info -->
+    <div class="git-status__header mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <span class="badge bg-primary">
+                    <i class="bi bi-git"></i>
+                    {{ status.branch }}
+                </span>
+                <span class="text-muted ms-2" style="font-family: monospace; font-size: 0.875rem;">
+                    {{ status.commit_short }}
+                </span>
+            </div>
+            
+            {% if status.ahead > 0 or status.behind > 0 %}
+            <div class="git-sync-status">
+                {% if status.ahead > 0 %}
+                <span class="badge bg-success" title="عدد الـ commits المحلية">
+                    <i class="bi bi-arrow-up"></i> {{ status.ahead }}
+                </span>
+                {% endif %}
+                {% if status.behind > 0 %}
+                <span class="badge bg-warning" title="عدد الـ commits البعيدة">
+                    <i class="bi bi-arrow-down"></i> {{ status.behind }}
+                </span>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="mt-2" style="font-size: 0.875rem;">
+            <strong>{{ status.author }}</strong>
+            <span class="text-muted">—</span>
+            <span class="text-muted">{{ status.message }}</span>
+        </div>
+    </div>
+
+    <!-- Status Summary -->
+    <div class="git-status__summary mb-3">
+        {% if status.is_clean %}
+        <div class="alert alert-success py-2 mb-0">
+            <i class="bi bi-check-circle"></i>
+            مستودع نظيف - لا توجد تغييرات
+        </div>
+        {% else %}
+        <div class="d-flex gap-2">
+            {% if staged_count > 0 %}
+            <span class="badge bg-success">
+                <i class="bi bi-plus-circle"></i>
+                {{ staged_count }} معدّ للحفظ
+            </span>
+            {% endif %}
+            
+            {% if unstaged_count > 0 %}
+            <span class="badge bg-warning">
+                <i class="bi bi-pencil"></i>
+                {{ unstaged_count }} معدّل
+            </span>
+            {% endif %}
+            
+            {% if untracked_count > 0 %}
+            <span class="badge bg-secondary">
+                <i class="bi bi-file-earmark-plus"></i>
+                {{ untracked_count }} جديد
+            </span>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- File Changes -->
+    {% if not status.is_clean %}
+    <div class="git-status__changes">
+        <!-- Staged Files -->
+        {% if status.staged_files %}
+        <div class="file-group mb-3">
+            <h6 class="text-success mb-2">
+                <i class="bi bi-plus-circle"></i>
+                ملفات معدّة للحفظ ({{ staged_count }})
+            </h6>
+            <div class="file-list">
+                {% for file in status.staged_files %}
+                <div class="file-item" style="padding: var(--space-2); background: var(--surface); border-radius: var(--radius-md); margin-bottom: var(--space-1);">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge badge-sm 
+                                {% if file.change_type == 'added' %}bg-success
+                                {% elif file.change_type == 'modified' %}bg-primary
+                                {% elif file.change_type == 'deleted' %}bg-danger
+                                {% elif file.change_type == 'renamed' %}bg-info
+                                {% endif %}">
+                                {% if file.change_type == 'added' %}+
+                                {% elif file.change_type == 'modified' %}M
+                                {% elif file.change_type == 'deleted' %}D
+                                {% elif file.change_type == 'renamed' %}R
+                                {% endif %}
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.875rem;">{{ file.file_path }}</span>
+                        </div>
+                        {% if file.additions > 0 or file.deletions > 0 %}
+                        <div class="file-stats" style="font-size: 0.75rem;">
+                            {% if file.additions > 0 %}
+                            <span class="text-success">+{{ file.additions }}</span>
+                            {% endif %}
+                            {% if file.deletions > 0 %}
+                            <span class="text-danger">-{{ file.deletions }}</span>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Unstaged Files -->
+        {% if status.unstaged_files %}
+        <div class="file-group mb-3">
+            <h6 class="text-warning mb-2">
+                <i class="bi bi-pencil"></i>
+                ملفات معدّلة غير معدّة ({{ unstaged_count }})
+            </h6>
+            <div class="file-list">
+                {% for file in status.unstaged_files %}
+                <div class="file-item" style="padding: var(--space-2); background: var(--surface); border-radius: var(--radius-md); margin-bottom: var(--space-1);">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge badge-sm 
+                                {% if file.change_type == 'added' %}bg-success
+                                {% elif file.change_type == 'modified' %}bg-warning
+                                {% elif file.change_type == 'deleted' %}bg-danger
+                                {% endif %}">
+                                {% if file.change_type == 'added' %}+
+                                {% elif file.change_type == 'modified' %}M
+                                {% elif file.change_type == 'deleted' %}D
+                                {% endif %}
+                            </span>
+                            <span style="font-family: monospace; font-size: 0.875rem;">{{ file.file_path }}</span>
+                        </div>
+                        {% if file.additions > 0 or file.deletions > 0 %}
+                        <div class="file-stats" style="font-size: 0.75rem;">
+                            {% if file.additions > 0 %}
+                            <span class="text-success">+{{ file.additions }}</span>
+                            {% endif %}
+                            {% if file.deletions > 0 %}
+                            <span class="text-danger">-{{ file.deletions }}</span>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Untracked Files -->
+        {% if status.untracked_files %}
+        <div class="file-group mb-3">
+            <h6 class="text-secondary mb-2">
+                <i class="bi bi-file-earmark-plus"></i>
+                ملفات جديدة غير متتبعة ({{ untracked_count }})
+            </h6>
+            <div class="file-list">
+                {% for file_path in status.untracked_files %}
+                <div class="file-item" style="padding: var(--space-2); background: var(--surface); border-radius: var(--radius-md); margin-bottom: var(--space-1);">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge badge-sm bg-secondary">?</span>
+                        <span style="font-family: monospace; font-size: 0.875rem;">{{ file_path }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endif %}

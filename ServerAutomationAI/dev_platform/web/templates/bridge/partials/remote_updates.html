@@ -1,0 +1,32 @@
+{% if ahead > 0 or behind > 0 %}
+<div class="remote-box">
+    <div class="remote-title">Remote Updates</div>
+    
+    {% if remote_url %}
+    <div class="remote-info">
+        <i class="bi bi-github"></i>
+        {{ remote_url.split('/')[-2] }}/{{ remote_url.split('/')[-1].replace('.git', '') if remote_url else 'repository' }}
+    </div>
+    
+    <div style="font-size: 12px; color: #57606a; margin-bottom: 8px;">
+        origin/{{ branch }} • upstream
+        <span style="margin-right: 12px;">last fetched {{ last_fetch }}</span>
+        <button style="background: none; border: none; color: #0969da; cursor: pointer; padding: 0; font-size: 12px;">
+            <i class="bi bi-arrow-clockwise"></i> Fetch
+        </button>
+    </div>
+    {% endif %}
+    
+    {% if ahead > 0 or behind > 0 %}
+    <div class="alert-info">
+        {% if ahead > 0 %}
+        {{ ahead }} commit{{ 's' if ahead != 1 else '' }} to push
+        {% endif %}
+        {% if ahead > 0 and behind > 0 %} • {% endif %}
+        {% if behind > 0 %}
+        {{ behind }} commit{{ 's' if behind != 1 else '' }} to pull
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endif %}

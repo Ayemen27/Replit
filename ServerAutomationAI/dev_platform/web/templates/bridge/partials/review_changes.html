@@ -1,0 +1,66 @@
+{% if files and files|length > 0 %}
+<div class="review-changes">
+    <div class="review-header">
+        <span>Review Changes</span>
+        <button style="background: none; border: none; cursor: pointer;">
+            <i class="bi bi-chevron-up"></i>
+        </button>
+    </div>
+    
+    <div style="padding: 12px 16px; background: #f6f8fa; border-bottom: 1px solid #d0d7de; font-size: 13px; display: flex; justify-content: space-between; align-items: center;">
+        <span>{{ files|length }} changed file{{ 's' if files|length != 1 else '' }}</span>
+        <div class="review-header-actions">
+            <button>
+                <i class="bi bi-x-circle"></i> Discard All
+            </button>
+            |
+            <button>
+                <i class="bi bi-plus-circle"></i> Stage All
+            </button>
+        </div>
+    </div>
+    
+    <div class="file-list">
+        {% for file in files %}
+        <div class="file-item">
+            <div class="file-name">
+                <i class="bi bi-file-earmark"></i>
+                <span>{{ file.path or file.file_path }}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                {% if file.change_type == 'deleted' %}
+                <span class="badge-deleted">Deleted</span>
+                {% elif file.change_type == 'added' or file.change_type == 'new' %}
+                <span class="badge-added">Added</span>
+                {% else %}
+                <span class="badge-modified">Modified</span>
+                {% endif %}
+                
+                <div class="file-actions">
+                    <button title="Revert">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button title="Stage">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="commit-note">
+    Committing will automatically stage your changes.
+</div>
+
+<button class="btn-git btn-git-primary" style="width: 100%;">
+    <i class="bi bi-check-lg"></i>
+    Stage and commit all changes
+</button>
+
+{% else %}
+<div style="text-align: center; padding: 20px; color: #57606a; font-size: 14px;">
+    There are no changes to commit.
+</div>
+{% endif %}
