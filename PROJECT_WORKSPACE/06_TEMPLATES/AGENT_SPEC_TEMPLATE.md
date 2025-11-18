@@ -273,8 +273,8 @@ curl -X POST http://localhost:8000/agents/<agent-id>/execute \
 
 ## 9. الوثائق ذات الصلة (Related Documentation)
 
-- [System Overview](../../01_ARCHITECTURE/SYSTEM_OVERVIEW.md)
-- [Security Policy](../../04_SECURITY/SECURITY_POLICY.md)
+- [System Overview](../01_ARCHITECTURE/SYSTEM_OVERVIEW.md)
+- [Security Policy](../04_SECURITY/SECURITY_POLICY.md)
 - [API Documentation](./agents-api.md)
 
 ---
