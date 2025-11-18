@@ -30,9 +30,18 @@
 ```yaml
 Project Name: ServerAutomationAI
 Language: Python 3.11+
-Total Size: ~265MB
+Total Size: 269MB (فعلي - تم القياس)
+Python Files: 108 ملف
 Framework: Flask + SQLAlchemy
 AI Integration: Groq, Gemini, Mistral
+
+المجلدات الرئيسية:
+  - logs/: 250MB ⚠️ (93% من الحجم!)
+  - attached_assets/: 15MB
+  - dev_platform/: 1.2MB
+  - docs/: 820KB
+  - bridge_tool/: 332KB ✅
+  - agents/: 72KB (6 وكلاء)
 ```
 
 ---
@@ -560,19 +569,43 @@ extend type Mutation {
 
 ## 📊 الحجم والأداء
 
-```
-حجم الكود: ~15MB
-Dependencies: ~50MB
-Total: ~265MB
+```yaml
+حجم الكود: ~2MB
+Dependencies: ~2MB
+logs/: 250MB ⚠️ (ملفات قديمة!)
+attached_assets/: 15MB
+Total: 269MB
 
 عدد الوكلاء: 6
-عدد المحللات: 3 (Groq, Gemini, Mistral)
-عدد الأدوات: 10+
+عدد ملفات Python: 108
+Bridge Tool: ✅ موجود وجاهز
 
 الأداء:
 - استجابة AI: 1-3 ثواني
 - تحليل السجلات: < 5 ثوانٍ
 - مراقبة الأداء: real-time
+```
+
+### ⚠️ توصية عاجلة: تنظيف logs/
+
+```bash
+# المشكلة المكتشفة:
+ls -lh ServerAutomationAI/logs/
+# total 250M:
+#   log_analyzer.log.1 (50MB)
+#   log_analyzer.log.2 (50MB)
+#   log_analyzer.log.3 (50MB)
+#   log_analyzer.log.4 (50MB)
+#   log_analyzer.log.5 (50MB)
+
+# الحل المقترح:
+cd ServerAutomationAI/logs
+rm -f log_analyzer.log.*   # حذف logs القديمة
+# التوفير: 250MB ✅
+
+# أو أرشفة:
+tar -czf logs_archive_$(date +%Y%m%d).tar.gz *.log.*
+# ثم نقل للسيرفر
 ```
 
 ---
