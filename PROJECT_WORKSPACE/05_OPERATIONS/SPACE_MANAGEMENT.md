@@ -244,7 +244,7 @@ git commit -m "final: before migration"
 python3 bridge_tool/cli.py push
 
 # 2. أنشئ HANDOFF.md:
-# (راجع: ../06_TEMPLATES/HANDOFF_TEMPLATE.md)
+# (راجع: ../06_TEMPLATES/HANDOFF.md)
 
 # 3. تأكد من GitHub Tag:
 git tag -a migration_point -m "Migration to new Repl"
@@ -354,8 +354,7 @@ npm run check-space
 - ➡️ [`../09_SERVER_SETUP/SERVER_CONFIG.md`](../09_SERVER_SETUP/SERVER_CONFIG.md)
 
 **للمزيد**:
-- 📖 [`../05_OPERATIONS/RUNBOOKS/SPACE_OVERFLOW.md`](../05_OPERATIONS/RUNBOOKS/SPACE_OVERFLOW.md)
-- 📖 [`../06_TEMPLATES/HANDOFF_TEMPLATE.md`](../06_TEMPLATES/HANDOFF_TEMPLATE.md)
+- 📖 [`../06_TEMPLATES/HANDOFF.md`](../06_TEMPLATES/HANDOFF.md)
 
 **للرجوع**:
 - 🏠 [`../INDEX.md`](../INDEX.md) - الدليل الرئيسي

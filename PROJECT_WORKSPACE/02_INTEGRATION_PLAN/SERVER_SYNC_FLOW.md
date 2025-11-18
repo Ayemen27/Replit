@@ -351,7 +351,7 @@ python3 bridge_tool/cli.py status
 ## 🔗 الروابط ذات الصلة
 
 **اقرأ التالي**:
-- ➡️ [`../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md)
+- ➡️ [`../05_OPERATIONS/SPACE_MANAGEMENT.md`](../05_OPERATIONS/SPACE_MANAGEMENT.md)
 
 **للمزيد**:
 - 📖 [`../09_SERVER_SETUP/SERVER_CONFIG.md`](../09_SERVER_SETUP/SERVER_CONFIG.md)

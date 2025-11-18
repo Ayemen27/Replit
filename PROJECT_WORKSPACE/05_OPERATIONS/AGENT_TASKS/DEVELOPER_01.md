@@ -3,7 +3,7 @@
 > **📍 أنت هنا**: المطور الأول - البداية!  
 > **⬅️ السابق**: لا يوجد (أنت الأول!)  
 > **➡️ التالي**: [`DEVELOPER_02.md`](DEVELOPER_02.md)  
-> **🏠 العودة للدليل**: [`../INDEX.md`](../INDEX.md)
+> **🏠 العودة للدليل**: [`../../INDEX.md`](../../INDEX.md)
 
 ---
 
@@ -99,7 +99,7 @@ cat package.json | jq '.devDependencies'
 - ✅ ما حجم كل مجلد؟
 - ✅ هل هناك ملفات كبيرة غير ضرورية؟
 
-**المخرج**: أنشئ ملف [`../01_CURRENT_STATE/SAAS_ANALYSIS.md`](../01_CURRENT_STATE/SAAS_ANALYSIS.md)
+**المخرج**: أنشئ ملف [`../../01_CURRENT_STATE/SAAS_ANALYSIS.md`](../../01_CURRENT_STATE/SAAS_ANALYSIS.md)
 
 **النموذج**:
 ```markdown
@@ -170,7 +170,7 @@ cat README.md
 - ✅ ما حجم كل مجلد؟
 - ✅ هل Bridge Tool جاهز؟
 
-**المخرج**: أنشئ ملف [`../01_CURRENT_STATE/SERVERAI_ANALYSIS.md`](../01_CURRENT_STATE/SERVERAI_ANALYSIS.md)
+**المخرج**: أنشئ ملف [`../../01_CURRENT_STATE/SERVER_AUTOMATION_ANALYSIS.md`](../../01_CURRENT_STATE/SERVER_AUTOMATION_ANALYSIS.md)
 
 ---
 
@@ -193,7 +193,7 @@ du -h --max-depth=1 | sort -hr >> space_report.txt
 cat space_report.txt
 ```
 
-**المخرج**: أنشئ ملف [`../01_CURRENT_STATE/SPACE_INVENTORY.md`](../01_CURRENT_STATE/SPACE_INVENTORY.md)
+**المخرج**: راجع [`../../01_CURRENT_STATE/INVENTORY.md`](../../01_CURRENT_STATE/INVENTORY.md) (معلومات المساحة موجودة)
 
 ---
 
@@ -373,13 +373,13 @@ python3 cli.py test
 
 ### **يجب إنشاء هذه الملفات**:
 
-- [ ] [`../01_CURRENT_STATE/SAAS_ANALYSIS.md`](../01_CURRENT_STATE/SAAS_ANALYSIS.md)
-- [ ] [`../01_CURRENT_STATE/SERVERAI_ANALYSIS.md`](../01_CURRENT_STATE/SERVERAI_ANALYSIS.md)
-- [ ] [`../01_CURRENT_STATE/SPACE_INVENTORY.md`](../01_CURRENT_STATE/SPACE_INVENTORY.md)
-- [ ] [`../01_CURRENT_STATE/TECH_STACK_COMPARISON.md`](../01_CURRENT_STATE/TECH_STACK_COMPARISON.md)
+- [ ] [`../../01_CURRENT_STATE/SAAS_ANALYSIS.md`](../../01_CURRENT_STATE/SAAS_ANALYSIS.md)
+- [ ] [`../../01_CURRENT_STATE/SERVER_AUTOMATION_ANALYSIS.md`](../../01_CURRENT_STATE/SERVER_AUTOMATION_ANALYSIS.md)
+- [ ] [`../../01_CURRENT_STATE/INVENTORY.md`](../../01_CURRENT_STATE/INVENTORY.md)
+- [ ] [`../../01_CURRENT_STATE/TECH_STACK_COMPARISON.md`](../../01_CURRENT_STATE/TECH_STACK_COMPARISON.md)
 - [ ] `CLEANUP_PLAN.md` (في الجذر)
 - [ ] [`DEVELOPER_02.md`](DEVELOPER_02.md) - مهام المطور التالي
-- [ ] [`../06_TEMPLATES/HANDOFF_TEMPLATE.md`](../06_TEMPLATES/HANDOFF_TEMPLATE.md) - ملأه بمعلوماتك
+- [ ] [`../../06_TEMPLATES/HANDOFF.md`](../../06_TEMPLATES/HANDOFF.md) - ملأه بمعلوماتك
 
 ### **يجب Commit & Push**:
 
@@ -420,15 +420,15 @@ python3 bridge_tool/cli.py push
 ## 🔗 الروابط ذات الصلة
 
 **اقرأ قبل البدء**:
-- 📖 [`../02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](../02_INTEGRATION_PLAN/MERGE_STRATEGY.md)
-- 📖 [`../02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md`](../02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md)
-- 📖 [`../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md)
+- 📖 [`../../02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](../../02_INTEGRATION_PLAN/MERGE_STRATEGY.md)
+- 📖 [`../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md`](../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md)
+- 📖 [`../SPACE_MANAGEMENT.md`](../SPACE_MANAGEMENT.md)
 
 **بعد الانتهاء**:
 - ➡️ [`DEVELOPER_02.md`](DEVELOPER_02.md) - المطور التالي
 
 **للرجوع**:
-- 🏠 [`../INDEX.md`](../INDEX.md) - الدليل الرئيسي
+- 🏠 [`../../INDEX.md`](../../INDEX.md) - الدليل الرئيسي
 
 ---
 

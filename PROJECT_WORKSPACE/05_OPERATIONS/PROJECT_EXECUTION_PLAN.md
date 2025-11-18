@@ -180,7 +180,7 @@ extend type Subscription {
 - [ ] WebSocket relay للتحديثات الحية
 - [ ] Error handling و retries
 
-📁 **الوثائق:** [BRIDGE_TOOL.md](../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md)
+📁 **الوثائق:** [BRIDGE_TOOL.md](../02_INTEGRATION_PLAN/BRIDGE_TOOL.md)
 
 **المفهوم:**
 ```
@@ -195,7 +195,7 @@ GraphQL Resolver → Bridge Service → ServerAutomationAI Agent
 - [ ] Session management
 - [ ] Heartbeat monitoring
 
-📁 **الوثائق:** [SERVER_SYNC_FLOW.md](../../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md)
+📁 **الوثائق:** [SERVER_SYNC_FLOW.md](../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md)
 
 ---
 

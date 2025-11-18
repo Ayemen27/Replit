@@ -731,9 +731,9 @@ def validate_command(cmd):
 
 ## 🔗 الروابط ذات الصلة
 
-- [BRIDGE_TOOL_USAGE.md](../02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md) - دليل استخدام Bridge Tool
+- [BRIDGE_TOOL.md](../02_INTEGRATION_PLAN/BRIDGE_TOOL.md) - دليل استخدام Bridge Tool
 - [SERVER_SYNC_FLOW.md](../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md) - تدفق المزامنة
-- [DEVELOPER_01.md](../AGENT_TASKS/DEVELOPER_01.md) - مهام المطور الأول
+- [DEVELOPER_01.md](../05_OPERATIONS/AGENT_TASKS/DEVELOPER_01.md) - مهام المطور الأول
 - [SUCCESS_CRITERIA.md](../00_MISSION/SUCCESS_CRITERIA.md) - معايير النجاح
 
 ---

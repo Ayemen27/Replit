@@ -500,7 +500,7 @@ System switches to Groq Key 2 (14,400 tokens)
 
 ## 📚 Related Documents
 
-- [`AI_KEY_MANAGEMENT.md`](../04_SECURITY/AI_KEY_MANAGEMENT.md) - Full system documentation
+- [`TOKEN_MANAGEMENT.md`](../../04_SECURITY/TOKEN_MANAGEMENT.md) - Full system documentation
 - [`DEVELOPER_AI_KEYS_01.md`](../AGENT_TASKS/DEVELOPER_AI_KEYS_01.md) - Multi-Key implementation
 - [`DEVELOPER_AI_KEYS_02.md`](../AGENT_TASKS/DEVELOPER_AI_KEYS_02.md) - Quota tracking
 - [`QUOTA_EXCEEDED_SCENARIO.md`](QUOTA_EXCEEDED_SCENARIO.md) - What happens when all keys fail

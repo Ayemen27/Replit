@@ -109,7 +109,7 @@ TELEGRAM_CHAT_ID=xxxxx
 **⚠️ مهم**: 
 - ✅ استخدم GitHub **Personal Access Token** مع صلاحيات `repo`
 - ✅ **لا تكتب** الـ Secrets في الكود نهائياً
-- ✅ راجع: [`../04_SECURITY/SECURITY.md`](../04_SECURITY/SECURITY.md)
+- ✅ راجع: [`../04_SECURITY/SECURITY_POLICY.md`](../04_SECURITY/SECURITY_POLICY.md)
 
 ---
 
@@ -353,7 +353,7 @@ ssh ${SSH_USER}@${SSH_HOST}
 
 ### **خطأ 4: `Space limit exceeded`**
 
-**راجع**: [`../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md)
+**راجع**: [`../05_OPERATIONS/SPACE_MANAGEMENT.md`](../05_OPERATIONS/SPACE_MANAGEMENT.md)
 
 ---
 
@@ -410,7 +410,7 @@ python3 bridge_tool/cli.py push
 
 **للمزيد**:
 - 📖 [`../09_SERVER_SETUP/SERVER_CONFIG.md`](../09_SERVER_SETUP/SERVER_CONFIG.md)
-- 📖 [`../04_SECURITY/SECURITY.md`](../04_SECURITY/SECURITY.md)
+- 📖 [`../04_SECURITY/SECURITY_POLICY.md`](../04_SECURITY/SECURITY_POLICY.md)
 
 **للرجوع**:
 - 🏠 [`../INDEX.md`](../INDEX.md) - الدليل الرئيسي
