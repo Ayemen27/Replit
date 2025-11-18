@@ -123,7 +123,7 @@ docs.docker.com/engine/api/
 - [ ] تحليل GraphQL Schema الحالي
 - [ ] تحديد نقاط التوسع
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/01_CURRENT_STATE/](./PROJECT_WORKSPACE/01_CURRENT_STATE/)
+📁 **الوثائق:** [01_CURRENT_STATE/](../../01_CURRENT_STATE/)
 
 #### المهمة 1.2: دراسة المشاريع مفتوحة المصدر
 - [ ] Clone وفحص MeshCentral
@@ -131,7 +131,7 @@ docs.docker.com/engine/api/
 - [ ] مراجعة Teleport authentication
 - [ ] فهم Docker Engine API
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/02_INTEGRATION_PLAN/](./PROJECT_WORKSPACE/02_INTEGRATION_PLAN/)
+📁 **الوثائق:** [02_INTEGRATION_PLAN/](../../02_INTEGRATION_PLAN/)
 
 #### المهمة 1.3: إعداد البيئة
 - [ ] إعداد Development environment
@@ -139,7 +139,7 @@ docs.docker.com/engine/api/
 - [ ] إعداد Git branches
 - [ ] إعداد Testing environment
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/09_SERVER_SETUP/](./PROJECT_WORKSPACE/09_SERVER_SETUP/)
+📁 **الوثائق:** [09_SERVER_SETUP/](../../09_SERVER_SETUP/)
 
 ---
 
@@ -153,7 +153,7 @@ docs.docker.com/engine/api/
 - [ ] إضافة Subscriptions للتحديثات الحية
 - [ ] الحفاظ على Schema الحالي
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/04_SECURITY/](./PROJECT_WORKSPACE/04_SECURITY/)
+📁 **الوثائق:** [04_SECURITY/](../../04_SECURITY/)
 
 **مثال:**
 ```graphql
@@ -180,7 +180,7 @@ extend type Subscription {
 - [ ] WebSocket relay للتحديثات الحية
 - [ ] Error handling و retries
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md](./PROJECT_WORKSPACE/02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md)
+📁 **الوثائق:** [BRIDGE_TOOL.md](../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md)
 
 **المفهوم:**
 ```
@@ -195,7 +195,7 @@ GraphQL Resolver → Bridge Service → ServerAutomationAI Agent
 - [ ] Session management
 - [ ] Heartbeat monitoring
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md](./PROJECT_WORKSPACE/02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md)
+📁 **الوثائق:** [SERVER_SYNC_FLOW.md](../../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md)
 
 ---
 
@@ -224,7 +224,7 @@ curl https://platform.com/install.sh | bash -s -- TOKEN
 - [ ] Port forwarding
 - [ ] Connection resilience
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/04_SECURITY/](./PROJECT_WORKSPACE/04_SECURITY/)
+📁 **الوثائق:** [04_SECURITY/](../../04_SECURITY/)
 
 #### المهمة 3.3: Command Execution (استخدام Docker API)
 - [ ] Sandboxed execution عبر Docker API
@@ -263,7 +263,7 @@ metrics = performance_monitor.collect_metrics()
 - [ ] Apollo Client queries للـ Servers
 - [ ] Real-time updates عبر Subscriptions
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/AGENT_TASKS/](./PROJECT_WORKSPACE/AGENT_TASKS/)
+📁 **الوثائق:** [AGENT_TASKS/](AGENT_TASKS/)
 
 **النهج:**
 ```typescript
@@ -284,7 +284,7 @@ src/app/dashboard/
 - [ ] Command history
 - [ ] Auto-completion (اختياري)
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/AGENT_TASKS/](./PROJECT_WORKSPACE/AGENT_TASKS/)
+📁 **الوثائق:** [AGENT_TASKS/](AGENT_TASKS/)
 
 #### المهمة 4.3: Metrics Visualization
 - [ ] استخدام وكلاء ServerAutomationAI للمقاييس
@@ -336,7 +336,7 @@ const result = await execPython(
 - [ ] Error tracking
 - [ ] Performance monitoring
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/10_MONITORING/](./PROJECT_WORKSPACE/10_MONITORING/)
+📁 **الوثائق:** [10_MONITORING/](../../10_MONITORING/)
 
 ---
 
@@ -391,7 +391,7 @@ const result = await execPython(
    ↓
 2. يحدد المرحلة والمهمة الحالية (مثلاً: Phase 2, Task 2.1)
    ↓
-3. يذهب إلى المجلد الموجود (مثلاً: PROJECT_WORKSPACE/04_SECURITY/)
+3. يذهب إلى المجلد الموجود (مثلاً: 04_SECURITY/)
    ↓
 4. يقرأ الوثائق الموجودة:
    - ARCHITECTURE.md
@@ -422,7 +422,7 @@ project-root/
 ├── ServerAutomationAI/               # ← الوكلاء الموجودة
 │   └── (نستخدمها كما هي)
 │
-├── PROJECT_WORKSPACE/                # ← الوثائق والتخطيط الموجودة
+├── PROJECT_WORKSPACE/                # ← الوثائق والتخطيط
 │   ├── 00_MISSION/
 │   ├── 01_CURRENT_STATE/
 │   ├── 02_INTEGRATION_PLAN/

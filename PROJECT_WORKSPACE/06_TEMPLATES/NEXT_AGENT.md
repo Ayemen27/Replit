@@ -21,8 +21,8 @@
 ### 1. الملفات الإلزامية للقراءة:
 ```
 ✅ يجب قراءتها بالترتيب:
-1. /PROJECT_WORKSPACE/README.md (فهم المسميات أولاً!)
-2. /PROJECT_WORKSPACE/AGENT_TASKS/DEVELOPER_Y.md (مهامك المفصلة)
+1. PROJECT_WORKSPACE/README.md (فهم المسميات أولاً!)
+2. PROJECT_WORKSPACE/05_OPERATIONS/AGENT_TASKS/DEVELOPER_Y.md (مهامك المفصلة)
 3. HANDOFF.md (من المطور السابق)
 4. /replit.md (آخر تحديثات المشروع)
 ```
@@ -183,7 +183,7 @@ rm -rf .next/
 python3 bridge_tool/cli.py push logs
 
 # 3. انظر:
-/PROJECT_WORKSPACE/08_SPACE_OPTIMIZATION/EMERGENCY_CLEANUP.md
+PROJECT_WORKSPACE/05_OPERATIONS/SPACE_MANAGEMENT.md
 ```
 
 ---
@@ -228,8 +228,8 @@ python3 bridge_tool/cli.py push
 
 ### الخطوات:
 1. **ابحث في الوثائق**:
-   - `/PROJECT_WORKSPACE/05_OPERATIONS/WORKFLOWS/`
-   - `/PROJECT_WORKSPACE/08_SPACE_OPTIMIZATION/`
+   - `PROJECT_WORKSPACE/05_OPERATIONS/WORKFLOWS/`
+   - `PROJECT_WORKSPACE/05_OPERATIONS/SPACE_MANAGEMENT.md`
 
 2. **راجع المشاكل السابقة**:
    - HANDOFF.md → Known Issues

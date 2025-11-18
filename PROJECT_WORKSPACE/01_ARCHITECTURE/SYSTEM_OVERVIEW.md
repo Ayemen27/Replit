@@ -1,6 +1,6 @@
 # 🏗️ Platform Architecture
 
-> **📍 أنت هنا**: `04_SECURITY/ARCHITECTURE.md`  
+> **📍 أنت هنا**: `01_ARCHITECTURE/SYSTEM_OVERVIEW.md`  
 > **⬅️ السابق**: [INDEX](../INDEX.md)  
 > **🏠 العودة للدليل**: [INDEX.md](../INDEX.md)
 

@@ -201,12 +201,12 @@ npm run test    # ⚠️ 2 اختبارات فشلت (non-critical)
 ## 📚 الملفات والوثائق المهمة
 
 ### للقراءة الإلزامية:
-1. `/PROJECT_WORKSPACE/AGENT_TASKS/AGENT_Y.md` - مهام الوكيل التالي
-2. `/PROJECT_WORKSPACE/05_OPERATIONS/WORKFLOWS/AGENT_WORKFLOW.md` - سير العمل
+1. `05_OPERATIONS/AGENT_TASKS/DEVELOPER_Y.md` - مهام المطور التالي
+2. `05_OPERATIONS/WORKFLOWS/DEVELOPER_WORKFLOW.md` - سير العمل
 3. `/replit.md` - آخر تحديثات
 
 ### للمراجعة:
-4. `/PROJECT_WORKSPACE/04_SECURITY/` - الوثائق التقنية
+4. `04_SECURITY/` - سياسات الأمان
 5. `/src/README.md` - بنية الكود
 
 ---
@@ -230,8 +230,8 @@ npm run test    # ⚠️ 2 اختبارات فشلت (non-critical)
 ### إذا واجهت مشكلة:
 
 #### 1. راجع الوثائق:
-- `/PROJECT_WORKSPACE/08_SPACE_OPTIMIZATION/EMERGENCY_CLEANUP.md`
-- `/PROJECT_WORKSPACE/05_OPERATIONS/WORKFLOWS/EMERGENCY_PLANS.md`
+- `05_OPERATIONS/SPACE_MANAGEMENT.md`
+- `05_OPERATIONS/RUNBOOKS/` - خطط الطوارئ
 
 #### 2. افحص الـ Logs:
 ```bash
