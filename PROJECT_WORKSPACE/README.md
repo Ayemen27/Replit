@@ -1,6 +1,6 @@
 # 🚀 مجلد العمل الرئيسي - مشروع منصة Workspace
 
-> 🎯 **ابدأ هنا**: راجع [`EXECUTION_PLAN.md`](EXECUTION_PLAN.md) للخطة التنفيذية المرحلية
+> 🎯 **ابدأ هنا**: راجع [`05_OPERATIONS/PROJECT_EXECUTION_PLAN.md`](05_OPERATIONS/PROJECT_EXECUTION_PLAN.md) للخطة التنفيذية المرحلية
 
 ## 📋 نظرة عامة
 
@@ -41,21 +41,30 @@
 
 ---
 
-## 📁 هيكل المجلد
+## 📁 هيكل المجلد (المُعاد هيكلته)
 
 ```
 PROJECT_WORKSPACE/
-├── 00_MISSION/              # الهدف والرؤية
-├── 01_CURRENT_STATE/        # الوضع الحالي للمشروعين
-├── 02_INTEGRATION_PLAN/     # خطة الدمج
-├── 03_DEVELOPMENT_WORKFLOW/ # سير عمل الوكلاء
-├── 04_AGENT_TASKS/          # مهام ال 12 وكيل
-├── 05_TEMPLATES/            # قوالب التسليم
-├── 06_TECHNICAL_DOCS/       # وثائق تقنية
-├── 07_SCENARIOS/            # سيناريوهات الاستخدام
-├── 08_SPACE_OPTIMIZATION/   # إدارة المساحة 2GB
-├── 09_SERVER_SETUP/         # إعداد السيرفر
-└── 10_MONITORING/           # المراقبة والتقارير
+├── 00_MISSION/                    # الهدف والرؤية
+├── 01_ARCHITECTURE/               # البنية المعمارية (System Overview, Components)
+│   └── DEPLOYMENT_DIAGRAMS/       # مخططات النشر
+├── 02_INTEGRATION_PLAN/           # خطة الدمج (Merge, Bridge, Server Linking)
+├── 03_SYSTEMS/                    # الأنظمة الفرعية
+│   ├── 01_Agents/                 # نظام الوكلاء الذكية
+│   ├── 02_Remote_Execution/       # نظام التنفيذ عن بُعد
+│   ├── 03_File_Manager/           # نظام إدارة الملفات
+│   └── 04_Docker_Management/      # نظام إدارة Docker
+├── 04_SECURITY/                   # الأمان (Security Policy, Incident Response)
+├── 05_OPERATIONS/                 # العمليات
+│   ├── AGENT_TASKS/               # مهام الوكلاء
+│   ├── WORKFLOWS/                 # سير العمل
+│   ├── RUNBOOKS/                  # دلائل التشغيل
+│   └── MONITORING/                # مراقبة وإدارة
+├── 06_TEMPLATES/                  # القوالب (Handoff, Progress, Acceptance Criteria)
+├── 07_TESTING/                    # الاختبارات (Test Plan, QA Checklist)
+├── 08_RELEASES/                   # الإصدارات (Release Notes)
+├── 09_SERVER_SETUP/               # إعداد السيرفر
+└── 10_MONITORING/                 # المراقبة والتقارير
 ```
 
 ---
@@ -155,36 +164,44 @@ Replit (المطور N+1 - حساب جديد)
 
 ### 🚀 **ابدأ من هنا**:
 
-**→ [`INDEX.md`](INDEX.md) ← خريطة الطريق الكاملة**
+**→ [`05_OPERATIONS/ONBOARDING_GUIDE.md`](05_OPERATIONS/ONBOARDING_GUIDE.md) ← دليل التهيئة الكامل**
 
 هذا الدليل يقودك خطوة بخطوة من البداية للنهاية.
 
 ### للمطور التالي (Quick Start):
-1. **اقرأ**: [`INDEX.md`](INDEX.md) - خريطة الطريق
+1. **اقرأ**: [`05_OPERATIONS/ONBOARDING_GUIDE.md`](05_OPERATIONS/ONBOARDING_GUIDE.md) - دليل التهيئة
 2. **افهم دورك**: [`00_MISSION/TERMINOLOGY.md`](00_MISSION/TERMINOLOGY.md)
-3. **مهامك**: [`04_AGENT_TASKS/DEVELOPER_XX.md`](04_AGENT_TASKS/)
-4. **القوالب**: [`05_TEMPLATES/HANDOFF_TEMPLATE.md`](05_TEMPLATES/HANDOFF_TEMPLATE.md)
-5. **أدوات**: [`02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md`](02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md)
+3. **البنية المعمارية**: [`01_ARCHITECTURE/SYSTEM_OVERVIEW.md`](01_ARCHITECTURE/SYSTEM_OVERVIEW.md)
+4. **مهامك**: [`05_OPERATIONS/AGENT_TASKS/`](05_OPERATIONS/AGENT_TASKS/)
+5. **القوالب**: [`06_TEMPLATES/HANDOFF.md`](06_TEMPLATES/HANDOFF.md)
+6. **أدوات**: [`02_INTEGRATION_PLAN/BRIDGE_TOOL.md`](02_INTEGRATION_PLAN/BRIDGE_TOOL.md)
 
 ### للمراقبة:
-- راجع `/PROJECT_WORKSPACE/10_MONITORING/PROGRESS_TRACKER.md`
+- راجع [`10_MONITORING/PROGRESS_TRACKER.md`](10_MONITORING/PROGRESS_TRACKER.md)
+- راجع [`05_OPERATIONS/MONITORING_GUIDE.md`](05_OPERATIONS/MONITORING_GUIDE.md)
 
 ---
 
 ## 🚨 خطط الطوارئ
 
 ### إذا امتلأت المساحة:
-1. راجع `/PROJECT_WORKSPACE/08_SPACE_OPTIMIZATION/EMERGENCY_CLEANUP.md`
+1. راجع [`05_OPERATIONS/SPACE_MANAGEMENT.md`](05_OPERATIONS/SPACE_MANAGEMENT.md)
 2. نفذ التنظيف التلقائي
 3. إذا استمرت المشكلة: انتقل لحساب جديد
+
+### للحوادث الأمنية:
+- راجع [`04_SECURITY/INCIDENT_RESPONSE.md`](04_SECURITY/INCIDENT_RESPONSE.md)
 
 ---
 
 ## 📞 الموارد
 
-- **الوثائق الفنية**: `/PROJECT_WORKSPACE/06_TECHNICAL_DOCS/`
-- **السيناريوهات**: `/PROJECT_WORKSPACE/07_SCENARIOS/`
-- **إعداد السيرفر**: `/PROJECT_WORKSPACE/09_SERVER_SETUP/`
+- **البنية المعمارية**: [`01_ARCHITECTURE/`](01_ARCHITECTURE/)
+- **الأنظمة الفرعية**: [`03_SYSTEMS/`](03_SYSTEMS/)
+- **الأمان**: [`04_SECURITY/`](04_SECURITY/)
+- **السيناريوهات**: [`05_OPERATIONS/RUNBOOKS/`](05_OPERATIONS/RUNBOOKS/)
+- **إعداد السيرفر**: [`09_SERVER_SETUP/`](09_SERVER_SETUP/)
+- **الاختبارات**: [`07_TESTING/`](07_TESTING/)
 
 ---
 
