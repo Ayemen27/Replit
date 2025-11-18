@@ -14,9 +14,7 @@ const homePageQuery = `*[_type == "page" && slug.current == "home"][0]{
   "sections": sections[]{
     _type,
     _key,
-    _type == "heroSection" => {
-      _type,
-      _key,
+    ..._type == "heroSection" => {
       title,
       subtitle,
       description,
@@ -26,9 +24,7 @@ const homePageQuery = `*[_type == "page" && slug.current == "home"][0]{
         variant
       }
     },
-    _type == "valuePropGridSection" => {
-      _type,
-      _key,
+    ..._type == "valuePropGridSection" => {
       heading,
       description,
       items[]{
@@ -37,9 +33,7 @@ const homePageQuery = `*[_type == "page" && slug.current == "home"][0]{
         icon
       }
     },
-    _type == "statsSection" => {
-      _type,
-      _key,
+    ..._type == "statsSection" => {
       heading,
       description,
       stats[]{
@@ -48,9 +42,7 @@ const homePageQuery = `*[_type == "page" && slug.current == "home"][0]{
         icon
       }
     },
-    _type == "ctaBandSection" => {
-      _type,
-      _key,
+    ..._type == "ctaBandSection" => {
       title,
       description,
       buttons[]{
