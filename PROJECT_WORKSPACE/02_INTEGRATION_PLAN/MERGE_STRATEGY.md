@@ -2,7 +2,7 @@
 
 > **📍 أنت هنا**: المرحلة 2.1 - تخطيط الدمج  
 > **⬅️ السابق**: [`01_CURRENT_STATE/TECH_STACK_COMPARISON.md`](../01_CURRENT_STATE/TECH_STACK_COMPARISON.md)  
-> **➡️ التالي**: [`BRIDGE_TOOL_USAGE.md`](BRIDGE_TOOL_USAGE.md)  
+> **➡️ التالي**: [`BRIDGE_TOOL.md`](BRIDGE_TOOL.md)  
 > **🏠 العودة للدليل**: [`../INDEX.md`](../INDEX.md)
 
 ---

@@ -53,11 +53,11 @@ START HERE ↓
 
 | **#** | **الملف** | **الغرض** | **الأهمية** |
 |-------|-----------|-----------|-------------|
-| 2.1 | [`02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](02_INTEGRATION_PLAN/MERGE_STRATEGY.md) | 🔥 **حاسم!** خطة الدمج الكاملة | ⭐⭐⭐⭐⭐ |
-| 2.2 | [`02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md`](02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md) | كيف تستخدم Bridge Tool | ⭐⭐⭐⭐⭐ |
-| 2.3 | [`02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md`](02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md) | تدفق Replit→GitHub→Server | ⭐⭐⭐⭐⭐ |
-| 2.4 | [`08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md) | إدارة 2GB + خطة طوارئ | ⭐⭐⭐⭐ |
-| 2.5 | [`09_SERVER_SETUP/SERVER_CONFIG.md`](09_SERVER_SETUP/SERVER_CONFIG.md) | إعداد السيرفر للتشغيل | ⭐⭐⭐⭐ |
+| 2.1 | [`../02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](../02_INTEGRATION_PLAN/MERGE_STRATEGY.md) | 🔥 **حاسم!** خطة الدمج الكاملة | ⭐⭐⭐⭐⭐ |
+| 2.2 | [`../02_INTEGRATION_PLAN/BRIDGE_TOOL.md`](../02_INTEGRATION_PLAN/BRIDGE_TOOL.md) | كيف تستخدم Bridge Tool | ⭐⭐⭐⭐⭐ |
+| 2.3 | [`../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md`](../02_INTEGRATION_PLAN/SERVER_SYNC_FLOW.md) | تدفق Replit→GitHub→Server | ⭐⭐⭐⭐⭐ |
+| 2.4 | [`SPACE_MANAGEMENT.md`](SPACE_MANAGEMENT.md) | إدارة 2GB + خطة طوارئ | ⭐⭐⭐⭐ |
+| 2.5 | [`../09_SERVER_SETUP/SERVER_CONFIG.md`](../09_SERVER_SETUP/SERVER_CONFIG.md) | إعداد السيرفر للتشغيل | ⭐⭐⭐⭐ |
 
 **✅ Checkpoint**: لديك خطة واضحة للدمج  
 **➡️ التالي**: [`المرحلة 3`](#المرحلة-3-سير-العمل)

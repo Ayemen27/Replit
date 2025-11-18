@@ -25,13 +25,13 @@
 
 ### **1. اقرأ هذه الملفات بالترتيب** ⏱️ 1 ساعة:
 
-- [ ] [`../README.md`](../README.md) - نظرة عامة
-- [ ] [`../00_MISSION/TERMINOLOGY.md`](../00_MISSION/TERMINOLOGY.md) - **مهم!** المسميات
-- [ ] [`../00_MISSION/PROJECT_VISION.md`](../00_MISSION/PROJECT_VISION.md) - الرؤية
-- [ ] [`../00_MISSION/SUCCESS_CRITERIA.md`](../00_MISSION/SUCCESS_CRITERIA.md) - الأهداف
-- [ ] [`../02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](../02_INTEGRATION_PLAN/MERGE_STRATEGY.md) - استراتيجية الدمج
-- [ ] [`../02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md`](../02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md) - Bridge Tool
-- [ ] [`../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md) - إدارة المساحة
+- [ ] [`../../README.md`](../../README.md) - نظرة عامة
+- [ ] [`../../00_MISSION/TERMINOLOGY.md`](../../00_MISSION/TERMINOLOGY.md) - **مهم!** المسميات
+- [ ] [`../../00_MISSION/PROJECT_VISION.md`](../../00_MISSION/PROJECT_VISION.md) - الرؤية
+- [ ] [`../../00_MISSION/SUCCESS_CRITERIA.md`](../../00_MISSION/SUCCESS_CRITERIA.md) - الأهداف
+- [ ] [`../../02_INTEGRATION_PLAN/MERGE_STRATEGY.md`](../../02_INTEGRATION_PLAN/MERGE_STRATEGY.md) - استراتيجية الدمج
+- [ ] [`../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md`](../../02_INTEGRATION_PLAN/BRIDGE_TOOL.md) - Bridge Tool
+- [ ] [`../SPACE_MANAGEMENT.md`](../SPACE_MANAGEMENT.md) - إدارة المساحة
 
 ### **2. افهم دورك**:
 

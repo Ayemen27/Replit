@@ -26,11 +26,12 @@
 - [x] COMPONENTS.md - ✅ **جديد**: مكونات النظام الكاملة
 - [x] DEPLOYMENT_DIAGRAMS/ - ✅ مجلد للمخططات
 
-### 02_INTEGRATION_PLAN (إعادة هيكلة):
-- [x] MERGE_STRATEGY.md - ✅ جاهز
-- [x] BRIDGE_TOOL.md - ✅ **محدّث** (سابقاً BRIDGE_TOOL_USAGE.md)
-- [x] SERVER_LINKING.md - ✅ **جديد**: دليل ربط السيرفرات الكامل
-- [x] SERVER_SYNC_FLOW.md - ✅ جاهز
+### 02_INTEGRATION_PLAN:
+- [x] MERGE_STRATEGY.md - ✅ جاهز (الروابط محدّثة)
+- [x] BRIDGE_TOOL.md - ✅ جاهز
+- [x] SERVER_LINKING.md - ✅ جاهز
+- [x] SERVER_SYNC_FLOW.md - ✅ جاهز (الروابط محدّثة)
+- [x] MERGE_CLEANUP_CHECKLIST.md - ✅ جاهز
 
 ### 03_SYSTEMS (جديد - الأنظمة الفرعية):
 - [x] 01_Agents/README.md - ✅ **جديد**: نظام الوكلاء الذكية

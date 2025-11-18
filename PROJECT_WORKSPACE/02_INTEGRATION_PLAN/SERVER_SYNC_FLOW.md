@@ -1,8 +1,8 @@
 # 🔄 تدفق المزامنة - Server Sync Flow
 
 > **📍 أنت هنا**: المرحلة 2.3 - فهم التدفق الكامل  
-> **⬅️ السابق**: [`BRIDGE_TOOL_USAGE.md`](BRIDGE_TOOL_USAGE.md)  
-> **➡️ التالي**: [`../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md`](../08_SPACE_OPTIMIZATION/SPACE_MANAGEMENT.md)  
+> **⬅️ السابق**: [`BRIDGE_TOOL.md`](BRIDGE_TOOL.md)  
+> **➡️ التالي**: [`../05_OPERATIONS/SPACE_MANAGEMENT.md`](../05_OPERATIONS/SPACE_MANAGEMENT.md)  
 > **🏠 العودة للدليل**: [`../INDEX.md`](../INDEX.md)
 
 ---
