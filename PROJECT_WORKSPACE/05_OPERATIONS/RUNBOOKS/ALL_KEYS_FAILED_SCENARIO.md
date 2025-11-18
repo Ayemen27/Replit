@@ -640,8 +640,8 @@ def daily_key_health_check():
 
 ## 📚 Related Documents
 
-- [`AI_KEY_MANAGEMENT.md`](../06_TECHNICAL_DOCS/AI_KEY_MANAGEMENT.md) - Full system docs
-- [`DEVELOPER_AI_KEYS_03.md`](../04_AGENT_TASKS/DEVELOPER_AI_KEYS_03.md) - Notification system
+- [`AI_KEY_MANAGEMENT.md`](../04_SECURITY/AI_KEY_MANAGEMENT.md) - Full system docs
+- [`DEVELOPER_AI_KEYS_03.md`](../AGENT_TASKS/DEVELOPER_AI_KEYS_03.md) - Notification system
 - [`AI_KEY_ROTATION_SCENARIO.md`](AI_KEY_ROTATION_SCENARIO.md) - Normal operation
 - [`QUOTA_EXCEEDED_SCENARIO.md`](QUOTA_EXCEEDED_SCENARIO.md) - Quota failures
 

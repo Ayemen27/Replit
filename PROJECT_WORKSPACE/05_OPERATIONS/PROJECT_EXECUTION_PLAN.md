@@ -153,7 +153,7 @@ docs.docker.com/engine/api/
 - [ ] إضافة Subscriptions للتحديثات الحية
 - [ ] الحفاظ على Schema الحالي
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/06_TECHNICAL_DOCS/](./PROJECT_WORKSPACE/06_TECHNICAL_DOCS/)
+📁 **الوثائق:** [PROJECT_WORKSPACE/04_SECURITY/](./PROJECT_WORKSPACE/04_SECURITY/)
 
 **مثال:**
 ```graphql
@@ -224,7 +224,7 @@ curl https://platform.com/install.sh | bash -s -- TOKEN
 - [ ] Port forwarding
 - [ ] Connection resilience
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/06_TECHNICAL_DOCS/](./PROJECT_WORKSPACE/06_TECHNICAL_DOCS/)
+📁 **الوثائق:** [PROJECT_WORKSPACE/04_SECURITY/](./PROJECT_WORKSPACE/04_SECURITY/)
 
 #### المهمة 3.3: Command Execution (استخدام Docker API)
 - [ ] Sandboxed execution عبر Docker API
@@ -263,7 +263,7 @@ metrics = performance_monitor.collect_metrics()
 - [ ] Apollo Client queries للـ Servers
 - [ ] Real-time updates عبر Subscriptions
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/04_AGENT_TASKS/](./PROJECT_WORKSPACE/04_AGENT_TASKS/)
+📁 **الوثائق:** [PROJECT_WORKSPACE/AGENT_TASKS/](./PROJECT_WORKSPACE/AGENT_TASKS/)
 
 **النهج:**
 ```typescript
@@ -284,7 +284,7 @@ src/app/dashboard/
 - [ ] Command history
 - [ ] Auto-completion (اختياري)
 
-📁 **الوثائق:** [PROJECT_WORKSPACE/04_AGENT_TASKS/](./PROJECT_WORKSPACE/04_AGENT_TASKS/)
+📁 **الوثائق:** [PROJECT_WORKSPACE/AGENT_TASKS/](./PROJECT_WORKSPACE/AGENT_TASKS/)
 
 #### المهمة 4.3: Metrics Visualization
 - [ ] استخدام وكلاء ServerAutomationAI للمقاييس
@@ -391,7 +391,7 @@ const result = await execPython(
    ↓
 2. يحدد المرحلة والمهمة الحالية (مثلاً: Phase 2, Task 2.1)
    ↓
-3. يذهب إلى المجلد الموجود (مثلاً: PROJECT_WORKSPACE/06_TECHNICAL_DOCS/)
+3. يذهب إلى المجلد الموجود (مثلاً: PROJECT_WORKSPACE/04_SECURITY/)
    ↓
 4. يقرأ الوثائق الموجودة:
    - ARCHITECTURE.md
@@ -426,11 +426,11 @@ project-root/
 │   ├── 00_MISSION/
 │   ├── 01_CURRENT_STATE/
 │   ├── 02_INTEGRATION_PLAN/
-│   ├── 03_DEVELOPMENT_WORKFLOW/
-│   ├── 04_AGENT_TASKS/
-│   ├── 05_TEMPLATES/
-│   ├── 06_TECHNICAL_DOCS/
-│   ├── 07_SCENARIOS/
+│   ├── 05_OPERATIONS/WORKFLOWS/
+│   ├── AGENT_TASKS/
+│   ├── 06_TEMPLATES/
+│   ├── 04_SECURITY/
+│   ├── 05_OPERATIONS/RUNBOOKS/
 │   └── 08_SPACE_OPTIMIZATION/
 │
 ├── ServerAutomationAI/               # ← نظام الوكلاء الموجود

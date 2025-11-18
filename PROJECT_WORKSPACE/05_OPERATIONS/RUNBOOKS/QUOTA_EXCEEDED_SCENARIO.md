@@ -515,7 +515,7 @@ Multi-Provider (New):
 
 ## 📚 Related Documents
 
-- [`AI_KEY_MANAGEMENT.md`](../06_TECHNICAL_DOCS/AI_KEY_MANAGEMENT.md) - Full system docs
+- [`AI_KEY_MANAGEMENT.md`](../04_SECURITY/AI_KEY_MANAGEMENT.md) - Full system docs
 - [`AI_KEY_ROTATION_SCENARIO.md`](AI_KEY_ROTATION_SCENARIO.md) - Normal operation
 - [`ALL_KEYS_FAILED_SCENARIO.md`](ALL_KEYS_FAILED_SCENARIO.md) - Authentication failures
 

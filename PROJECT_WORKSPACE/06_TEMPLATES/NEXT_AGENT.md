@@ -22,7 +22,7 @@
 ```
 ✅ يجب قراءتها بالترتيب:
 1. /PROJECT_WORKSPACE/README.md (فهم المسميات أولاً!)
-2. /PROJECT_WORKSPACE/04_AGENT_TASKS/DEVELOPER_Y.md (مهامك المفصلة)
+2. /PROJECT_WORKSPACE/AGENT_TASKS/DEVELOPER_Y.md (مهامك المفصلة)
 3. HANDOFF.md (من المطور السابق)
 4. /replit.md (آخر تحديثات المشروع)
 ```
@@ -68,7 +68,7 @@ python3 bridge_tool/cli.py push
 
 - [ ] قرأت جميع الملفات الإلزامية
 - [ ] **فهمت الفرق بين "المطور" و "وكيل المنصة"** ✅ مهم!
-- [ ] فهمت مهمتي من `/PROJECT_WORKSPACE/04_AGENT_TASKS/DEVELOPER_Y.md`
+- [ ] فهمت مهمتي من `/PROJECT_WORKSPACE/AGENT_TASKS/DEVELOPER_Y.md`
 - [ ] أعددت Replit Secrets
 - [ ] استنسخت المشروع من GitHub
 - [ ] راجعت HANDOFF.md من المطور السابق
@@ -228,7 +228,7 @@ python3 bridge_tool/cli.py push
 
 ### الخطوات:
 1. **ابحث في الوثائق**:
-   - `/PROJECT_WORKSPACE/03_DEVELOPMENT_WORKFLOW/`
+   - `/PROJECT_WORKSPACE/05_OPERATIONS/WORKFLOWS/`
    - `/PROJECT_WORKSPACE/08_SPACE_OPTIMIZATION/`
 
 2. **راجع المشاكل السابقة**:
@@ -293,5 +293,5 @@ python3 bridge_tool/cli.py push
 **حظاً موفقاً! 💪**
 
 إذا احتجت أي توضيح، راجع:
-- `/PROJECT_WORKSPACE/04_AGENT_TASKS/AGENT_Y.md`
+- `/PROJECT_WORKSPACE/AGENT_TASKS/AGENT_Y.md`
 - HANDOFF.md من الوكيل السابق

@@ -379,7 +379,7 @@ python3 cli.py test
 - [ ] [`../01_CURRENT_STATE/TECH_STACK_COMPARISON.md`](../01_CURRENT_STATE/TECH_STACK_COMPARISON.md)
 - [ ] `CLEANUP_PLAN.md` (في الجذر)
 - [ ] [`DEVELOPER_02.md`](DEVELOPER_02.md) - مهام المطور التالي
-- [ ] [`../05_TEMPLATES/HANDOFF_TEMPLATE.md`](../05_TEMPLATES/HANDOFF_TEMPLATE.md) - ملأه بمعلوماتك
+- [ ] [`../06_TEMPLATES/HANDOFF_TEMPLATE.md`](../06_TEMPLATES/HANDOFF_TEMPLATE.md) - ملأه بمعلوماتك
 
 ### **يجب Commit & Push**:
 
@@ -405,7 +405,7 @@ python3 bridge_tool/cli.py push
 # 4. انتظر تقرير السيرفر
 
 # 5. أنشئ HANDOFF.md:
-# (راجع ../05_TEMPLATES/HANDOFF_TEMPLATE.md)
+# (راجع ../06_TEMPLATES/HANDOFF_TEMPLATE.md)
 ```
 
 **في HANDOFF.md**:

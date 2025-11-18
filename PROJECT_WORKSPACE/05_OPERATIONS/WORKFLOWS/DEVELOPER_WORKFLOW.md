@@ -77,7 +77,7 @@
 ```bash
 # الترتيب مهم!
 1. /PROJECT_WORKSPACE/README.md (فهم المسميات!)
-2. /PROJECT_WORKSPACE/04_AGENT_TASKS/DEVELOPER_X.md
+2. /PROJECT_WORKSPACE/AGENT_TASKS/DEVELOPER_X.md
 3. HANDOFF.md (من المطور السابق)
 4. /replit.md
 ```
@@ -139,7 +139,7 @@ Challenge 2: قيود المساحة
 **د) إنشاء PROGRESS.md**:
 ```bash
 # انسخ من Template
-cp /PROJECT_WORKSPACE/05_TEMPLATES/PROGRESS_TEMPLATE.md PROGRESS.md
+cp /PROJECT_WORKSPACE/06_TEMPLATES/PROGRESS_TEMPLATE.md PROGRESS.md
 
 # املأ البيانات الأولية
 ```
@@ -263,7 +263,7 @@ python3 bridge_tool/cli.py push
 **أ) HANDOFF.md** (إلزامي):
 ```bash
 # انسخ Template
-cp /PROJECT_WORKSPACE/05_TEMPLATES/HANDOFF_TEMPLATE.md HANDOFF.md
+cp /PROJECT_WORKSPACE/06_TEMPLATES/HANDOFF_TEMPLATE.md HANDOFF.md
 
 # املأ جميع الأقسام:
 # - المهام المكتملة
@@ -286,7 +286,7 @@ cp /PROJECT_WORKSPACE/05_TEMPLATES/HANDOFF_TEMPLATE.md HANDOFF.md
 **ج) NEXT_AGENT.md** (للوكيل التالي):
 ```bash
 # انسخ Template
-cp /PROJECT_WORKSPACE/05_TEMPLATES/NEXT_AGENT_TEMPLATE.md NEXT_AGENT.md
+cp /PROJECT_WORKSPACE/06_TEMPLATES/NEXT_AGENT_TEMPLATE.md NEXT_AGENT.md
 
 # اكتب تعليمات واضحة ومحددة
 ```

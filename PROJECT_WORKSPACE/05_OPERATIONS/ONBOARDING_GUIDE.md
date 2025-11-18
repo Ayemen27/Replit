@@ -10,7 +10,7 @@
 - 👋 **مطور جديد**: ابدأ من **الخطوة 1** ← [`00_MISSION/TERMINOLOGY.md`](00_MISSION/TERMINOLOGY.md)
 - 📖 **تريد فهم الرؤية**: اذهب إلى [`00_MISSION/PROJECT_VISION.md`](00_MISSION/PROJECT_VISION.md)
 - 🚀 **جاهز للتنفيذ**: راجع [`EXECUTION_PLAN.md`](EXECUTION_PLAN.md) - خطة التنفيذ الرئيسية
-- 🔧 **جاهز للعمل**: راجع [`04_AGENT_TASKS/DEVELOPER_01.md`](04_AGENT_TASKS/DEVELOPER_01.md)
+- 🔧 **جاهز للعمل**: راجع [`AGENT_TASKS/DEVELOPER_01.md`](AGENT_TASKS/DEVELOPER_01.md)
 - 🆘 **عالق/محتار**: راجع هذا الدليل من البداية
 
 ---
@@ -68,9 +68,9 @@ START HERE ↓
 
 | **#** | **الملف** | **الغرض** |
 |-------|-----------|-----------|
-| 3.1 | [`03_DEVELOPMENT_WORKFLOW/AGENT_WORKFLOW.md`](03_DEVELOPMENT_WORKFLOW/AGENT_WORKFLOW.md) | دورة حياة المطور الكاملة |
-| 3.2 | [`03_DEVELOPMENT_WORKFLOW/HANDOFF_PROTOCOL.md`](03_DEVELOPMENT_WORKFLOW/HANDOFF_PROTOCOL.md) | بروتوكول التسليم بين المطورين |
-| 3.3 | [`03_DEVELOPMENT_WORKFLOW/EMERGENCY_PLANS.md`](03_DEVELOPMENT_WORKFLOW/EMERGENCY_PLANS.md) | ماذا تفعل عند الأزمات |
+| 3.1 | [`05_OPERATIONS/WORKFLOWS/AGENT_WORKFLOW.md`](05_OPERATIONS/WORKFLOWS/AGENT_WORKFLOW.md) | دورة حياة المطور الكاملة |
+| 3.2 | [`05_OPERATIONS/WORKFLOWS/HANDOFF_PROTOCOL.md`](05_OPERATIONS/WORKFLOWS/HANDOFF_PROTOCOL.md) | بروتوكول التسليم بين المطورين |
+| 3.3 | [`05_OPERATIONS/WORKFLOWS/EMERGENCY_PLANS.md`](05_OPERATIONS/WORKFLOWS/EMERGENCY_PLANS.md) | ماذا تفعل عند الأزمات |
 
 **✅ Checkpoint**: تعرف كيف تعمل بكفاءة  
 **➡️ التالي**: [`المرحلة 4`](#المرحلة-4-التنفيذ)
@@ -83,18 +83,18 @@ START HERE ↓
 
 | **المطور** | **الملف** | **المهمة** | **المدة** | **المعتمد على** |
 |-----------|-----------|-----------|----------|-----------------|
-| 1 | [`04_AGENT_TASKS/DEVELOPER_01.md`](04_AGENT_TASKS/DEVELOPER_01.md) | Audit & Setup | 1 أسبوع | - |
-| 2 | [`04_AGENT_TASKS/DEVELOPER_02.md`](04_AGENT_TASKS/DEVELOPER_02.md) | إزالة الخدمات المدفوعة | 1 أسبوع | Dev 1 |
-| 3 | [`04_AGENT_TASKS/DEVELOPER_03.md`](04_AGENT_TASKS/DEVELOPER_03.md) | NextAuth + SQLite | 1 أسبوع | Dev 2 |
-| 4 | [`04_AGENT_TASKS/DEVELOPER_04.md`](04_AGENT_TASKS/DEVELOPER_04.md) | GraphQL Migration | 1 أسبوع | Dev 3 |
-| 5 | [`04_AGENT_TASKS/DEVELOPER_05.md`](04_AGENT_TASKS/DEVELOPER_05.md) | Workspace UI Skeleton | 1 أسبوع | Dev 4 |
-| 6 | [`04_AGENT_TASKS/DEVELOPER_06.md`](04_AGENT_TASKS/DEVELOPER_06.md) | Terminal Integration | 1 أسبوع | Dev 5 |
-| 7 | [`04_AGENT_TASKS/DEVELOPER_07.md`](04_AGENT_TASKS/DEVELOPER_07.md) | Monaco Editor | 1 أسبوع | Dev 6 |
-| 8 | [`04_AGENT_TASKS/DEVELOPER_08.md`](04_AGENT_TASKS/DEVELOPER_08.md) | LocalAI Setup | 1 أسبوع | Dev 7 |
-| 9 | [`04_AGENT_TASKS/DEVELOPER_09.md`](04_AGENT_TASKS/DEVELOPER_09.md) | AI Chat UI | 1 أسبوع | Dev 8 |
-| 10 | [`04_AGENT_TASKS/DEVELOPER_10.md`](04_AGENT_TASKS/DEVELOPER_10.md) | Multi-tenant | 1 أسبوع | Dev 9 |
-| 11 | [`04_AGENT_TASKS/DEVELOPER_11.md`](04_AGENT_TASKS/DEVELOPER_11.md) | Testing & QA | 1 أسبوع | Dev 10 |
-| 12 | [`04_AGENT_TASKS/DEVELOPER_12.md`](04_AGENT_TASKS/DEVELOPER_12.md) | Deployment | 1 أسبوع | Dev 11 |
+| 1 | [`AGENT_TASKS/DEVELOPER_01.md`](AGENT_TASKS/DEVELOPER_01.md) | Audit & Setup | 1 أسبوع | - |
+| 2 | [`AGENT_TASKS/DEVELOPER_02.md`](AGENT_TASKS/DEVELOPER_02.md) | إزالة الخدمات المدفوعة | 1 أسبوع | Dev 1 |
+| 3 | [`AGENT_TASKS/DEVELOPER_03.md`](AGENT_TASKS/DEVELOPER_03.md) | NextAuth + SQLite | 1 أسبوع | Dev 2 |
+| 4 | [`AGENT_TASKS/DEVELOPER_04.md`](AGENT_TASKS/DEVELOPER_04.md) | GraphQL Migration | 1 أسبوع | Dev 3 |
+| 5 | [`AGENT_TASKS/DEVELOPER_05.md`](AGENT_TASKS/DEVELOPER_05.md) | Workspace UI Skeleton | 1 أسبوع | Dev 4 |
+| 6 | [`AGENT_TASKS/DEVELOPER_06.md`](AGENT_TASKS/DEVELOPER_06.md) | Terminal Integration | 1 أسبوع | Dev 5 |
+| 7 | [`AGENT_TASKS/DEVELOPER_07.md`](AGENT_TASKS/DEVELOPER_07.md) | Monaco Editor | 1 أسبوع | Dev 6 |
+| 8 | [`AGENT_TASKS/DEVELOPER_08.md`](AGENT_TASKS/DEVELOPER_08.md) | LocalAI Setup | 1 أسبوع | Dev 7 |
+| 9 | [`AGENT_TASKS/DEVELOPER_09.md`](AGENT_TASKS/DEVELOPER_09.md) | AI Chat UI | 1 أسبوع | Dev 8 |
+| 10 | [`AGENT_TASKS/DEVELOPER_10.md`](AGENT_TASKS/DEVELOPER_10.md) | Multi-tenant | 1 أسبوع | Dev 9 |
+| 11 | [`AGENT_TASKS/DEVELOPER_11.md`](AGENT_TASKS/DEVELOPER_11.md) | Testing & QA | 1 أسبوع | Dev 10 |
+| 12 | [`AGENT_TASKS/DEVELOPER_12.md`](AGENT_TASKS/DEVELOPER_12.md) | Deployment | 1 أسبوع | Dev 11 |
 
 **✅ Checkpoint**: مشروع كامل جاهز!  
 **➡️ التالي**: [`المرحلة 5`](#المرحلة-5-المراقبة)
@@ -113,30 +113,30 @@ START HERE ↓
 ## 🆘 الأدلة المساعدة
 
 ### القوالب:
-- [`05_TEMPLATES/HANDOFF_TEMPLATE.md`](05_TEMPLATES/HANDOFF_TEMPLATE.md) - نموذج التسليم
-- [`05_TEMPLATES/PROGRESS_TEMPLATE.md`](05_TEMPLATES/PROGRESS_TEMPLATE.md) - نموذج التقدم
-- [`05_TEMPLATES/NEXT_AGENT_TEMPLATE.md`](05_TEMPLATES/NEXT_AGENT_TEMPLATE.md) - تعليمات للمطور التالي
+- [`06_TEMPLATES/HANDOFF_TEMPLATE.md`](06_TEMPLATES/HANDOFF_TEMPLATE.md) - نموذج التسليم
+- [`06_TEMPLATES/PROGRESS_TEMPLATE.md`](06_TEMPLATES/PROGRESS_TEMPLATE.md) - نموذج التقدم
+- [`06_TEMPLATES/NEXT_AGENT_TEMPLATE.md`](06_TEMPLATES/NEXT_AGENT_TEMPLATE.md) - تعليمات للمطور التالي
 
 ### الوثائق التقنية:
-- [`06_TECHNICAL_DOCS/ARCHITECTURE.md`](06_TECHNICAL_DOCS/ARCHITECTURE.md) - البنية المعمارية الكاملة
-- [`06_TECHNICAL_DOCS/AI_KEY_MANAGEMENT.md`](06_TECHNICAL_DOCS/AI_KEY_MANAGEMENT.md) - 🤖 نظام إدارة مفاتيح API للذكاء الاصطناعي
-- [`06_TECHNICAL_DOCS/API_DESIGN.md`](06_TECHNICAL_DOCS/API_DESIGN.md)
-- [`06_TECHNICAL_DOCS/DATABASE_SCHEMA.md`](06_TECHNICAL_DOCS/DATABASE_SCHEMA.md)
-- [`06_TECHNICAL_DOCS/SECURITY.md`](06_TECHNICAL_DOCS/SECURITY.md)
+- [`04_SECURITY/ARCHITECTURE.md`](04_SECURITY/ARCHITECTURE.md) - البنية المعمارية الكاملة
+- [`04_SECURITY/AI_KEY_MANAGEMENT.md`](04_SECURITY/AI_KEY_MANAGEMENT.md) - 🤖 نظام إدارة مفاتيح API للذكاء الاصطناعي
+- [`04_SECURITY/API_DESIGN.md`](04_SECURITY/API_DESIGN.md)
+- [`04_SECURITY/DATABASE_SCHEMA.md`](04_SECURITY/DATABASE_SCHEMA.md)
+- [`04_SECURITY/SECURITY.md`](04_SECURITY/SECURITY.md)
 
 ### مهام AI Key Management:
-- [`04_AGENT_TASKS/DEVELOPER_AI_KEYS_01.md`](04_AGENT_TASKS/DEVELOPER_AI_KEYS_01.md) - Multi-Key Support
-- [`04_AGENT_TASKS/DEVELOPER_AI_KEYS_02.md`](04_AGENT_TASKS/DEVELOPER_AI_KEYS_02.md) - Quota Tracking
-- [`04_AGENT_TASKS/DEVELOPER_AI_KEYS_03.md`](04_AGENT_TASKS/DEVELOPER_AI_KEYS_03.md) - Notification System
-- [`04_AGENT_TASKS/DEVELOPER_AI_KEYS_04.md`](04_AGENT_TASKS/DEVELOPER_AI_KEYS_04.md) - Monitoring Dashboard
+- [`AGENT_TASKS/DEVELOPER_AI_KEYS_01.md`](AGENT_TASKS/DEVELOPER_AI_KEYS_01.md) - Multi-Key Support
+- [`AGENT_TASKS/DEVELOPER_AI_KEYS_02.md`](AGENT_TASKS/DEVELOPER_AI_KEYS_02.md) - Quota Tracking
+- [`AGENT_TASKS/DEVELOPER_AI_KEYS_03.md`](AGENT_TASKS/DEVELOPER_AI_KEYS_03.md) - Notification System
+- [`AGENT_TASKS/DEVELOPER_AI_KEYS_04.md`](AGENT_TASKS/DEVELOPER_AI_KEYS_04.md) - Monitoring Dashboard
 
 ### السيناريوهات:
-- [`07_SCENARIOS/AI_KEY_ROTATION_SCENARIO.md`](07_SCENARIOS/AI_KEY_ROTATION_SCENARIO.md) - 🔄 دوران المفاتيح التلقائي
-- [`07_SCENARIOS/QUOTA_EXCEEDED_SCENARIO.md`](07_SCENARIOS/QUOTA_EXCEEDED_SCENARIO.md) - ⚠️ انتهاء الحد اليومي
-- [`07_SCENARIOS/ALL_KEYS_FAILED_SCENARIO.md`](07_SCENARIOS/ALL_KEYS_FAILED_SCENARIO.md) - 🚨 فشل جميع المفاتيح
-- [`07_SCENARIOS/CONFLICT_RESOLUTION.md`](07_SCENARIOS/CONFLICT_RESOLUTION.md)
-- [`07_SCENARIOS/ROLLBACK.md`](07_SCENARIOS/ROLLBACK.md)
-- [`07_SCENARIOS/SPACE_OVERFLOW.md`](07_SCENARIOS/SPACE_OVERFLOW.md)
+- [`05_OPERATIONS/RUNBOOKS/AI_KEY_ROTATION_SCENARIO.md`](05_OPERATIONS/RUNBOOKS/AI_KEY_ROTATION_SCENARIO.md) - 🔄 دوران المفاتيح التلقائي
+- [`05_OPERATIONS/RUNBOOKS/QUOTA_EXCEEDED_SCENARIO.md`](05_OPERATIONS/RUNBOOKS/QUOTA_EXCEEDED_SCENARIO.md) - ⚠️ انتهاء الحد اليومي
+- [`05_OPERATIONS/RUNBOOKS/ALL_KEYS_FAILED_SCENARIO.md`](05_OPERATIONS/RUNBOOKS/ALL_KEYS_FAILED_SCENARIO.md) - 🚨 فشل جميع المفاتيح
+- [`05_OPERATIONS/RUNBOOKS/CONFLICT_RESOLUTION.md`](05_OPERATIONS/RUNBOOKS/CONFLICT_RESOLUTION.md)
+- [`05_OPERATIONS/RUNBOOKS/ROLLBACK.md`](05_OPERATIONS/RUNBOOKS/ROLLBACK.md)
+- [`05_OPERATIONS/RUNBOOKS/SPACE_OVERFLOW.md`](05_OPERATIONS/RUNBOOKS/SPACE_OVERFLOW.md)
 
 ---
 
@@ -144,11 +144,11 @@ START HERE ↓
 
 **أنا**:
 - 🆕 مطور جديد → [`00_MISSION/TERMINOLOGY.md`](00_MISSION/TERMINOLOGY.md)
-- 📋 أريد مهمتي → [`04_AGENT_TASKS/DEVELOPER_XX.md`](04_AGENT_TASKS/)
+- 📋 أريد مهمتي → [`AGENT_TASKS/DEVELOPER_XX.md`](AGENT_TASKS/)
 - 🔧 أريد استخدام Bridge Tool → [`02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md`](02_INTEGRATION_PLAN/BRIDGE_TOOL_USAGE.md)
 - 📊 أريد معرفة التقدم → [`10_MONITORING/PROGRESS_TRACKER.md`](10_MONITORING/PROGRESS_TRACKER.md)
-- 🆘 عندي مشكلة → [`03_DEVELOPMENT_WORKFLOW/EMERGENCY_PLANS.md`](03_DEVELOPMENT_WORKFLOW/EMERGENCY_PLANS.md)
-- 📝 أريد نموذج التسليم → [`05_TEMPLATES/HANDOFF_TEMPLATE.md`](05_TEMPLATES/HANDOFF_TEMPLATE.md)
+- 🆘 عندي مشكلة → [`05_OPERATIONS/WORKFLOWS/EMERGENCY_PLANS.md`](05_OPERATIONS/WORKFLOWS/EMERGENCY_PLANS.md)
+- 📝 أريد نموذج التسليم → [`06_TEMPLATES/HANDOFF_TEMPLATE.md`](06_TEMPLATES/HANDOFF_TEMPLATE.md)
 
 ---
 

@@ -74,7 +74,7 @@
 └────────────────────┘
 ```
 
-**راجع**: [`../06_TECHNICAL_DOCS/ARCHITECTURE.md`](../06_TECHNICAL_DOCS/ARCHITECTURE.md#2️⃣-bridge-daemon-على-vps-المستخدم)
+**راجع**: [`../04_SECURITY/ARCHITECTURE.md`](../04_SECURITY/ARCHITECTURE.md#2️⃣-bridge-daemon-على-vps-المستخدم)
 
 ---
 
@@ -109,7 +109,7 @@ TELEGRAM_CHAT_ID=xxxxx
 **⚠️ مهم**: 
 - ✅ استخدم GitHub **Personal Access Token** مع صلاحيات `repo`
 - ✅ **لا تكتب** الـ Secrets في الكود نهائياً
-- ✅ راجع: [`../06_TECHNICAL_DOCS/SECURITY.md`](../06_TECHNICAL_DOCS/SECURITY.md)
+- ✅ راجع: [`../04_SECURITY/SECURITY.md`](../04_SECURITY/SECURITY.md)
 
 ---
 
@@ -410,7 +410,7 @@ python3 bridge_tool/cli.py push
 
 **للمزيد**:
 - 📖 [`../09_SERVER_SETUP/SERVER_CONFIG.md`](../09_SERVER_SETUP/SERVER_CONFIG.md)
-- 📖 [`../06_TECHNICAL_DOCS/SECURITY.md`](../06_TECHNICAL_DOCS/SECURITY.md)
+- 📖 [`../04_SECURITY/SECURITY.md`](../04_SECURITY/SECURITY.md)
 
 **للرجوع**:
 - 🏠 [`../INDEX.md`](../INDEX.md) - الدليل الرئيسي
