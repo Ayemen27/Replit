@@ -123,7 +123,7 @@ docs.docker.com/engine/api/
 - [ ] تحليل GraphQL Schema الحالي
 - [ ] تحديد نقاط التوسع
 
-📁 **الوثائق:** [01_CURRENT_STATE/](../../01_CURRENT_STATE/)
+📁 **الوثائق:** [01_CURRENT_STATE/](../01_CURRENT_STATE/)
 
 #### المهمة 1.2: دراسة المشاريع مفتوحة المصدر
 - [ ] Clone وفحص MeshCentral
@@ -131,7 +131,7 @@ docs.docker.com/engine/api/
 - [ ] مراجعة Teleport authentication
 - [ ] فهم Docker Engine API
 
-📁 **الوثائق:** [02_INTEGRATION_PLAN/](../../02_INTEGRATION_PLAN/)
+📁 **الوثائق:** [02_INTEGRATION_PLAN/](../02_INTEGRATION_PLAN/)
 
 #### المهمة 1.3: إعداد البيئة
 - [ ] إعداد Development environment
@@ -153,7 +153,7 @@ docs.docker.com/engine/api/
 - [ ] إضافة Subscriptions للتحديثات الحية
 - [ ] الحفاظ على Schema الحالي
 
-📁 **الوثائق:** [04_SECURITY/](../../04_SECURITY/)
+📁 **الوثائق:** [04_SECURITY/](../04_SECURITY/)
 
 **مثال:**
 ```graphql
@@ -224,7 +224,7 @@ curl https://platform.com/install.sh | bash -s -- TOKEN
 - [ ] Port forwarding
 - [ ] Connection resilience
 
-📁 **الوثائق:** [04_SECURITY/](../../04_SECURITY/)
+📁 **الوثائق:** [04_SECURITY/](../04_SECURITY/)
 
 #### المهمة 3.3: Command Execution (استخدام Docker API)
 - [ ] Sandboxed execution عبر Docker API
@@ -336,7 +336,7 @@ const result = await execPython(
 - [ ] Error tracking
 - [ ] Performance monitoring
 
-📁 **الوثائق:** [10_MONITORING/](../../10_MONITORING/)
+📁 **الوثائق:** [10_MONITORING/](../10_MONITORING/)
 
 ---
 
