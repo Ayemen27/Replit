@@ -1,0 +1,121 @@
+/**
+ * Dark Theme - AI Multi-Agent Platform
+ * وضع الليل (Dark Mode)
+ * 
+ * Triggered by: 
+ * 1. prefers-color-scheme: dark (automatic)
+ * 2. data-theme="dark" attribute (manual override)
+ * 
+ * Version: 1.0.0
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ===== Background Colors (Dark Mode) ===== */
+    --color-background: #0e1525;
+    --color-background-higher: #1a1f2e;
+    --color-background-highest: #252b3b;
+    --color-background-overlay: rgba(0, 0, 0, 0.7);
+
+    /* ===== Foreground Colors (Dark Mode) ===== */
+    --color-foreground: #f8f9fa;
+    --color-foreground-dimmer: #adb5bd;
+    --color-foreground-dimmest: #6c757d;
+    --color-foreground-inverse: #0e1525;
+
+    /* ===== Accent Colors (adjusted for dark bg) ===== */
+    --color-accent-primary: #4a9ff5;
+    --color-accent-primary-dimmer: #0d6efd;
+    --color-accent-primary-stronger: #80c7ff;
+    --color-accent-primary-subtle: #1a3a5c;
+
+    /* ===== Semantic Colors (Dark Mode) ===== */
+    --color-success: #3dd68c;
+    --color-success-subtle: #1a4d3a;
+
+    --color-error: #ff6b7a;
+    --color-error-subtle: #4d1f24;
+
+    --color-warning: #ffb84d;
+    --color-warning-subtle: #4d3a1f;
+
+    --color-info: #4da6ff;
+    --color-info-subtle: #1f3a4d;
+
+    /* ===== Border Colors (Dark Mode) ===== */
+    --color-border-default: #3a4556;
+    --color-border-strong: #4e5a6e;
+    --color-border-subtle: #252b3b;
+
+    /* ===== Shadow Colors (darker in dark mode) ===== */
+    --color-shadow-default: rgba(0, 0, 0, 0.3);
+    --color-shadow-strong: rgba(0, 0, 0, 0.5);
+    --color-shadow-subtle: rgba(0, 0, 0, 0.15);
+
+    /* Update shadows with new colors */
+    --shadow-1: 0 1px 3px var(--color-shadow-subtle);
+    --shadow-2: 0 2px 6px var(--color-shadow-default);
+    --shadow-3: 0 4px 12px var(--color-shadow-default);
+    --shadow-4: 0 8px 24px var(--color-shadow-strong);
+
+    /* ===== Component Tokens (Dark Mode adjustments) ===== */
+    --card-bg: var(--color-background-higher);
+    --card-border-color: var(--color-border-subtle);
+
+    --input-bg: var(--color-background-higher);
+    --input-border-color: var(--color-border-default);
+
+    --nav-bg: var(--color-background-highest);
+  }
+}
+
+/* Manual Dark Mode Override (via data-theme attribute) */
+[data-theme="dark"] {
+  --color-background: #0e1525;
+  --color-background-higher: #1a1f2e;
+  --color-background-highest: #252b3b;
+  --color-background-overlay: rgba(0, 0, 0, 0.7);
+
+  --color-foreground: #f8f9fa;
+  --color-foreground-dimmer: #adb5bd;
+  --color-foreground-dimmest: #6c757d;
+  --color-foreground-inverse: #0e1525;
+
+  --color-accent-primary: #4a9ff5;
+  --color-accent-primary-dimmer: #0d6efd;
+  --color-accent-primary-stronger: #80c7ff;
+  --color-accent-primary-subtle: #1a3a5c;
+
+  --color-success: #3dd68c;
+  --color-success-subtle: #1a4d3a;
+
+  --color-error: #ff6b7a;
+  --color-error-subtle: #4d1f24;
+
+  --color-warning: #ffb84d;
+  --color-warning-subtle: #4d3a1f;
+
+  --color-info: #4da6ff;
+  --color-info-subtle: #1f3a4d;
+
+  --color-border-default: #3a4556;
+  --color-border-strong: #4e5a6e;
+  --color-border-subtle: #252b3b;
+
+  --color-shadow-default: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+  --color-shadow-subtle: rgba(0, 0, 0, 0.15);
+
+  --shadow-1: 0 1px 3px var(--color-shadow-subtle);
+  --shadow-2: 0 2px 6px var(--color-shadow-default);
+  --shadow-3: 0 4px 12px var(--color-shadow-default);
+  --shadow-4: 0 8px 24px var(--color-shadow-strong);
+
+  --card-bg: var(--color-background-higher);
+  --card-border-color: var(--color-border-subtle);
+
+  --input-bg: var(--color-background-higher);
+  --input-border-color: var(--color-border-default);
+
+  --nav-bg: var(--color-background-highest);
+}

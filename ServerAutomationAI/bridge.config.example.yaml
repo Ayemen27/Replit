@@ -1,0 +1,165 @@
+# =====================================================
+# Bridge Tool Configuration - Example
+# Copy this to bridge.config.yaml and fill in your details
+# =====================================================
+
+# Server Configuration
+server:
+  host: "your-server-ip-or-domain"  # e.g., 192.168.1.100 or server.example.com
+  port: 22
+  username: "your-username"
+  
+  # Authentication (choose one method)
+  auth_method: "key"  # Options: "key" or "password"
+  
+  # SSH Key path (if using key authentication)
+  key_path: "~/.ssh/id_rsa"
+  key_passphrase: null  # Leave null if no passphrase
+  
+  # Password (if using password authentication - NOT RECOMMENDED)
+  # Store in Replit Secrets as SSH_PASSWORD instead
+  password: null
+
+# Deployment Paths
+paths:
+  # Remote server paths
+  remote:
+    base: "/srv/ai_system"
+    releases: "/srv/ai_system/releases"
+    current: "/srv/ai_system/current"
+    shared: "/srv/ai_system/shared"
+    backups: "/srv/ai_system/backups"
+  
+  # Local paths (relative to project root)
+  local:
+    root: "."
+    exclude_file: ".bridgeignore"
+
+# Deployment Settings
+deployment:
+  # Service name for systemd
+  service_name: "ai_agents"
+  
+  # Keep last N releases for rollback
+  keep_releases: 5
+  
+  # Timeout for operations (seconds)
+  timeout:
+    connect: 30
+    transfer: 600
+    command: 120
+  
+  # Verification after deployment
+  verify:
+    enabled: true
+    checks:
+      - "service_status"
+      - "log_check"
+      - "health_endpoint"
+    retry_attempts: 3
+    retry_delay: 5
+
+# Sync Settings
+sync:
+  # Use rsync if available (faster)
+  prefer_rsync: true
+  
+  # Compression during transfer
+  compress: true
+  
+  # Preserve file permissions
+  preserve_permissions: true
+  
+  # Delete files on remote that don't exist locally
+  delete_remote: false
+
+# Health Check Settings
+health:
+  # Commands to check system health
+  checks:
+    - name: "System Status"
+      command: "python3 main.py status"
+      expect_exit_code: 0
+    
+    - name: "Agent Manager"
+      command: "systemctl is-active ai_agents"
+      expect_output: "active"
+    
+    - name: "Database Connection"
+      command: "python3 -c 'from agents.database_manager import DatabaseManager; print(DatabaseManager().check_connection())'"
+      expect_exit_code: 0
+
+# Logging Settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "bridge_reports/bridge.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+# Notifications (optional)
+notifications:
+  enabled: false
+  telegram:
+    enabled: false
+    bot_token: "${TELEGRAM_BOT_TOKEN}"
+    chat_id: "${TELEGRAM_CHAT_ID}"
+  
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    from_email: "${DEPLOY_EMAIL_FROM}"
+    to_emails:
+      - "admin@example.com"
+
+# Environment Variables to sync
+environment:
+  # Variables to copy from Replit to server
+  sync_vars:
+    - "PGHOST"
+    - "PGPORT"
+    - "PGDATABASE"
+    - "PGUSER"
+    - "PGPASSWORD"
+    - "TELEGRAM_BOT_TOKEN"
+    - "TELEGRAM_CHAT_ID"
+  
+  # File to store on server
+  remote_env_file: "/srv/ai_system/current/.env"
+
+# Pre/Post Deployment Scripts
+scripts:
+  # Run before deployment
+  pre_deploy:
+    - name: "Validate Config"
+      command: "python3 -c 'import yaml; yaml.safe_load(open(\"configs/config.yaml\"))'"
+    
+    - name: "Check Requirements"
+      command: "pip3 check"
+  
+  # Run after deployment (on remote server)
+  post_deploy:
+    - name: "Install Dependencies"
+      command: "pip3 install -r requirements.txt"
+    
+    - name: "Create Directories"
+      command: "mkdir -p logs backups"
+    
+    - name: "Restart Service"
+      command: "systemctl restart ai_agents"
+    
+    - name: "Verify Service"
+      command: "sleep 5 && systemctl is-active ai_agents"
+
+# Backup Settings
+backup:
+  # Backup before deployment
+  enabled: true
+  
+  # What to backup
+  items:
+    - "database"
+    - "configs"
+    - "logs"
+  
+  # Where to store backups on server
+  path: "/srv/ai_system/backups/pre_deploy"

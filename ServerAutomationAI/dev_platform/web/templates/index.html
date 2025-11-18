@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم بالذكاء الاصطناعي</title>
+    
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Arabic-optimized fonts: Cairo + IBM Plex Sans Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/design-tokens.css?v=20251116h">
+    <link rel="stylesheet" href="/static/css/main.css?v=20251116h">
+    <link rel="stylesheet" href="/static/css/pagination.css">
+    <link rel="stylesheet" href="/static/css/realtime-updates.css">
+    <link rel="stylesheet" href="/static/css/error-states.css">
+    <link rel="stylesheet" href="/static/css/empty-states.css">
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="/static/js/toast.js"></script>
+    <script src="/static/js/error-handler.js"></script>
+    <script src="/static/js/realtime-updates.js"></script>
+</head>
+<body>
+    
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <!-- Brand -->
+            <a href="/" class="navbar__brand">
+                <i class="bi bi-robot"></i>
+                <span>لوحة التحكم بالذكاء الاصطناعي</span>
+            </a>
+            
+            <!-- Hamburger Button (Mobile) -->
+            <button class="navbar__hamburger" 
+                    type="button" 
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navbar-menu">
+                <i class="bi bi-list"></i>
+            </button>
+            
+            <!-- Desktop Tabs (≥992px) -->
+            <ul class="navbar__tabs" role="tablist">
+                <li class="navbar__tab-item" role="presentation">
+                    <button class="navbar__tab-button active" 
+                            id="dashboard-tab"
+                            type="button"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="dashboard"
+                            data-bs-toggle="tab"
+                            data-bs-target="#dashboard"
+                            data-tab-target="dashboard">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>لوحة المعلومات</span>
+                    </button>
+                </li>
+                <li class="navbar__tab-item" role="presentation">
+                    <button class="navbar__tab-button" 
+                            id="workflows-tab"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="workflows"
+                            data-bs-toggle="tab"
+                            data-bs-target="#workflows"
+                            data-tab-target="workflows">
+                        <i class="bi bi-diagram-3"></i>
+                        <span>سير العمل</span>
+                    </button>
+                </li>
+                <li class="navbar__tab-item" role="presentation">
+                    <button class="navbar__tab-button" 
+                            id="new-workflow-tab"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="new-workflow"
+                            data-bs-toggle="tab"
+                            data-bs-target="#new-workflow"
+                            data-tab-target="new-workflow">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>سير عمل جديد</span>
+                    </button>
+                </li>
+                <li class="navbar__tab-item" role="presentation">
+                    <button class="navbar__tab-button" 
+                            id="agents-tab"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="agents"
+                            data-bs-toggle="tab"
+                            data-bs-target="#agents"
+                            data-tab-target="agents">
+                        <i class="bi bi-gear"></i>
+                        <span>الوكلاء</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Mobile Menu (Collapsible) -->
+        <div class="navbar__menu" id="navbar-menu" role="menu">
+            <ul class="navbar__menu-list">
+                <li class="navbar__menu-item">
+                    <button class="navbar__menu-button active" 
+                            type="button"
+                            role="menuitem"
+                            data-bs-toggle="tab"
+                            data-bs-target="#dashboard"
+                            data-tab-target="dashboard">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>لوحة المعلومات</span>
+                    </button>
+                </li>
+                <li class="navbar__menu-item">
+                    <button class="navbar__menu-button" 
+                            type="button"
+                            role="menuitem"
+                            data-bs-toggle="tab"
+                            data-bs-target="#workflows"
+                            data-tab-target="workflows">
+                        <i class="bi bi-diagram-3"></i>
+                        <span>سير العمل</span>
+                    </button>
+                </li>
+                <li class="navbar__menu-item">
+                    <button class="navbar__menu-button" 
+                            type="button"
+                            role="menuitem"
+                            data-bs-toggle="tab"
+                            data-bs-target="#new-workflow"
+                            data-tab-target="new-workflow">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>سير عمل جديد</span>
+                    </button>
+                </li>
+                <li class="navbar__menu-item">
+                    <button class="navbar__menu-button" 
+                            type="button"
+                            role="menuitem"
+                            data-bs-toggle="tab"
+                            data-bs-target="#agents"
+                            data-tab-target="agents">
+                        <i class="bi bi-gear"></i>
+                        <span>الوكلاء</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Overlay (for mobile menu) -->
+        <div class="navbar__overlay" aria-hidden="true"></div>
+    </header>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="tab-content">
+            <!-- لوحة المعلومات -->
+            <div class="tab-pane active" id="dashboard">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="bi bi-speedometer"></i> مقاييس النظام</h5>
+                            </div>
+                            <div class="card-body" 
+                                 id="metrics"
+                                 hx-get="/api/metrics/partial" 
+                                 hx-trigger="load, every 10s"
+                                 hx-headers='{"X-API-Token": "{{ api_token }}"}'>
+                                <div class="text-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">جاري التحميل...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="bi bi-clock-history"></i> سير العمل الأخير</h5>
+                            </div>
+                            <div class="card-body" 
+                                 id="workflows-preview"
+                                 hx-get="/api/workflows/partial" 
+                                 hx-trigger="load, every 10s"
+                                 hx-headers='{"X-API-Token": "{{ api_token }}"}'>
+                                <div class="text-center">
+                                    <div class="spinner-border text-success" role="status">
+                                        <span class="visually-hidden">جاري التحميل...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- سير العمل -->
+            <div class="tab-pane" id="workflows">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="bi bi-list-task"></i> جميع سير العمل</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Search and Filter Controls -->
+                        <div class="workflows-controls mb-4">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="workflow-search" 
+                                               placeholder="ابحث في سير العمل..."
+                                               aria-label="Search workflows">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-select" id="workflow-status-filter" aria-label="Filter by status">
+                                        <option value="">الكل</option>
+                                        <option value="pending">قيد الانتظار</option>
+                                        <option value="running">جاري التشغيل</option>
+                                        <option value="completed">مكتمل</option>
+                                        <option value="failed">فاشل</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="workflow-type-filter" aria-label="Filter by type">
+                                        <option value="">جميع الأنواع</option>
+                                        <option value="delivery_pipeline">خط التسليم</option>
+                                        <option value="regression">اختبار الانحدار</option>
+                                        <option value="maintenance">الصيانة</option>
+                                        <option value="custom">مخصص</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="workflow-sort" aria-label="Sort workflows">
+                                        <option value="newest">الأحدث أولاً</option>
+                                        <option value="oldest">الأقدم أولاً</option>
+                                        <option value="name-asc">الاسم (أ-ي)</option>
+                                        <option value="name-desc">الاسم (ي-أ)</option>
+                                        <option value="status">حسب الحالة</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="all-workflows"
+                             hx-get="/api/workflows/partial" 
+                             hx-trigger="load, every 10s"
+                             hx-headers='{"X-API-Token": "{{ api_token }}"}'>
+                            <div class="text-center">
+                                <div class="spinner-border text-info" role="status">
+                                    <span class="visually-hidden">جاري التحميل...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- سير عمل جديد -->
+            <div class="tab-pane" id="new-workflow">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-plus-circle"></i> إنشاء سير عمل جديد</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card cursor-pointer" onclick="selectWorkflowType('delivery_pipeline', this)" style="cursor: pointer; padding: 20px;">
+                                    <h5><i class="bi bi-arrow-right-circle"></i> خط التسليم</h5>
+                                    <p class="text-muted mb-0">التخطيط ← التنفيذ ← ضمان الجودة ← التقرير</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card cursor-pointer" onclick="selectWorkflowType('regression', this)" style="cursor: pointer; padding: 20px;">
+                                    <h5><i class="bi bi-arrow-repeat"></i> اختبار الانحدار</h5>
+                                    <p class="text-muted mb-0">فشل ضمان الجودة ← إعادة الإنتاج ← التغذية الراجعة</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card cursor-pointer" onclick="selectWorkflowType('maintenance', this)" style="cursor: pointer; padding: 20px;">
+                                    <h5><i class="bi bi-tools"></i> الصيانة</h5>
+                                    <p class="text-muted mb-0">فحوصات الصحة ← فحص التبعيات ← تحليل الجودة</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card cursor-pointer" onclick="selectWorkflowType('custom', this)" style="cursor: pointer; padding: 20px;">
+                                    <h5><i class="bi bi-code-square"></i> سير عمل مخصص</h5>
+                                    <p class="text-muted mb-0">أوامر محددة من المستخدم</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">اسم المشروع</label>
+                                <input type="text" class="form-control" id="project-name" placeholder="my-project">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">وصف الطلب</label>
+                                <textarea class="form-control" id="user-request" rows="3" placeholder="مثال: بناء تطبيق ويب بسيط"></textarea>
+                            </div>
+                            <button class="btn btn-primary btn-lg w-100" onclick="startWorkflow()">
+                                <i class="bi bi-play-circle"></i> بدء سير العمل
+                            </button>
+                        </div>
+                        
+                        <div id="workflow-result" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الوكلاء -->
+            <div class="tab-pane" id="agents">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0"><i class="bi bi-gear-fill"></i> حالة الوكلاء</h5>
+                    </div>
+                    <div class="card-body"
+                         id="agents-list"
+                         hx-get="/api/agents/partial" 
+                         hx-trigger="load, every 10s"
+                         hx-headers='{"X-API-Token": "{{ api_token }}"}'>
+                        <div class="text-center">
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="visually-hidden">جاري التحميل...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics -->
+            <div class="tab-pane" id="analytics">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> التحليلات والتقارير</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i> هذه الميزة قيد التطوير
+                        </div>
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">قديم - OpsCoordinator Agent</h6>
+                                    <span class="badge bg-success">يعمل</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+        <ul class="bottom-nav__list" role="tablist">
+            <li class="bottom-nav__item" role="presentation">
+                <button class="bottom-nav__button active" 
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="dashboard"
+                        data-bs-toggle="tab"
+                        data-bs-target="#dashboard"
+                        data-tab-target="dashboard">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>الرئيسية</span>
+                </button>
+            </li>
+            <li class="bottom-nav__item" role="presentation">
+                <button class="bottom-nav__button" 
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="workflows"
+                        data-bs-toggle="tab"
+                        data-bs-target="#workflows"
+                        data-tab-target="workflows">
+                    <i class="bi bi-diagram-3"></i>
+                    <span>سير العمل</span>
+                </button>
+            </li>
+            <li class="bottom-nav__item" role="presentation">
+                <button class="bottom-nav__button" 
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="new-workflow"
+                        data-bs-toggle="tab"
+                        data-bs-target="#new-workflow"
+                        data-tab-target="new-workflow">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>إنشاء</span>
+                </button>
+            </li>
+            <li class="bottom-nav__item" role="presentation">
+                <button class="bottom-nav__button" 
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="agents"
+                        data-bs-toggle="tab"
+                        data-bs-target="#agents"
+                        data-tab-target="agents">
+                    <i class="bi bi-gear"></i>
+                    <span>الوكلاء</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/navigation.js"></script>
+    <script src="/static/js/workflows.js"></script>
+    <script src="/static/js/workflow-cards.js"></script>
+    <script src="/static/js/search-filter.js"></script>
+    
+    <script>
+        let selectedWorkflowType = null;
+        
+        function selectWorkflowType(type, element) {
+            document.querySelectorAll('.cursor-pointer').forEach(card => {
+                card.style.border = '';
+                card.style.background = '';
+            });
+            
+            element.style.border = '2px solid #0d6efd';
+            element.style.background = '#e7f1ff';
+            selectedWorkflowType = type;
+        }
+
+        async function startWorkflow() {
+            if (!selectedWorkflowType) {
+                showResult('danger', 'الرجاء اختيار نوع سير العمل أولاً');
+                return;
+            }
+
+            const projectName = document.getElementById('project-name').value || 'web-project';
+            const userRequest = document.getElementById('user-request').value || 'سير عمل جديد';
+
+            showResult('info', 'جاري بدء سير العمل...');
+
+            try {
+                const response = await fetch('/api/workflows/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Token': '{{ api_token }}'
+                    },
+                    body: JSON.stringify({
+                        workflow_type: selectedWorkflowType,
+                        project_name: projectName,
+                        user_request: userRequest,
+                        parameters: {}
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showResult('success', `✅ تم بدء سير العمل بنجاح! المعرف: ${result.workflow_id}`);
+                } else {
+                    showResult('danger', `❌ فشل: ${result.detail || 'خطأ غير معروف'}`);
+                }
+            } catch (error) {
+                showResult('danger', `❌ خطأ في الاتصال: ${error.message}`);
+            }
+        }
+
+        function showResult(type, message) {
+            const resultDiv = document.getElementById('workflow-result');
+            resultDiv.innerHTML = `
+                <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

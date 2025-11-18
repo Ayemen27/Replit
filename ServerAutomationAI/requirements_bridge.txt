@@ -1,0 +1,5 @@
+# Bridge Tool Requirements
+# Additional requirements for the deployment bridge
+
+paramiko>=2.12.0  # SSH/SFTP client
+pyyaml>=6.0       # YAML configuration (already in main requirements)

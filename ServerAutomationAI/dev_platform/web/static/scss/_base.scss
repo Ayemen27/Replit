@@ -1,0 +1,144 @@
+// ============================================================================
+// Base Styles - Global Reset and Foundations
+// ============================================================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  direction: rtl;
+  text-align: right;
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// Container System (Responsive Width)
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  
+  // Mobile (<576px): Full width with padding
+  // No max-width
+  
+  // Tablet (≥576px)
+  @media (min-width: 576px) {
+    max-width: 540px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  // Medium (≥768px)
+  @media (min-width: 768px) {
+    max-width: 720px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  // Large (≥992px)
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  
+  // Extra Large (≥1200px)
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+  
+  // Responsive padding and min-height for mobile/desktop
+  // Mobile: Account for both header (64px) and bottom nav (64px)
+  padding-bottom: 80px;
+  min-height: calc(100vh - 64px - 64px);
+  
+  // Desktop: Only account for header (72px), no bottom nav
+  @media (min-width: 992px) {
+    padding-bottom: 24px;
+    min-height: calc(100vh - 72px);
+  }
+}
+
+// Alternative: Full-width container for mobile
+.container-fluid-responsive {
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  
+  @media (min-width: 576px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  @media (min-width: 768px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+// Links
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Buttons Reset
+button {
+  font-family: inherit;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+}
+
+// Form Elements
+input, textarea, select {
+  font-family: inherit;
+}
+
+// Screen Reader Only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

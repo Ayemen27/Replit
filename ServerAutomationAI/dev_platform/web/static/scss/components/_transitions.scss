@@ -1,0 +1,97 @@
+/**
+ * Transitions & Animations
+ * التحولات والحركات
+ * 
+ * Material Design 3 §3.1 - Motion
+ * Core Web Vitals: Smooth 60fps animations
+ * 
+ * Version: 1.0.0
+ */
+
+@import '../variables';
+
+// Easing functions (Material Design 3)
+$easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+$easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+$easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+$easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1);
+
+// Durations
+$duration-short: 200ms;
+$duration-medium: 300ms;
+$duration-long: 500ms;
+
+// Smooth transitions
+.transition {
+  transition: all $duration-medium $easing-standard;
+  
+  &--fast { transition-duration: $duration-short; }
+  &--slow { transition-duration: $duration-long; }
+  &--emphasized { transition-timing-function: $easing-emphasized; }
+}
+
+// Fade animations
+.fade-enter {
+  opacity: 0;
+  animation: fadeIn $duration-medium $easing-standard forwards;
+}
+
+.fade-exit {
+  opacity: 1;
+  animation: fadeOut $duration-medium $easing-standard forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+// Slide animations
+.slide-up-enter {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp $duration-medium $easing-decelerate forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Scale animations
+.scale-enter {
+  transform: scale(0.95);
+  opacity: 0;
+  animation: scaleIn $duration-medium $easing-emphasized forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Smooth scroll
+html {
+  scroll-behavior: smooth;
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تفاصيل سير العمل - AI Multi-Agent Dashboard">
+    <title>تفاصيل سير العمل - AI Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/design-tokens.css?v=20251116h">
+    <link rel="stylesheet" href="/static/css/main.css?v=20251116h">
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="/static/js/toast.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-robot"></i> AI Multi-Agent Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="bi bi-house-door"></i> الرئيسية
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="bi bi-info-circle"></i> تفاصيل سير العمل
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid mt-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
+                <li class="breadcrumb-item active" aria-current="page">تفاصيل سير العمل</li>
+            </ol>
+        </nav>
+
+        <!-- Workflow Header -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="mb-2">
+                            <i class="bi bi-{{ workflow.icon }}"></i>
+                            {{ workflow.name }}
+                        </h2>
+                        <p class="text-muted mb-0">{{ workflow.description }}</p>
+                    </div>
+                    <div class="col-md-4 text-start">
+                        <span class="badge bg-{{ workflow.status_color }} fs-5 px-4 py-2">
+                            {{ workflow.status_text }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Column: Details -->
+            <div class="col-lg-8">
+                <!-- Workflow Info -->
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="bi bi-info-circle"></i> معلومات أساسية</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">معرف سير العمل</label>
+                                <p class="mb-0">{{ workflow.workflow_id }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">النوع</label>
+                                <p class="mb-0">{{ workflow.type_text }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">تاريخ الإنشاء</label>
+                                <p class="mb-0">{{ workflow.created_at }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">آخر تحديث</label>
+                                <p class="mb-0">{{ workflow.updated_at }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">المدة</label>
+                                <p class="mb-0">{{ workflow.duration }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted">الأولوية</label>
+                                <p class="mb-0">{{ workflow.priority }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="bi bi-clock-history"></i> المخطط الزمني</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline">
+                            {% for event in workflow.timeline %}
+                            <div class="timeline-item">
+                                <div class="timeline-marker bg-{{ event.color }}"></div>
+                                <div class="timeline-content">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="mb-1">{{ event.title }}</h6>
+                                        <small class="text-muted">{{ event.time }}</small>
+                                    </div>
+                                    <p class="mb-0 text-muted">{{ event.description }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logs -->
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0"><i class="bi bi-terminal"></i> السجلات</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="logs-container" style="max-height: 400px; overflow-y: auto; background: #1e1e1e; color: #d4d4d4;">
+                            <pre class="p-3 mb-0" style="font-family: 'Courier New', monospace; font-size: 0.875rem;">{{ workflow.logs | default('لا توجد سجلات متاحة') }}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Actions & Stats -->
+            <div class="col-lg-4">
+                <!-- Quick Actions -->
+                <div class="card mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0"><i class="bi bi-lightning"></i> إجراءات سريعة</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success" onclick="startWorkflow('{{ workflow.workflow_id }}')">
+                                <i class="bi bi-play-fill"></i> تشغيل
+                            </button>
+                            <button class="btn btn-warning" onclick="pauseWorkflow('{{ workflow.workflow_id }}')">
+                                <i class="bi bi-pause-fill"></i> إيقاف مؤقت
+                            </button>
+                            <button class="btn btn-danger" onclick="stopWorkflow('{{ workflow.workflow_id }}')">
+                                <i class="bi bi-stop-fill"></i> إيقاف
+                            </button>
+                            <button class="btn btn-info" onclick="refreshWorkflow('{{ workflow.workflow_id }}')">
+                                <i class="bi bi-arrow-clockwise"></i> تحديث
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> إحصائيات</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-item mb-3">
+                            <label class="text-muted small">إجمالي المهام</label>
+                            <h4 class="mb-0">{{ workflow.total_tasks }}</h4>
+                        </div>
+                        <div class="stat-item mb-3">
+                            <label class="text-muted small">المهام المكتملة</label>
+                            <h4 class="mb-0 text-success">{{ workflow.completed_tasks }}</h4>
+                        </div>
+                        <div class="stat-item mb-3">
+                            <label class="text-muted small">المهام الفاشلة</label>
+                            <h4 class="mb-0 text-danger">{{ workflow.failed_tasks }}</h4>
+                        </div>
+                        <div class="stat-item">
+                            <label class="text-muted small">معدل النجاح</label>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-success" role="progressbar" 
+                                     style="width: {{ workflow.success_rate }}%"
+                                     aria-valuenow="{{ workflow.success_rate }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    {{ workflow.success_rate }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Workflows -->
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0"><i class="bi bi-link-45deg"></i> سير عمل مرتبط</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if workflow.related %}
+                            <ul class="list-unstyled mb-0">
+                                {% for related in workflow.related %}
+                                <li class="mb-2">
+                                    <a href="/workflow/{{ related.id }}" class="text-decoration-none">
+                                        <i class="bi bi-arrow-right-circle"></i> {{ related.name }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted mb-0">لا توجد سير عمل مرتبطة</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-5 py-3 bg-light text-center">
+        <p class="text-muted mb-0">&copy; 2025 AI Multi-Agent Dashboard. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function startWorkflow(id) {
+            showToast('تم بدء سير العمل بنجاح', 'success');
+        }
+        
+        function pauseWorkflow(id) {
+            showToast('تم إيقاف سير العمل مؤقتاً', 'warning');
+        }
+        
+        function stopWorkflow(id) {
+            showToast('تم إيقاف سير العمل', 'danger');
+        }
+        
+        function refreshWorkflow(id) {
+            window.location.reload();
+        }
+    </script>
+    
+    <style>
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-border-default);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-right: 40px;
+            padding-bottom: 20px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            right: 4px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .timeline-content {
+            background: var(--color-background-higher);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    </style>
+</body>
+</html>

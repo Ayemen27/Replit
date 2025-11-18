@@ -1,0 +1,163 @@
+# =====================================================
+# AI Multi-Agent Server Automation System - Configuration
+# =====================================================
+
+system:
+  name: "AI Multi-Agent Server Automation System"
+  version: "1.0.0"
+  base_path: "."
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  timezone: "UTC"
+
+# PostgreSQL Database Configuration
+database:
+  postgresql:
+    enabled: true
+    host: "${PGHOST}"
+    port: "${PGPORT}"
+    database: "${PGDATABASE}"
+    user: "${PGUSER}"
+    password: "${PGPASSWORD}"
+    connection_timeout: 30
+    max_connections: 10
+  
+  mongodb:
+    enabled: false
+    host: "localhost"
+    port: 27017
+    database: "ai_system"
+    user: ""
+    password: ""
+    auth_source: "admin"
+
+# Telegram Notification Configuration
+# All credentials are managed via SecretsManager (environment variables)
+notifications:
+  telegram:
+    enabled: true
+    bot_token: "${TELEGRAM_BOT_TOKEN}"
+    chat_id: "${TELEGRAM_CHAT_ID}"
+    api_url: "https://api.telegram.org/bot"
+    timeout: 10
+    retry_attempts: 3
+  
+  email:
+    enabled: true
+    smtp_server: "${EMAIL_HOST}"
+    smtp_port: "${EMAIL_PORT}"
+    sender_email: "${EMAIL_USER}"
+    sender_password: "${EMAIL_PASSWORD}"
+    recipient_emails:
+      - "${SUPPORT_EMAIL}"
+    use_tls: true
+    timeout: 30
+
+# Agents Configuration
+agents:
+  ai_manager:
+    enabled: true
+    priority: 1
+    check_interval: 60  # seconds
+    auto_restart: true
+    
+  performance_monitor:
+    enabled: true
+    priority: 2
+    check_interval: 30  # seconds
+    thresholds:
+      cpu_percent: 80
+      memory_percent: 85
+      disk_percent: 90
+      network_alert_mb: 1000
+    
+  log_analyzer:
+    enabled: true
+    priority: 3
+    check_interval: 120  # seconds
+    log_paths:
+      - "./logs/"
+    patterns:
+      error: [" - ERROR - ", " - CRITICAL - ", " - FATAL - ", "Traceback \\(most recent call last\\)"]
+      warning: [" - WARNING - "]
+      security: ["Failed password", "authentication failure", "invalid user"]
+    
+  security_monitor:
+    enabled: true
+    priority: 2
+    check_interval: 60  # seconds
+    monitored_ports: [22, 80, 443, 3306, 5432]
+    max_failed_logins: 5
+    suspicious_ips_file: "./configs/suspicious_ips.txt"
+    whitelist_ips_file: "./configs/whitelist_ips.txt"
+    auto_block_enabled: true  # تفعيل الحظر التلقائي
+    block_duration_minutes: 1440  # مدة الحظر (24 ساعة، 0 = دائم)
+    
+  database_manager:
+    enabled: true
+    priority: 3
+    check_interval: 300  # seconds (5 minutes)
+    auto_optimize: true
+    vacuum_schedule: "daily"  # daily, weekly, monthly
+    backup_before_optimize: true
+    
+  backup_recovery:
+    enabled: true
+    priority: 3
+    check_interval: 3600  # seconds (1 hour)
+    backup_schedule: "0 2 * * *"  # cron format: 2 AM daily
+    backup_retention_days: 30
+    backup_path: "./backups"
+    backup_types:
+      - "database"
+      - "configs"
+      - "logs"
+    compression: true
+    encryption: false
+
+# Logging Configuration
+logging:
+  enabled: true
+  log_directory: "./logs"
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+  max_file_size_mb: 50
+  backup_count: 5
+  console_output: true
+  
+# Inter-Agent Communication
+communication:
+  method: "queue"  # queue, socket, http
+  queue_max_size: 1000
+  message_timeout: 30
+  retry_attempts: 3
+  
+# Monitoring Intervals
+monitoring:
+  health_check_interval: 60  # seconds
+  status_report_interval: 3600  # seconds (1 hour)
+  auto_recovery_enabled: true
+  max_restart_attempts: 3
+  restart_cooldown: 300  # seconds
+
+# Alert Thresholds
+alerts:
+  critical:
+    cpu_percent: 95
+    memory_percent: 95
+    disk_percent: 95
+    response_time_seconds: 30
+  
+  warning:
+    cpu_percent: 80
+    memory_percent: 85
+    disk_percent: 90
+    response_time_seconds: 10
+    
+# Security Settings
+security:
+  enable_auth: false
+  api_key: "your-secure-api-key-here"
+  allowed_ips: []
+  rate_limiting:
+    enabled: false
+    max_requests_per_minute: 60

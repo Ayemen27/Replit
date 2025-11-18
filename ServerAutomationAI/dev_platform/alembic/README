@@ -1,0 +1,24 @@
+Generic single-database configuration for Alembic migrations.
+
+Usage:
+------
+
+Generate a new migration:
+    cd dev_platform
+    alembic revision --autogenerate -m "description of changes"
+
+Apply migrations:
+    cd dev_platform
+    alembic upgrade head
+
+Downgrade:
+    cd dev_platform
+    alembic downgrade -1
+
+View history:
+    cd dev_platform
+    alembic history
+
+Current version:
+    cd dev_platform
+    alembic current

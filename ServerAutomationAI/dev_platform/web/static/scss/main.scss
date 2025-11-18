@@ -1,0 +1,160 @@
+/**
+ * Main SCSS Entry Point - AI Multi-Agent Platform
+ * نقطة الدخول الرئيسية
+ * 
+ * Import Order (CRITICAL - DO NOT CHANGE):
+ * 1. Variables (Design tokens)
+ * 2. Mixins (Reusable functions)
+ * 3. Base (Reset, typography, elements)
+ * 4. Utilities (Helper classes)
+ * 5. Components (UI components)
+ * 6. Layouts (Page layouts)
+ * 
+ * Version: 1.0.0
+ * Last Updated: 2025-11-16
+ */
+
+/* ============================================
+   1. VARIABLES (Design Tokens)
+   المتغيرات - رموز التصميم
+   ============================================ */
+@import 'variables';
+
+/* ============================================
+   2. MIXINS (Reusable Functions)
+   الدوال القابلة لإعادة الاستخدام
+   ============================================ */
+@import 'mixins';
+
+/* ============================================
+   3. BASE (Reset, Typography, Elements)
+   الأساسيات - إعادة التعيين والخطوط
+   ============================================ */
+@import 'base';
+@import 'typography';
+
+/* ============================================
+   4. UTILITIES (Helper Classes)
+   الأدوات المساعدة
+   ============================================ */
+@import 'utilities';
+
+/* ============================================
+   5. COMPONENTS (UI Components)
+   المكونات - واجهات المستخدم
+   
+   Components will be imported here as they are created:
+   - @import 'components/button';
+   - @import 'components/card';
+   - @import 'components/navbar';
+   - @import 'components/metrics';
+   - @import 'components/workflow-cards';
+   - @import 'components/forms';
+   - etc...
+   ============================================ */
+
+/* Component imports */
+@import 'components/navbar';
+@import 'components/bottom-nav';
+@import 'components/metrics';
+@import 'components/workflows';
+@import 'components/loading-states';
+@import 'components/toast';
+@import 'components/transitions';
+@import 'components/interactive-states';
+@import 'components/micro-interactions';
+
+/* ============================================
+   6. LAYOUTS (Page Layouts)
+   التخطيطات - تصميمات الصفحات
+   
+   Layouts will be imported here as they are created:
+   - @import 'layouts/dashboard';
+   - @import 'layouts/grid';
+   - @import 'layouts/container';
+   - etc...
+   ============================================ */
+
+/* Layout imports */
+@import 'layouts/dashboard';
+
+/* ============================================
+   DOCUMENTATION
+   ============================================ */
+
+/**
+ * BEM Naming Convention (Block Element Modifier)
+ * 
+ * Guidelines:
+ * - Use semantic names (not numbered)
+ * - Follow 8px baseline grid for spacing
+ * - Support RTL for Arabic language
+ * - Ensure WCAG 2.1 AA accessibility
+ * 
+ * Examples:
+ * 
+ * Block:
+ *   .card { }
+ * 
+ * Element:
+ *   .card__header { }
+ *   .card__body { }
+ *   .card__footer { }
+ * 
+ * Modifier:
+ *   .card--primary { }
+ *   .card--large { }
+ *   .card__header--bold { }
+ * 
+ * State:
+ *   .card.is-active { }
+ *   .card.is-disabled { }
+ * 
+ * Utility classes:
+ *   .mt-4 (margin-top: 16px)
+ *   .text-center
+ *   .flex-center
+ */
+
+/**
+ * Using Design Tokens
+ * 
+ * Colors (Semantic):
+ *   color: $color-foreground;
+ *   background: $color-accent-primary;
+ * 
+ * Spacing (8px baseline):
+ *   margin: $spacing-4;  // 16px
+ *   padding: $spacing-6; // 32px
+ * 
+ * Typography:
+ *   font-family: $font-family-base;
+ *   @include font-size('lg');
+ * 
+ * Responsive:
+ *   @include respond-to(md) {
+ *     // Styles for tablet and up
+ *   }
+ * 
+ * Shadows:
+ *   @include shadow(2);
+ * 
+ * RTL Support:
+ *   @include padding-inline($spacing-4);
+ *   @include rtl {
+ *     // RTL-specific styles
+ *   }
+ */
+
+/**
+ * Dark Mode Support (Future)
+ * 
+ * When implementing dark mode, create:
+ * - _variables-dark.scss
+ * - themes/dark.scss
+ * 
+ * Then import conditionally:
+ * @media (prefers-color-scheme: dark) {
+ *   @import 'variables-dark';
+ * }
+ */

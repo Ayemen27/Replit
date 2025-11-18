@@ -1,0 +1,48 @@
+[Unit]
+Description=AI Multi-Agent Server Automation System
+After=network.target postgresql.service
+Wants=postgresql.service
+Documentation=https://github.com/ai-multi-agent-system
+
+[Service]
+Type=simple
+User=administrator
+Group=administrator
+WorkingDirectory=/srv/ai_system/current
+
+# Load environment variables from .env file
+EnvironmentFile=/srv/ai_system/.env
+
+# Main command
+ExecStart=/usr/bin/python3 /srv/ai_system/current/main.py start
+
+# Graceful shutdown
+ExecStop=/bin/kill -SIGTERM $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=5min
+StartLimitBurst=3
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai_agents
+
+# Security settings (optional but recommended)
+# PrivateTmp=true
+# NoNewPrivileges=true
+# ProtectSystem=strict
+# ProtectHome=true
+# ReadWritePaths=/srv/ai_system
+
+# Resource limits (optional)
+# LimitNOFILE=65536
+# LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target

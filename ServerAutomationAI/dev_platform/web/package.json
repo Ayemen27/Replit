@@ -1,0 +1,32 @@
+{
+  "name": "ai-multi-agent-platform-web",
+  "version": "1.0.0",
+  "description": "Web Dashboard for AI Multi-Agent Platform - SCSS Build System",
+  "private": true,
+  "scripts": {
+    "build:scss": "sass static/scss/main.scss static/css/main.css",
+    "watch:scss": "sass --watch static/scss/main.scss:static/css/main.css",
+    "build:scss:compressed": "sass --style=compressed static/scss/main.scss static/css/main.min.css",
+    "watch:scss:compressed": "sass --watch --style=compressed static/scss/main.scss:static/css/main.min.css"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "keywords": [
+    "scss",
+    "sass",
+    "design-system",
+    "design-tokens",
+    "ai-platform"
+  ],
+  "author": "AI Multi-Agent Platform Team",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "private"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

@@ -1,0 +1,120 @@
+{% if workflows|length > 0 %}
+    <div class="workflows-grid">
+        {% for wf in workflows %}
+        <div class="workflow-card" 
+             aria-expanded="false"
+             data-status="{{ wf.status }}"
+             data-type="{{ wf.workflow_type }}">
+            <div class="workflow-card__swipeable">
+                <div class="workflow-card-header">
+                    <div class="workflow-icon">
+                        {% if wf.workflow_type == 'delivery_pipeline' %}
+                            <i class="bi bi-arrow-right-circle"></i>
+                        {% elif wf.workflow_type == 'regression' %}
+                            <i class="bi bi-arrow-repeat"></i>
+                        {% elif wf.workflow_type == 'maintenance' %}
+                            <i class="bi bi-tools"></i>
+                        {% else %}
+                            <i class="bi bi-code-square"></i>
+                        {% endif %}
+                    </div>
+                    <span class="workflow-status badge 
+                        {% if wf.status == 'completed' %}status-completed
+                        {% elif wf.status == 'running' %}status-running
+                        {% elif wf.status == 'failed' %}status-failed
+                        {% else %}status-pending{% endif %}">
+                        {% if wf.status == 'completed' %}✓ مكتمل
+                        {% elif wf.status == 'running' %}⚡ قيد التشغيل
+                        {% elif wf.status == 'failed' %}✗ فشل
+                        {% elif wf.status == 'cancelled' %}⊗ ملغى
+                        {% else %}⏸ {{ wf.status }}{% endif %}
+                    </span>
+                </div>
+                
+                <div class="workflow-card-body">
+                    <h5 class="workflow-title workflow-card__title">
+                        <a href="/workflow/{{ wf.workflow_id }}" class="text-decoration-none text-dark">
+                            {% if wf.workflow_type == 'delivery_pipeline' %}خط التسليم
+                            {% elif wf.workflow_type == 'regression' %}اختبار الانحدار
+                            {% elif wf.workflow_type == 'maintenance' %}الصيانة
+                            {% elif wf.workflow_type == 'custom' %}مخصص
+                            {% else %}{{ wf.workflow_type }}{% endif %}
+                        </a>
+                    </h5>
+                    
+                    <div class="workflow-info">
+                        <div class="info-item">
+                            <i class="bi bi-folder"></i>
+                            <span>{{ wf.project_name if wf.project_name and wf.project_name != 'None' else 'غير متوفر' }}</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="bi bi-clock"></i>
+                            <span data-timestamp="{{ wf.created_at }}">{{ wf.created_at | compact_datetime }}</span>
+                        </div>
+                        
+                        {% if wf.workflow_id %}
+                        <div class="info-item workflow-id">
+                            <i class="bi bi-hash"></i>
+                            <span>{{ wf.workflow_id[:8] }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="workflow-card-footer">
+                    <button class="btn-view-details" 
+                            onclick="alert('تفاصيل سير العمل: {{ wf.workflow_id }}')"
+                            aria-label="عرض تفاصيل {{ wf.workflow_type }}">
+                        <i class="bi bi-eye"></i> 
+                        <span>عرض التفاصيل</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hidden swipe actions (revealed on touch swipe) -->
+            <div class="workflow-card__actions" aria-label="إجراءات سريعة">
+                {% if wf.status == 'failed' %}
+                <button class="action-btn" 
+                        onclick="alert('إعادة محاولة: {{ wf.workflow_id }}')"
+                        aria-label="إعادة المحاولة"
+                        title="إعادة المحاولة">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    <span class="sr-only">إعادة المحاولة</span>
+                </button>
+                {% elif wf.status == 'running' %}
+                <button class="action-btn" 
+                        onclick="alert('إيقاف: {{ wf.workflow_id }}')"
+                        aria-label="إيقاف سير العمل"
+                        title="إيقاف">
+                    <i class="bi bi-stop-circle"></i>
+                    <span class="sr-only">إيقاف</span>
+                </button>
+                {% endif %}
+                <button class="action-btn" 
+                        onclick="alert('تفاصيل: {{ wf.workflow_id }}')"
+                        aria-label="عرض التفاصيل"
+                        title="عرض التفاصيل">
+                    <i class="bi bi-info-circle"></i>
+                    <span class="sr-only">عرض التفاصيل</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state workflows" role="status" aria-live="polite">
+        <div class="empty-icon">
+            <i class="bi bi-inbox"></i>
+        </div>
+        <h3 class="empty-title">لا توجد سير عمل</h3>
+        <p class="empty-message">
+            لم يتم إنشاء أي سير عمل بعد. يمكنك البدء بإنشاء سير عمل جديد من خلال واجهة API أو من لوحة التحكم.
+        </p>
+        <div class="empty-action">
+            <button class="btn btn-primary" onclick="showToast('استخدم API لإنشاء سير عمل', 'info')">
+                <i class="bi bi-plus-circle"></i> إنشاء سير عمل
+            </button>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to your account</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #0e1525;
+            padding: 20px;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.2s;
+        }
+        
+        .lang-toggle:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+        }
+        
+        .login-container {
+            background: #ffffff;
+            max-width: 440px;
+            width: 100%;
+            padding: 0;
+        }
+        
+        .login-header {
+            margin-bottom: 32px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #F26207 0%, #EA4E08 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0e1525;
+        }
+        
+        .login-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #0e1525;
+            margin-bottom: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            background: #f5f5f5;
+            color: #0e1525;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #F26207;
+            background: #ffffff;
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            font-size: 18px;
+            padding: 4px;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 6px;
+            background: #F4A58A;
+            border: none;
+            color: #0e1525;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            margin-top: 8px;
+        }
+        
+        .btn-primary:hover {
+            background: #F29573;
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary:disabled {
+            background: #e0e0e0;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin: 16px 0;
+        }
+        
+        .forgot-password a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password a:hover {
+            color: #F26207;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider span {
+            background: #ffffff;
+            padding: 0 16px;
+            position: relative;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .btn-social {
+            width: 100%;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 6px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            color: #0e1525;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-social:hover {
+            background: #ebebeb;
+            border-color: #ccc;
+        }
+        
+        .btn-social i {
+            font-size: 18px;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .login-footer a {
+            color: #F26207;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .help-link {
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .help-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .help-link a:hover {
+            color: #F26207;
+        }
+        
+        .alert {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .alert-danger {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+        }
+        
+        .alert-success {
+            background: #efe;
+            border: 1px solid #cfc;
+            color: #3c3;
+        }
+        
+        .d-none {
+            display: none !important;
+        }
+        
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        [dir="rtl"] .lang-toggle {
+            right: auto;
+            left: 20px;
+        }
+        
+        [dir="rtl"] .toggle-password {
+            right: auto;
+            left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-toggle" onclick="toggleLanguage()" id="lang-toggle">
+        🌐 <span id="lang-text">العربية</span>
+    </button>
+    
+    <div class="login-container">
+        <div class="logo">
+            <div class="logo-icon">AI</div>
+            <span class="logo-text">replit</span>
+        </div>
+        
+        <div class="login-header">
+            <h1 id="page-title">Log in to your account</h1>
+        </div>
+        
+        <div id="error-message" class="alert alert-danger d-none" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span id="error-text"></span>
+        </div>
+        
+        <div id="success-message" class="alert alert-success d-none" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <span id="success-text"></span>
+        </div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username" id="label-username">EMAIL OR USERNAME</label>
+                <input type="text" id="username" name="username" placeholder="" required autocomplete="username">
+            </div>
+            
+            <div class="form-group">
+                <label for="password" id="label-password">PASSWORD</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="" required autocomplete="current-password">
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                        <i class="bi bi-eye" id="eye-icon"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-primary" id="login-btn">
+                <span id="login-btn-text">Log in</span>
+            </button>
+        </form>
+        
+        <div class="forgot-password">
+            <a href="#" id="forgot-link">Forgot password?</a>
+        </div>
+        
+        <div class="divider">
+            <span id="divider-text">Or</span>
+        </div>
+        
+        <div class="social-buttons">
+            <button class="btn-social" onclick="alert('SSO login not implemented')">
+                <i class="bi bi-key"></i>
+                <span id="sso-text">Use SSO login</span>
+            </button>
+            
+            <button class="btn-social" onclick="alert('Google login not implemented')">
+                <i class="bi bi-google"></i>
+                <span id="google-text">Continue with Google</span>
+            </button>
+            
+            <button class="btn-social" onclick="alert('GitHub login not implemented')">
+                <i class="bi bi-github"></i>
+                <span id="github-text">Continue with GitHub</span>
+            </button>
+            
+            <button class="btn-social" onclick="alert('X/Twitter login not implemented')">
+                <i class="bi bi-twitter-x"></i>
+                <span id="twitter-text">Continue with X</span>
+            </button>
+            
+            <button class="btn-social" onclick="alert('Facebook login not implemented')">
+                <i class="bi bi-facebook"></i>
+                <span id="facebook-text">Continue with Facebook</span>
+            </button>
+            
+            <button class="btn-social" onclick="alert('Apple login not implemented')">
+                <i class="bi bi-apple"></i>
+                <span id="apple-text">Continue with Apple</span>
+            </button>
+        </div>
+        
+        <div class="login-footer">
+            <span id="footer-new">New to Replit?</span> <a href="#" id="footer-signup">Sign up</a>
+        </div>
+        
+        <div class="help-link">
+            <a href="#" id="help-text">Get help</a>
+        </div>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                langText: 'العربية',
+                pageTitle: 'Log in to your account',
+                labelUsername: 'EMAIL OR USERNAME',
+                labelPassword: 'PASSWORD',
+                loginBtn: 'Log in',
+                loginBtnLoading: 'Logging in...',
+                forgotLink: 'Forgot password?',
+                dividerText: 'Or',
+                ssoText: 'Use SSO login',
+                googleText: 'Continue with Google',
+                githubText: 'Continue with GitHub',
+                twitterText: 'Continue with X',
+                facebookText: 'Continue with Facebook',
+                appleText: 'Continue with Apple',
+                footerNew: 'New to Replit?',
+                footerSignup: 'Sign up',
+                helpText: 'Get help',
+                errorLogin: 'Login failed. Check your username and password',
+                errorConnection: 'Connection error. Try again',
+                successLogin: 'Login successful! Redirecting...'
+            },
+            ar: {
+                langText: 'English',
+                pageTitle: 'تسجيل الدخول إلى حسابك',
+                labelUsername: 'البريد الإلكتروني أو اسم المستخدم',
+                labelPassword: 'كلمة المرور',
+                loginBtn: 'تسجيل الدخول',
+                loginBtnLoading: 'جاري تسجيل الدخول...',
+                forgotLink: 'نسيت كلمة المرور؟',
+                dividerText: 'أو',
+                ssoText: 'استخدم تسجيل الدخول الموحد',
+                googleText: 'المتابعة مع Google',
+                githubText: 'المتابعة مع GitHub',
+                twitterText: 'المتابعة مع X',
+                facebookText: 'المتابعة مع Facebook',
+                appleText: 'المتابعة مع Apple',
+                footerNew: 'جديد على Replit؟',
+                footerSignup: 'سجل الآن',
+                helpText: 'احصل على مساعدة',
+                errorLogin: 'فشل تسجيل الدخول. تحقق من اسم المستخدم وكلمة المرور',
+                errorConnection: 'خطأ في الاتصال. حاول مرة أخرى',
+                successLogin: 'تم تسجيل الدخول بنجاح! جاري التحويل...'
+            }
+        };
+        
+        // Get current language from localStorage or default to English
+        let currentLang = localStorage.getItem('language') || 'en';
+        
+        // Apply language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('language', currentLang);
+            applyLanguage(currentLang);
+        }
+        
+        function applyLanguage(lang) {
+            const t = translations[lang];
+            const html = document.documentElement;
+            
+            // Update lang and dir attributes
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update all text elements
+            document.getElementById('lang-text').textContent = t.langText;
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('label-username').textContent = t.labelUsername;
+            document.getElementById('label-password').textContent = t.labelPassword;
+            document.getElementById('login-btn-text').textContent = t.loginBtn;
+            document.getElementById('forgot-link').textContent = t.forgotLink;
+            document.getElementById('divider-text').textContent = t.dividerText;
+            document.getElementById('sso-text').textContent = t.ssoText;
+            document.getElementById('google-text').textContent = t.googleText;
+            document.getElementById('github-text').textContent = t.githubText;
+            document.getElementById('twitter-text').textContent = t.twitterText;
+            document.getElementById('facebook-text').textContent = t.facebookText;
+            document.getElementById('apple-text').textContent = t.appleText;
+            document.getElementById('footer-new').textContent = t.footerNew;
+            document.getElementById('footer-signup').textContent = t.footerSignup;
+            document.getElementById('help-text').textContent = t.helpText;
+        }
+        
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('bi-eye');
+                eyeIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('bi-eye-slash');
+                eyeIcon.classList.add('bi-eye');
+            }
+        }
+        
+        // Form handling
+        const loginForm = document.getElementById('login-form');
+        const loginBtn = document.getElementById('login-btn');
+        const loginBtnText = document.getElementById('login-btn-text');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const successMessage = document.getElementById('success-message');
+        const successText = document.getElementById('success-text');
+        
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('d-none');
+            successMessage.classList.add('d-none');
+        }
+        
+        function showSuccess(message) {
+            successText.textContent = message;
+            successMessage.classList.remove('d-none');
+            errorMessage.classList.add('d-none');
+        }
+        
+        function hideMessages() {
+            errorMessage.classList.add('d-none');
+            successMessage.classList.add('d-none');
+        }
+        
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const t = translations[currentLang];
+            
+            // Disable button
+            loginBtn.disabled = true;
+            loginBtnText.textContent = t.loginBtnLoading;
+            
+            try {
+                const formData = new FormData(loginForm);
+                
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    showSuccess(t.successLogin);
+                    
+                    // Redirect to dashboard after 1 second
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    showError(data.detail || t.errorLogin);
+                    loginBtn.disabled = false;
+                    loginBtnText.textContent = t.loginBtn;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showError(t.errorConnection);
+                loginBtn.disabled = false;
+                loginBtnText.textContent = t.loginBtn;
+            }
+        });
+    </script>
+</body>
+</html>

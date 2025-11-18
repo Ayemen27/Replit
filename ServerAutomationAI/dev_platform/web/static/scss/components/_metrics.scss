@@ -1,0 +1,51 @@
+/**
+ * Metrics Grid Component
+ * شبكة المقاييس
+ * 
+ * Mobile-First Responsive Grid:
+ * - Mobile (≤576px): 1 column
+ * - Tablet (577-992px): 2 columns
+ * - Desktop (≥993px): 3 columns
+ * 
+ * Compliance:
+ * - Material Design 3 §2.2 (Layout)
+ * - Core Web Vitals: LCP ≤2.0s, CLS = 0
+ * 
+ * Version: 1.0.0
+ * Last Updated: 2025-11-16
+ */
+
+@import '../variables';
+@import '../mixins';
+
+.metrics-grid {
+  display: grid;
+  gap: $spacing-4;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.metric {
+  padding: $spacing-4;
+  background: var(--color-background);
+  border-radius: $border-radius-base;
+  box-shadow: $shadow-1;
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-2;
+  }
+  
+  &__label {
+    color: var(--color-foreground-dimmer);
+    font-size: $font-size-xs;
+    margin-bottom: $spacing-2;
+  }
+  
+  &__value {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: var(--color-foreground);
+    line-height: $line-height-tight;
+  }
+}

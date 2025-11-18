@@ -1,0 +1,36 @@
+#!/bin/bash
+# سكريبت نقل الأسرار من Replit إلى السيرفر
+
+# قراءة المتغيرات من Replit
+TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN}"
+TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID}"
+PGHOST="${PGHOST}"
+PGPORT="${PGPORT}"
+PGDATABASE="${PGDATABASE}"
+PGUSER="${PGUSER}"
+PGPASSWORD="${PGPASSWORD}"
+EMAIL_HOST="${EMAIL_HOST}"
+SUPPORT_EMAIL="${SUPPORT_EMAIL}"
+
+# إنشاء ملف .env على السيرفر
+cat > /tmp/server.env << EOF
+# Database Configuration
+PGHOST=${PGHOST}
+PGPORT=${PGPORT}
+PGDATABASE=${PGDATABASE}
+PGUSER=${PGUSER}
+PGPASSWORD=${PGPASSWORD}
+
+# Telegram Notifications
+TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+
+# Email Notifications
+EMAIL_HOST=${EMAIL_HOST}
+EMAIL_PORT=587
+SMTP_USER=${EMAIL_HOST}
+SMTP_PASSWORD=
+SUPPORT_EMAIL=${SUPPORT_EMAIL}
+EOF
+
+echo "✓ ملف .env تم إنشاؤه في /tmp/server.env"

@@ -1,0 +1,162 @@
+/**
+ * Interactive States
+ * الحالات التفاعلية
+ * 
+ * WCAG 2.1 §1.2.4 - Focus visible
+ * Material Design 3 §2.2 - Interactive components
+ * 
+ * Version: 1.0.0
+ */
+
+@import '../variables';
+@import '../mixins';
+
+// Focus styles (WCAG compliant)
+:focus-visible {
+  outline: 3px solid var(--color-accent-primary);
+  outline-offset: 2px;
+  border-radius: $border-radius-sm;
+}
+
+// Button states
+.btn,
+button,
+[role="button"] {
+  position: relative;
+  transition: all $transition-base;
+  cursor: pointer;
+  
+  // Hover state
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: $shadow-2;
+  }
+  
+  // Active/pressed state
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $shadow-1;
+  }
+  
+  // Disabled state
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  // Focus state (keyboard navigation)
+  &:focus-visible {
+    outline: 3px solid var(--color-accent-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Card hover states
+.card,
+.workflow-card,
+.metric-card {
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-3;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Link states
+a {
+  transition: color $transition-base;
+  
+  &:hover {
+    color: var(--color-accent-primary-hover);
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 3px solid var(--color-accent-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// Input states
+input,
+textarea,
+select {
+  transition: border-color $transition-base, box-shadow $transition-base;
+  
+  &:hover:not(:disabled) {
+    border-color: var(--color-border);
+  }
+  
+  &:focus {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-primary-rgb), 0.1);
+    outline: none;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: var(--color-background-higher);
+  }
+  
+  // Error state
+  &[aria-invalid="true"] {
+    border-color: var(--color-error);
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1);
+    }
+  }
+}
+
+// Ripple effect (Material Design)
+.ripple {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:active::after {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// Loading state
+.is-loading {
+  position: relative;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--color-border-subtle);
+    border-top-color: var(--color-accent-primary);
+    border-radius: 50%;
+    animation: spinner-rotate 0.8s linear infinite;
+  }
+}

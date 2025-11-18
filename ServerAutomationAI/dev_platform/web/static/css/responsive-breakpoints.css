@@ -1,0 +1,307 @@
+/**
+ * Responsive Breakpoints - AI Multi-Agent Platform
+ * نظام نقاط التوقف المتجاوبة
+ * 
+ * Strategy: Mobile-First Progressive Enhancement
+ * Framework: Bootstrap 5.3 compatible
+ * RTL: Fully supported
+ * 
+ * Version: 1.0.0
+ * Last Updated: 2025-11-15
+ */
+
+/* ============================================
+   BREAKPOINT DEFINITIONS
+   ============================================ */
+
+/*
+ * Bootstrap 5.3 Breakpoints (Mobile-First):
+ * 
+ * xs: 0px      - Extra Small (smartphones portrait)
+ * sm: 576px    - Small (smartphones landscape)
+ * md: 768px    - Medium (tablets portrait)
+ * lg: 992px    - Large (tablets landscape, small desktops)
+ * xl: 1200px   - Extra Large (desktops)
+ * xxl: 1400px  - Extra Extra Large (large desktops)
+ */
+
+:root {
+  /* Breakpoint values for JavaScript access */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
+
+/* ============================================
+   MOBILE-FIRST BASE STYLES
+   ============================================ */
+
+/* 
+ * Base styles (0-575px) - Mobile Portrait
+ * النمط الأساسي للهواتف
+ */
+.container-responsive {
+  width: 100%;
+  padding-right: var(--spacing-4);
+  padding-left: var(--spacing-4);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+.hide-mobile {
+  display: none;
+}
+
+.show-mobile {
+  display: block;
+}
+
+/* ============================================
+   SM - Small Devices (≥576px)
+   أجهزة صغيرة - هواتف أفقية
+   ============================================ */
+
+@media (min-width: 576px) {
+  .container-responsive {
+    max-width: 540px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  .show-sm {
+    display: block;
+  }
+}
+
+/* ============================================
+   MD - Medium Devices (≥768px)
+   أجهزة متوسطة - أجهزة لوحية
+   ============================================ */
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 720px;
+  }
+
+  /* Tablet: Keep 2 columns (not 3) */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+
+  .hide-md {
+    display: none;
+  }
+
+  .show-md {
+    display: block;
+  }
+
+  .hide-mobile {
+    display: block; /* Show desktop content */
+  }
+
+  .show-mobile {
+    display: none; /* Hide mobile-only content */
+  }
+}
+
+/* ============================================
+   LG - Large Devices (≥993px)
+   أجهزة كبيرة - شاشات مكتبية صغيرة
+   ============================================ */
+
+@media (min-width: 993px) {
+  .container-responsive {
+    max-width: 960px;
+  }
+
+  /* Desktop: Now upgrade to 3 columns */
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop ≥993px */
+  }
+
+  .hide-lg {
+    display: none;
+  }
+
+  .show-lg {
+    display: block;
+  }
+
+  /* Optimize spacing for larger screens */
+  .workflow-item {
+    padding: var(--spacing-4);
+  }
+}
+
+/* ============================================
+   XL - Extra Large Devices (≥1200px)
+   أجهزة كبيرة جداً - شاشات مكتبية
+   ============================================ */
+
+@media (min-width: 1200px) {
+  .container-responsive {
+    max-width: 1140px;
+  }
+
+  .hide-xl {
+    display: none;
+  }
+
+  .show-xl {
+    display: block;
+  }
+
+  /* Enhanced spacing for desktop */
+  .metrics-grid {
+    gap: var(--spacing-5);
+  }
+}
+
+/* ============================================
+   XXL - Extra Extra Large (≥1400px)
+   شاشات كبيرة جداً
+   ============================================ */
+
+@media (min-width: 1400px) {
+  .container-responsive {
+    max-width: 1320px;
+  }
+
+  .hide-xxl {
+    display: none;
+  }
+
+  .show-xxl {
+    display: block;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES - Responsive Typography
+   ============================================ */
+
+/* Font sizes adjust based on screen size */
+@media (max-width: 767px) {
+  h1, .h1 { font-size: var(--font-size-2xl); }
+  h2, .h2 { font-size: var(--font-size-xl); }
+  h3, .h3 { font-size: var(--font-size-lg); }
+  body { font-size: var(--font-size-sm); }
+}
+
+@media (min-width: 768px) {
+  h1, .h1 { font-size: var(--font-size-3xl); }
+  h2, .h2 { font-size: var(--font-size-2xl); }
+  h3, .h3 { font-size: var(--font-size-xl); }
+  body { font-size: var(--font-size-base); }
+}
+
+@media (min-width: 1200px) {
+  h1, .h1 { font-size: var(--font-size-4xl); }
+}
+
+/* ============================================
+   UTILITY CLASSES - Responsive Spacing
+   ============================================ */
+
+/* Reduce padding on mobile */
+@media (max-width: 767px) {
+  .card {
+    padding: var(--spacing-3);
+  }
+
+  .workflow-type-card {
+    padding: var(--spacing-3);
+  }
+}
+
+/* Increase padding on desktop */
+@media (min-width: 993px) {
+  .card {
+    padding: var(--spacing-5);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - Touch Targets
+   ============================================ */
+
+/* Ensure minimum 44x44px touch targets on mobile (WCAG 2.1) */
+@media (max-width: 767px) {
+  button,
+  .btn,
+  .nav-link,
+  a.card {
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--spacing-3);
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  .navbar,
+  .nav-tabs,
+  button,
+  .hide-print {
+    display: none !important;
+  }
+
+  /* Ensure content is visible */
+  .show-print {
+    display: block !important;
+  }
+
+  /* Optimize for printing */
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  .card {
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================
+   RTL-SPECIFIC ADJUSTMENTS
+   ============================================ */
+
+/* Ensure proper RTL alignment at all breakpoints */
+[dir="rtl"] .container-responsive {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ============================================
+   LANDSCAPE ORIENTATION
+   ============================================ */
+
+@media (max-width: 992px) and (orientation: landscape) {
+  /* Optimize for landscape mobile/tablet */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

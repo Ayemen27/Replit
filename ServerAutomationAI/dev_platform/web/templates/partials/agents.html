@@ -1,0 +1,97 @@
+{% if agents and agents|length > 0 %}
+<div class="row g-3">
+    {% for agent in agents %}
+    <div class="col-md-4">
+        <div class="card agent-card h-100 border-{{ agent.status_color }}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="card-title mb-1">
+                            <i class="bi bi-{{ agent.icon }}"></i>
+                            {{ agent.name }}
+                        </h6>
+                        <small class="text-muted">{{ agent.role }}</small>
+                    </div>
+                    <span class="badge bg-{{ agent.status_color }} agent-status-badge">
+                        {{ agent.status_text }}
+                    </span>
+                </div>
+                
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <span class="metric-label">مهام مكتملة:</span>
+                        <strong>{{ agent.completed_tasks }}</strong>
+                    </div>
+                    <div class="metric-item">
+                        <i class="bi bi-hourglass-split text-warning"></i>
+                        <span class="metric-label">قيد التنفيذ:</span>
+                        <strong>{{ agent.active_tasks }}</strong>
+                    </div>
+                    <div class="metric-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <span class="metric-label">فاشل:</span>
+                        <strong>{{ agent.failed_tasks }}</strong>
+                    </div>
+                </div>
+                
+                {% if agent.current_task %}
+                <div class="current-task mt-3 p-2 bg-light rounded">
+                    <small class="text-muted d-block mb-1">المهمة الحالية:</small>
+                    <small class="text-truncate d-block">{{ agent.current_task }}</small>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state agents" role="status" aria-live="polite">
+    <div class="empty-icon">
+        <i class="bi bi-robot"></i>
+    </div>
+    <h3 class="empty-title">لا توجد وكلاء نشطة</h3>
+    <p class="empty-message">
+        جميع الوكلاء في وضع الخمول حالياً. سيتم تنشيطها تلقائياً عند بدء سير العمل.
+    </p>
+</div>
+{% endif %}
+
+<style>
+.agent-card {
+    transition: all var(--transition-base);
+    border-width: 2px;
+}
+
+.agent-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.agent-status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.agent-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.metric-label {
+    color: var(--color-text-muted);
+}
+
+.current-task {
+    border-right: 3px solid var(--color-accent-primary);
+}
+</style>

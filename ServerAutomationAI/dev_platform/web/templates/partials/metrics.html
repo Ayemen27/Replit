@@ -1,0 +1,15 @@
+<div class="metrics-grid">
+    <div class="metric">
+        <div class="metric__label">استخدام المعالج</div>
+        <div class="metric__value">{{ "%.1f"|format(metrics.cpu_percent) }}%</div>
+    </div>
+    <div class="metric">
+        <div class="metric__label">استخدام الذاكرة</div>
+        <div class="metric__value">{{ "%.1f"|format(metrics.memory_percent) }}%</div>
+    </div>
+    <div class="metric">
+        <div class="metric__label">استخدام القرص</div>
+        <div class="metric__value">{{ "%.1f"|format(metrics.disk_percent) }}%</div>
+    </div>
+</div>
+<small class="text-muted">آخر تحديث: {{ metrics.timestamp[:19] }}</small>

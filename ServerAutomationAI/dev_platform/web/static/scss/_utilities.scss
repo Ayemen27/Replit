@@ -1,0 +1,440 @@
+/**
+ * Utility Classes - AI Multi-Agent Platform
+ * فئات الأدوات المساعدة
+ * 
+ * Categories:
+ * - Spacing (Margin & Padding)
+ * - Typography (Text alignment, sizes, weights)
+ * - Colors (Backgrounds & Text)
+ * - Display (Show/Hide responsive)
+ * - Flex & Grid utilities
+ * - Borders & Shadows
+ * 
+ * Naming Convention: BEM-inspired with semantic naming
+ * 
+ * Version: 1.0.0
+ * Last Updated: 2025-11-16
+ */
+
+@import 'variables';
+@import 'mixins';
+
+/* ============================================
+   SPACING UTILITIES
+   أدوات المسافات
+   ============================================ */
+
+/* Margin utilities - تباعد خارجي */
+$spacing-directions: (
+  't': 'top',
+  'r': 'right',
+  'b': 'bottom',
+  'l': 'left',
+  'x': ('left', 'right'),
+  'y': ('top', 'bottom')
+);
+
+/* Spacing sizes (for both margin and padding) */
+$spacing-sizes: (
+  '0': $spacing-0,
+  '1': $spacing-1,
+  '2': $spacing-2,
+  '3': $spacing-3,
+  '4': $spacing-4,
+  '5': $spacing-5,
+  '6': $spacing-6,
+  '8': $spacing-8,
+  '10': $spacing-10,
+  '12': $spacing-12
+);
+
+/* Margin-only sizes (includes 'auto') */
+$margin-sizes: (
+  '0': $spacing-0,
+  '1': $spacing-1,
+  '2': $spacing-2,
+  '3': $spacing-3,
+  '4': $spacing-4,
+  '5': $spacing-5,
+  '6': $spacing-6,
+  '8': $spacing-8,
+  '10': $spacing-10,
+  '12': $spacing-12,
+  'auto': auto
+);
+
+/* Generate margin utilities */
+@each $size-name, $size-value in $margin-sizes {
+  /* All sides */
+  .m-#{$size-name} {
+    margin: $size-value;
+  }
+  
+  /* Individual sides */
+  @each $dir-name, $dir-value in $spacing-directions {
+    @if type-of($dir-value) == 'list' {
+      .m#{$dir-name}-#{$size-name} {
+        @each $side in $dir-value {
+          margin-#{$side}: $size-value;
+        }
+      }
+    } @else {
+      .m#{$dir-name}-#{$size-name} {
+        margin-#{$dir-value}: $size-value;
+      }
+    }
+  }
+}
+
+/* Generate padding utilities (no 'auto' - invalid for padding) */
+@each $size-name, $size-value in $spacing-sizes {
+  /* All sides */
+  .p-#{$size-name} {
+    padding: $size-value;
+  }
+  
+  /* Individual sides */
+  @each $dir-name, $dir-value in $spacing-directions {
+    @if type-of($dir-value) == 'list' {
+      .p#{$dir-name}-#{$size-name} {
+        @each $side in $dir-value {
+          padding-#{$side}: $size-value;
+        }
+      }
+    } @else {
+      .p#{$dir-name}-#{$size-name} {
+        padding-#{$dir-value}: $size-value;
+      }
+    }
+  }
+}
+
+/* Gap utilities for flex/grid */
+.gap-0 { gap: $spacing-0; }
+.gap-1 { gap: $spacing-1; }
+.gap-2 { gap: $spacing-2; }
+.gap-3 { gap: $spacing-3; }
+.gap-4 { gap: $spacing-4; }
+.gap-5 { gap: $spacing-5; }
+.gap-6 { gap: $spacing-6; }
+.gap-8 { gap: $spacing-8; }
+
+/* ============================================
+   RTL-AWARE SPACING UTILITIES
+   أدوات المسافات المتوافقة مع RTL
+   ============================================ */
+
+/*
+ * NOTE: Use logical properties (.ps-*, .pe-*, .ms-*, .me-*) for RTL support
+ * instead of directional properties (.pl-*, .pr-*, .ml-*, .mr-*).
+ * Avoid mixing logical and directional utilities on the same element.
+ */
+
+/* Padding Inline (RTL-aware) - No 'auto' (invalid for padding) */
+@each $size-name, $size-value in $spacing-sizes {
+  /* padding-inline-start (ps-*) */
+  .ps-#{$size-name} {
+    padding-inline-start: $size-value;
+  }
+  
+  /* padding-inline-end (pe-*) */
+  .pe-#{$size-name} {
+    padding-inline-end: $size-value;
+  }
+}
+
+/* Margin Inline (RTL-aware) - Includes 'auto' */
+@each $size-name, $size-value in $margin-sizes {
+  /* margin-inline-start (ms-*) */
+  .ms-#{$size-name} {
+    margin-inline-start: $size-value;
+  }
+  
+  /* margin-inline-end (me-*) */
+  .me-#{$size-name} {
+    margin-inline-end: $size-value;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   أدوات النصوص
+   ============================================ */
+
+/* Text alignment */
+.text-start { text-align: start; }
+.text-center { text-align: center; }
+.text-end { text-align: end; }
+.text-justify { text-align: justify; }
+
+/* Font sizes */
+.text-xs { @include font-size('xs'); }
+.text-sm { @include font-size('sm'); }
+.text-base { @include font-size('base'); }
+.text-lg { @include font-size('lg'); }
+.text-xl { @include font-size('xl'); }
+.text-2xl { @include font-size('2xl'); }
+.text-3xl { @include font-size('3xl'); }
+.text-4xl { @include font-size('4xl'); }
+
+/* Font weights */
+.font-normal { font-weight: $font-weight-normal; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+/* Text transforms */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Text truncation */
+.truncate { @include text-truncate; }
+.line-clamp-2 { @include text-clamp(2); }
+.line-clamp-3 { @include text-clamp(3); }
+
+/* Line heights */
+.leading-tight { line-height: $line-height-tight; }
+.leading-normal { line-height: $line-height-base; }
+.leading-relaxed { line-height: $line-height-relaxed; }
+
+/* ============================================
+   COLOR UTILITIES
+   أدوات الألوان
+   ============================================ */
+
+/* Text colors */
+.text-foreground { color: $color-foreground; }
+.text-foreground-dimmer { color: $color-foreground-dimmer; }
+.text-foreground-dimmest { color: $color-foreground-dimmest; }
+.text-primary { color: $color-accent-primary; }
+.text-success { color: $color-success; }
+.text-error { color: $color-error; }
+.text-warning { color: $color-warning; }
+.text-info { color: $color-info; }
+.text-white { color: $color-foreground-inverse; }
+
+/* Background colors */
+.bg-background { background-color: $color-background; }
+.bg-background-higher { background-color: $color-background-higher; }
+.bg-background-highest { background-color: $color-background-highest; }
+.bg-primary { background-color: $color-accent-primary; }
+.bg-primary-subtle { background-color: $color-accent-primary-subtle; }
+.bg-success { background-color: $color-success; }
+.bg-success-subtle { background-color: $color-success-subtle; }
+.bg-error { background-color: $color-error; }
+.bg-error-subtle { background-color: $color-error-subtle; }
+.bg-warning { background-color: $color-warning; }
+.bg-warning-subtle { background-color: $color-warning-subtle; }
+.bg-info { background-color: $color-info; }
+.bg-info-subtle { background-color: $color-info-subtle; }
+
+/* ============================================
+   DISPLAY UTILITIES
+   أدوات العرض
+   ============================================ */
+
+/* Display types */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.inline-grid { display: inline-grid; }
+.hidden { display: none; }
+
+/* Visibility */
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+/* Responsive display utilities */
+.hide-mobile {
+  display: none;
+  
+  @include respond-to(md) {
+    display: block;
+  }
+}
+
+.show-mobile {
+  display: block;
+  
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+.hide-sm {
+  @include respond-to(sm) {
+    display: none;
+  }
+}
+
+.hide-md {
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+.hide-lg {
+  @include respond-to(lg) {
+    display: none;
+  }
+}
+
+.show-lg {
+  display: none;
+  
+  @include respond-to(lg) {
+    display: block;
+  }
+}
+
+/* ============================================
+   FLEX UTILITIES
+   أدوات Flexbox
+   ============================================ */
+
+/* Flex direction */
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-col { flex-direction: column; }
+.flex-col-reverse { flex-direction: column-reverse; }
+
+/* Flex wrap */
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+/* Justify content */
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+/* Align items */
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+.items-baseline { align-items: baseline; }
+
+/* Flex grow/shrink */
+.flex-1 { flex: 1; }
+.flex-auto { flex: auto; }
+.flex-none { flex: none; }
+
+/* ============================================
+   GRID UTILITIES
+   أدوات Grid
+   ============================================ */
+
+/* Grid template columns */
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ============================================
+   BORDER UTILITIES
+   أدوات الحدود
+   ============================================ */
+
+/* Border radius */
+.rounded-none { border-radius: 0; }
+.rounded-sm { @include rounded('sm'); }
+.rounded { @include rounded('base'); }
+.rounded-lg { @include rounded('lg'); }
+.rounded-xl { @include rounded('xl'); }
+.rounded-full { @include rounded('full'); }
+
+/* Border width */
+.border { @include border(); }
+.border-thin { @include border($border-width-thin); }
+.border-thick { @include border($border-width-thick); }
+.border-none { border: none; }
+
+/* Border colors */
+.border-default { border-color: $color-border-default; }
+.border-strong { border-color: $color-border-strong; }
+.border-subtle { border-color: $color-border-subtle; }
+.border-primary { border-color: $color-accent-primary; }
+
+/* ============================================
+   SHADOW UTILITIES
+   أدوات الظلال
+   ============================================ */
+
+.shadow-none { box-shadow: none; }
+.shadow-sm { @include shadow(1); }
+.shadow { @include shadow(2); }
+.shadow-md { @include shadow(3); }
+.shadow-lg { @include shadow(4); }
+
+/* ============================================
+   POSITION UTILITIES
+   أدوات الموضع
+   ============================================ */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+.static { position: static; }
+
+/* ============================================
+   OVERFLOW UTILITIES
+   أدوات الفيض
+   ============================================ */
+
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+
+/* ============================================
+   WIDTH & HEIGHT UTILITIES
+   أدوات العرض والارتفاع
+   ============================================ */
+
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-screen { width: 100vw; }
+
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+.h-screen { height: 100vh; }
+
+.min-w-0 { min-width: 0; }
+.min-h-0 { min-height: 0; }
+
+.max-w-full { max-width: 100%; }
+.max-h-full { max-height: 100%; }
+
+/* ============================================
+   OPACITY UTILITIES
+   أدوات الشفافية
+   ============================================ */
+
+.opacity-0 { opacity: 0; }
+.opacity-50 { opacity: $opacity-disabled; }
+.opacity-60 { opacity: $opacity-subtle; }
+.opacity-80 { opacity: $opacity-hover; }
+.opacity-100 { opacity: 1; }
+
+/* ============================================
+   Z-INDEX UTILITIES
+   أدوات العمق
+   ============================================ */
+
+.z-0 { z-index: $z-index-base; }
+.z-10 { z-index: $z-index-dropdown; }
+.z-20 { z-index: $z-index-sticky; }
+.z-30 { z-index: $z-index-fixed; }
+.z-40 { z-index: $z-index-modal; }
+.z-50 { z-index: $z-index-tooltip; }

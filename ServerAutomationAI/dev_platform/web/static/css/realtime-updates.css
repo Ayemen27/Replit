@@ -1,0 +1,164 @@
+/**
+ * Real-time Updates Styles
+ * أنماط التحديثات الفورية
+ */
+
+/* Connection Indicator */
+.connection-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all var(--transition-base);
+  font-size: 0.875rem;
+}
+
+.connection-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.connection-text {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Status Variations */
+.connection-indicator.status-online .connection-dot {
+  background: var(--color-success);
+}
+
+.connection-indicator.status-offline .connection-dot {
+  background: var(--color-danger);
+  animation: none;
+}
+
+.connection-indicator.status-error .connection-dot {
+  background: var(--color-danger);
+  animation: blink 1s ease-in-out infinite;
+}
+
+.connection-indicator.status-warning .connection-dot {
+  background: var(--color-warning);
+  animation: pulse-fast 1s ease-in-out infinite;
+}
+
+/* HTMX Loading State */
+.htmx-loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.htmx-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* HTMX Updated State */
+.htmx-updated {
+  animation: flash-update 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-fast {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes flash-update {
+  0% {
+    background-color: rgba(var(--color-accent-primary-rgb), 0.1);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+  .connection-indicator {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .connection-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .connection-text {
+    display: none;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .connection-indicator {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] @media (max-width: 576px) {
+  .connection-indicator {
+    left: auto;
+    right: 10px;
+  }
+}

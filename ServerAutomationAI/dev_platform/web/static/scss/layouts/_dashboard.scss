@@ -1,0 +1,306 @@
+/**
+ * Dashboard Layout - Mobile-First
+ * تخطيط لوحة التحكم
+ * 
+ * Critical Rules:
+ * - Mobile (<768px): padding 12-16px
+ * - Tablet (768-992px): padding 24px
+ * - Desktop (≥992px): padding 32px
+ * 
+ * Version: 1.0.0
+ * Last Updated: 2025-11-16
+ */
+
+@import '../variables';
+@import '../mixins';
+
+// ----------------------------------------------------------------------------
+// Main Content Area
+// ----------------------------------------------------------------------------
+
+.main-content {
+  width: 100%;
+  max-width: 100%;
+  
+  // Mobile-first: Small padding with fixed header offset
+  padding: 12px;
+  padding-top: 76px; // Space for fixed header (64px + 12px)
+  padding-bottom: 85px; // Extra space for bottom nav on mobile (70px + 15px margin)
+  
+  // Tablet
+  @include respond-to(md) {
+    padding: 24px;
+    padding-bottom: 24px; // No bottom nav on tablet
+  }
+  
+  // Desktop
+  @include respond-to(lg) {
+    padding: 32px 48px;
+  }
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+}
+
+// ----------------------------------------------------------------------------
+// Tab System (Bootstrap tabs)
+// ----------------------------------------------------------------------------
+
+.tab-content {
+  width: 100%;
+  max-width: 100%;
+  
+  // Remove any default padding
+  padding: 0;
+  margin: 0;
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+}
+
+.tab-pane {
+  width: 100%;
+  max-width: 100%;
+  
+  // Hidden by default (Bootstrap handles this)
+  display: none;
+  
+  // Small padding on mobile
+  padding: 0;
+  
+  // Active tab
+  &.active {
+    display: block;
+  }
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+}
+
+// ----------------------------------------------------------------------------
+// Bootstrap Grid Overrides (Mobile-First)
+// ----------------------------------------------------------------------------
+
+// Container - CRITICAL: Prevent overflow
+.container,
+.container-fluid {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  
+  @include respond-to(md) {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  @include respond-to(lg) {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+// Row - CRITICAL: Zero or minimal margins on mobile
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  
+  @include respond-to(md) {
+    margin-left: -8px !important;
+    margin-right: -8px !important;
+  }
+  
+  @include respond-to(lg) {
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+  }
+}
+
+// Columns - CRITICAL: Minimal padding on mobile
+[class*="col-"] {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  
+  @include respond-to(md) {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  
+  @include respond-to(lg) {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Cards (Mobile-First)
+// ----------------------------------------------------------------------------
+
+.card {
+  // Mobile: Reduce padding
+  padding: 12px !important;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  // Prevent overflow
+  overflow: hidden;
+  word-wrap: break-word;
+  
+  @include respond-to(md) {
+    padding: 16px !important;
+    margin-bottom: 16px;
+  }
+  
+  @include respond-to(lg) {
+    padding: 24px !important;
+    margin-bottom: 24px;
+  }
+}
+
+.card-header {
+  padding: 12px !important;
+  
+  @include respond-to(md) {
+    padding: 16px !important;
+  }
+  
+  h5 {
+    font-size: 16px;
+    
+    @include respond-to(md) {
+      font-size: 18px;
+    }
+    
+    @include respond-to(lg) {
+      font-size: 20px;
+    }
+  }
+}
+
+.card-body {
+  padding: 12px !important;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  
+  @include respond-to(md) {
+    padding: 16px !important;
+  }
+  
+  @include respond-to(lg) {
+    padding: 24px !important;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Form Controls (Mobile-First)
+// ----------------------------------------------------------------------------
+
+.form-control,
+.form-select {
+  font-size: 16px !important; // Prevent zoom on iOS
+  padding: 12px !important;
+  
+  @include respond-to(md) {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+}
+
+.form-label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  
+  @include respond-to(md) {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Buttons (Mobile-First)
+// ----------------------------------------------------------------------------
+
+.btn {
+  // Mobile: Full width buttons by default in forms
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  
+  @include respond-to(md) {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  // Large buttons
+  &.btn-lg {
+    padding: 16px 24px;
+    font-size: 18px;
+    
+    @include respond-to(md) {
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Spacing Utilities (Mobile-First)
+// ----------------------------------------------------------------------------
+
+// Margins
+.mb-3 {
+  margin-bottom: 12px !important;
+  
+  @include respond-to(md) {
+    margin-bottom: 16px !important;
+  }
+}
+
+.mb-4 {
+  margin-bottom: 16px !important;
+  
+  @include respond-to(md) {
+    margin-bottom: 24px !important;
+  }
+}
+
+.mt-4 {
+  margin-top: 16px !important;
+  
+  @include respond-to(md) {
+    margin-top: 24px !important;
+  }
+}
+
+// Padding
+.p-3 {
+  padding: 12px !important;
+  
+  @include respond-to(md) {
+    padding: 16px !important;
+  }
+}
+
+.p-4 {
+  padding: 16px !important;
+  
+  @include respond-to(md) {
+    padding: 24px !important;
+  }
+}
