@@ -13,14 +13,7 @@ import {
   type FooterLink,
   type FooterSocialLink,
 } from '@/config/footer';
-
-const socialIcons = {
-  twitter: '𝕏',
-  github: '⚙',
-  linkedin: 'in',
-  discord: '💬',
-  youtube: '▶',
-} as const;
+import { Icons } from '@/components/ui/icons';
 
 interface FooterCTAProps {
   className?: string;
@@ -155,7 +148,7 @@ function FooterSocial({ className }: FooterSocialProps) {
   return (
     <div className={cn('flex items-center gap-4', className)}>
       {FOOTER_SOCIAL.map((social: FooterSocialLink) => {
-        const Icon = socialIcons[social.icon as keyof typeof socialIcons];
+        const Icon = Icons[social.icon as keyof typeof Icons];
         return (
           <Link
             key={social.platform}

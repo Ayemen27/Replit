@@ -1,3 +1,19 @@
+import {
+  Twitter,
+  Github,
+  Linkedin,
+  MessageSquare,
+  Youtube,
+  ChevronLeft,
+  ChevronRight,
+  ListFilter,
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  Search,
+} from 'lucide-react';
+
 const ServerIcon = () => (
   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
     <rect x="2" y="2" width="20" height="8" rx="2" ry="2" strokeWidth="2" />
@@ -47,4 +63,19 @@ export const Icons = {
   lock: LockIcon,
   smartphone: SmartphoneIcon,
   paintbrush: PaintbrushIcon,
+  twitter: Twitter,
+  github: Github,
+  linkedin: Linkedin,
+  discord: MessageSquare,
+  youtube: Youtube,
+  chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
+  filter: ListFilter,
+  menu: Menu,
+  close: X,
+  chevronDown: ChevronDown,
+  arrowRight: ArrowRight,
+  search: Search,
 }
+
+export type IconName = keyof typeof Icons;

@@ -10,6 +10,7 @@ import {
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { ProjectGridSkeleton } from '@/components/ui/LoadingSpinner';
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
+import { Icons } from '@/components/ui/icons';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -74,7 +75,7 @@ export function GalleryContent() {
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-4">
-          <span className="text-gray-500">🔍</span>
+          <Icons.search className="w-5 h-5 text-gray-500" />
           <select
             value={selectedCategory}
             onChange={(e) => handleCategoryChange(e.target.value)}
@@ -132,7 +133,8 @@ export function GalleryContent() {
             disabled={!pageInfo.hasPreviousPage}
             className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
           >
-            ← Previous
+            <Icons.chevronLeft className="w-4 h-4" />
+            Previous
           </button>
 
           <div className="flex items-center gap-2">
@@ -165,7 +167,8 @@ export function GalleryContent() {
             disabled={!pageInfo.hasNextPage}
             className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
           >
-            Next →
+            Next
+            <Icons.chevronRight className="w-4 h-4" />
           </button>
         </div>
       )}
