@@ -1,18 +1,5 @@
-import { RestDataSource } from './RestDataSource';
-
-interface RestUser {
-  id: number;
-  username: string;
-  email: string;
-  first_name?: string;
-  last_name?: string;
-  profile_image_url?: string;
-  bio?: string;
-  is_active: boolean;
-  is_admin: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import { userRepository, User } from '@/lib/db/repositories';
+import bcrypt from 'bcrypt';
 
 interface SignupInput {
   email: string;
@@ -27,69 +14,92 @@ interface LoginInput {
   password: string;
 }
 
-interface AuthResponse {
-  message: string;
-  user: RestUser;
-  access_token: string;
-  refresh_token: string;
-}
-
-interface MeResponse {
-  user: RestUser;
-}
-
-export class UsersDataSource extends RestDataSource {
-  private transformUser(user: RestUser) {
+export class UsersDataSource {
+  private transformUser(user: User) {
     return {
       id: user.id,
-      username: user.username,
+      username: user.username || user.name || 'user',
+      name: user.name,
       email: user.email,
       firstName: user.first_name,
       lastName: user.last_name,
-      profileImageUrl: user.profile_image_url,
-      bio: user.bio,
+      avatarUrl: user.avatar_url || user.image,
+      profileImageUrl: user.avatar_url || user.image,
       isActive: user.is_active,
-      isAdmin: user.is_admin,
-      createdAt: user.created_at,
-      updatedAt: user.updated_at,
+      createdAt: user.created_at.toISOString(),
+      updatedAt: user.updated_at.toISOString(),
     };
   }
 
-  async me(token: string) {
-    const response = await this.get<MeResponse>('/auth/me', token);
-    return this.transformUser(response.user);
+  async me(userId: string) {
+    const user = await userRepository.findById(userId);
+    
+    if (!user) {
+      throw new Error('User not found');
+    }
+    
+    return this.transformUser(user);
   }
 
   async signup(input: SignupInput) {
-    const body = {
+    const existingUser = await userRepository.findByEmail(input.email);
+    if (existingUser) {
+      throw new Error('Email already exists');
+    }
+
+    if (input.username) {
+      const existingUsername = await userRepository.findByUsername(input.username);
+      if (existingUsername) {
+        throw new Error('Username already exists');
+      }
+    }
+
+    const hashedPassword = await bcrypt.hash(input.password, 10);
+
+    const user = await userRepository.createUser({
       email: input.email,
-      username: input.username,
-      password: input.password,
-      first_name: input.firstName,
-      last_name: input.lastName,
-    };
+      name: input.username || input.email.split('@')[0],
+      password: hashedPassword,
+    });
 
-    const response = await this.post<AuthResponse>('/auth/signup', body);
+    if (input.firstName || input.lastName || input.username) {
+      await userRepository.updateUser(user.id, {
+        first_name: input.firstName,
+        last_name: input.lastName,
+        username: input.username,
+      } as Partial<User>);
+    }
 
+    const updatedUser = await userRepository.findById(user.id);
+    
     return {
-      user: this.transformUser(response.user),
-      accessToken: response.access_token,
-      refreshToken: response.refresh_token,
+      user: this.transformUser(updatedUser!),
+      accessToken: 'temporary_token',
+      refreshToken: 'temporary_refresh_token',
     };
   }
 
   async login(input: LoginInput) {
-    const body = {
-      email_or_username: input.emailOrUsername,
-      password: input.password,
-    };
+    const user = await userRepository.findByEmailOrUsername(input.emailOrUsername);
+    
+    if (!user) {
+      throw new Error('Invalid credentials');
+    }
 
-    const response = await this.post<AuthResponse>('/auth/login', body);
+    if (!user.password) {
+      throw new Error('Invalid credentials');
+    }
+
+    const isValidPassword = await bcrypt.compare(input.password, user.password);
+    
+    if (!isValidPassword) {
+      throw new Error('Invalid credentials');
+    }
 
     return {
-      user: this.transformUser(response.user),
-      accessToken: response.access_token,
-      refreshToken: response.refresh_token,
+      user: this.transformUser(user),
+      accessToken: 'temporary_token',
+      refreshToken: 'temporary_refresh_token',
     };
   }
 }

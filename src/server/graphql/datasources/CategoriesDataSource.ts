@@ -1,46 +1,30 @@
-import { RestDataSource } from './RestDataSource';
+import { categoryRepository, Category } from '@/lib/db/repositories';
 
-interface RestCategory {
-  id: number;
-  slug: string;
-  name: string;
-  description?: string;
-  icon?: string;
-  created_at: string;
-  updated_at: string;
-}
-
-interface RestCategoriesResponse {
-  success: boolean;
-  categories: RestCategory[];
-}
-
-export class CategoriesDataSource extends RestDataSource {
-  private transformCategory(category: RestCategory) {
+export class CategoriesDataSource {
+  private transformCategory(category: Category) {
     return {
       id: category.id,
       slug: category.slug,
       name: category.name,
       description: category.description,
       icon: category.icon,
-      createdAt: category.created_at,
-      updatedAt: category.updated_at,
+      createdAt: category.created_at.toISOString(),
+      updatedAt: category.updated_at.toISOString(),
     };
   }
 
   async getCategories() {
-    const response = await this.get<RestCategoriesResponse>('/api/categories');
-    return response.categories.map(c => this.transformCategory(c));
+    const categories = await categoryRepository.findAllCategories();
+    return categories.map(c => this.transformCategory(c));
   }
 
   async getCategory(slug: string) {
-    const categories = await this.getCategories();
-    const category = categories.find(c => c.slug === slug);
+    const category = await categoryRepository.findBySlug(slug);
     
     if (!category) {
       throw new Error(`Category with slug "${slug}" not found`);
     }
     
-    return category;
+    return this.transformCategory(category);
   }
 }

@@ -1,51 +1,4 @@
-import { RestDataSource } from './RestDataSource';
-
-interface RestProject {
-  id: number;
-  slug: string;
-  title: string;
-  description: string;
-  image_url?: string;
-  demo_url?: string;
-  repl_url?: string;
-  views_count: number;
-  likes_count: number;
-  is_featured: boolean;
-  is_published: boolean;
-  created_at: string;
-  updated_at: string;
-  user_id: number;
-  category_id?: number;
-  author?: {
-    id: number;
-    username: string;
-    email: string;
-    first_name?: string;
-    last_name?: string;
-    profile_image_url?: string;
-  };
-  category?: {
-    id: number;
-    slug: string;
-    name: string;
-    description?: string;
-    icon?: string;
-  };
-}
-
-interface RestProjectsResponse {
-  success: boolean;
-  projects: RestProject[];
-  total: number;
-  page: number;
-  per_page: number;
-  pages: number;
-}
-
-interface RestProjectResponse {
-  success: boolean;
-  project: RestProject;
-}
+import { projectRepository, categoryRepository, userRepository, Project } from '@/lib/db/repositories';
 
 interface CreateProjectInput {
   title: string;
@@ -54,12 +7,14 @@ interface CreateProjectInput {
   imageUrl?: string;
   demoUrl?: string;
   replUrl?: string;
-  categoryId?: number;
-  isPublished?: boolean;
+  categoryId?: string;
 }
 
-export class ProjectsDataSource extends RestDataSource {
-  private transformProject(project: RestProject) {
+export class ProjectsDataSource {
+  private async transformProject(project: Project) {
+    const author = project.author_id ? await userRepository.findById(project.author_id) : null;
+    const category = project.category_id ? await categoryRepository.findById(project.category_id) : null;
+
     return {
       id: project.id,
       slug: project.slug,
@@ -71,25 +26,26 @@ export class ProjectsDataSource extends RestDataSource {
       viewsCount: project.views_count,
       likesCount: project.likes_count,
       isFeatured: project.is_featured,
-      isPublished: project.is_published,
-      createdAt: project.created_at,
-      updatedAt: project.updated_at,
-      userId: project.user_id,
-      categoryId: project.category_id,
-      author: project.author ? {
-        id: project.author.id,
-        username: project.author.username,
-        email: project.author.email,
-        firstName: project.author.first_name,
-        lastName: project.author.last_name,
-        profileImageUrl: project.author.profile_image_url,
+      createdAt: project.created_at.toISOString(),
+      updatedAt: project.updated_at.toISOString(),
+      author: author ? {
+        id: author.id,
+        username: author.username || author.name || 'Unknown',
+        email: author.email,
+        name: author.name,
+        firstName: author.first_name,
+        lastName: author.last_name,
+        avatarUrl: author.avatar_url || author.image,
+        profileImageUrl: author.avatar_url || author.image,
+        isActive: author.is_active,
+        createdAt: author.created_at.toISOString(),
       } : null,
-      category: project.category ? {
-        id: project.category.id,
-        slug: project.category.slug,
-        name: project.category.name,
-        description: project.category.description,
-        icon: project.category.icon,
+      category: category ? {
+        id: category.id,
+        slug: category.slug,
+        name: category.name,
+        description: category.description,
+        icon: category.icon,
       } : null,
     };
   }
@@ -100,37 +56,47 @@ export class ProjectsDataSource extends RestDataSource {
     page: number = 1,
     perPage: number = 12
   ) {
-    const params = new URLSearchParams({
-      page: page.toString(),
-      per_page: perPage.toString(),
+    let categoryId: string | undefined;
+    
+    if (category) {
+      const categoryObj = await categoryRepository.findBySlug(category);
+      categoryId = categoryObj?.id;
+    }
+
+    const result = await projectRepository.findWithFilters({
+      featured,
+      categoryId,
+      page,
+      perPage,
     });
 
-    if (featured !== undefined) {
-      params.append('featured', featured.toString());
-    }
-
-    if (category) {
-      params.append('category', category);
-    }
-
-    const response = await this.get<RestProjectsResponse>(`/api/projects?${params.toString()}`);
+    const projects = await Promise.all(
+      result.data.map(p => this.transformProject(p))
+    );
 
     return {
-      projects: response.projects.map(p => this.transformProject(p)),
-      total: response.total,
-      page: response.page,
-      perPage: response.per_page,
-      pages: response.pages,
+      projects,
+      total: result.pageInfo.totalCount,
+      page: result.pageInfo.page,
+      perPage: result.pageInfo.perPage,
+      pages: result.pageInfo.totalPages,
     };
   }
 
   async getProject(slug: string) {
-    const response = await this.get<RestProjectResponse>(`/api/projects/${slug}`);
-    return this.transformProject(response.project);
+    const project = await projectRepository.findBySlug(slug);
+    
+    if (!project) {
+      throw new Error(`Project with slug "${slug}" not found`);
+    }
+
+    await projectRepository.incrementViews(project.id);
+    
+    return this.transformProject(project);
   }
 
-  async createProject(input: CreateProjectInput, token: string) {
-    const body = {
+  async createProject(input: CreateProjectInput, authorId: string) {
+    const project = await projectRepository.create({
       title: input.title,
       slug: input.slug,
       description: input.description,
@@ -138,15 +104,12 @@ export class ProjectsDataSource extends RestDataSource {
       demo_url: input.demoUrl,
       repl_url: input.replUrl,
       category_id: input.categoryId,
-      is_published: input.isPublished,
-    };
+      author_id: authorId,
+      is_featured: false,
+      views_count: 0,
+      likes_count: 0,
+    });
 
-    const response = await this.post<{ project: RestProject }>(
-      '/api/projects',
-      body,
-      token
-    );
-
-    return this.transformProject(response.project);
+    return this.transformProject(project);
   }
 }
