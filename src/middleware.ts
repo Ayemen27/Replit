@@ -11,11 +11,15 @@ function i18nMiddleware(request: NextRequest) {
 
   if (
     pathname.startsWith('/_next') ||
+    pathname.startsWith('/_document') ||
+    pathname.startsWith('/_error') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/static') ||
     pathname.includes('.') ||
     pathname.startsWith('/fonts') ||
-    pathname.startsWith('/images')
+    pathname.startsWith('/images') ||
+    pathname === '/404' ||
+    pathname === '/500'
   ) {
     return NextResponse.next();
   }
@@ -24,51 +28,43 @@ function i18nMiddleware(request: NextRequest) {
   const firstSegment = pathSegments[0];
   const hasLocaleInPath = SUPPORTED_LOCALES.includes(firstSegment as SupportedLocale);
 
+  let locale: SupportedLocale;
+  let pathWithoutLocale: string;
+
   if (hasLocaleInPath) {
-    const locale = firstSegment as SupportedLocale;
-    const pathWithoutLocale = '/' + pathSegments.slice(1).join('/');
-    const url = request.nextUrl.clone();
-    url.pathname = pathWithoutLocale || '/';
+    locale = firstSegment as SupportedLocale;
+    pathWithoutLocale = '/' + pathSegments.slice(1).join('/') || '/';
+  } else {
+    const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
+    const acceptLanguage = request.headers.get('accept-language');
     
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-locale', locale);
-    
-    const response = NextResponse.rewrite(url, {
-      request: {
-        headers: requestHeaders,
-      },
+    locale = resolveLocale({
+      cookie: cookieLocale,
+      acceptLanguage,
     });
     
-    response.cookies.set(LOCALE_COOKIE_NAME, locale, {
-      path: '/',
-      maxAge: 31536000,
-      sameSite: 'lax',
-    });
-    
-    return response;
+    pathWithoutLocale = pathname;
   }
 
-  const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
-  const acceptLanguage = request.headers.get('accept-language');
-
-  const resolvedLocale = resolveLocale({
-    cookie: cookieLocale,
-    acceptLanguage,
-  });
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-locale', resolvedLocale);
-
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+  const url = request.nextUrl.clone();
+  url.pathname = hasLocaleInPath ? pathWithoutLocale : pathname;
   
-  response.cookies.set(LOCALE_COOKIE_NAME, resolvedLocale, {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-locale', locale);
+  
+  const response = hasLocaleInPath 
+    ? NextResponse.rewrite(url, {
+        request: { headers: requestHeaders },
+      })
+    : NextResponse.next({
+        request: { headers: requestHeaders },
+      });
+  
+  response.cookies.set(LOCALE_COOKIE_NAME, locale, {
     path: '/',
     maxAge: 31536000,
     sameSite: 'lax',
+    httpOnly: false,
   });
 
   return response;

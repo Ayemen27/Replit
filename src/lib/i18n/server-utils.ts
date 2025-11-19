@@ -1,7 +1,8 @@
 
 import { Tolgee, DevTools } from '@tolgee/web';
 import { FormatIcu } from '@tolgee/format-icu';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type SupportedLocale } from './constants';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, NAMESPACES, type SupportedLocale, type Namespace } from './constants';
+import { loadAllNamespaces } from './namespace-loader';
 
 export async function getServerTranslations(
   locale: SupportedLocale = DEFAULT_LOCALE,
@@ -19,12 +20,20 @@ export async function getServerTranslations(
       fallbackNs: 'common',
       staticData: {
         ar: async () => {
-          const common = await import('../../../public/locales/ar/common.json');
-          return common.default;
+          try {
+            return await loadAllNamespaces('ar', NAMESPACES);
+          } catch (error) {
+            console.error('[getServerTranslations] Failed to load namespaces for ar:', error);
+            return {};
+          }
         },
         en: async () => {
-          const common = await import('../../../public/locales/en/common.json');
-          return common.default;
+          try {
+            return await loadAllNamespaces('en', NAMESPACES);
+          } catch (error) {
+            console.error('[getServerTranslations] Failed to load namespaces for en:', error);
+            return {};
+          }
         },
       },
     });
@@ -57,16 +66,32 @@ export function getLocaleFromCookie(cookieValue: string | undefined): SupportedL
   return null;
 }
 
+interface LanguagePreference {
+  locale: string;
+  quality: number;
+}
+
 export function getLocaleFromAcceptLanguage(acceptLanguage: string | null): SupportedLocale | null {
   if (!acceptLanguage) return null;
   
-  const languages = acceptLanguage
+  const preferences: LanguagePreference[] = acceptLanguage
     .split(',')
-    .map(lang => lang.split(';')[0].trim().toLowerCase().substring(0, 2));
+    .map(lang => {
+      const [locale, qualityStr] = lang.split(';').map(s => s.trim());
+      const quality = qualityStr?.startsWith('q=') 
+        ? parseFloat(qualityStr.substring(2)) 
+        : 1.0;
+      
+      return {
+        locale: locale.toLowerCase().substring(0, 2),
+        quality: isNaN(quality) ? 0 : quality,
+      };
+    })
+    .sort((a, b) => b.quality - a.quality);
   
-  for (const lang of languages) {
-    if (SUPPORTED_LOCALES.includes(lang as SupportedLocale)) {
-      return lang as SupportedLocale;
+  for (const pref of preferences) {
+    if (SUPPORTED_LOCALES.includes(pref.locale as SupportedLocale)) {
+      return pref.locale as SupportedLocale;
     }
   }
   

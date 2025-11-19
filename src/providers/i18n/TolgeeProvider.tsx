@@ -3,7 +3,8 @@
 import { TolgeeProvider as TolgeeReactProvider, Tolgee, DevTools } from '@tolgee/react';
 import { FormatIcu } from '@tolgee/format-icu';
 import { ReactNode } from 'react';
-import { SupportedLocale, DEFAULT_LOCALE, FALLBACK_LOCALE, SUPPORTED_LOCALES } from '@/lib/i18n/constants';
+import { SupportedLocale, DEFAULT_LOCALE, FALLBACK_LOCALE, SUPPORTED_LOCALES, NAMESPACES } from '@/lib/i18n/constants';
+import { loadAllNamespaces } from '@/lib/i18n/namespace-loader';
 
 export interface TolgeeProviderProps {
   children: ReactNode;
@@ -26,15 +27,14 @@ export function TolgeeProvider({ children, locale, staticData }: TolgeeProviderP
       apiUrl: apiUrl || '',
       apiKey: apiKey || '',
       defaultNs: 'common',
-      ns: ['common', 'layout', 'auth', 'dashboard', 'marketing', 'errors', 'validation'],
+      ns: [...NAMESPACES],
       fallbackNs: 'common',
       staticData: staticData || {
         [locale]: async () => {
           try {
-            const common = await import(`../../../public/locales/${locale}/common.json`);
-            return common.default;
+            return await loadAllNamespaces(locale, NAMESPACES);
           } catch (error) {
-            console.error(`Failed to load locale ${locale}:`, error);
+            console.error(`[TolgeeProvider] Failed to load namespaces for ${locale}:`, error);
             return {};
           }
         },
