@@ -1,0 +1,22 @@
+{
+  "submit": "إرسال",
+  "cancel": "إلغاء",
+  "save": "حفظ",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "close": "إغلاق",
+  "back": "رجوع",
+  "next": "التالي",
+  "previous": "السابق",
+  "loading": "جاري التحميل...",
+  "success": "تم بنجاح",
+  "error": "حدث خطأ",
+  "confirm": "تأكيد",
+  "search": "بحث",
+  "filter": "تصفية",
+  "sort": "ترتيب",
+  "selectAll": "تحديد الكل",
+  "deselectAll": "إلغاء التحديد",
+  "noResults": "لا توجد نتائج",
+  "tryAgain": "حاول مرة أخرى"
+}

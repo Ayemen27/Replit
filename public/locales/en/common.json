@@ -1,0 +1,22 @@
+{
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "edit": "Edit",
+  "close": "Close",
+  "back": "Back",
+  "next": "Next",
+  "previous": "Previous",
+  "loading": "Loading...",
+  "success": "Success",
+  "error": "An error occurred",
+  "confirm": "Confirm",
+  "search": "Search",
+  "filter": "Filter",
+  "sort": "Sort",
+  "selectAll": "Select All",
+  "deselectAll": "Deselect All",
+  "noResults": "No results found",
+  "tryAgain": "Try Again"
+}
