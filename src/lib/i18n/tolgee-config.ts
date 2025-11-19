@@ -12,27 +12,28 @@ export function createTolgeeInstance() {
     console.warn('⚠️ NEXT_PUBLIC_TOLGEE_API_URL is not defined');
   }
 
-  const tolgee = Tolgee()
+  let tolgeeBuilder = Tolgee()
     .use(FormatIcu())
-    .use(BackendFetch())
-    .init({
-      language: DEFAULT_LOCALE,
-      fallbackLanguage: FALLBACK_LOCALE,
-      availableLanguages: [...SUPPORTED_LOCALES],
-      apiUrl: apiUrl || '',
-      apiKey: apiKey || '',
-      defaultNs: 'common',
-      ns: ['common', 'layout', 'auth', 'dashboard', 'marketing', 'errors', 'validation'],
-      fallbackNs: 'common',
-      staticData: {
-        ar: () => import('../../../public/locales/ar/common.json'),
-        en: () => import('../../../public/locales/en/common.json'),
-      },
-    });
+    .use(BackendFetch());
 
   if (isDevelopment && !isProduction) {
-    tolgee.use(DevTools());
+    tolgeeBuilder = tolgeeBuilder.use(DevTools());
   }
+
+  const tolgee = tolgeeBuilder.init({
+    language: DEFAULT_LOCALE,
+    fallbackLanguage: FALLBACK_LOCALE,
+    availableLanguages: [...SUPPORTED_LOCALES],
+    apiUrl: apiUrl || '',
+    apiKey: apiKey || '',
+    defaultNs: 'common',
+    ns: ['common', 'layout', 'auth', 'dashboard', 'marketing', 'errors', 'validation'],
+    fallbackNs: 'common',
+    staticData: {
+      ar: () => import('../../../public/locales/ar/common.json'),
+      en: () => import('../../../public/locales/en/common.json'),
+    },
+  });
 
   return tolgee;
 }
