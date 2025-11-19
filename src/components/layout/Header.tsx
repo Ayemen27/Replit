@@ -23,7 +23,7 @@ export function Header({ className, transparent = false }: HeaderProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-8">
-          <Logo />
+          <Logo width={32} height={32} />
           
           <NavDesktop className="flex-1" />
           
