@@ -51,10 +51,10 @@ export const FOOTER_RESOURCES: FooterSection = {
   title: 'Resources',
   links: [
     { label: 'Help Center', href: '/help' },
-    { label: 'Documentation', href: 'https://docs.k2panel.ai', external: true },
+    { label: 'Documentation', href: 'https://docs.k2panel.online', external: true },
     { label: 'Tutorials', href: '/tutorials' },
     { label: 'Blog', href: '/news' },
-    { label: 'Community', href: 'https://k2panel.ai/discord', external: true },
+    { label: 'Community', href: 'https://k2panel.online/discord', external: true },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Use Cases', href: '/usecases' },
     { label: 'Customers', href: '/customers' },
@@ -73,7 +73,7 @@ export const FOOTER_COMPANY: FooterSection = {
     { label: 'Brand Kit', href: '/brandkit' },
     { label: 'Press', href: '/press' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Status', href: 'https://status.k2panel.ai', external: true },
+    { label: 'Status', href: 'https://status.k2panel.online', external: true },
   ],
 } as const;
 

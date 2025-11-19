@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: "K2Panel Ai" }],
   creator: "K2Panel Ai",
   publisher: "K2Panel Ai",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://k2panel.ai'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://k2panel.online'),
   openGraph: {
     title: "K2Panel Ai - Build software faster",
     description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",

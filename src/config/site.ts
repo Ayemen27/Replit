@@ -9,7 +9,7 @@
  * Core site information
  */
 export const SITE_NAME = 'K2Panel Ai' as const;
-export const SITE_URL = 'https://k2panel.ai' as const;
+export const SITE_URL = 'https://k2panel.online' as const;
 export const SITE_DESCRIPTION = 
   'Build, deploy, and scale your applications instantly. K2Panel Ai is the collaborative browser-based IDE that makes coding accessible to everyone.' as const;
 
@@ -48,7 +48,7 @@ export const SOCIAL_LINKS = {
     label: 'YouTube',
   },
   discord: {
-    url: 'https://k2panel.ai/discord',
+    url: 'https://k2panel.online/discord',
     label: 'Discord',
   },
   facebook: {
@@ -69,10 +69,10 @@ export const SOCIAL_LINKS = {
  * Contact information
  */
 export const CONTACT_INFO = {
-  email: 'contact@k2panel.ai',
-  support: 'support@k2panel.ai',
-  press: 'press@k2panel.ai',
-  careers: 'https://k2panel.ai/careers',
+  email: 'contact@k2panel.online',
+  support: 'support@k2panel.online',
+  press: 'press@k2panel.online',
+  careers: 'https://k2panel.online/careers',
 } as const;
 
 /**
@@ -130,7 +130,7 @@ export const FEATURES = {
 export const ENDPOINTS = {
   api: process.env.NEXT_PUBLIC_API_URL || '/api',
   graphql: process.env.NEXT_PUBLIC_GRAPHQL_URL || '/api/graphql',
-  cdn: process.env.NEXT_PUBLIC_CDN_URL || 'https://cdn.k2panel.ai',
+  cdn: process.env.NEXT_PUBLIC_CDN_URL || 'https://cdn.k2panel.online',
 } as const;
 
 /**
