@@ -1,21 +1,24 @@
-import { Pool } from 'pg';
+import { Pool, PoolClient, QueryResult } from 'pg';
 
+// ==============================
 // إنشاء Pool للاتصال بقاعدة PostgreSQL
+// ==============================
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-  max: 10,
-  min: 2,
+  max: 10,           // الحد الأقصى للاتصالات
+  min: 2,            // الحد الأدنى
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 10000,
   keepAlive: true,
   keepAliveInitialDelayMillis: 10000,
 });
 
-// معالجة الأخطاء بدون إيقاف العملية
+// ==============================
+// تسجيل الأحداث
+// ==============================
 pool.on('error', (err: Error) => {
   console.error('⚠️ Unexpected error on idle PostgreSQL client:', err.message);
-  // لا نوقف العملية - فقط نسجل الخطأ
 });
 
 pool.on('connect', () => {
@@ -26,71 +29,69 @@ pool.on('remove', () => {
   console.log('🔌 PostgreSQL client removed from pool');
 });
 
+// ==============================
 // دالة للتحقق من الاتصال
-export async function testConnection() {
-  let client;
+// ==============================
+export async function testConnection(): Promise<boolean> {
+  let client: PoolClient | null = null;
   try {
-    // محاولة الاتصال مع timeout أطول للاختبار
     client = await Promise.race([
       pool.connect(),
-      new Promise<never>((_, reject) => 
+      new Promise<never>((_, reject) =>
         setTimeout(() => reject(new Error('Connection timeout after 15s')), 15000)
       )
     ]);
-    
+
     const result = await client.query('SELECT NOW() as now');
     console.log('✅ PostgreSQL connection successful:', result.rows[0].now);
     return true;
   } catch (error: any) {
     console.error('❌ PostgreSQL connection failed:', error.message);
-    console.error('Make sure DATABASE_URL is set correctly in Replit Secrets');
     return false;
   } finally {
-    if (client) {
-      try {
-        client.release();
-      } catch (e) {
-        // تجاهل أخطاء release
-      }
-    }
+    if (client) client.release();
   }
 }
 
+// ==============================
 // دالة لتنفيذ استعلام مع retry logic
-export async function query<T = any>(text: string, params?: any[], retries = 3): Promise<T[]> {
+// ==============================
+export async function query<T = any>(
+  text: string,
+  params?: any[],
+  retries = 3
+): Promise<T[]> {
   let lastError: Error | null = null;
-  
+
   for (let attempt = 0; attempt < retries; attempt++) {
-    let client;
+    let client: PoolClient | null = null;
     try {
       client = await pool.connect();
       const result = await client.query(text, params);
-      return result.rows;
+      return result.rows as T[]; // ✅ Type-safe casting
     } catch (error: any) {
       lastError = error;
       console.error(`Query attempt ${attempt + 1}/${retries} failed:`, error.message);
-      
-      // إذا كان الخطأ بسبب انقطاع الاتصال، ننتظر قليلاً قبل المحاولة مرة أخرى
+
       if (error.message.includes('Connection terminated') && attempt < retries - 1) {
-        await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1)));
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
         continue;
       }
-      
-      // إذا كان خطأ آخر، نرميه مباشرة
+
       throw error;
     } finally {
-      if (client) {
-        client.release();
-      }
+      if (client) client.release();
     }
   }
-  
+
   throw lastError || new Error('Query failed after retries');
 }
 
+// ==============================
 // دالة لتنفيذ transaction
+// ==============================
 export async function transaction<T>(
-  callback: (client: any) => Promise<T>
+  callback: (client: PoolClient) => Promise<T>
 ): Promise<T> {
   const client = await pool.connect();
   try {
@@ -106,8 +107,14 @@ export async function transaction<T>(
   }
 }
 
-// دالة لإغلاق Pool بشكل آمن
+// ==============================
+// دالة لإغلاق Pool بشكل آمن مرة واحدة
+// ==============================
+let poolClosed = false;
 export async function closePool() {
+  if (poolClosed) return;
+  poolClosed = true;
+
   try {
     await pool.end();
     console.log('✅ PostgreSQL pool closed successfully');
@@ -116,10 +123,16 @@ export async function closePool() {
   }
 }
 
-// معالجة إغلاق التطبيق
+// ==============================
+// التعامل مع إشارات إغلاق التطبيق
+// ==============================
 if (typeof process !== 'undefined') {
   process.on('SIGTERM', closePool);
   process.on('SIGINT', closePool);
+  process.on('exit', closePool);
 }
 
+// ==============================
+// التصدير
+// ==============================
 export default pool;
