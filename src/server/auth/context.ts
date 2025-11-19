@@ -1,6 +1,5 @@
 import { DataSources, createDataSources } from '../graphql/datasources';
 import { GraphQLError } from 'graphql';
-import { cookies } from 'next/headers';
 
 // TODO: Developer 3 will replace this with NextAuth
 export interface User {
@@ -17,15 +16,16 @@ export async function createContext(req: {
   headers: { get: (name: string) => string | null };
 }): Promise<GraphQLContext> {
   // TODO: Developer 3 will implement NextAuth session verification here
-  // For now, returning null user (unauthenticated)
-  let currentUser: User | null = null;
+  // For now, authentication is disabled - all requests are unauthenticated
+  // This is temporary until NextAuth is properly integrated
+  
+  // Firebase auth has been removed, so we cannot verify any tokens
+  // Returning null for currentUser until Developer 3 adds NextAuth
+  const currentUser: User | null = null;
 
-  // Placeholder for future NextAuth implementation
-  // const cookieStore = cookies();
-  // const sessionCookie = cookieStore.get('next-auth.session-token');
-  // if (sessionCookie) {
-  //   currentUser = await verifyNextAuthSession(sessionCookie.value);
-  // }
+  // NOTE: Auth-protected resolvers (using requireAuth) will throw UNAUTHENTICATED
+  // until Developer 3 implements NextAuth. This is intentional and secure.
+  // Anonymous queries will continue to work.
 
   return {
     dataSources: createDataSources(),
