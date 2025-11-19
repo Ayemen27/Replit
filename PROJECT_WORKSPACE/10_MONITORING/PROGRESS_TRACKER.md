@@ -159,11 +159,19 @@
 #### الحواجز:
 - لا يوجد
 
+#### الإصلاحات (2025-11-19 - الوكيل الاستكمالي):
+- ✅ **تم حل مشكلة Apollo Server** - تثبيت @graphql-tools/schema و @graphql-tools/utils
+- ✅ **تم إضافة CREATE EXTENSION pgcrypto** في schema.sql
+- ✅ **تم تحسين migrate.ts** مع تعليمات بديلة
+- ✅ **bcrypt يعمل بشكل صحيح** في signup/route.ts
+- ⚠️ **ملاحظة مهمة**: قد تواجه مشكلة مع POST /api/db/migrate بسبب قيود pg library
+  - الحل البديل المضمون: `psql $DATABASE_URL -f src/lib/db/schema.sql`
+
 #### ملاحظات للمطور التالي:
 - ⚠️ يجب تشغيل workflow أولاً لتثبيت المكتبات
-- ⚠️ يجب تطبيق Schema عبر: POST /api/db/migrate
+- ⚠️ يجب تطبيق Schema عبر: `POST /api/db/migrate` أو `psql $DATABASE_URL -f src/lib/db/schema.sql`
 - ✅ جميع الأنظمة متصلة بقاعدة PostgreSQL
-- ✅ Authentication جاهز للاستخدام
+- ✅ Authentication جاهز للاستخدام بعد تطبيق Schema
 
 ---
 
