@@ -46,3 +46,56 @@ export function getLocaleFromPath(pathname: string): SupportedLocale {
   
   return DEFAULT_LOCALE;
 }
+
+export function getLocaleFromCookie(cookieValue: string | undefined): SupportedLocale | null {
+  if (!cookieValue) return null;
+  
+  if (SUPPORTED_LOCALES.includes(cookieValue as SupportedLocale)) {
+    return cookieValue as SupportedLocale;
+  }
+  
+  return null;
+}
+
+export function getLocaleFromAcceptLanguage(acceptLanguage: string | null): SupportedLocale | null {
+  if (!acceptLanguage) return null;
+  
+  const languages = acceptLanguage
+    .split(',')
+    .map(lang => lang.split(';')[0].trim().toLowerCase().substring(0, 2));
+  
+  for (const lang of languages) {
+    if (SUPPORTED_LOCALES.includes(lang as SupportedLocale)) {
+      return lang as SupportedLocale;
+    }
+  }
+  
+  return null;
+}
+
+export function resolveLocale({
+  pathname,
+  cookie,
+  acceptLanguage,
+}: {
+  pathname?: string;
+  cookie?: string;
+  acceptLanguage?: string | null;
+}): SupportedLocale {
+  if (pathname) {
+    const pathLocale = getLocaleFromPath(pathname);
+    if (pathLocale !== DEFAULT_LOCALE) return pathLocale;
+  }
+  
+  if (cookie) {
+    const cookieLocale = getLocaleFromCookie(cookie);
+    if (cookieLocale) return cookieLocale;
+  }
+  
+  if (acceptLanguage) {
+    const headerLocale = getLocaleFromAcceptLanguage(acceptLanguage);
+    if (headerLocale) return headerLocale;
+  }
+  
+  return DEFAULT_LOCALE;
+}

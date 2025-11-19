@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ApolloProvider } from "@/lib/apollo/ApolloProvider";
+import { TolgeeProvider } from "@/providers/i18n";
+import { DEFAULT_LOCALE, getLocaleDirection, type SupportedLocale } from "@/lib/i18n/constants";
+import { headers } from 'next/headers';
+import { resolveLocale } from "@/lib/i18n/server-utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,13 +53,37 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  
+  const localeFromHeader = headersList.get('x-locale') as SupportedLocale | null;
+  
+  let locale: SupportedLocale;
+  if (localeFromHeader && ['ar', 'en'].includes(localeFromHeader)) {
+    locale = localeFromHeader;
+  } else {
+    const cookieHeader = headersList.get('cookie');
+    const acceptLanguage = headersList.get('accept-language');
+
+    const cookieLocale = cookieHeader
+      ?.split(';')
+      .find(c => c.trim().startsWith('NEXT_LOCALE='))
+      ?.split('=')[1];
+
+    locale = resolveLocale({
+      cookie: cookieLocale,
+      acceptLanguage,
+    });
+  }
+
+  const direction = getLocaleDirection(locale);
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={direction}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -64,7 +92,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ApolloProvider>
-          {children}
+          <TolgeeProvider locale={locale}>
+            {children}
+          </TolgeeProvider>
         </ApolloProvider>
       </body>
     </html>
