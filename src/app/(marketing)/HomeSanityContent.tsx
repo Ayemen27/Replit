@@ -81,13 +81,13 @@ export function HomeSanityContent({ data }: HomeSanityContentProps) {
                           href="/signup"
                           className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg"
                         >
-                          Start building for free
+                          ابدأ البناء مجاناً
                         </Link>
                         <Link
                           href="/gallery"
                           className="px-8 py-4 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors border border-blue-400"
                         >
-                          Explore projects
+                          استكشف المشاريع
                         </Link>
                       </>
                     )}
@@ -166,21 +166,21 @@ export function HomeSanityContent({ data }: HomeSanityContentProps) {
                           10M+
                         </div>
                         <div className="text-gray-600">
-                          Developers building on Replit
+                          مطور يبني على K2Panel Ai
                         </div>
                       </div>
                       <div className="p-6">
                         <div className="text-4xl font-bold text-purple-600 mb-2">
                           50M+
                         </div>
-                        <div className="text-gray-600">Projects created</div>
+                        <div className="text-gray-600">مشروع تم إنشاؤه</div>
                       </div>
                       <div className="p-6">
                         <div className="text-4xl font-bold text-pink-600 mb-2">
                           100+
                         </div>
                         <div className="text-gray-600">
-                          Programming languages supported
+                          لغة برمجة مدعومة
                         </div>
                       </div>
                     </>

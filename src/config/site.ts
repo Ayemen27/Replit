@@ -8,10 +8,10 @@
 /**
  * Core site information
  */
-export const SITE_NAME = 'Replit' as const;
-export const SITE_URL = 'https://replit.com' as const;
+export const SITE_NAME = 'K2Panel Ai' as const;
+export const SITE_URL = 'https://k2panel.ai' as const;
 export const SITE_DESCRIPTION = 
-  'Build, deploy, and scale your applications instantly. Replit is the collaborative browser-based IDE that makes coding accessible to everyone.' as const;
+  'Build, deploy, and scale your applications instantly. K2Panel Ai is the collaborative browser-based IDE that makes coding accessible to everyone.' as const;
 
 /**
  * Site tagline for marketing pages
@@ -79,22 +79,22 @@ export const CONTACT_INFO = {
  * Company information
  */
 export const COMPANY_INFO = {
-  name: 'Replit, Inc.',
-  legalName: 'Replit, Inc.',
-  foundedYear: 2016,
-  location: 'San Francisco, CA',
+  name: 'K2Panel Ai',
+  legalName: 'K2Panel Ai',
+  foundedYear: 2024,
+  location: 'Saudi Arabia',
 } as const;
 
 /**
  * SEO metadata defaults
  */
 export const SEO_DEFAULTS = {
-  titleTemplate: '%s | Replit',
-  defaultTitle: 'Replit - Build software faster',
+  titleTemplate: '%s | K2Panel Ai',
+  defaultTitle: 'K2Panel Ai - Build software faster',
   description: SITE_DESCRIPTION,
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'ar_SA',
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [

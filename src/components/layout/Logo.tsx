@@ -14,17 +14,17 @@ export function Logo({ className, href = '/', width = 32, height = 32 }: LogoPro
     <Link 
       href={href} 
       className={cn('flex items-center gap-2 transition-opacity hover:opacity-80', className)}
-      aria-label="Replit home"
+      aria-label="K2Panel Ai home"
     >
       <Image
         src="/images/1631294948521_b6e6db7f318cbb261b8513d3941587a6.svg"
-        alt="Replit"
+        alt="K2Panel Ai"
         width={width}
         height={height}
         priority
         className="h-auto w-auto"
       />
-      <span className="text-xl font-bold">Replit</span>
+      <span className="text-xl font-bold">K2Panel Ai</span>
     </Link>
   );
 }

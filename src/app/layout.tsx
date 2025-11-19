@@ -15,26 +15,26 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Replit - Build software faster",
+  title: "K2Panel Ai - Build software faster",
   description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
-  keywords: ["replit", "IDE", "coding", "programming", "collaborative", "online IDE", "code editor"],
-  authors: [{ name: "Replit" }],
-  creator: "Replit",
-  publisher: "Replit",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://replit.com'),
+  keywords: ["k2panel", "IDE", "coding", "programming", "collaborative", "online IDE", "code editor", "AI", "automation"],
+  authors: [{ name: "K2Panel Ai" }],
+  creator: "K2Panel Ai",
+  publisher: "K2Panel Ai",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://k2panel.ai'),
   openGraph: {
-    title: "Replit - Build software faster",
+    title: "K2Panel Ai - Build software faster",
     description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
     url: '/',
-    siteName: 'Replit',
-    locale: 'en_US',
+    siteName: 'K2Panel Ai',
+    locale: 'ar_SA',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Replit - Build software faster",
+    title: "K2Panel Ai - Build software faster",
     description: "The collaborative browser-based IDE - Code, create, and learn together in real-time from any device",
-    creator: '@replit',
+    creator: '@k2panel',
   },
   robots: {
     index: true,
