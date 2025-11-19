@@ -4,6 +4,9 @@ import { NextRequest } from 'next/server';
 import { typeDefs } from '@/server/graphql/schema';
 import { resolvers } from '@/server/graphql/resolvers';
 import { GraphQLContext, createContext } from '@/server/auth/context';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth/config';
+import { cookies } from 'next/headers';
 
 const server = new ApolloServer<GraphQLContext>({
   typeDefs,
@@ -23,7 +26,11 @@ const server = new ApolloServer<GraphQLContext>({
 });
 
 const handler = startServerAndCreateNextHandler<NextRequest, GraphQLContext>(server, {
-  context: createContext,
+  context: async (req) => {
+    await cookies();
+    const session = await getServerSession(authOptions);
+    return createContext(session);
+  },
 });
 
 export async function GET(request: NextRequest) {

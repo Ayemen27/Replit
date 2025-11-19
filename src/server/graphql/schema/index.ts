@@ -153,12 +153,123 @@ extend type Mutation {
 }
 `;
 
+const workspaceSchema = `
+type Workspace {
+  id: ID!
+  name: String!
+  description: String
+  ownerId: ID!
+  owner: User
+  createdAt: String!
+  updatedAt: String!
+  servers: [Server!]!
+}
+
+type Server {
+  id: ID!
+  workspaceId: ID!
+  workspace: Workspace
+  name: String!
+  ipAddress: String!
+  port: Int!
+  status: ServerStatus!
+  os: String
+  cpu: String
+  ram: String
+  disk: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+enum ServerStatus {
+  ONLINE
+  OFFLINE
+  MAINTENANCE
+  ERROR
+}
+
+type Terminal {
+  id: ID!
+  serverId: ID!
+  sessionId: String!
+  createdAt: String!
+}
+
+type FileNode {
+  path: String!
+  name: String!
+  isDirectory: Boolean!
+  size: Int
+  modifiedAt: String
+  children: [FileNode!]
+}
+
+input CreateWorkspaceInput {
+  name: String!
+  description: String
+}
+
+input UpdateWorkspaceInput {
+  name: String
+  description: String
+}
+
+input CreateServerInput {
+  workspaceId: ID!
+  name: String!
+  ipAddress: String!
+  port: Int!
+  os: String
+  cpu: String
+  ram: String
+  disk: String
+}
+
+input UpdateServerInput {
+  name: String
+  ipAddress: String
+  port: Int
+  os: String
+  cpu: String
+  ram: String
+  disk: String
+}
+
+extend type Query {
+  workspaces: [Workspace!]!
+  workspace(id: ID!): Workspace
+  
+  servers(workspaceId: ID): [Server!]!
+  server(id: ID!): Server
+  
+  files(serverId: ID!, path: String!): [FileNode!]!
+  fileContent(serverId: ID!, path: String!): String!
+}
+
+extend type Mutation {
+  createWorkspace(input: CreateWorkspaceInput!): Workspace!
+  updateWorkspace(id: ID!, input: UpdateWorkspaceInput!): Workspace!
+  deleteWorkspace(id: ID!): Boolean!
+  
+  createServer(input: CreateServerInput!): Server!
+  updateServer(id: ID!, input: UpdateServerInput!): Server!
+  deleteServer(id: ID!): Boolean!
+  
+  createTerminalSession(serverId: ID!): Terminal!
+  executeCommand(terminalId: ID!, command: String!): String!
+  
+  saveFile(serverId: ID!, path: String!, content: String!): Boolean!
+  deleteFile(serverId: ID!, path: String!): Boolean!
+}
+`;
+
 export const typeDefs = `
 ${commonSchema}
 ${userSchema}
 ${categorySchema}
 ${projectSchema}
 ${formSchema}
+${workspaceSchema}
 `;
 
 export default typeDefs;
