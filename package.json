@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
-    "@apollo/server": "^4.11.2",
     "@apollo/experimental-nextjs-app-support": "^0.11.3",
+    "@apollo/server": "^4.11.2",
     "@as-integrations/next": "^3.2.0",
     "@graphql-tools/schema": "^10.0.6",
     "@graphql-tools/utils": "^10.5.5",
@@ -38,6 +38,8 @@
     "@sanity/image-url": "^1.1.2",
     "@sanity/types": "^3.88.2",
     "@sanity/ui": "^2.15.17",
+    "@tolgee/react": "^6.2.7",
+    "@tolgee/web": "^6.2.7",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
