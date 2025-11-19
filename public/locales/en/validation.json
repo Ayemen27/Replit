@@ -1,5 +1,14 @@
 {
   "required": "This field is required",
-  "email": "Invalid email address",
+  "email": {
+    "invalid": "Invalid email address"
+  },
+  "password": {
+    "tooShort": "Password must be at least 8 characters",
+    "mismatch": "Passwords do not match"
+  },
+  "terms": {
+    "required": "Please accept the terms and conditions"
+  },
   "minLength": "Minimum length: {{min}}"
 }

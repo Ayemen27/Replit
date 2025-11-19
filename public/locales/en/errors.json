@@ -1,5 +1,14 @@
 {
   "404": "Page not found",
   "500": "Server error",
-  "network": "Network error"
+  "network": {
+    "generic": "Network error",
+    "offline": "No internet connection",
+    "timeout": "Request timed out"
+  },
+  "auth": {
+    "invalidCredentials": "Invalid email or password",
+    "accountExists": "An account with this email already exists",
+    "generic": "An error occurred, please try again"
+  }
 }

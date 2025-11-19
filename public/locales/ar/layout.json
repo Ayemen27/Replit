@@ -1,4 +1,154 @@
 {
+  "nav": {
+    "products": {
+      "label": "المنتجات",
+      "coreProducts": "المنتجات الأساسية",
+      "solutions": "الحلول",
+      "seeAll": "عرض جميع المنتجات",
+      "seeAllDesc": "استكشف مجموعة منتجاتنا الكاملة",
+      "agent": {
+        "label": "ريبليت إيجنت",
+        "desc": "ابنِ البرمجيات بالذكاء الاصطناعي",
+        "badge": "جديد"
+      },
+      "deployments": {
+        "label": "النشر",
+        "desc": "انشر للإنتاج فوراً"
+      },
+      "database": {
+        "label": "قاعدة البيانات",
+        "desc": "PostgreSQL مُدارة"
+      },
+      "mobile": {
+        "label": "الجوال",
+        "desc": "برمج أثناء التنقل"
+      },
+      "security": {
+        "label": "الأمان",
+        "desc": "أمان على مستوى المؤسسات"
+      },
+      "integrations": {
+        "label": "التكاملات",
+        "desc": "اربط أدواتك"
+      }
+    },
+    "templates": "القوالب",
+    "gallery": "المعرض",
+    "customers": "العملاء",
+    "pricing": "الأسعار",
+    "resources": {
+      "label": "الموارد",
+      "learn": "تعلّم",
+      "community": "المجتمع",
+      "company": "الشركة",
+      "helpCenter": {
+        "label": "مركز المساعدة",
+        "desc": "احصل على الدعم والإجابات"
+      },
+      "documentation": {
+        "label": "التوثيق",
+        "desc": "أدلة تقنية ووثائق API"
+      },
+      "tutorials": {
+        "label": "الدروس",
+        "desc": "تعلّم خطوة بخطوة"
+      },
+      "blog": {
+        "label": "المدونة",
+        "desc": "آخر الأخبار والتحديثات"
+      },
+      "usecases": {
+        "label": "حالات الاستخدام",
+        "desc": "شاهد ما يبنيه الآخرون"
+      },
+      "communityLink": {
+        "label": "المجتمع",
+        "desc": "انضم إلى ديسكورد"
+      },
+      "about": {
+        "label": "عن الشركة",
+        "desc": "مهمتنا وفريقنا"
+      },
+      "careers": {
+        "label": "الوظائف",
+        "desc": "انضم للفريق"
+      },
+      "brandKit": {
+        "label": "مجموعة العلامة التجارية",
+        "desc": "الشعارات والإرشادات"
+      }
+    },
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "mobile": {
+      "menu": "القائمة",
+      "close": "إغلاق القائمة"
+    }
+  },
+  "footer": {
+    "product": {
+      "title": "المنتج",
+      "agent": "ريبليت إيجنت",
+      "deployments": "النشر",
+      "database": "قاعدة البيانات",
+      "mobile": "الجوال",
+      "security": "الأمان",
+      "integrations": "التكاملات",
+      "pricing": "الأسعار",
+      "templates": "القوالب"
+    },
+    "resources": {
+      "title": "الموارد",
+      "helpCenter": "مركز المساعدة",
+      "documentation": "التوثيق",
+      "tutorials": "الدروس",
+      "blog": "المدونة",
+      "community": "المجتمع",
+      "gallery": "المعرض",
+      "usecases": "حالات الاستخدام",
+      "customers": "العملاء"
+    },
+    "company": {
+      "title": "الشركة",
+      "about": "عن الشركة",
+      "careers": "الوظائف",
+      "brandKit": "مجموعة العلامة التجارية",
+      "press": "الصحافة",
+      "contact": "اتصل بنا",
+      "status": "الحالة"
+    },
+    "legal": {
+      "title": "الشؤون القانونية",
+      "terms": "شروط الخدمة",
+      "privacy": "سياسة الخصوصية",
+      "dpa": "اتفاقية معالجة البيانات",
+      "commercial": "الاتفاقية التجارية",
+      "cookies": "سياسة الكوكيز",
+      "security": "الأمان"
+    },
+    "newsletter": {
+      "title": "ابقَ على اطلاع",
+      "description": "احصل على آخر التحديثات والمقالات والموارد في بريدك",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "button": "اشترك",
+      "success": "شكراً للاشتراك!",
+      "error": "حدث خطأ. حاول مرة أخرى.",
+      "privacyNote": "نحن نهتم ببياناتك. اقرأ",
+      "privacyLink": "سياسة الخصوصية"
+    },
+    "cta": {
+      "title": "جاهز للبدء بالبناء؟",
+      "description": "انضم لملايين المطورين الذين يبنون على ريبليت",
+      "primaryButton": "سجل مجاناً",
+      "secondaryButton": "تحدث مع المبيعات"
+    },
+    "copyright": "© 2025 K2Panel AI. جميع الحقوق محفوظة.",
+    "bottom": {
+      "terms": "الشروط",
+      "privacy": "الخصوصية",
+      "security": "الأمان"
+    }
+  },
   "language": {
     "arabic": "العربية",
     "english": "الإنجليزية",

@@ -1,4 +1,154 @@
 {
+  "nav": {
+    "products": {
+      "label": "Products",
+      "coreProducts": "Core Products",
+      "solutions": "Solutions",
+      "seeAll": "See all products",
+      "seeAllDesc": "Explore our complete product suite",
+      "agent": {
+        "label": "Replit Agent",
+        "desc": "Build software with AI",
+        "badge": "New"
+      },
+      "deployments": {
+        "label": "Deployments",
+        "desc": "Ship to production instantly"
+      },
+      "database": {
+        "label": "Database",
+        "desc": "Managed PostgreSQL"
+      },
+      "mobile": {
+        "label": "Mobile",
+        "desc": "Code on the go"
+      },
+      "security": {
+        "label": "Security",
+        "desc": "Enterprise-grade security"
+      },
+      "integrations": {
+        "label": "Integrations",
+        "desc": "Connect your tools"
+      }
+    },
+    "templates": "Templates",
+    "gallery": "Gallery",
+    "customers": "Customers",
+    "pricing": "Pricing",
+    "resources": {
+      "label": "Resources",
+      "learn": "Learn",
+      "community": "Community",
+      "company": "Company",
+      "helpCenter": {
+        "label": "Help Center",
+        "desc": "Get support and answers"
+      },
+      "documentation": {
+        "label": "Documentation",
+        "desc": "Technical guides and API docs"
+      },
+      "tutorials": {
+        "label": "Tutorials",
+        "desc": "Step-by-step learning"
+      },
+      "blog": {
+        "label": "Blog",
+        "desc": "Latest news and updates"
+      },
+      "usecases": {
+        "label": "Use Cases",
+        "desc": "See what others are building"
+      },
+      "communityLink": {
+        "label": "Community",
+        "desc": "Join our Discord"
+      },
+      "about": {
+        "label": "About",
+        "desc": "Our mission and team"
+      },
+      "careers": {
+        "label": "Careers",
+        "desc": "Join the team"
+      },
+      "brandKit": {
+        "label": "Brand Kit",
+        "desc": "Logos and guidelines"
+      }
+    },
+    "login": "Log in",
+    "signup": "Sign up",
+    "mobile": {
+      "menu": "Menu",
+      "close": "Close menu"
+    }
+  },
+  "footer": {
+    "product": {
+      "title": "Product",
+      "agent": "Replit Agent",
+      "deployments": "Deployments",
+      "database": "Database",
+      "mobile": "Mobile",
+      "security": "Security",
+      "integrations": "Integrations",
+      "pricing": "Pricing",
+      "templates": "Templates"
+    },
+    "resources": {
+      "title": "Resources",
+      "helpCenter": "Help Center",
+      "documentation": "Documentation",
+      "tutorials": "Tutorials",
+      "blog": "Blog",
+      "community": "Community",
+      "gallery": "Gallery",
+      "usecases": "Use Cases",
+      "customers": "Customers"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "careers": "Careers",
+      "brandKit": "Brand Kit",
+      "press": "Press",
+      "contact": "Contact",
+      "status": "Status"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "dpa": "Data Processing Agreement",
+      "commercial": "Commercial Agreement",
+      "cookies": "Cookie Policy",
+      "security": "Security"
+    },
+    "newsletter": {
+      "title": "Stay updated",
+      "description": "Get the latest updates, articles, and resources delivered to your inbox.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing!",
+      "error": "Something went wrong. Please try again.",
+      "privacyNote": "We care about your data. Read our",
+      "privacyLink": "Privacy Policy"
+    },
+    "cta": {
+      "title": "Ready to start building?",
+      "description": "Join millions of developers building on Replit",
+      "primaryButton": "Sign up for free",
+      "secondaryButton": "Talk to sales"
+    },
+    "copyright": "© 2025 K2Panel AI. All rights reserved.",
+    "bottom": {
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "security": "Security"
+    }
+  },
   "language": {
     "arabic": "Arabic",
     "english": "English",

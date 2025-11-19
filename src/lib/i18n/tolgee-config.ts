@@ -37,5 +37,3 @@ export function createTolgeeInstance() {
 
   return tolgee;
 }
-
-export const tolgee = createTolgeeInstance();
