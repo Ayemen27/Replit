@@ -188,7 +188,69 @@ npm start
 - Ready for integration into other projects
 - No dependency conflicts
 
+## 🚀 Server Deployment Info
+
+### Production Server
+- **Server IP**: `93.127.142.144`
+- **Project Path**: `/home/administrator/k2panelAi`
+- **Domain**: https://k2panel.online
+- **Development Port**: 5000 (default)
+- **Production Port**: 8080 (recommended)
+
+### Server Status (19 نوفمبر 2025)
+- ✅ Project synced to server
+- ✅ Git repository connected
+- ✅ npm dependencies installed
+- ✅ Development mode tested successfully
+- ✅ Database schema created (PostgreSQL)
+- ⏳ Production build pending (TypeScript errors to fix)
+- ⏳ Nginx configuration pending
+
+### Active Services on Server
+- **Bot.v4** - Running on port 5000 (binarjoinanelytic.info)
+- **k2panelAi** - Ready to deploy on port 8080 (k2panel.online)
+- **n8n** - Running on port 5678
+- **Tolgee** - Running on port 8085
+
+### Deployment Commands
+```bash
+# On Server: Pull latest updates
+cd /home/administrator/k2panelAi
+git pull origin main
+npm install
+
+# Build for production
+npm run build
+
+# Start with PM2 on port 8080
+pm2 start npm --name "k2panel" -- start -- -p 8080
+pm2 save
+
+# Or development mode (port 5000)
+npm run dev
+```
+
+### Database Connection (Server)
+- **Host**: 93.127.142.144
+- **Database**: k2panelai
+- **User**: k2panelai_user
+- **Port**: 5432
+
 ## Recent Updates
+
+- **19 نوفمبر 2025 - مساءً**: 🧹 تنظيف السيرفر ونشر التطبيق
+  - ✅ تنظيف شامل للسيرفر: حذف ~1GB من المجلدات القديمة
+    - Bot.v42005 (698MB)
+    - mirrors (31MB)
+    - cloned_website (272MB)
+    - cdnimg_clone, site_cloner
+    - ملفات Python وJSON قديمة
+  - ✅ مزامنة المشروع مع السيرفر في `/home/administrator/k2panelAi`
+  - ✅ إنشاء جداول قاعدة البيانات (users, accounts, sessions)
+  - ✅ اختبار التطبيق في وضع التطوير - يعمل بنجاح ✅
+  - ✅ حذف مجلد sanity (غير مستخدم)
+  - ✅ حذف الصفحات المعطلة (profile, replView)
+  - ⚠️ تبقى: إصلاح أخطاء TypeScript في login page (lucide-react icons)
 
 - **19 نوفمبر 2025**: 🔧 حل نهائي لجميع تعارضات المكتبات
   - ✅ إعادة كتابة package.json كاملاً بإصدارات متوافقة 100%
