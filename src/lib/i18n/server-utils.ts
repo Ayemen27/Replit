@@ -1,5 +1,5 @@
 
-import { TolgeeBase, DevTools } from '@tolgee/web';
+import { Tolgee, DevTools } from '@tolgee/web';
 import { FormatIcu } from '@tolgee/format-icu';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type SupportedLocale } from './constants';
 
@@ -7,7 +7,7 @@ export async function getServerTranslations(
   locale: SupportedLocale = DEFAULT_LOCALE,
   namespaces: string[] = ['common']
 ) {
-  const tolgee = TolgeeBase()
+  const tolgee = Tolgee()
     .use(FormatIcu())
     .init({
       language: locale,
