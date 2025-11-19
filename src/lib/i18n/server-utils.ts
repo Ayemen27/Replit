@@ -11,6 +11,7 @@ export async function getServerTranslations(
     .use(FormatIcu())
     .init({
       language: locale,
+      availableLanguages: SUPPORTED_LOCALES,
       apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL || '',
       apiKey: process.env.TOLGEE_API_KEY || process.env.NEXT_PUBLIC_TOLGEE_API_KEY || '',
       defaultNs: 'common',

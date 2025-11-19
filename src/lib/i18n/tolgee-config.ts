@@ -18,7 +18,7 @@ export function createTolgeeInstance() {
     .init({
       language: DEFAULT_LOCALE,
       fallbackLanguage: FALLBACK_LOCALE,
-      supportedLanguages: SUPPORTED_LOCALES,
+      availableLanguages: SUPPORTED_LOCALES,
       apiUrl: apiUrl || '',
       apiKey: apiKey || '',
       defaultNs: 'common',
