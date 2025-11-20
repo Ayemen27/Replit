@@ -18,7 +18,9 @@ import {
   ChevronRight,
   Activity,
   TrendingUp,
-  Clock
+  Clock,
+  Server,
+  Layers
 } from 'lucide-react';
 import { useTranslate } from '@/lib/i18n/hooks';
 
@@ -30,38 +32,7 @@ interface NavItem {
   description: string;
 }
 
-const navigationItems: NavItem[] = [
-  {
-    label: 'لوحة التحكم',
-    href: '/admin/dashboard',
-    icon: LayoutDashboard,
-    description: 'النظرة العامة'
-  },
-  {
-    label: 'قاعدة البيانات',
-    href: '/admin/database',
-    icon: Database,
-    description: 'إدارة قاعدة البيانات'
-  },
-  {
-    label: 'الترجمات',
-    href: '/admin/translations',
-    icon: Languages,
-    description: 'إدارة الترجمات'
-  },
-  {
-    label: 'المستخدمين',
-    href: '/admin/users',
-    icon: Users,
-    description: 'إدارة المستخدمين'
-  },
-  {
-    label: 'الإعدادات',
-    href: '/admin/settings',
-    icon: Settings,
-    description: 'إعدادات النظام'
-  }
-];
+// Navigation items will be rendered with translations
 
 export default function AdminDashboardPage() {
   const { t } = useTranslate('admin');
@@ -73,6 +44,39 @@ export default function AdminDashboardPage() {
     databaseSize: '0 MB',
     translationKeys: 0
   });
+
+  const navigationItems: NavItem[] = [
+    {
+      label: t('admin.navigation.dashboard'),
+      href: '/admin/dashboard',
+      icon: LayoutDashboard,
+      description: t('admin.navigation.dashboardDesc')
+    },
+    {
+      label: t('admin.navigation.database'),
+      href: '/admin/database',
+      icon: Database,
+      description: t('admin.navigation.databaseDesc')
+    },
+    {
+      label: t('admin.navigation.translations'),
+      href: '/admin/translations',
+      icon: Languages,
+      description: t('admin.navigation.translationsDesc')
+    },
+    {
+      label: t('admin.navigation.users'),
+      href: '/admin/users',
+      icon: Users,
+      description: t('admin.navigation.usersDesc')
+    },
+    {
+      label: t('admin.navigation.settings'),
+      href: '/admin/settings',
+      icon: Settings,
+      description: t('admin.navigation.settingsDesc')
+    }
+  ];
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -297,9 +301,9 @@ export default function AdminDashboardPage() {
 
             <div className="space-y-3">
               {[
-                { action: t('admin.recentActivity.userLogin'), time: 'منذ 5 دقائق', type: 'info' },
-                { action: t('admin.recentActivity.dbUpdate'), time: 'منذ 15 دقيقة', type: 'success' },
-                { action: t('admin.recentActivity.translationUpload'), time: 'منذ ساعة', type: 'warning' }
+                { action: t('admin.recentActivity.userLogin'), time: t('admin.time.minutes', { count: 5 }), type: 'info' },
+                { action: t('admin.recentActivity.dbUpdate'), time: t('admin.time.minutes', { count: 15 }), type: 'success' },
+                { action: t('admin.recentActivity.translationUpload'), time: t('admin.time.hours', { count: 1 }), type: 'warning' }
               ].map((activity, idx) => (
                 <div
                   key={idx}
@@ -330,11 +334,11 @@ export default function AdminDashboardPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-purple-100">{t('admin.systemInfo.uptime')}</span>
-                  <span className="font-bold">24 ساعة</span>
+                  <span className="font-bold">{t('admin.systemInfo.uptimeValue')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-purple-100">{t('admin.systemInfo.lastBackup')}</span>
-                  <span className="font-bold">اليوم</span>
+                  <span className="font-bold">{t('admin.systemInfo.lastBackupValue')}</span>
                 </div>
               </div>
             </div>

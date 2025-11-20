@@ -1,5 +1,26 @@
 
 {
+  "navigation": {
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Overview",
+    "database": "Database",
+    "databaseDesc": "Database Management",
+    "translations": "Translations",
+    "translationsDesc": "Translation Management",
+    "users": "Users",
+    "usersDesc": "User Management",
+    "settings": "Settings",
+    "settingsDesc": "System Settings"
+  },
+  "time": {
+    "minutes": "{{count}} minutes ago",
+    "hours": "{{count}} hour ago",
+    "days": "{{count}} days ago"
+  },
+  "systemInfo": {
+    "uptimeValue": "24 hours",
+    "lastBackupValue": "Today"
+  },
   "dashboard": {
     "title": "Admin Dashboard",
     "subtitle": "System Overview",

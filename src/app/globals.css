@@ -254,11 +254,22 @@
     animation: slideUp 0.3s ease-out;
   }
 
-  /* Safe area support for iOS */
+  /* Safe area support for iOS and Android */
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     .bottom-nav-safe {
-      padding-bottom: env(safe-area-inset-bottom);
+      padding-bottom: max(env(safe-area-inset-bottom), 8px);
     }
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better tap highlighting */
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Ripple effect */

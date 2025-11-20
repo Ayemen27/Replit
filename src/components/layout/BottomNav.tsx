@@ -65,6 +65,8 @@ export function BottomNav() {
               href={item.href}
               className={cn(
                 'flex flex-col items-center justify-center gap-1 transition-all duration-200 relative',
+                'min-h-[48px] min-w-[48px]', // WCAG touch target size
+                'active:scale-95', // Touch feedback
                 isCenter && 'mt-[-20px]'
               )}
             >
