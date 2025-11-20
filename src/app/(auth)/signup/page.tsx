@@ -12,6 +12,7 @@ import { useTranslate } from '@/lib/i18n/hooks';
 
 export default function SignupPage() {
   const { t } = useTranslate('auth');
+  const { t: tValidation } = useTranslate('validation');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,19 +42,19 @@ export default function SignupPage() {
     setError('');
 
     if (!acceptTerms) {
-      setError(t('validation.terms.required', {}, 'validation'));
+      setError(tValidation('terms.required'));
       setLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      setError(t('validation.password.mismatch', {}, 'validation'));
+      setError(tValidation('password.mismatch'));
       setLoading(false);
       return;
     }
 
     if (password.length < 8) {
-      setError(t('validation.password.tooShort', {}, 'validation'));
+      setError(tValidation('password.tooShort'));
       setLoading(false);
       return;
     }
