@@ -1,11 +1,10 @@
-
 'use client';
 
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
-import Link from 'next/link';
-import { ChevronRight, Users, UserPlus, Search, Filter } from 'lucide-react';
+import { Users, UserPlus, Search, Filter } from 'lucide-react';
+import { AdminLayout } from '@/components/layout/AdminLayout';
 import { useTranslate } from '@/lib/i18n/hooks';
 
 export default function UsersManagementPage() {
@@ -34,24 +33,17 @@ export default function UsersManagementPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8" dir="rtl">
-      <div className="max-w-7xl mx-auto">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/admin/dashboard" className="hover:text-purple-600">{t('breadcrumb.dashboard')}</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">{t('breadcrumb.users')}</span>
-        </div>
-
-        {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <div className="flex items-center justify-between">
+    <AdminLayout title={t('users.title')} subtitle={t('users.subtitle')}>
+      <div dir="rtl" className="space-y-6">
+        {/* Header Actions */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">{t('users.title')}</h1>
+                <h2 className="text-2xl font-bold text-gray-900">{t('users.title')}</h2>
                 <p className="text-sm text-gray-600">{t('users.subtitle')}</p>
               </div>
             </div>
@@ -62,7 +54,7 @@ export default function UsersManagementPage() {
           </div>
 
           {/* Search and Filter */}
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-3">
             <div className="flex-1 relative">
               <Search className="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -86,6 +78,6 @@ export default function UsersManagementPage() {
           </div>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 }
