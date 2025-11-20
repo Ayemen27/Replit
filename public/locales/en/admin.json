@@ -69,6 +69,68 @@
     "save": "Save Changes",
     "comingSoon": "Coming soon: System settings"
   },
+  "sidebar": {
+    "title": "Main Menu"
+  },
+  "database": {
+    "title": "Database Management",
+    "subtitle": "Complete PostgreSQL database management",
+    "refresh": "Refresh",
+    "loading": "Loading data...",
+    "tabs": {
+      "overview": "Overview",
+      "tables": "Tables",
+      "data": "Data",
+      "query": "SQL Query",
+      "health": "Health"
+    },
+    "stats": {
+      "totalTables": "Total Tables",
+      "totalRows": "Total Rows",
+      "databaseSize": "Database Size",
+      "activeConnections": "Active Connections"
+    },
+    "tables": {
+      "title": "Tables",
+      "tableName": "Table Name",
+      "rowCount": "Row Count",
+      "size": "Size",
+      "columns": "Columns",
+      "actions": "Actions",
+      "view": "View",
+      "manage": "Table Management",
+      "newTable": "New Table"
+    },
+    "data": {
+      "title": "Data Management",
+      "selectTable": "Select Table",
+      "addRow": "Add Row",
+      "export": "Export",
+      "noTableSelected": "Select a table to view data"
+    },
+    "query": {
+      "title": "SQL Query Editor",
+      "placeholder": "Write SQL query here...",
+      "execute": "Execute",
+      "executing": "Executing...",
+      "results": "Results",
+      "noResults": "No results"
+    },
+    "health": {
+      "title": "Database Health",
+      "status": "Status",
+      "healthy": "Healthy",
+      "warning": "Warning",
+      "error": "Error",
+      "checks": "Checks",
+      "connection": "Connection",
+      "migrations": "Migrations",
+      "orphanedData": "Orphaned Data",
+      "indexes": "Indexes",
+      "triggers": "Triggers"
+    }
+  },
+  "welcomeMessage": "Welcome",
   "breadcrumb": {
     "dashboard": "Admin Dashboard",
     "users": "User Management",

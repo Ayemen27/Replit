@@ -69,6 +69,68 @@
     "save": "حفظ التغييرات",
     "comingSoon": "قريباً: إعدادات النظام"
   },
+  "sidebar": {
+    "title": "القائمة الرئيسية"
+  },
+  "database": {
+    "title": "إدارة قاعدة البيانات",
+    "subtitle": "إدارة كاملة لقاعدة البيانات PostgreSQL",
+    "refresh": "تحديث",
+    "loading": "جاري تحميل البيانات...",
+    "tabs": {
+      "overview": "نظرة عامة",
+      "tables": "الجداول",
+      "data": "البيانات",
+      "query": "استعلامات SQL",
+      "health": "الصحة"
+    },
+    "stats": {
+      "totalTables": "عدد الجداول",
+      "totalRows": "إجمالي الصفوف",
+      "databaseSize": "حجم القاعدة",
+      "activeConnections": "الاتصالات النشطة"
+    },
+    "tables": {
+      "title": "الجداول",
+      "tableName": "اسم الجدول",
+      "rowCount": "عدد الصفوف",
+      "size": "الحجم",
+      "columns": "الأعمدة",
+      "actions": "إجراءات",
+      "view": "عرض",
+      "manage": "إدارة الجداول",
+      "newTable": "جدول جديد"
+    },
+    "data": {
+      "title": "إدارة البيانات",
+      "selectTable": "اختر جدول",
+      "addRow": "إضافة صف",
+      "export": "تصدير",
+      "noTableSelected": "اختر جدول لعرض البيانات"
+    },
+    "query": {
+      "title": "محرر استعلامات SQL",
+      "placeholder": "اكتب استعلام SQL هنا...",
+      "execute": "تنفيذ",
+      "executing": "جاري التنفيذ...",
+      "results": "النتائج",
+      "noResults": "لا توجد نتائج"
+    },
+    "health": {
+      "title": "صحة قاعدة البيانات",
+      "status": "الحالة",
+      "healthy": "سليمة",
+      "warning": "تحذير",
+      "error": "خطأ",
+      "checks": "الفحوصات",
+      "connection": "الاتصال",
+      "migrations": "الهجرات",
+      "orphanedData": "البيانات اليتيمة",
+      "indexes": "الفهارس",
+      "triggers": "المشغلات"
+    }
+  },
+  "welcomeMessage": "مرحباً",
   "breadcrumb": {
     "dashboard": "لوحة الإدارة",
     "users": "إدارة المستخدمين",
