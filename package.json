@@ -9,11 +9,11 @@
   },
   "scripts": {
     "predev": "SKIP_ENV_BACKUP=true node scripts/update-nextauth-url.js",
-    "dev": "next dev -H 0.0.0.0 -p 5000",
+    "dev": "next dev -H 0.0.0.0 -p $PORT",
     "prebuild": "node scripts/update-nextauth-url.js",
     "build": "next build",
     "prestart": "node scripts/update-nextauth-url.js",
-    "start": "next start -H 0.0.0.0 -p 5000",
+    "start": "next start -H 0.0.0.0 -p $PORT",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
