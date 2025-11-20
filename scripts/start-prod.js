@@ -24,7 +24,7 @@ console.log(`🚀 بدء Next.js (production) على البورت: ${port}`);
 process.env.PORT = port;
 
 try {
-  execSync('next start -H 0.0.0.0', {
+  execSync('npx next start -H 0.0.0.0', {
     stdio: 'inherit',
     env: { ...process.env, PORT: port }
   });
