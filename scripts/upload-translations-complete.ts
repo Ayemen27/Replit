@@ -105,15 +105,26 @@ async function getExistingLanguages() {
 }
 
 async function selectExistingLanguage(importLangId: number, existingLangId: number) {
-  const response = await fetch(
-    `${apiUrl}/v2/projects/${projectId}/import/result/languages/${importLangId}/select-existing/${existingLangId}`,
-    {
-      method: 'PUT',
-      headers: { 'X-API-Key': apiKey! },
-    }
-  );
+  try {
+    const response = await fetch(
+      `${apiUrl}/v2/projects/${projectId}/import/result/languages/${importLangId}/select-existing/${existingLangId}`,
+      {
+        method: 'PUT',
+        headers: { 'X-API-Key': apiKey! },
+      }
+    );
 
-  return response.ok;
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`      ❌ Error selecting language: ${response.status} - ${errorText}`);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(`      ❌ Exception selecting language: ${error}`);
+    return false;
+  }
 }
 
 async function applyImport() {
@@ -160,24 +171,43 @@ async function main() {
     const existingLangs = existingLanguages._embedded?.languages || [];
 
     console.log(`   ℹ️  Import Languages: ${importLangs.length}`);
-    console.log(`   ℹ️  Existing Languages: ${existingLangs.length}\n`);
+    console.log(`   ℹ️  Existing Languages: ${existingLangs.length}`);
+    
+    // Log existing languages for debugging
+    existingLangs.forEach(lang => {
+      console.log(`   📌 Existing: ${lang.name} (${lang.tag}) - ID: ${lang.id}`);
+    });
+    console.log();
 
     console.log('🔗 ربط اللغات...\n');
 
+    // Create language map from existing languages
     const langMap: { [key: string]: number } = {};
     for (const lang of existingLangs) {
       langMap[lang.tag] = lang.id;
+      console.log(`   📍 Language Map: ${lang.tag} → ${lang.id}`);
     }
+    console.log();
+
+    // Track which import languages we've already processed
+    const processedImportIds = new Set<number>();
 
     for (const importLang of importLangs) {
-      const fileName = importLang.importFileName;
-      let langCode = 'en';
+      // Skip if we've already processed this import language
+      if (processedImportIds.has(importLang.id)) {
+        continue;
+      }
 
-      if (fileName.includes('ar/') || fileName.startsWith('ar-')) {
+      const fileName = importLang.importFileName || '';
+      let langCode = 'en'; // default
+
+      // Determine language from filename
+      if (fileName.includes('/ar/') || fileName.startsWith('ar-') || fileName.includes('ar/')) {
         langCode = 'ar';
-      } else if (fileName.includes('en/') || fileName.startsWith('en-')) {
+      } else if (fileName.includes('/en/') || fileName.startsWith('en-') || fileName.includes('en/')) {
         langCode = 'en';
       } else {
+        // Try to match with file mapping
         const fileMatch = fileMapping.find(f => fileName.includes(f.file));
         if (fileMatch) {
           langCode = fileMatch.lang;
@@ -187,14 +217,16 @@ async function main() {
       const existingLangId = langMap[langCode];
 
       if (existingLangId) {
-        console.log(`   🔗 ${fileName} → ${langCode} (ID: ${existingLangId})`);
+        console.log(`   🔗 ${fileName} → ${langCode} (Import ID: ${importLang.id}, Existing ID: ${existingLangId})`);
         const success = await selectExistingLanguage(importLang.id, existingLangId);
         
-        if (!success) {
+        if (success) {
+          processedImportIds.add(importLang.id);
+        } else {
           console.error(`   ❌ فشل ربط ${fileName}`);
         }
       } else {
-        console.error(`   ⚠️  لم يتم العثور على لغة: ${langCode}`);
+        console.error(`   ⚠️  لم يتم العثور على لغة موجودة: ${langCode} للملف ${fileName}`);
       }
     }
 
