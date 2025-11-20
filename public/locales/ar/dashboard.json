@@ -2,8 +2,29 @@
   "overview": "نظرة عامة",
   "settings": "الإعدادات",
   "profile": "الملف الشخصي",
+  "metaTitle": "لوحة التحكم - K2Panel AI",
+  "metaDescription": "إدارة مشاريعك وإعداداتك على منصة K2Panel",
+  "welcome": "مرحباً {name}!",
+  "loginSuccess": "لقد قمت بتسجيل الدخول بنجاح إلى لوحة التحكم",
+  "loading": "جاري التحميل...",
+  "cards": {
+    "projects": {
+      "title": "المشاريع",
+      "description": "إدارة مشاريعك"
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "description": "تخصيص حسابك"
+    },
+    "stats": {
+      "title": "الإحصائيات",
+      "description": "عرض التقارير"
+    }
+  },
   "admin": {
     "title": "لوحة تحكم المسؤول",
+    "metaTitle": "لوحة تحكم المسؤول - K2Panel AI",
+    "metaDescription": "إدارة المستخدمين والخوادم والإعدادات",
     "stats": {
       "totalUsers": "إجمالي المستخدمين",
       "activeProjects": "المشاريع النشطة",

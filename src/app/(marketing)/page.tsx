@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
+import { cookies, headers } from 'next/headers';
 import { sanityFetch } from '@/lib/sanity';
 import { HomeContent } from "./HomeContent";
 import { HomeSanityContent } from "./HomeSanityContent";
+import { buildLocalizedMetadata } from '@/lib/i18n/metadata-utils';
+import { resolveLocale } from '@/lib/i18n/locale-utils';
 
-export const metadata: Metadata = {
-  title: "Replit - Build software faster",
-  description: "The collaborative browser-based IDE",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = headers();
+  const cookieStore = cookies();
+  
+  const pathname = headersList.get('x-pathname') || '/';
+  const cookieValue = cookieStore.get('NEXT_LOCALE')?.value;
+  const acceptLanguage = headersList.get('accept-language');
+  
+  const locale = resolveLocale({ pathname, cookie: cookieValue, acceptLanguage });
+
+  return buildLocalizedMetadata({
+    locale,
+    namespace: 'marketing',
+    keys: {
+      title: 'home.metaTitle',
+      description: 'home.metaDescription',
+    },
+    pathname: '/',
+  });
+}
 
 // GROQ query للحصول على محتوى Home Page من Sanity
 const homePageQuery = `*[_type == "page" && slug.current == "home"][0]{

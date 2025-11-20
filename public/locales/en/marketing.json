@@ -1,6 +1,8 @@
 {
   "home": {
     "title": "Home Page",
+    "metaTitle": "K2Panel AI - Smart Development Platform",
+    "metaDescription": "The collaborative browser-based IDE with advanced AI tools. Build, share, and deploy your apps easily",
     "hero": {
       "title": "Build software faster",
       "subtitle": "The collaborative browser-based IDE that makes it easy to write, run, and deploy code from anywhere",
@@ -27,18 +29,26 @@
   },
   "pricing": {
     "title": "Pricing",
-    "subtitle": "Choose the perfect plan for your needs"
+    "subtitle": "Choose the perfect plan for your needs",
+    "metaTitle": "Pricing - K2Panel AI",
+    "metaDescription": "Choose the perfect K2Panel plan for your needs. Flexible pricing for individuals, teams, and enterprises with powerful features"
   },
   "gallery": {
     "title": "Gallery",
-    "subtitle": "Explore amazing projects built on K2Panel"
+    "subtitle": "Explore amazing projects built on K2Panel",
+    "metaTitle": "Project Gallery - K2Panel AI",
+    "metaDescription": "Explore thousands of amazing projects built by developers on K2Panel platform. Get inspired and start your next project"
   },
   "help": {
     "title": "Help",
-    "subtitle": "Get help with K2Panel"
+    "subtitle": "Get help with K2Panel",
+    "metaTitle": "Help Center - K2Panel AI",
+    "metaDescription": "Get help and technical support for K2Panel platform. Guides, tutorials, and answers to frequently asked questions"
   },
   "products": {
     "title": "Products",
-    "subtitle": "Discover our products and solutions"
+    "subtitle": "Discover our products and solutions",
+    "metaTitle": "Products - K2Panel AI",
+    "metaDescription": "Discover the complete suite of K2Panel products - from integrated development environment to advanced AI tools"
   }
 }

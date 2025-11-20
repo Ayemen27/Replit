@@ -2,8 +2,29 @@
   "overview": "Overview",
   "settings": "Settings",
   "profile": "Profile",
+  "metaTitle": "Dashboard - K2Panel AI",
+  "metaDescription": "Manage your projects and settings on K2Panel platform",
+  "welcome": "Welcome {name}!",
+  "loginSuccess": "You have successfully logged in to the dashboard",
+  "loading": "Loading...",
+  "cards": {
+    "projects": {
+      "title": "Projects",
+      "description": "Manage your projects"
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Customize your account"
+    },
+    "stats": {
+      "title": "Statistics",
+      "description": "View reports"
+    }
+  },
   "admin": {
     "title": "Admin Dashboard",
+    "metaTitle": "Admin Dashboard - K2Panel AI",
+    "metaDescription": "Manage users, servers, and system settings",
     "stats": {
       "totalUsers": "Total Users",
       "activeProjects": "Active Projects",
