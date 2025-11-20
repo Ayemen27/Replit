@@ -91,13 +91,20 @@ export default withAuth(
         const hasLocaleInPath = SUPPORTED_LOCALES.includes(firstSegment as SupportedLocale);
         const actualPath = hasLocaleInPath ? '/' + pathSegments.slice(1).join('/') : pathname;
         
-        const protectedPaths = ['/dashboard', '/profile', '/replView', '/workspace', '/admin'];
+        const protectedPaths = ['/dashboard', '/profile', '/replView', '/workspace'];
+        const adminPaths = ['/admin'];
+        
         const isProtectedPath = protectedPaths.some(path => actualPath.startsWith(path));
+        const isAdminPath = adminPaths.some(path => actualPath.startsWith(path));
         
-        if (!isProtectedPath) return true;
+        // Public paths
+        if (!isProtectedPath && !isAdminPath) return true;
         
-        // Ensure user has valid token
-        if (!token) {
+        // Protected paths require token
+        if (!token) return false;
+        
+        // Admin paths require admin role
+        if (isAdminPath && token.role !== 'admin') {
           return false;
         }
         

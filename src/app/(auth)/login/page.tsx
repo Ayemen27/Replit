@@ -29,14 +29,24 @@ export default function LoginPage() {
       const result = await signIn('credentials', {
         email,
         password,
-        callbackUrl: '/dashboard',
-        redirect: true,
+        redirect: false,
       });
 
-      // If we reach here, redirect didn't happen (error case)
       if (result?.error) {
         setError(t('login.error.invalidCredentials'));
         setLoading(false);
+        return;
+      }
+
+      // Get session to check user role
+      const response = await fetch('/api/auth/session');
+      const session = await response.json();
+      
+      // Redirect based on role
+      if (session?.user?.role === 'admin') {
+        router.push('/admin/dashboard');
+      } else {
+        router.push('/dashboard');
       }
     } catch (err) {
       setError(t('login.error.generic'));

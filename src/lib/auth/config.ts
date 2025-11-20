@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
         }
         
         const users = await query<any>(
-          'SELECT id, email, name, image, password, email_verified as "emailVerified" FROM users WHERE email = $1',
+          'SELECT id, email, name, image, password, email_verified as "emailVerified", role FROM users WHERE email = $1',
           [credentials.email]
         );
         
@@ -42,7 +42,8 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           image: user.image,
-          emailVerified: user.emailVerified
+          emailVerified: user.emailVerified,
+          role: user.role || 'user'
         };
       }
     })
@@ -63,12 +64,14 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.role = (user as any).role || 'user';
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         (session.user as any).id = token.id as string;
+        (session.user as any).role = token.role as string;
       }
       return session;
     }
