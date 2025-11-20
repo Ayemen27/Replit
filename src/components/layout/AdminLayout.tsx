@@ -2,10 +2,10 @@
 
 import { useState, ReactNode } from 'react';
 import { 
-  Users, 
-  Activity, 
-  Database, 
-  Languages,
+  User, 
+  BarChart, 
+  HardDrive, 
+  Globe,
   Server,
   Menu,
   X
@@ -87,7 +87,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
-              <Activity className="w-5 h-5" />
+              <BarChart className="w-5 h-5" />
               <div className="flex-1 text-right">
                 <div className="font-semibold">{t('navigation.dashboard')}</div>
                 <div className={`text-xs ${isActive('/admin/dashboard') ? 'opacity-90' : 'text-gray-500'}`}>
@@ -104,7 +104,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
-              <Database className="w-5 h-5" />
+              <HardDrive className="w-5 h-5" />
               <div className="flex-1 text-right">
                 <div className="font-semibold">{t('navigation.database')}</div>
                 <div className={`text-xs ${isActive('/admin/database') ? 'opacity-90' : 'text-gray-500'}`}>
@@ -121,7 +121,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
-              <Languages className="w-5 h-5" />
+              <Globe className="w-5 h-5" />
               <div className="flex-1 text-right">
                 <div className="font-semibold">{t('navigation.translations')}</div>
                 <div className={`text-xs ${isActive('/admin/translations') ? 'opacity-90' : 'text-gray-500'}`}>
@@ -138,7 +138,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
-              <Users className="w-5 h-5" />
+              <User className="w-5 h-5" />
               <div className="flex-1 text-right">
                 <div className="font-semibold">{t('navigation.users')}</div>
                 <div className={`text-xs ${isActive('/admin/users') ? 'opacity-90' : 'text-gray-500'}`}>

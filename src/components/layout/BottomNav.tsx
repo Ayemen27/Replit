@@ -4,9 +4,9 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { 
-  LayoutDashboard, 
-  FolderKanban, 
-  Plus, 
+  Home, 
+  Folder, 
+  PlusCircle, 
   Settings,
   User
 } from 'lucide-react';
@@ -27,17 +27,17 @@ export function BottomNav() {
     {
       labelKey: 'bottomNav.home',
       href: '/dashboard',
-      icon: LayoutDashboard,
+      icon: Home,
     },
     {
       labelKey: 'bottomNav.projects',
       href: '/dashboard/projects',
-      icon: FolderKanban,
+      icon: Folder,
     },
     {
       labelKey: 'bottomNav.new',
       href: '/dashboard/new',
-      icon: Plus,
+      icon: PlusCircle,
     },
     {
       labelKey: 'bottomNav.settings',
