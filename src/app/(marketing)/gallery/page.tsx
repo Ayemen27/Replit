@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { cookies, headers } from 'next/headers';
 import { GalleryContent } from "./GalleryContent";
 import { getServerTranslations } from '@/lib/i18n/server-utils';
-import { getLocale } from '@/lib/i18n/locale-utils';
+import { resolveLocale } from '@/lib/i18n/locale-utils';
 
 export const metadata: Metadata = {
   title: "Gallery - K2Panel",
@@ -9,7 +10,14 @@ export const metadata: Metadata = {
 };
 
 export default async function GalleryPage() {
-  const locale = getLocale();
+  const headersList = headers();
+  const cookieStore = cookies();
+  
+  const pathname = headersList.get('x-pathname') || '/';
+  const cookieValue = cookieStore.get('NEXT_LOCALE')?.value;
+  const acceptLanguage = headersList.get('accept-language');
+  
+  const locale = resolveLocale({ pathname, cookie: cookieValue, acceptLanguage });
   const { t } = await getServerTranslations(locale, ['marketing']);
 
   return (
