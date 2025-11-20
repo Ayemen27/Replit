@@ -39,6 +39,19 @@ author = 45067223
 task = "shell.exec"
 args = "npm run build"
 
+[[workflows.workflow]]
+name = "Production"
+author = 45089907
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run start"
+
 [[ports]]
 localPort = 3001
 externalPort = 3001
