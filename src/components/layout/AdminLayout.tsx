@@ -5,7 +5,7 @@ import {
   User,
   BarChart,
   HardDrive,
-  Globe,
+  Globe2,
   Server,
   Menu,
   X
@@ -121,7 +121,7 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
-              <Globe className="w-5 h-5" />
+              <Globe2 className="w-5 h-5" />
               <div className="flex-1 text-right">
                 <div className="font-semibold">{t('navigation.translations')}</div>
                 <div className={`text-xs ${isActive('/admin/translations') ? 'opacity-90' : 'text-gray-500'}`}>

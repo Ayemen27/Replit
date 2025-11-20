@@ -66,4 +66,5 @@ declare module 'lucide-react' {
   export const PlusCircle: LucideIcon;
   export const Settings: LucideIcon;
   export const Play: LucideIcon;
+  export const Globe2: LucideIcon;
 }
