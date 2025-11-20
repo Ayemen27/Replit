@@ -56,22 +56,24 @@ export async function getServerTranslations(
   locale: SupportedLocale = DEFAULT_LOCALE,
   namespaces: string[] = ['common']
 ) {
-  const staticData = await getStaticDataForSSR(locale);
+  // Load namespace data from local files
+  const namespaceData = await loadAllNamespaces(locale, namespaces as any);
 
-  const tolgee = Tolgee()
-    .use(FormatIcu())
-    .init({
-      language: locale,
-      availableLanguages: [...SUPPORTED_LOCALES],
-      defaultNs: 'common',
-      ns: [...NAMESPACES],
-      fallbackNs: 'common',
-      staticData,
-    });
+  // Create simple translation function that works directly with local data
+  // No Tolgee SDK needed for server-side translations
+  const t = (key: string) => {
+    // Try each namespace until we find the key
+    for (const ns of namespaces) {
+      if (namespaceData[ns]) {
+        const value = namespaceData[ns][key];
+        if (value !== undefined) {
+          return value;
+        }
+      }
+    }
+    // Return key if not found
+    return key;
+  };
 
-  await tolgee.run();
-
-  const t = tolgee.t;
-
-  return { t, tolgee };
+  return { t, tolgee: null };
 }

@@ -19,7 +19,15 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
 
   const toggleLanguage = () => {
     const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    
+    // Update cookie
+    document.cookie = `NEXT_LOCALE=${newLang}; path=/; max-age=31536000; SameSite=Lax`;
+    
+    // Change Tolgee language immediately
     tolgee.changeLanguage(newLang);
+    
+    // Reload page to update Server Components
+    window.location.reload();
   };
 
   const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0];
