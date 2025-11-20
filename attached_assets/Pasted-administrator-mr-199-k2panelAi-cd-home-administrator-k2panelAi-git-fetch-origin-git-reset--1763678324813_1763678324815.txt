@@ -1,0 +1,63 @@
+administrator@mr-199:~/k2panelAi$ cd /home/administrator/k2panelAi && git fetch origin && git reset --hard origin/main && pm2 delete k2panel-ai && pm2 start scripts/start-prod.js --name k2panel-ai --interpreter $(which node) && pm2 save && pm2 logs k2panel-ai
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 4 (delta 3), reused 4 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 589 bytes | 117.00 KiB/s, done.
+From github.com:Ayemen27/K2panelAi
+   0293dbe..9b7398d  main       -> origin/main
+HEAD is now at 9b7398d Update production script to correctly start Next.js application
+[PM2] Applying action deleteProcessId on app [k2panel-ai](ids: [ 0 ])
+[PM2] [k2panel-ai](0) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+[PM2] Starting /home/administrator/k2panelAi/scripts/start-prod.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ k2panel-ai         │ fork     │ 0    │ online    │ 0%       │ 22.3mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+[PM2] Saving current process list...
+[PM2] Successfully saved in /home/administrator/.pm2/dump.pm2
+[TAILING] Tailing last 15 lines for [k2panel-ai] process (change the value with --lines option)
+/home/administrator/.pm2/logs/k2panel-ai-error.log last 15 lines:
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+0|k2panel- | /bin/sh: 1: next: not found
+
+/home/administrator/.pm2/logs/k2panel-ai-out.log last 15 lines:
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+0|k2panel- | 🚀 بدء Next.js (production) على البورت: 8080
+
+0|k2panel-ai  |   ▲ Next.js 14.2.13
+0|k2panel-ai  |   - Local:        http://localhost:8080
+0|k2panel-ai  |   - Network:      http://0.0.0.0:8080
+0|k2panel-ai  |  ✓ Starting...
+0|k2panel-ai  |  ✓ Ready in 692ms
