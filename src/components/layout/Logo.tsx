@@ -9,11 +9,11 @@ interface LogoProps {
   height?: number;
 }
 
-export function Logo({ className, href = '/', width = 24, height = 24 }: LogoProps) {
+export function Logo({ className, href = '/', width = 32, height = 32 }: LogoProps) {
   return (
     <Link 
       href={href} 
-      className={cn('flex items-center gap-2 transition-opacity hover:opacity-80', className)}
+      className={cn('flex items-center gap-2 transition-opacity hover:opacity-80 flex-shrink-0', className)}
       aria-label="K2Panel Ai home"
     >
       <Image
@@ -22,9 +22,9 @@ export function Logo({ className, href = '/', width = 24, height = 24 }: LogoPro
         width={width}
         height={height}
         priority
-        className="h-auto w-auto"
+        className="w-8 h-8 flex-shrink-0"
       />
-      <span className="text-xl font-bold">K2Panel Ai</span>
+      <span className="text-base sm:text-lg font-bold whitespace-nowrap">K2Panel Ai</span>
     </Link>
   );
 }

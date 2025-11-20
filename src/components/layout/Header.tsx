@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { Logo } from './Logo';
 import { NavDesktop } from './NavDesktop';
 import { NavMobile } from './NavMobile';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { cn } from '@/lib/utils';
 import { getServerTranslations } from '@/lib/i18n/server-utils';
 import { getPrimaryNav, getSecondaryNav, getMobileNav } from '@/config/navigation';
@@ -35,8 +36,8 @@ export async function Header({ className, transparent = false }: HeaderProps) {
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-8">
-          <Logo width={24} height={24} />
+        <div className="flex h-14 items-center justify-between gap-4">
+          <Logo width={32} height={32} />
           
           <NavDesktop 
             className="flex-1" 
@@ -44,11 +45,15 @@ export async function Header({ className, transparent = false }: HeaderProps) {
             secondaryNav={secondaryNav}
           />
           
-          <NavMobile 
-            navItems={mobileNav}
-            menuLabel={mobileMenuLabel}
-            closeLabel={mobileCloseLabel}
-          />
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher variant="globe" />
+            
+            <NavMobile 
+              navItems={mobileNav}
+              menuLabel={mobileMenuLabel}
+              closeLabel={mobileCloseLabel}
+            />
+          </div>
         </div>
       </div>
     </header>

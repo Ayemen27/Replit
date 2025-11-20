@@ -1,11 +1,12 @@
 'use client';
 
 import { useTolgee } from '@tolgee/react';
+import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface LanguageSwitcherProps {
   className?: string;
-  variant?: 'button' | 'dropdown';
+  variant?: 'button' | 'dropdown' | 'globe';
 }
 
 export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwitcherProps) {
@@ -33,6 +34,22 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
   const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0];
   const otherLanguage = languages.find(lang => lang.code !== currentLang) || languages[1];
 
+  if (variant === 'globe') {
+    return (
+      <button
+        onClick={toggleLanguage}
+        className={cn(
+          'flex items-center justify-center w-9 h-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-all',
+          className
+        )}
+        aria-label={`Switch to ${otherLanguage.name}`}
+        title={`${currentLanguage.nativeName} → ${otherLanguage.nativeName}`}
+      >
+        <Globe className="w-5 h-5" />
+      </button>
+    );
+  }
+
   if (variant === 'dropdown') {
     return (
       <div className={cn('relative', className)}>
@@ -41,7 +58,7 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
           className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent"
           aria-label="Switch language"
         >
-          <span className="text-lg">🌐</span>
+          <Globe className="w-4 h-4" />
           <span>{currentLanguage.nativeName}</span>
         </button>
       </div>
@@ -58,7 +75,7 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
       aria-label={`Switch to ${otherLanguage.name}`}
       title={`Switch to ${otherLanguage.name}`}
     >
-      <span className="text-lg">🌐</span>
+      <Globe className="w-4 h-4" />
       <span className="hidden sm:inline">{otherLanguage.code.toUpperCase()}</span>
       <span className="sm:hidden">{otherLanguage.nativeName}</span>
     </button>
