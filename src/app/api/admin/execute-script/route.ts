@@ -12,7 +12,25 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now();
   
   try {
+    // التحقق من تسجيل الدخول والصلاحيات
     const session = await getServerSession(authOptions);
+    
+    if (!session || !session.user) {
+      return NextResponse.json(
+        { error: 'غير مصرح - يجب تسجيل الدخول' },
+        { status: 401 }
+      );
+    }
+
+    // التحقق من صلاحيات المدير
+    const userRole = (session.user as any).role;
+    if (userRole !== 'admin') {
+      return NextResponse.json(
+        { error: 'غير مصرح - صلاحيات المدير مطلوبة' },
+        { status: 403 }
+      );
+    }
+    
     const { command, namespace, language } = await request.json();
 
     if (!command) {

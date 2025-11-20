@@ -85,6 +85,7 @@ export default function TranslationsAdminPage() {
   const [errors, setErrors] = useState<TranslationError[]>([]);
   const [recentOps, setRecentOps] = useState<RecentOperation[]>([]);
   const [statsLoading, setStatsLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState<string>('upload');
 
   const scripts = [
     {
@@ -173,6 +174,19 @@ export default function TranslationsAdminPage() {
       setStatsLoading(false);
     }
   };
+
+  // تطبيق الفلاتر على البيانات
+  const filteredKeyStats = keyStats.filter(stat => {
+    const matchNamespace = selectedNamespace === 'all' || stat.namespace === selectedNamespace;
+    const matchLanguage = selectedLanguage === 'all' || stat.language === selectedLanguage;
+    return matchNamespace && matchLanguage;
+  });
+
+  const filteredErrors = errors.filter(error => {
+    const matchNamespace = selectedNamespace === 'all' || error.namespace === selectedNamespace;
+    const matchLanguage = selectedLanguage === 'all' || error.language === selectedLanguage;
+    return matchNamespace && matchLanguage;
+  });
 
   const executeScript = async (scriptId: string, command: string) => {
     setLoading(scriptId);
@@ -374,7 +388,7 @@ export default function TranslationsAdminPage() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-orange-600 font-medium">{t('translationManagement.activeErrors')}</p>
-                    <p className="text-lg sm:text-2xl font-bold text-orange-900 truncate">{errors.length}</p>
+                    <p className="text-lg sm:text-2xl font-bold text-orange-900 truncate">{filteredErrors.length}</p>
                   </div>
                 </div>
               </Card>
@@ -401,7 +415,7 @@ export default function TranslationsAdminPage() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {keyStats.map((stat, idx) => (
+                      {filteredKeyStats.map((stat, idx) => (
                         <tr key={idx} className="hover:bg-gray-50">
                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm">
                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -424,15 +438,15 @@ export default function TranslationsAdminPage() {
             </div>
 
             {/* Errors List */}
-            {errors.length > 0 && (
+            {filteredErrors.length > 0 && (
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-red-200">
                 <h2 className="text-lg sm:text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-red-600" />
-                  {t('translationManagement.activeErrorsList')} ({errors.length})
+                  {t('translationManagement.activeErrorsList')} ({filteredErrors.length})
                 </h2>
 
                 <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {errors.slice(0, 10).map((error) => (
+                  {filteredErrors.slice(0, 10).map((error) => (
                     <div key={error.id} className="p-3 bg-red-50 border border-red-200 rounded-lg">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
@@ -531,13 +545,32 @@ export default function TranslationsAdminPage() {
           </div>
         </div>
 
-        {/* Scripts by Category */}
-        {categories.map(category => (
-          <div key={category.id} className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-200">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <category.icon className="w-5 h-5 text-blue-600" />
-              {category.name}
-            </h2>
+        {/* Category Tabs */}
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-200">
+          <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200 pb-4">
+            {categories.map(category => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                  activeCategory === category.id
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <category.icon className="w-5 h-5" />
+                <span>{category.name}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Category Scripts */}
+          {categories.filter(cat => cat.id === activeCategory).map(category => (
+            <div key={category.id}>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <category.icon className="w-5 h-5 text-blue-600" />
+                {category.name}
+              </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
               {scripts.filter(s => s.category === category.id).map(script => (
