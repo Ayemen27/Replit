@@ -3,15 +3,8 @@ import { Pool, PoolClient, QueryResult } from 'pg';
 // ==============================
 // إنشاء Pool للاتصال بقاعدة PostgreSQL
 // ==============================
-const getConnectionString = () => {
-  if (process.env.PGUSER && process.env.PGPASSWORD && process.env.PGHOST && process.env.PGDATABASE) {
-    return `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`;
-  }
-  return process.env.DATABASE_URL;
-};
-
 const pool = new Pool({
-  connectionString: getConnectionString(),
+  connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
   max: 10,           // الحد الأقصى للاتصالات
   min: 2,            // الحد الأدنى
