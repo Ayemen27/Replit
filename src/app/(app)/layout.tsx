@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth/config";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Replit - Dashboard",
-  description: "Your Replit workspace",
+  title: "K2Panel AI - Dashboard",
+  description: "Your workspace dashboard",
 };
 
-export default function AppLayout({
+export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+  
+  if (!session) {
+    redirect('/login');
+  }
+
   return (
     <div className="app-layout">
       {children}
