@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth/config";
 import { redirect } from "next/navigation";
+import { BottomNav } from "@/components/layout/BottomNav";
 
 export const metadata: Metadata = {
   title: "K2Panel AI - Dashboard",
@@ -21,7 +22,10 @@ export default async function AppLayout({
 
   return (
     <div className="app-layout">
-      {children}
+      <div className="pb-16 lg:pb-0">
+        {children}
+      </div>
+      <BottomNav />
     </div>
   );
 }
