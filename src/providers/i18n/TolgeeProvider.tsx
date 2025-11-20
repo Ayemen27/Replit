@@ -34,11 +34,21 @@ export function TolgeeProvider({ children, locale, staticData }: TolgeeProviderP
       ns: [...NAMESPACES],
       fallbackNs: 'common',
       staticData,
+      // Force use of static data in development if API fails
+      fetch: isDevelopment ? undefined : fetch,
     });
   }, [locale, apiUrl, apiKey, isDevelopment, staticData]);
 
   return (
-    <TolgeeReactProvider tolgee={tolgee} fallback="Loading...">
+    <TolgeeReactProvider 
+      tolgee={tolgee} 
+      fallback="Loading..."
+      // Enable SSR mode with static data
+      ssr={{ 
+        language: locale,
+        staticData 
+      }}
+    >
       {children}
     </TolgeeReactProvider>
   );

@@ -53,15 +53,26 @@ export const metadata: Metadata = {
   },
 };
 
+// Assume loadStaticDataForProvider is defined elsewhere and works as intended
+// For the purpose of this example, we'll mock its behavior based on the original getStaticDataForSSR
+async function loadStaticDataForProvider(locale: SupportedLocale): Promise<Record<string, any>> {
+  try {
+    return await getStaticDataForSSR(locale);
+  } catch (error) {
+    console.error(`[RootLayout] Failed to load static data for locale ${locale}:`, error);
+    return {};
+  }
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const headersList = await headers();
-  
+
   const localeFromHeader = headersList.get('x-locale') as SupportedLocale | null;
-  
+
   let locale: SupportedLocale;
   if (localeFromHeader && ['ar', 'en'].includes(localeFromHeader)) {
     locale = localeFromHeader;
@@ -81,17 +92,20 @@ export default async function RootLayout({
   }
 
   const direction = getLocaleDirection(locale);
-  
-  let staticData: Record<string, any> = {};
-  try {
-    staticData = await getStaticDataForSSR(locale);
-  } catch (error) {
-    console.error('[RootLayout] Failed to load static data:', error);
-    staticData = {};
-  }
+
+  // Load static data for both locales to enable seamless switching
+  const [arData, enData] = await Promise.all([
+    loadStaticDataForProvider('ar'),
+    loadStaticDataForProvider('en'),
+  ]);
+
+  const staticData = {
+    ...arData,
+    ...enData,
+  };
 
   return (
-    <html lang={locale} dir={direction}>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

@@ -1,8 +1,7 @@
-
 import { Tolgee, DevTools } from '@tolgee/web';
 import { FormatIcu } from '@tolgee/format-icu';
 import { DEFAULT_LOCALE, FALLBACK_LOCALE, SUPPORTED_LOCALES, NAMESPACES, type SupportedLocale, type Namespace } from './constants';
-import { loadAllNamespaces } from './namespace-loader';
+import { loadAllNamespaces, loadNamespace } from './namespace-loader'; // Import loadNamespace
 import { resolveLocale } from './locale-utils';
 
 export { resolveLocale };
@@ -25,7 +24,7 @@ export async function getStaticDataForSSR(locale: SupportedLocale = DEFAULT_LOCA
   results.forEach((result) => {
     if (result.status === 'fulfilled') {
       const { locale: loc, data } = result.value;
-      
+
       for (const namespace in data) {
         const key = `${loc}:${namespace}`;
         staticData[key] = data[namespace];
@@ -36,6 +35,21 @@ export async function getStaticDataForSSR(locale: SupportedLocale = DEFAULT_LOCA
   });
 
   return staticData;
+}
+
+// This function's logic is being updated by the changes snippet.
+export async function loadStaticDataForProvider(locale: SupportedLocale) {
+  const data: Record<string, any> = {};
+
+  for (const namespace of NAMESPACES) {
+    const namespaceData = await loadNamespace(locale, namespace);
+    // Store as namespace:key format for Tolgee
+    for (const key in namespaceData) {
+      data[`${namespace}:${key}`] = namespaceData[key];
+    }
+  }
+
+  return { [locale]: data };
 }
 
 export async function getServerTranslations(
@@ -61,4 +75,3 @@ export async function getServerTranslations(
 
   return { t, tolgee };
 }
-
