@@ -572,46 +572,46 @@ export default function TranslationsAdminPage() {
                 {category.name}
               </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-              {scripts.filter(s => s.category === category.id).map(script => (
-                <Card key={script.id} className="p-3 sm:p-4 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                        <script.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm sm:text-base font-semibold text-gray-900">{script.name}</h3>
-                        <p className="text-xs sm:text-sm text-gray-600 mt-1">{script.description}</p>
-                        <code className="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block text-gray-700 break-all">
-                          {script.command}
-                        </code>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+                {scripts.filter(s => s.category === category.id).map(script => (
+                  <Card key={script.id} className="p-3 sm:p-4 hover:shadow-md transition-shadow">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <script.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm sm:text-base font-semibold text-gray-900">{script.name}</h3>
+                          <p className="text-xs sm:text-sm text-gray-600 mt-1">{script.description}</p>
+                          <code className="text-xs bg-gray-100 px-2 py-1 rounded mt-2 inline-block text-gray-700 break-all">
+                            {script.command}
+                          </code>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <Button
-                    onClick={() => executeScript(script.id, script.command)}
-                    disabled={loading === script.id}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm"
-                  >
-                    {loading === script.id ? (
-                      <>
-                        <Loader2 className="w-4 h-4 ml-2 animate-spin" />
-                        {t('translationManagement.executing')}
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-4 h-4 ml-2" />
-                        {t('translationManagement.execute')}
-                      </>
-                    )}
-                  </Button>
+                    <Button
+                      onClick={() => executeScript(script.id, script.command)}
+                      disabled={loading === script.id}
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm"
+                    >
+                      {loading === script.id ? (
+                        <>
+                          <Loader2 className="w-4 h-4 ml-2 animate-spin" />
+                          {t('translationManagement.executing')}
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-4 h-4 ml-2" />
+                          {t('translationManagement.execute')}
+                        </>
+                      )}
+                    </Button>
 
-                  {/* Results */}
-                  {results[script.id] && (
-                    <div className={`mt-3 sm:mt-4 p-3 rounded-lg border text-sm ${
-                      results[script.id].success 
+                    {/* Results */}
+                    {results[script.id] && (
+                      <div className={`mt-3 sm:mt-4 p-3 rounded-lg border text-sm ${
+                        results[script.id].success 
                         ? 'bg-green-50 border-green-200' 
                         : 'bg-red-50 border-red-200'
                     }`}>
@@ -661,6 +661,7 @@ export default function TranslationsAdminPage() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
