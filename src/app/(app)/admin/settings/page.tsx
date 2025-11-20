@@ -6,8 +6,10 @@ import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Settings, Save } from 'lucide-react';
+import { useTranslate } from '@/lib/i18n/hooks';
 
 export default function AdminSettingsPage() {
+  const { t } = useTranslate('admin');
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function AdminSettingsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">جاري التحميل...</p>
+          <p className="text-gray-600">{t('loading')}</p>
         </div>
       </div>
     );
@@ -36,9 +38,9 @@ export default function AdminSettingsPage() {
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/admin/dashboard" className="hover:text-purple-600">لوحة الإدارة</Link>
+          <Link href="/admin/dashboard" className="hover:text-purple-600">{t('breadcrumb.dashboard')}</Link>
           <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">الإعدادات</span>
+          <span className="text-gray-900">{t('breadcrumb.settings')}</span>
         </div>
 
         {/* Header */}
@@ -49,13 +51,13 @@ export default function AdminSettingsPage() {
                 <Settings className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">إعدادات النظام</h1>
-                <p className="text-sm text-gray-600">تكوين إعدادات النظام</p>
+                <h1 className="text-2xl font-bold text-gray-900">{t('settings.title')}</h1>
+                <p className="text-sm text-gray-600">{t('settings.subtitle')}</p>
               </div>
             </div>
             <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:shadow-lg transition-shadow">
               <Save className="w-5 h-5" />
-              حفظ التغييرات
+              {t('settings.save')}
             </button>
           </div>
         </div>
@@ -64,7 +66,7 @@ export default function AdminSettingsPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <div className="text-center py-12 text-gray-500">
             <Settings className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-            <p>قريباً: إعدادات النظام</p>
+            <p>{t('settings.comingSoon')}</p>
           </div>
         </div>
       </div>

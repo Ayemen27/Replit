@@ -64,7 +64,7 @@ const navigationItems: NavItem[] = [
 ];
 
 export default function AdminDashboardPage() {
-  const { t } = useTranslate('dashboard');
+  const { t } = useTranslate('admin');
   const { data: session, status } = useSession();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [stats, setStats] = useState({
@@ -266,32 +266,25 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
-            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Shield className="w-6 h-6 text-purple-600" />
-              {t('admin.quickActions')}
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {navigationItems.slice(1).map((item, idx) => (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  className="group p-4 border-2 border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-lg bg-gray-100 group-hover:bg-purple-100 flex items-center justify-center transition-colors">
-                      <item.icon className="w-5 h-5 text-gray-600 group-hover:text-purple-600 transition-colors" />
-                    </div>
-                    <h3 className="font-bold text-gray-900 group-hover:text-purple-900 transition-colors">
-                      {item.label}
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600 group-hover:text-purple-700 transition-colors">
-                    {item.description}
-                  </p>
-                </Link>
-              ))}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">{t('dashboard.quickActions.title')}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <Link href="/admin/users" className="p-4 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors text-center">
+                <Users className="w-8 h-8 mx-auto mb-2 text-purple-600" />
+                <p className="text-sm font-medium text-gray-900">{t('dashboard.quickActions.manageUsers')}</p>
+              </Link>
+              <Link href="/admin/servers" className="p-4 border border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors text-center">
+                <Server className="w-8 h-8 mx-auto mb-2 text-green-600" />
+                <p className="text-sm font-medium text-gray-900">{t('dashboard.quickActions.viewServers')}</p>
+              </Link>
+              <Link href="/admin/settings" className="p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors text-center">
+                <Activity className="w-8 h-8 mx-auto mb-2 text-blue-600" />
+                <p className="text-sm font-medium text-gray-900">{t('dashboard.quickActions.systemSettings')}</p>
+              </Link>
+              <Link href="/admin/logs" className="p-4 border border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors text-center">
+                <Layers className="w-8 h-8 mx-auto mb-2 text-orange-600" />
+                <p className="text-sm font-medium text-gray-900">{t('dashboard.quickActions.viewLogs')}</p>
+              </Link>
             </div>
           </div>
 

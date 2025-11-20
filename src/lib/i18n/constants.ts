@@ -22,6 +22,7 @@ export const NAMESPACES = [
   'cms',
   'errors',
   'validation',
+  'admin',
 ] as const;
 
 export type Namespace = typeof NAMESPACES[number];

@@ -1,0 +1,57 @@
+
+{
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "subtitle": "System Overview",
+    "users": {
+      "title": "Users",
+      "total": "Total Registered Users",
+      "active": "Active Users",
+      "new": "New Users This Month"
+    },
+    "projects": {
+      "title": "Projects",
+      "total": "Total Projects",
+      "active": "Active Projects",
+      "completed": "Completed Projects"
+    },
+    "servers": {
+      "title": "Servers",
+      "connected": "Connected Servers",
+      "offline": "Offline Servers",
+      "health": "Server Health"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "viewAll": "View All",
+      "noActivity": "No recent activity"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "manageUsers": "Manage Users",
+      "viewServers": "View Servers",
+      "systemSettings": "System Settings",
+      "viewLogs": "View Logs"
+    }
+  },
+  "users": {
+    "title": "User Management",
+    "subtitle": "View and manage all users",
+    "addUser": "Add User",
+    "search": "Search for user...",
+    "filter": "Filter",
+    "comingSoon": "Coming soon: User management table"
+  },
+  "settings": {
+    "title": "System Settings",
+    "subtitle": "Configure system settings",
+    "save": "Save Changes",
+    "comingSoon": "Coming soon: System settings"
+  },
+  "breadcrumb": {
+    "dashboard": "Admin Dashboard",
+    "users": "User Management",
+    "settings": "Settings"
+  },
+  "loading": "Loading..."
+}
