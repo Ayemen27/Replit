@@ -132,7 +132,7 @@ export default function ResourcesPage() {
 
                   {/* Download Count */}
                   <div className="flex items-center gap-2 py-2 px-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                    <Download className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                    <FiDownload className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {resource.downloads}
                     </span>
@@ -141,13 +141,13 @@ export default function ResourcesPage() {
                   {/* Actions */}
                   <div className="flex gap-2">
                     <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                      <Eye className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                      <FiEye className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                     </button>
                     <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                      <Download className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                      <FiDownload className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                     </button>
                     <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                      <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                      <FiMoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                     </button>
                   </div>
                 </div>
@@ -164,7 +164,7 @@ export default function ResourcesPage() {
               قم بتحميل الملفات والموارد الخاصة بك
             </p>
             <button className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-              <Upload className="w-5 h-5" />
+              <FiUpload className="w-5 h-5" />
               تحميل ملف
             </button>
           </div>

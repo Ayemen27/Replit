@@ -124,7 +124,7 @@ export default function ProjectsPage() {
                       {project.status}
                     </span>
                     <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                      <MoreVertical className="w-5 h-5 text-gray-400" />
+                      <FiMoreVertical className="w-5 h-5 text-gray-400" />
                     </button>
                   </div>
 
@@ -138,7 +138,7 @@ export default function ProjectsPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <FolderPlus className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <FiFolder className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
               لم يتم العثور على مشاريع
             </h3>
@@ -147,7 +147,7 @@ export default function ProjectsPage() {
             </p>
             <Link href="/dashboard/new">
               <button className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                <FolderPlus className="w-5 h-5" />
+                <FiFolder className="w-5 h-5" />
                 إنشاء مشروع
               </button>
             </Link>

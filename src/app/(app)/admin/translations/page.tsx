@@ -286,7 +286,7 @@ export default function TranslationsAdminPage() {
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 border border-gray-200">
           <div className="flex items-center gap-3 sm:gap-4 mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
-              <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <FiTerminal className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent truncate">
@@ -339,7 +339,7 @@ export default function TranslationsAdminPage() {
         {/* Statistics Dashboard */}
         {statsLoading ? (
           <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 border border-gray-200 flex items-center justify-center min-h-[200px]">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            <FiLoader className="w-8 h-8 animate-spin text-blue-600" />
           </div>
         ) : stats && (
           <>
@@ -348,7 +348,7 @@ export default function TranslationsAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
-                    <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiActivity className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-blue-600 font-medium">{t('translationManagement.totalOperations')}</p>
@@ -360,7 +360,7 @@ export default function TranslationsAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-green-600 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiTrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-green-600 font-medium">{t('translationManagement.successRate')}</p>
@@ -372,7 +372,7 @@ export default function TranslationsAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-600 flex items-center justify-center flex-shrink-0">
-                    <Upload className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiUpload className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-purple-600 font-medium">{t('translationManagement.uploadedKeys')}</p>
@@ -384,7 +384,7 @@ export default function TranslationsAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-orange-600 flex items-center justify-center flex-shrink-0">
-                    <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiAlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-orange-600 font-medium">{t('translationManagement.activeErrors')}</p>
@@ -397,7 +397,7 @@ export default function TranslationsAdminPage() {
             {/* Keys Statistics */}
             <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-200">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-blue-600" />
+                <FiBarChart2 className="w-5 h-5 text-blue-600" />
                 {t('translationManagement.keysStatistics')}
               </h2>
 
@@ -441,7 +441,7 @@ export default function TranslationsAdminPage() {
             {filteredErrors.length > 0 && (
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-red-200">
                 <h2 className="text-lg sm:text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                  <FiAlertTriangle className="w-5 h-5 text-red-600" />
                   {t('translationManagement.activeErrorsList')} ({filteredErrors.length})
                 </h2>
 
@@ -468,7 +468,7 @@ export default function TranslationsAdminPage() {
             {/* Recent Operations */}
             <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-200">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <Clock className="w-5 h-5 text-blue-600" />
+                <FiClock className="w-5 h-5 text-blue-600" />
                 {t('translationManagement.recentOperations')}
               </h2>
 
@@ -480,9 +480,9 @@ export default function TranslationsAdminPage() {
                         op.status === 'success' ? 'bg-green-100' : 'bg-red-100'
                       }`}>
                         {op.status === 'success' ? (
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                          <FiCheckCircle className="w-4 h-4 text-green-600" />
                         ) : (
-                          <AlertCircle className="w-4 h-4 text-red-600" />
+                          <FiAlertCircle className="w-4 h-4 text-red-600" />
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -504,7 +504,7 @@ export default function TranslationsAdminPage() {
         {/* Quick Actions */}
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-200">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Play className="w-5 h-5 text-blue-600" />
+            <FiPlay className="w-5 h-5 text-blue-600" />
             {t('translationManagement.quickActions')}
           </h2>
           
@@ -515,9 +515,9 @@ export default function TranslationsAdminPage() {
               className="h-auto py-3 sm:py-4 flex flex-col items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-sm sm:text-base"
             >
               {loading === 'download' ? (
-                <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                <FiLoader className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
               ) : (
-                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+                <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
               <span>{t('translationManagement.downloadLocal')}</span>
             </Button>
@@ -526,7 +526,7 @@ export default function TranslationsAdminPage() {
               onClick={() => window.open('https://tolgee.binarjoinanelytic.info', '_blank')}
               className="h-auto py-3 sm:py-4 flex flex-col items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-sm sm:text-base"
             >
-              <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
+              <FiEye className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>{t('translationManagement.openTolgee')}</span>
             </Button>
 
@@ -536,9 +536,9 @@ export default function TranslationsAdminPage() {
               className="h-auto py-3 sm:py-4 flex flex-col items-center gap-2 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-sm sm:text-base"
             >
               {statsLoading ? (
-                <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                <FiLoader className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
               ) : (
-                <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />
+                <FiRefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
               <span>{t('translationManagement.refreshStats')}</span>
             </Button>
@@ -597,12 +597,12 @@ export default function TranslationsAdminPage() {
                     >
                       {loading === script.id ? (
                         <>
-                          <Loader2 className="w-4 h-4 ml-2 animate-spin" />
+                          <FiLoader className="w-4 h-4 ml-2 animate-spin" />
                           {t('translationManagement.executing')}
                         </>
                       ) : (
                         <>
-                          <Play className="w-4 h-4 ml-2" />
+                          <FiPlay className="w-4 h-4 ml-2" />
                           {t('translationManagement.execute')}
                         </>
                       )}
@@ -617,9 +617,9 @@ export default function TranslationsAdminPage() {
                     }`}>
                       <div className="flex items-center gap-2 mb-2 flex-wrap">
                         {results[script.id].success ? (
-                          <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
+                          <FiCheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                         ) : (
-                          <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                          <FiAlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                         )}
                         <span className={`text-xs sm:text-sm font-medium ${
                           results[script.id].success ? 'text-green-900' : 'text-red-900'

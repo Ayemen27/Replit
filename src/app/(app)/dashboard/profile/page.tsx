@@ -115,7 +115,7 @@ export default function ProfilePage() {
             {/* Email */}
             <div className="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-purple-600" />
+                <FiMail className="w-5 h-5 text-purple-600" />
                 <div>
                   <p className="text-xs text-gray-600 dark:text-gray-400">البريد الإلكتروني</p>
                   <p className="font-medium text-gray-900 dark:text-white">{profile.email}</p>
@@ -126,9 +126,9 @@ export default function ProfilePage() {
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors"
               >
                 {copied ? (
-                  <Check className="w-5 h-5 text-green-600" />
+                  <FiCheck className="w-5 h-5 text-green-600" />
                 ) : (
-                  <Copy className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                  <FiCopy className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                 )}
               </button>
             </div>
@@ -136,7 +136,7 @@ export default function ProfilePage() {
             {/* Phone */}
             <div className="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-purple-600" />
+                <FiPhone className="w-5 h-5 text-purple-600" />
                 <div>
                   <p className="text-xs text-gray-600 dark:text-gray-400">رقم الهاتف</p>
                   <p className="font-medium text-gray-900 dark:text-white">{profile.phone}</p>
@@ -146,14 +146,14 @@ export default function ProfilePage() {
                 onClick={() => handleCopy(profile.phone)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors"
               >
-                <Copy className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <FiCopy className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               </button>
             </div>
 
             {/* Location */}
             <div className="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
               <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-purple-600" />
+                <FiMapPin className="w-5 h-5 text-purple-600" />
                 <div>
                   <p className="text-xs text-gray-600 dark:text-gray-400">الموقع</p>
                   <p className="font-medium text-gray-900 dark:text-white">{profile.location}</p>
@@ -215,7 +215,7 @@ export default function ProfilePage() {
                 onClick={() => setIsEditing(false)}
                 className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all font-medium"
               >
-                <Save className="w-5 h-5" />
+                <FiSave className="w-5 h-5" />
                 حفظ التغييرات
               </button>
             </div>

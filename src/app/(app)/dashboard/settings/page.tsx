@@ -141,12 +141,12 @@ export default function SettingsPage() {
                       >
                         {settings[setting.key as keyof typeof settings] ? (
                           <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full">
-                            <ToggleRight className="w-5 h-5" />
+                            <FiToggleRight className="w-5 h-5" />
                             <span className="text-xs font-medium">مفعل</span>
                           </div>
                         ) : (
                           <div className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full">
-                            <ToggleLeft className="w-5 h-5" />
+                            <FiToggleLeft className="w-5 h-5" />
                             <span className="text-xs font-medium">معطل</span>
                           </div>
                         )}
@@ -161,7 +161,7 @@ export default function SettingsPage() {
           {/* Account Settings */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
             <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-4 flex items-center gap-3">
-              <Globe className="w-6 h-6" />
+              <FiGlobe className="w-6 h-6" />
               <h2 className="text-xl font-bold">تفضيلات الحساب</h2>
             </div>
 
@@ -195,7 +195,7 @@ export default function SettingsPage() {
               onClick={handleSave}
               className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all font-medium"
             >
-              <Save className="w-5 h-5" />
+              <FiSave className="w-5 h-5" />
               حفظ التغييرات
             </button>
           </div>
