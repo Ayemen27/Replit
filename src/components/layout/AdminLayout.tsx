@@ -30,28 +30,8 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-40 bg-white border-b border-gray-200 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <h1 className="text-lg font-bold text-gray-900 truncate">
-            {title || t('dashboard.title')}
-          </h1>
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher variant="globe" />
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 rounded-lg hover:bg-gray-100"
-            >
-              {sidebarOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gray-50 pt-14">
+      {/* Mobile Header removed - TopNavbar provides the navigation */}
 
       {/* Sidebar Overlay for Mobile */}
       {sidebarOpen && (
