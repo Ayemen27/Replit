@@ -2,15 +2,15 @@
 
 import { useState, ReactNode } from 'react';
 import { 
-  User,
-  BarChart,
-  HardDrive,
-  Globe2,
-  Server,
-  Menu,
-  X,
-  Settings
-} from 'lucide-react';
+  FiUser,
+  FiBarChart2,
+  FiHardDrive,
+  FiGlobe,
+  FiServer,
+  FiMenu,
+  FiX,
+  FiSettings
+} from 'react-icons/fi';
 import { useTranslate } from '@/lib/i18n/hooks';
 import { usePathname } from 'next/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -54,14 +54,14 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                <Settings className="w-4 h-4 text-purple-600" />
+                <FiSettings className="w-4 h-4 text-purple-600" />
                 {t('sidebar.title')}
               </h2>
               <button
                 onClick={() => setSidebarOpen(false)}
                 className="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <FiX className="w-5 h-5 text-gray-600" />
               </button>
             </div>
           </div>
@@ -73,17 +73,12 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                 isActive('/admin/dashboard')
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                  : 'hover:bg-gray-100 text-gray-700 hover:translate-x-[-2px]'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
-              <BarChart className="w-4 h-4 flex-shrink-0" />
-              <div className="flex-1 text-right min-w-0">
-                <div className="text-sm font-semibold truncate">{t('navigation.dashboard')}</div>
-                <div className={`text-xs truncate ${isActive('/admin/dashboard') ? 'opacity-90' : 'text-gray-500'}`}>
-                  {t('navigation.dashboardDesc')}
-                </div>
-              </div>
+              <FiBarChart2 className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium">{t('sidebar.dashboard')}</span>
             </Link>
 
             <Link
@@ -91,35 +86,12 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                 isActive('/admin/database')
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                  : 'hover:bg-gray-100 text-gray-700 hover:translate-x-[-2px]'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
-              <HardDrive className="w-4 h-4 flex-shrink-0" />
-              <div className="flex-1 text-right min-w-0">
-                <div className="text-sm font-semibold truncate">{t('navigation.database')}</div>
-                <div className={`text-xs truncate ${isActive('/admin/database') ? 'opacity-90' : 'text-gray-500'}`}>
-                  {t('navigation.databaseDesc')}
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/admin/translations"
-              onClick={() => setSidebarOpen(false)}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
-                isActive('/admin/translations')
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                  : 'hover:bg-gray-100 text-gray-700 hover:translate-x-[-2px]'
-              }`}
-            >
-              <Globe2 className="w-4 h-4 flex-shrink-0" />
-              <div className="flex-1 text-right min-w-0">
-                <div className="text-sm font-semibold truncate">{t('navigation.translations')}</div>
-                <div className={`text-xs truncate ${isActive('/admin/translations') ? 'opacity-90' : 'text-gray-500'}`}>
-                  {t('navigation.translationsDesc')}
-                </div>
-              </div>
+              <FiHardDrive className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium">{t('sidebar.database')}</span>
             </Link>
 
             <Link
@@ -127,17 +99,25 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                 isActive('/admin/users')
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                  : 'hover:bg-gray-100 text-gray-700 hover:translate-x-[-2px]'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
-              <User className="w-4 h-4 flex-shrink-0" />
-              <div className="flex-1 text-right min-w-0">
-                <div className="text-sm font-semibold truncate">{t('navigation.users')}</div>
-                <div className={`text-xs truncate ${isActive('/admin/users') ? 'opacity-90' : 'text-gray-500'}`}>
-                  {t('navigation.usersDesc')}
-                </div>
-              </div>
+              <FiUser className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium">{t('sidebar.users')}</span>
+            </Link>
+
+            <Link
+              href="/admin/translations"
+              onClick={() => setSidebarOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
+                isActive('/admin/translations')
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <FiGlobe className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium">{t('sidebar.translations')}</span>
             </Link>
 
             <Link
@@ -145,35 +125,46 @@ export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                 isActive('/admin/settings')
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                  : 'hover:bg-gray-100 text-gray-700 hover:translate-x-[-2px]'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
-              <Server className="w-4 h-4 flex-shrink-0" />
-              <div className="flex-1 text-right min-w-0">
-                <div className="text-sm font-semibold truncate">{t('navigation.settings')}</div>
-                <div className={`text-xs truncate ${isActive('/admin/settings') ? 'opacity-90' : 'text-gray-500'}`}>
-                  {t('navigation.settingsDesc')}
-                </div>
-              </div>
+              <FiSettings className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium">{t('sidebar.settings')}</span>
             </Link>
           </nav>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-gray-200">
+            <LanguageSwitcher />
+          </div>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="lg:mr-64 p-4 lg:p-6 pb-24 lg:pb-8">
-        {/* Desktop Header */}
-        {(title || subtitle) && (
-          <div className="hidden lg:block mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-1">
-              {title || t('dashboard.title')}
-            </h1>
-            {subtitle && <p className="text-sm text-gray-600">{subtitle}</p>}
-          </div>
-        )}
+      <main className="lg:ml-0">
+        <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto pb-20 lg:pb-8">
+          {/* Header */}
+          {title && (
+            <div className="mb-8 flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+                {subtitle && (
+                  <p className="text-gray-600 mt-1">{subtitle}</p>
+                )}
+              </div>
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <FiMenu className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+          )}
 
-        {children}
+          {/* Content */}
+          {children}
+        </div>
       </main>
     </div>
   );
