@@ -9,17 +9,17 @@ import {
   FiDatabase, 
   FiGrid, 
   FiBarChart2, 
-  FiHeart, 
-  FiTerminal,
-  FiRefreshCw,
+  FiFiHeart, 
+  FiFiTerminal,
+  FiFiRefreshCw,
   FiDownload,
   FiLoader,
-  FiActivity,
-  FiHardDrive,
-  FiFileText,
+  FiFiActivity,
+  FiFiHardDrive,
+  FiFiFileText,
   FiPlus,
   FiEdit,
-  FiTrash2,
+  FiFiTrash2,
   FiEye
 } from 'react-icons/fi';
 
@@ -174,11 +174,11 @@ export default function DatabaseAdminPage() {
   };
 
   const tabs = [
-    { id: 'overview', name: t('database.tabs.overview'), icon: BarChart3 },
-    { id: 'tables', name: t('database.tabs.tables'), icon: Table2 },
+    { id: 'overview', name: t('database.tabs.overview'), icon: FiBarChart2 },
+    { id: 'tables', name: t('database.tabs.tables'), icon: FiGrid },
     { id: 'data', name: t('database.tabs.data'), icon: Database },
-    { id: 'query', name: t('database.tabs.query'), icon: Terminal },
-    { id: 'health', name: t('database.tabs.health'), icon: Heart },
+    { id: 'query', name: t('database.tabs.query'), icon: FiTerminal },
+    { id: 'health', name: t('database.tabs.health'), icon: FiHeart },
   ];
 
   if (loading) {
@@ -186,7 +186,7 @@ export default function DatabaseAdminPage() {
       <AdminLayout title={t('database.title')} subtitle={t('database.subtitle')}>
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
-            <Loader2 className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
+            <FiLoader className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
             <p className="text-gray-600">{t('database.loading')}</p>
           </div>
         </div>
@@ -220,7 +220,7 @@ export default function DatabaseAdminPage() {
               onClick={fetchData}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 mr-4"
             >
-              <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              <FiRefreshCw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               <span className="hidden sm:inline">{t('database.refresh')}</span>
             </Button>
           </div>
@@ -234,7 +234,7 @@ export default function DatabaseAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
-                    <Table2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiGrid className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-blue-600 font-medium">{t('database.stats.totalTables')}</p>
@@ -246,7 +246,7 @@ export default function DatabaseAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-green-600 flex items-center justify-center flex-shrink-0">
-                    <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiFileText className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-green-600 font-medium">{t('database.stats.totalRows')}</p>
@@ -258,7 +258,7 @@ export default function DatabaseAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-600 flex items-center justify-center flex-shrink-0">
-                    <HardDrive className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiHardDrive className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-purple-600 font-medium">{t('database.stats.databaseSize')}</p>
@@ -270,7 +270,7 @@ export default function DatabaseAdminPage() {
               <Card className="p-3 sm:p-4 bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-orange-600 flex items-center justify-center flex-shrink-0">
-                    <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <FiActivity className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-orange-600 font-medium">{t('database.stats.activeConnections')}</p>
@@ -283,7 +283,7 @@ export default function DatabaseAdminPage() {
             {/* Tables List */}
             <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-gray-200">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <Table2 className="w-5 h-5 text-blue-600" />
+                <FiGrid className="w-5 h-5 text-blue-600" />
                 {t('database.tables.title')} ({tables.length})
               </h2>
 
@@ -352,7 +352,7 @@ export default function DatabaseAdminPage() {
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Table2 className="w-5 h-5 text-blue-600" />
+                <FiGrid className="w-5 h-5 text-blue-600" />
                 {t('database.tables.manage')}
               </h2>
               <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600">
@@ -376,7 +376,7 @@ export default function DatabaseAdminPage() {
                         <Edit className="w-4 h-4 text-gray-600" />
                       </button>
                       <button className="p-1.5 hover:bg-red-100 rounded">
-                        <Trash2 className="w-4 h-4 text-red-600" />
+                        <FiTrash2 className="w-4 h-4 text-red-600" />
                       </button>
                     </div>
                   </div>
@@ -495,7 +495,7 @@ export default function DatabaseAdminPage() {
                               <Edit className="w-4 h-4 text-blue-600" />
                             </button>
                             <button className="p-1.5 hover:bg-red-100 rounded">
-                              <Trash2 className="w-4 h-4 text-red-600" />
+                              <FiTrash2 className="w-4 h-4 text-red-600" />
                             </button>
                           </div>
                         </td>
@@ -519,7 +519,7 @@ export default function DatabaseAdminPage() {
         {activeTab === 'query' && (
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-gray-200">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-blue-600" />
+              <FiTerminal className="w-5 h-5 text-blue-600" />
               {t('database.query.title')}
             </h2>
 
@@ -538,12 +538,12 @@ export default function DatabaseAdminPage() {
               >
                 {queryLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    <FiLoader className="w-4 h-4 mr-2 animate-spin" />
                     {t('database.query.executing')}
                   </>
                 ) : (
                   <>
-                    <Terminal className="w-4 h-4 mr-2" />
+                    <FiTerminal className="w-4 h-4 mr-2" />
                     {t('database.query.execute')}
                   </>
                 )}
@@ -569,7 +569,7 @@ export default function DatabaseAdminPage() {
         {activeTab === 'health' && health && (
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-gray-200">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Heart className="w-5 h-5 text-blue-600" />
+              <FiHeart className="w-5 h-5 text-blue-600" />
               {t('database.health.title')}
             </h2>
 
