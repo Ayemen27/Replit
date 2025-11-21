@@ -109,7 +109,7 @@ export default function LoginPage() {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
+                  <FiMail className="w-4 h-4" />
                   {t('login.email.label')}
                 </Label>
                 <Input
@@ -126,7 +126,7 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
+                  <FiLock className="w-4 h-4" />
                   {t('login.password.label')}
                 </Label>
                 <div className="relative">
@@ -144,7 +144,7 @@ export default function LoginPage() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -193,21 +193,21 @@ export default function LoginPage() {
               onClick={() => handleSocialLogin('google')}
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Chrome className="w-5 h-5 text-gray-700" />
+              <FiChrome className="w-5 h-5 text-gray-700" />
             </button>
             <button
               type="button"
               onClick={() => handleSocialLogin('github')}
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Github className="w-5 h-5 text-gray-700" />
+              <FiGithub className="w-5 h-5 text-gray-700" />
             </button>
             <button
               type="button"
               onClick={() => handleSocialLogin('apple')}
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Apple className="w-5 h-5 text-gray-700" />
+              <FiApple className="w-5 h-5 text-gray-700" />
             </button>
           </div>
 

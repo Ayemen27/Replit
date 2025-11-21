@@ -127,7 +127,7 @@ export default function SignupPage() {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <User className="w-4 h-4" />
+                  <FiUser className="w-4 h-4" />
                   {t('signup.name.label')}
                 </Label>
                 <Input
@@ -143,7 +143,7 @@ export default function SignupPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
+                  <FiMail className="w-4 h-4" />
                   {t('signup.email.label')}
                 </Label>
                 <Input
@@ -160,7 +160,7 @@ export default function SignupPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
+                  <FiLock className="w-4 h-4" />
                   {t('signup.password.label')}
                 </Label>
                 <div className="relative">
@@ -179,7 +179,7 @@ export default function SignupPage() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
                 {password && (
@@ -201,7 +201,7 @@ export default function SignupPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
+                  <FiLock className="w-4 h-4" />
                   {t('signup.confirmPassword.label')}
                 </Label>
                 <div className="relative">
@@ -219,7 +219,7 @@ export default function SignupPage() {
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                   >
-                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showConfirmPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -277,19 +277,19 @@ export default function SignupPage() {
               type="button"
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Chrome className="w-5 h-5 text-gray-700" />
+              <FiChrome className="w-5 h-5 text-gray-700" />
             </button>
             <button
               type="button"
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Github className="w-5 h-5 text-gray-700" />
+              <FiGithub className="w-5 h-5 text-gray-700" />
             </button>
             <button
               type="button"
               className="flex items-center justify-center h-12 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 active:scale-95"
             >
-              <Apple className="w-5 h-5 text-gray-700" />
+              <FiApple className="w-5 h-5 text-gray-700" />
             </button>
           </div>
 
@@ -316,19 +316,19 @@ export default function SignupPage() {
           </p>
           <div className="space-y-4 pt-4">
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="w-6 h-6 text-white" />
+              <FiCheckCircle className="w-6 h-6 text-white" />
               <span>{t('signup.rightPanel.feature1')}</span>
             </div>
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="w-6 h-6 text-white" />
+              <FiCheckCircle className="w-6 h-6 text-white" />
               <span>{t('signup.rightPanel.feature2')}</span>
             </div>
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="w-6 h-6 text-white" />
+              <FiCheckCircle className="w-6 h-6 text-white" />
               <span>{t('signup.rightPanel.feature3')}</span>
             </div>
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="w-6 h-6 text-white" />
+              <FiCheckCircle className="w-6 h-6 text-white" />
               <span>{t('signup.rightPanel.feature4')}</span>
             </div>
           </div>
