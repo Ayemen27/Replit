@@ -334,7 +334,7 @@ export default function DatabaseAdminPage() {
                               onClick={() => exportTable(table.tableName, 'json')}
                               className="text-xs"
                             >
-                              <Download className="w-3 h-3" />
+                              <FiDownload className="w-3 h-3" />
                             </Button>
                           </div>
                         </td>
@@ -416,7 +416,7 @@ export default function DatabaseAdminPage() {
                       onClick={() => exportTable(table.tableName, 'csv')}
                       className="text-xs"
                     >
-                      <Download className="w-3 h-3" />
+                      <FiDownload className="w-3 h-3" />
                     </Button>
                   </div>
                 </Card>
@@ -430,7 +430,7 @@ export default function DatabaseAdminPage() {
           <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-gray-200">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Database className="w-5 h-5 text-blue-600" />
+                <FiDatabase className="w-5 h-5 text-blue-600" />
                 {t('database.data.title')}
               </h2>
               
@@ -458,7 +458,7 @@ export default function DatabaseAdminPage() {
                       <span className="hidden sm:inline">{t('database.data.addRow')}</span>
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => exportTable(selectedTable, 'json')}>
-                      <Download className="w-4 h-4 mr-2" />
+                      <FiDownload className="w-4 h-4 mr-2" />
                       <span className="hidden sm:inline">{t('database.data.export')}</span>
                     </Button>
                   </div>
@@ -508,7 +508,7 @@ export default function DatabaseAdminPage() {
 
             {!selectedTable && (
               <div className="text-center py-12">
-                <Database className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <FiDatabase className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                 <p className="text-gray-500">{t('database.data.noTableSelected')}</p>
               </div>
             )}
