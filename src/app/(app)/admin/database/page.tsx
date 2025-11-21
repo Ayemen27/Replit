@@ -6,22 +6,22 @@ import { useTranslate } from '@/lib/i18n/hooks';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { 
-  Database, 
-  Table2, 
-  BarChart3, 
-  Heart, 
-  Terminal,
-  RefreshCw,
-  Download,
-  Loader2,
-  Activity,
-  HardDrive,
-  FileText,
-  Plus,
-  Edit,
-  Trash2,
-  Eye
-} from 'lucide-react';
+  FiDatabase, 
+  FiGrid, 
+  FiBarChart2, 
+  FiHeart, 
+  FiTerminal,
+  FiRefreshCw,
+  FiDownload,
+  FiLoader,
+  FiActivity,
+  FiHardDrive,
+  FiFileText,
+  FiPlus,
+  FiEdit,
+  FiTrash2,
+  FiEye
+} from 'react-icons/fi';
 
 interface DatabaseStats {
   totalTables: number;

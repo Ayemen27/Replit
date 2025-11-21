@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
-import { Settings, CheckCircle2 } from 'lucide-react';
+import { FiSettings, FiCheckCircle } from 'react-icons/fi';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { useTranslate } from '@/lib/i18n/hooks';
 
@@ -40,7 +40,7 @@ export default function AdminSettingsPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-                <Settings className="w-6 h-6 text-white" />
+                <FiSettings className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">{t('settings.title')}</h2>
@@ -48,7 +48,7 @@ export default function AdminSettingsPage() {
               </div>
             </div>
             <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:shadow-lg transition-shadow">
-              <CheckCircle2 className="w-5 h-5" />
+              <FiCheckCircle className="w-5 h-5" />
               {t('settings.save')}
             </button>
           </div>
@@ -57,7 +57,7 @@ export default function AdminSettingsPage() {
         {/* Settings Content */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <div className="text-center py-12 text-gray-500">
-            <Settings className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <FiSettings className="w-16 h-16 mx-auto mb-4 text-gray-300" />
             <p>{t('settings.comingSoon')}</p>
           </div>
         </div>

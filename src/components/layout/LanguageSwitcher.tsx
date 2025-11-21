@@ -1,7 +1,7 @@
 'use client';
 
 import { useTolgee } from '@tolgee/react';
-import { Globe2 } from 'lucide-react';
+import { FiGlobe } from 'react-icons/fi';
 import { cn } from '@/lib/utils';
 
 interface LanguageSwitcherProps {
@@ -45,7 +45,7 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
         aria-label={`Switch to ${otherLanguage.name}`}
         title={`${currentLanguage.nativeName} → ${otherLanguage.nativeName}`}
       >
-        <Globe2 className="w-5 h-5" />
+        <FiGlobe className="w-5 h-5" />
       </button>
     );
   }
@@ -58,7 +58,7 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
           className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent"
           aria-label="Switch language"
         >
-          <Globe2 className="w-4 h-4" />
+          <FiGlobe className="w-4 h-4" />
           <span>{currentLanguage.nativeName}</span>
         </button>
       </div>
@@ -75,7 +75,7 @@ export function LanguageSwitcher({ className, variant = 'button' }: LanguageSwit
       aria-label={`Switch to ${otherLanguage.name}`}
       title={`Switch to ${otherLanguage.name}`}
     >
-      <Globe2 className="w-4 h-4" />
+      <FiGlobe className="w-4 h-4" />
       <span className="hidden sm:inline">{otherLanguage.code.toUpperCase()}</span>
       <span className="sm:hidden">{otherLanguage.nativeName}</span>
     </button>

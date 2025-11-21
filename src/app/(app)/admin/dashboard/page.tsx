@@ -4,12 +4,12 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { 
-  User, 
-  Activity, 
-  Database, 
-  Languages,
-  Server
-} from 'lucide-react';
+  FiFiUser, 
+  FiFiActivity, 
+  FiFiDatabase, 
+  FiGlobe,
+  FiFiServer
+} from 'react-icons/fi';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { useTranslate } from '@/lib/i18n/hooks';
 
@@ -122,9 +122,9 @@ export default function AdminDashboardPage() {
               onClick={() => router.push('/admin/users')}
             />
             <QuickAction
-              title={t('dashboard.quickActions.viewServers')}
+              title={t('dashboard.quickActions.viewFiServers')}
               description={t('navigation.databaseDesc')}
-              icon={<Server className="w-5 h-5 text-white" />}
+              icon={<FiServer className="w-5 h-5 text-white" />}
               onClick={() => router.push('/admin/database')}
             />
             <QuickAction

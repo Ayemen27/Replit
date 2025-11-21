@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Eye, EyeOff, Mail, Lock, User, Github, Chrome, Apple, CheckCircle2 } from 'lucide-react';
+import { FiEye, FiEyeOff, FiMail, FiLock, FiUser, FiGithub, FiChrome, FiApple, FiCheckCircle } from 'react-icons/fi';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

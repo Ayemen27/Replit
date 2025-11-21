@@ -7,25 +7,25 @@ import { useTranslate } from '@/lib/i18n/hooks';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { 
-  Upload, 
-  Download, 
-  CheckCircle2, 
-  AlertCircle, 
-  Terminal,
-  RefreshCw,
-  Database,
-  Eye,
-  Play,
-  FileText,
-  Loader2,
-  TrendingUp,
-  Activity,
-  AlertTriangle,
-  Clock,
-  BarChart3,
-  Users,
-  Calendar
-} from 'lucide-react';
+  FiUpload, 
+  FiDownload, 
+  FiCheckCircle, 
+  FiAlertCircle, 
+  FiTerminal,
+  FiRefreshCw,
+  FiDatabase,
+  FiEye,
+  FiPlay,
+  FiFileText,
+  FiLoader,
+  FiTrendingUp,
+  FiActivity,
+  FiAlertTriangle,
+  FiClock,
+  FiBarChart2,
+  FiUsers,
+  FiCalendar
+} from 'react-icons/fi';
 
 interface ScriptResult {
   success: boolean;
@@ -92,7 +92,7 @@ export default function TranslationsAdminPage() {
       id: 'upload-translations',
       name: t('translationManagement.uploading'),
       description: t('translationManagement.uploadDescription'),
-      icon: Upload,
+      icon: FiUpload,
       command: 'bash scripts/upload-translations.sh',
       category: 'upload'
     },
@@ -100,7 +100,7 @@ export default function TranslationsAdminPage() {
       id: 'upload-direct',
       name: 'رفع مباشر (Translation API)',
       description: 'رفع الترجمات مباشرة باستخدام Translation API - موصى به',
-      icon: Upload,
+      icon: FiUpload,
       command: 'npx tsx scripts/upload-translations-direct.ts',
       category: 'upload'
     },
