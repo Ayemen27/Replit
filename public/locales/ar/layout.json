@@ -108,6 +108,11 @@
     "resources": "الموارد",
     "profile": "الملف الشخصي"
   },
+  "auth": {
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب"
+  },
   "common": {
     "logout": "تسجيل الخروج"
   },
@@ -179,5 +184,50 @@
     "arabic": "العربية",
     "english": "الإنجليزية",
     "switchLanguage": "تبديل اللغة"
+  },
+  "loading": "جاري التحميل...",
+  "dashboard": {
+    "title": "لوحة الإدارة",
+    "subtitle": "نظرة عامة على النظام",
+    "users": {
+      "total": "إجمالي المستخدمين المسجلين",
+      "active": "المستخدمين النشطين",
+      "new": "مستخدمين جدد هذا الشهر"
+    },
+    "projects": {
+      "active": "المشاريع النشطة",
+      "total": "إجمالي المشاريع",
+      "completed": "المشاريع المكتملة"
+    },
+    "servers": {
+      "health": "حالة الخوادم",
+      "connected": "الخوادم المتصلة",
+      "offline": "الخوادم غير المتصلة"
+    },
+    "activity": {
+      "title": "النشاط الأخير",
+      "viewAll": "عرض الكل",
+      "noActivity": "لا توجد أنشطة حديثة"
+    },
+    "quickActions": {
+      "title": "إجراءات سريعة",
+      "manageUsers": "إدارة المستخدمين",
+      "viewFiServers": "عرض الخوادم",
+      "viewServers": "عرض الخوادم",
+      "systemSettings": "إعدادات النظام",
+      "viewLogs": "عرض السجلات"
+    }
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "dashboardDesc": "النظرة العامة",
+    "database": "قاعدة البيانات",
+    "databaseDesc": "إدارة قاعدة البيانات",
+    "translations": "الترجمات",
+    "translationsDesc": "إدارة الترجمات",
+    "users": "المستخدمين",
+    "usersDesc": "إدارة المستخدمين",
+    "settings": "الإعدادات",
+    "settingsDesc": "إعدادات النظام"
   }
 }

@@ -59,7 +59,7 @@ function QuickAction({ title, description, icon, onClick }: QuickActionProps) {
 export default function AdminDashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { t } = useTranslate('admin');
+  const { t } = useTranslate('layout');
 
   useEffect(() => {
     if (status === 'unauthenticated') {

@@ -57,6 +57,7 @@
     "quickActions": {
       "title": "إجراءات سريعة",
       "manageUsers": "إدارة المستخدمين",
+      "viewFiServers": "عرض الخوادم",
       "viewServers": "عرض الخوادم",
       "systemSettings": "إعدادات النظام",
       "viewLogs": "عرض السجلات"
@@ -77,7 +78,12 @@
     "comingSoon": "قريباً: إعدادات النظام"
   },
   "sidebar": {
-    "title": "القائمة الرئيسية"
+    "title": "القائمة الرئيسية",
+    "dashboard": "لوحة التحكم",
+    "database": "قاعدة البيانات",
+    "users": "المستخدمون",
+    "translations": "الترجمات",
+    "settings": "الإعدادات"
   },
   "database": {
     "title": "إدارة قاعدة البيانات",

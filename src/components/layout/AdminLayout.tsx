@@ -23,7 +23,7 @@ interface AdminLayoutProps {
 }
 
 export function AdminLayout({ children, title, subtitle }: AdminLayoutProps) {
-  const { t } = useTranslate('admin');
+  const { t } = useTranslate('layout');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
 
