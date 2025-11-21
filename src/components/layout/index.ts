@@ -5,3 +5,4 @@ export { NavDesktop } from './NavDesktop';
 export { NavMobile } from './NavMobile';
 export { AdminLayout } from './AdminLayout';
 export { BottomNav } from './BottomNav';
+export { TopNavbar } from './TopNavbar';

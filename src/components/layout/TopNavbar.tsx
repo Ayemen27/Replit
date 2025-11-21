@@ -6,10 +6,10 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   Menu,
   X,
-  LayoutDashboard,
+  BarChart3,
   Database,
   Users,
-  Globe,
+  Globe2,
   Server,
   Settings,
   LogOut,
@@ -31,7 +31,7 @@ export function TopNavbar() {
 
   const adminLinks = [
     {
-      icon: LayoutDashboard,
+      icon: BarChart3,
       label: t('admin.dashboard') || 'Dashboard',
       href: '/admin/dashboard',
     },
@@ -46,7 +46,7 @@ export function TopNavbar() {
       href: '/admin/users',
     },
     {
-      icon: Globe,
+      icon: Globe2,
       label: t('admin.translations') || 'Translations',
       href: '/admin/translations',
     },

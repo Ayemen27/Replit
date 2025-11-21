@@ -92,6 +92,14 @@
     "settings": "الإعدادات",
     "profile": "الحساب"
   },
+  "admin": {
+    "label": "الإدارة",
+    "dashboard": "لوحة التحكم",
+    "database": "قاعدة البيانات",
+    "users": "المستخدمون",
+    "translations": "الترجمات",
+    "settings": "الإعدادات"
+  },
   "footer": {
     "product": {
       "title": "المنتج",
