@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useTranslate, useLanguage } from '@/lib/i18n/hooks';
 import { getLocaleDirection } from '@/lib/i18n/constants';
 import type { SupportedLocale } from '@/lib/i18n/constants';
-import { ArrowRight, Braces, Zap, Users, Smartphone, Database, Globe } from 'lucide-react';
+import { ArrowRight, Wrench, Zap, Smartphone, Database, Globe2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CreateProjectPage() {
@@ -40,7 +40,7 @@ export default function CreateProjectPage() {
       id: 'web',
       name: 'تطبيق ويب',
       description: 'تطبيق ويب تفاعلي حديث',
-      icon: Globe,
+      icon: Globe2,
       color: 'from-blue-500 to-blue-600',
     },
     {
@@ -54,7 +54,7 @@ export default function CreateProjectPage() {
       id: 'api',
       name: 'API وخدمات',
       description: 'واجهات برمجية قوية',
-      icon: Braces,
+      icon: Terminal,
       color: 'from-green-500 to-emerald-600',
     },
     {

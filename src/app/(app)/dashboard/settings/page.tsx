@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useTranslate, useLanguage } from '@/lib/i18n/hooks';
 import { getLocaleDirection } from '@/lib/i18n/constants';
 import type { SupportedLocale } from '@/lib/i18n/constants';
-import { Save, Bell, Shield, Eye, ToggleRight, ToggleLeft, Globe } from 'lucide-react';
+import { Save, Bell, Shield, Eye, ToggleRight, ToggleLeft, Globe2 } from 'lucide-react';
 
 export default function SettingsPage() {
   const { data: session, status } = useSession();
