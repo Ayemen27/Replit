@@ -176,7 +176,7 @@ export default function DatabaseAdminPage() {
   const tabs = [
     { id: 'overview', name: t('database.tabs.overview'), icon: FiBarChart2 },
     { id: 'tables', name: t('database.tabs.tables'), icon: FiGrid },
-    { id: 'data', name: t('database.tabs.data'), icon: Database },
+    { id: 'data', name: t('database.tabs.data'), icon: FiDatabase },
     { id: 'query', name: t('database.tabs.query'), icon: FiTerminal },
     { id: 'health', name: t('database.tabs.health'), icon: FiHeart },
   ];
@@ -325,7 +325,7 @@ export default function DatabaseAdminPage() {
                               }}
                               className="text-xs"
                             >
-                              <Eye className="w-3 h-3 mr-1" />
+                              <FiEye className="w-3 h-3 mr-1" />
                               <span className="hidden sm:inline">{t('database.tables.view')}</span>
                             </Button>
                             <Button
@@ -356,7 +356,7 @@ export default function DatabaseAdminPage() {
                 {t('database.tables.manage')}
               </h2>
               <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600">
-                <Plus className="w-4 h-4 mr-2" />
+                <FiPlus className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">{t('database.tables.newTable')}</span>
               </Button>
             </div>
@@ -373,7 +373,7 @@ export default function DatabaseAdminPage() {
                     </div>
                     <div className="flex gap-1">
                       <button className="p-1.5 hover:bg-gray-100 rounded">
-                        <Edit className="w-4 h-4 text-gray-600" />
+                        <FiEdit className="w-4 h-4 text-gray-600" />
                       </button>
                       <button className="p-1.5 hover:bg-red-100 rounded">
                         <FiTrash2 className="w-4 h-4 text-red-600" />
@@ -407,7 +407,7 @@ export default function DatabaseAdminPage() {
                       }}
                       className="flex-1 text-xs"
                     >
-                      <Eye className="w-3 h-3 mr-1" />
+                      <FiEye className="w-3 h-3 mr-1" />
                       {t('database.tables.view')}
                     </Button>
                     <Button
@@ -454,7 +454,7 @@ export default function DatabaseAdminPage() {
                 {selectedTable && (
                   <div className="flex gap-2">
                     <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600">
-                      <Plus className="w-4 h-4 mr-2" />
+                      <FiPlus className="w-4 h-4 mr-2" />
                       <span className="hidden sm:inline">{t('database.data.addRow')}</span>
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => exportTable(selectedTable, 'json')}>
@@ -492,7 +492,7 @@ export default function DatabaseAdminPage() {
                         <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm">
                           <div className="flex gap-2">
                             <button className="p-1.5 hover:bg-blue-100 rounded">
-                              <Edit className="w-4 h-4 text-blue-600" />
+                              <FiEdit className="w-4 h-4 text-blue-600" />
                             </button>
                             <button className="p-1.5 hover:bg-red-100 rounded">
                               <FiTrash2 className="w-4 h-4 text-red-600" />
