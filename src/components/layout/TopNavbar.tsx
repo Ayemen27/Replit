@@ -18,7 +18,7 @@ import {
   Home,
   Folder,
   User as UserIcon,
-  Book
+  FileText
 } from 'lucide-react';
 import { useTranslate } from '@/lib/i18n/hooks';
 import { useSession, signOut } from 'next-auth/react';
@@ -75,7 +75,7 @@ export function TopNavbar() {
       href: '/dashboard/projects',
     },
     {
-      icon: Book,
+      icon: FileText,
       label: t('user.resources') || 'Resources',
       href: '/dashboard/resources',
     },
